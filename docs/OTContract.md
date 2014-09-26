@@ -105,7 +105,8 @@ multiple signatures allowed
 
 # Notes
 
-* The current parser for this document format is too complex
+* The current parser for this document format is too complex and probably has some bugs
+* The `HASH:` field is meant to be read right after the `BEGIN` marker, but can in fact be set anywhere: [Link][ProcessHash]. Possible unintended consequences, maybe even exploit.
 
 [OTContract]: https://github.com/Open-Transactions/opentxs/blob/171bdbdd1327fa016f2043bf43d8662055d263d2/src/core/OTContract.cpp
 
@@ -114,3 +115,7 @@ multiple signatures allowed
 [LoadContractXML]: https://github.com/Open-Transactions/opentxs/blob/db31c6aa45bbb773aebbdbd4298acd3755785420/src/core/OTContract.cpp#L1642
 
 [ProcessXMLNode]: https://github.com/Open-Transactions/opentxs/blob/db31c6aa45bbb773aebbdbd4298acd3755785420/src/core/OTContract.cpp#L2391
+
+
+[ProcessHash]: https://github.com/Open-Transactions/opentxs/blob/171bdbdd1327fa016f2043bf43d8662055d263d2/src/core/OTContract.cpp#L1575
+
