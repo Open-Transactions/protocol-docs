@@ -2,31 +2,39 @@
 
 ## Deserialization
 
-Strings can be parsed into instances of [`OTContract`][OTContract]
+Strings can be parsed into instances of [`OTContract`][OTContract].
 
-The process is defined by the methods
+The process is defined by the methods:
+
 * [ParseRawFile()][ParseRawFile]
 * [LoadContractXML()][LoadContractXML]
 * [ProcessXMLNode()][ProcessXMLNode]
 
 A contract can be loaded if:
 
-* It has a valid content section
-* It has at least one valid signature section
+* it has a valid content section;
+* it has at least one valid signature section.
 
 ### Sections
 
-Contract documents are parsed line-by-line. Lines that start with a dash (`-`) have special meaning:
+Contract documents are parsed line-by-line. Lines that start with a dash (`-`)
+have special meaning:
 
-* A line that starts with `---` and has the `BEGIN` keyword marks the beginning of the content section, which is given in XML.
+* A line that starts with `---` and has the `BEGIN` keyword marks the beginning
+  of the content section, which is given in XML.
 
-* A line that starts with `---` and has the `SIGNATURE` keyword marks a signature section, which is ended with a single dash `-`. A contract have contain many signatures. For more information on the signature format, see [Signatures](#Signatures).
+* A line that starts with `---` and has the `SIGNATURE` keyword marks a
+  signature section, which is ended with a single dash `-`. A contract may
+  contain many signatures. For more information on the signature format, see
+  [Signatures](#Signatures).
 
-Inside the content section, lines that start with a dash must be followed by a single space.
+Inside the content section, lines that start with a dash must add a space after
+the first dash.
 
 ### XML Structure
 
-A contract is defined by a root element with an arbitrary name, which is processed in the sub-classes. The root element has these XML elements:
+A contract is defined by a root element with an arbitrary name, which is
+processed in the sub-classes. The root element has these XML elements:
 
 Entity Name | Description
 ------------|------------
@@ -41,7 +49,7 @@ Entity Name | Description
 HASH: foo
 
 <!--
-This content that is aggregated into m_unsignedXML.
+This content is aggregated into m_unsignedXML.
 
 Only the subsequent tags are recognized, all other content is ignored.
 -->
@@ -71,19 +79,17 @@ Only the subsequent tags are recognized, all other content is ignored.
       <credentials>
        </credentialList>
    <!--
-   Only the first credentials/credentialList seems to be
-   recognized.
+   Only the first credentials/credentialList seems to be recognized.
 
    A new nym is initialized with the nymId, the credentialList
-   and the credentialMap. If verification success, the method
-   returns true, otherwise, we continue.
+   and the credentialMap. If verification succeeds the method
+   returns true, otherwise we continue.
    -->
 </signer>
 
 <!--
-Sometimes you want to embed book-ended sections
-that start with a triple-dash. You can do this by
-adding a space after the first dash.
+Sometimes you want to embed book-ended sections that start with a triple-dash.
+You can do this by adding a space after the first dash.
 -->
 
 - --- BEGIN
@@ -105,8 +111,11 @@ multiple signatures allowed
 
 # Notes
 
-* The current parser for this document format is too complex and probably has some bugs
-* The `HASH:` field is meant to be read right after the `BEGIN` marker, but can in fact be set anywhere: [Link][ProcessHash]. Possible unintended consequences, maybe even exploit.
+* The current parser for this document format is too complex and probably has
+  some bugs.
+* The `HASH:` field is meant to be read right after the `BEGIN` marker, but can
+  in fact be set anywhere: [Link][ProcessHash]. Possible unintended
+  consequences, maybe even exploit.
 
 [OTContract]: https://github.com/Open-Transactions/opentxs/blob/171bdbdd1327fa016f2043bf43d8662055d263d2/src/core/OTContract.cpp
 
@@ -116,6 +125,4 @@ multiple signatures allowed
 
 [ProcessXMLNode]: https://github.com/Open-Transactions/opentxs/blob/db31c6aa45bbb773aebbdbd4298acd3755785420/src/core/OTContract.cpp#L2391
 
-
 [ProcessHash]: https://github.com/Open-Transactions/opentxs/blob/171bdbdd1327fa016f2043bf43d8662055d263d2/src/core/OTContract.cpp#L1575
-
