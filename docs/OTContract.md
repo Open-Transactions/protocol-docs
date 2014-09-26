@@ -2,7 +2,7 @@
 
 ## Deserialization
 
-Strings can be parsed into instances of `OTContract`.
+Strings can be parsed into instances of [`OTContract`][OTContract]
 
 The process is defined by the methods
 * [ParseRawFile()][ParseRawFile]
@@ -18,7 +18,7 @@ A contract can be loaded if:
 
 Contract documents are parsed line-by-line. Lines that start with a dash (`-`) have special meaning:
 
-* A line that starts with `---` and has the`BEGIN` keyword marks the beginning of the content section, which is given in XML.
+* A line that starts with `---` and has the `BEGIN` keyword marks the beginning of the content section, which is given in XML.
 
 * A line that starts with `---` and has the `SIGNATURE` keyword marks a signature section, which is ended with a single dash `-`. A contract have contain many signatures. For more information on the signature format, see [Signatures](#Signatures).
 
@@ -48,20 +48,20 @@ Only the subsequent tags are recognized, all other content is ignored.
 
 <rootElement>
 
-<entity shortname=”string” longname=”string” email=”string">
+<entity shortname="string" longname="string" email="string">
 
-<condition name=”key”>
+<condition name="key">
    Plain-Text Value
    <!-- these end up in a map that is local to OTContract -->
 </condition>
 
-<condition name=”other-key”>
+<condition name="other-key">
    Plain-text
    <!-- if a condition has the same name as a previous one,
         the previous one is overwritten -->
 </condition>
 
-<signer nymID=”mandatory string” hasCredentials=”bool” altLocation=”asciiarmor”>
+<signer nymID="mandatory string" hasCredentials="bool" altLocation="asciiarmor">
     <!-- altLocation is unsupported and is ignored, see comments -->
     <nymIDSource>Mandatory ASCII Armored stuff</nymIDSource>
     <credentialList>
@@ -92,7 +92,8 @@ adding a space after the first dash.
 <!-- the content section ends with a signature marker -->
 --- SIGNATURE
 Meta: four-letter signature metadata
-<signature data>
+
+<!-- encoded signature data -->
 
 </rootElement>
 -
