@@ -37,7 +37,7 @@ All documentation is written in Markdown. Since Markdown parses line-by-line, th
 
 Recommended vim settings:
 ```
-set textwidth=0 wrap linebreak
+set textwidth=0 wrap linebreak nolist
 ```
 
 A good live Markdown editor with google docs and github support is https://stackedit.io/editor#
