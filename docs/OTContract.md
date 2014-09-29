@@ -62,8 +62,8 @@ Only the subsequent tags are recognized, all other content is ignored.
 <entity shortname="string" longname="string" email="string">
 
 <condition name="key">
-   Plain-Text Value
-   <!-- these end up in a map that is local to OTContract -->
+    Plain-Text Value
+    <!-- these end up in a map that is local to OTContract -->
 </condition>
 
 <condition name="other-key">
@@ -76,18 +76,20 @@ Only the subsequent tags are recognized, all other content is ignored.
     <!-- altLocation is unsupported and is ignored, see comments -->
     <nymIDSource>Mandatory ASCII Armored stuff</nymIDSource>
     <credentialList>
-          <!-- loaded into var ascArmor, dearmored into credentialList -->
-      <credentials>
-      <!-- dearmored and decoded into type OTDB::StringMap -->
-      <credentials>
-       </credentialList>
-   <!--
-   Only the first credentials/credentialList seems to be recognized.
+        <!-- loaded into var ascArmor, dearmored into credentialList -->
+        <credentials>
+        <!-- dearmored and decoded into type OTDB::StringMap -->
+        <credentials>
+    </credentialList>
+    <!--
+    Only the first credentials/credentialList seems to be recognized.
+ 
+    A new nym is initialized with the nymId, the credentialList
+    and the credentialMap. If verification succeeds the method
+    returns true, otherwise we continue.
 
-   A new nym is initialized with the nymId, the credentialList
-   and the credentialMap. If verification succeeds the method
-   returns true, otherwise we continue.
-   -->
+    The nym is stored as this contract's `signer`.
+    -->
 </signer>
 
 <!--
