@@ -183,7 +183,7 @@ creates some default elements:
 
 <signer hasCredentials="$hasCredentials"
         nymId="$nymId"
-        altLocation="$altLocation"
+        altLocation="$altLocation">
 
     <nymIdSource>
         $nymIdSource (armored)
