@@ -1,10 +1,13 @@
 # OTContract Summary
 
+This is the superclass for many other classes in Open-Transactions, most notably
+`OTMessage` and `OTTransactionType`.
+
 ## Deserialization
 
 Strings can be parsed into instances of [`OTContract`][OTContract].
 
-The process is defined by the methods:
+Defined by
 
 * [ParseRawFile()][ParseRawFile]
 * [LoadContractXML()][LoadContractXML]
@@ -13,7 +16,7 @@ The process is defined by the methods:
 A contract can be loaded if:
 
 * it has a valid content section;
-* it has at least one valid signature section.
+* it has at least one valid (parsable) signature section.
 
 ### Sections
 
@@ -40,7 +43,7 @@ Entity Name | Description
 ------------|------------
 `entity`    | Describes the name and email address of the contract author.
 `condition` | Describes the contract condition. A contract can have multiple conditions.
-`signer`    | Describes the Nym of the contract author. The signer must provide a credential list that verifies the nym.
+`signer`    | Describes the _signer_ Nym of this contract. The signer must provide a credential list that verifies the Nym.
 
 ### Sample document
 
