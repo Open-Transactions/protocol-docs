@@ -166,7 +166,7 @@ Defined by
 The method `CreateInnerContents()` must be called preceding to the section
 serialization.
 
-```
+```xml
 <condition name="$name">$value</condition>
 <!-- for all conditions -->
 
