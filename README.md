@@ -52,6 +52,3 @@ Recommended vim settings:
 ```
 set textwidth=0 wrap linebreak nolist
 ```
-
-A good live Markdown editor with google docs and github support is
-[https://stackedit.io/](StackEdit).
