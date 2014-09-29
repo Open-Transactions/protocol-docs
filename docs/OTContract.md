@@ -3,6 +3,21 @@
 This is the superclass for many other classes in Open-Transactions, most notably
 `OTMessage` and `OTTransactionType`.
 
+A Contract has
+
+* A map of conditions (`string -> string`).
+* A map of Nyms (`string -> nym`). Always contains entry _signer_.
+* A content section with the serialized XML of the attributes
+* A list of signatures
+
+## Creation
+
+Although `OTContract` is mainly used through subclasses, there are some class
+methods for creating a contract (after initializing the class)
+
+
+* [CreateContract()][CreateContract]
+
 ## Deserialization
 
 Strings can be parsed into instances of [`OTContract`][OTContract].
@@ -76,11 +91,11 @@ Only the subsequent tags are recognized, all other content is ignored.
 <signer nymID="mandatory string" hasCredentials="bool" altLocation="asciiarmor">
     <!-- altLocation is unsupported and is ignored, see comments -->
     <nymIDSource>Mandatory ASCII Armored stuff</nymIDSource>
+    <credentials>
+    <!-- dearmored and decoded into type OTDB::StringMap -->
+    <credentials>
     <credentialList>
         <!-- loaded into var ascArmor, dearmored into credentialList -->
-        <credentials>
-        <!-- dearmored and decoded into type OTDB::StringMap -->
-        <credentials>
     </credentialList>
     <!--
     Only the first credentials/credentialList seems to be recognized.
@@ -141,7 +156,35 @@ Contracts can be serialized into strings.
 Defined by
 
 * [RewriteContract()][RewriteContract]
+* [CreateInnerContents()][CreateInnerContents]
+  -- XML Serialization
 * [AddBookendsAroundContent()][AddBookendsAroundContent]
+  -- Section Serialization
+
+### XML Serialization
+
+The method `CreateInnerContents()` must be called preceding to the section
+serialization.
+
+```
+<condition name="$name">$value</condition>
+<!-- for all conditions -->
+
+<signer hasCredentials="$hasCredentials"
+        nymId="$nymId"
+        altLocation="$altLocation"
+
+    <nymIdSource>$nymIdSource (armored)</nymIdSource>
+
+    <credentialList>
+      $credentialList (armored)
+    </credentialList>
+    <credentials>
+      $credentialMap (OTDB encoded, armored)
+    </credentials>
+</signer>
+```
+
 
 
 The serialization method reads the fields `content`, `contractType`, `hashType`
@@ -198,13 +241,15 @@ fails.
   and not derived from the content section of the contract?
 * We authenticate against either the `signer` field or the `contract` field that
   is not read during deserialization. I'm guessing that `contract` is
-  depreacted.
+  deprecated.
 * There deprecated single-key-system makes an appearance also when loading the
   public keys for signature verification.
 * Signature verification takes a `OTPasswordData` argument with unclear purpose.
 
 
 ## Serialization
+
+* `CreateInnerContents()` supports the deprecated single-key system.
 
 * The serialization method does not generate the XML required for
   deserialization. The content field is populated by the deriving subclasses.
