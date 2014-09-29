@@ -114,13 +114,86 @@ multiple signatures allowed
 -
 ```
 
-# Notes
+## Verification
+
+A contract instance can be verified for integrity for an authentic signature
+by the `signer` nym.
+
+Defined by
+
+* [VerifyContract(nym)][VerifyContract]
+* [VerifySignature(myn)][VerifySignature]
+
+
+Contract verification as defined in `VerifyContract()` succeeds if
+
+1. The contract-id field `m_ID` (hash) matches the hash of the trimmed field
+   `m_strRawFile`.
+1. Check if one of the parsed signatures matches one of the _signing_ keys of
+   the contract's `signer` Nym.
+
+## Serialization
+
+Contracts can be serialized into strings
+
+Defined by
+
+* [RewriteContract()][RewriteContract]
+* [AddBookendsAroundContent()][AddBookendsAroundContent]
+
+
+
+
+# Signature Format
+
+A signature block is written as:
+
+```
+-----BEGIN $contractType SIGNATURE-----
+Version: OpenTransactions [version] // ignored
+Comment: http://github.com/FellowTraveler/Open-Transactions/wiki // ignored
+Meta:    [four-character tag]
+
+[signature data]
+```
+
+The four-character `Meta` tag is defined as:
+
+* The key type: `E`, `S` or `A` (Encryption, Signing or Authentication)
+* First character of the Nym Id
+* First character of the Master-Credential Id
+* First character of the Sub-Credential Id
+
+This tag aids the signature verification process. If the 
+
+# Notes and open questions
+
+## Deserialization
 
 * The current parser for this document format is too complex and probably has
   some bugs.
+* The content field is marked by the `BEGIN` marker, the signature field by the
+  `SIGNATURE` marker. During serialization, the signature bookend is written as
+  `BEGIN <contractType> SIGNATURE`. When a contract is missing an explicit
+  content section, the first signature block is interpreted as the content.
 * The `HASH:` field is meant to be read right after the `BEGIN` marker, but can
   in fact be set anywhere: [Link][ProcessHash]. Possible unintended
   consequences, maybe even exploit.
+* The first character of metadata defines the type of key that is used. Is there
+  any way that a key that doesn't start with `S` can be valid?
+
+
+## Verification
+
+* The integrity check compares the value of class field `m_ID` against the
+  calculated hash value of the contract. When is the ID field passed explicitly
+  and not derived from the content section of the contract?
+* We authenticate against either the `signer` field or the `contract` field that
+  is not read during deserialization. I'm guessing that `contract` is
+  depreacted.
+* There deprecated single-key-system makes an appearance also when loading the
+  public keys for signature verification.
+* Signature verification takes a `OTPasswordData` argument with unclear purpose.
 
 [OTContract]: https://github.com/Open-Transactions/opentxs/blob/171bdbdd1327fa016f2043bf43d8662055d263d2/src/core/OTContract.cpp
 
@@ -131,3 +204,15 @@ multiple signatures allowed
 [ProcessXMLNode]: https://github.com/Open-Transactions/opentxs/blob/db31c6aa45bbb773aebbdbd4298acd3755785420/src/core/OTContract.cpp#L2391
 
 [ProcessHash]: https://github.com/Open-Transactions/opentxs/blob/171bdbdd1327fa016f2043bf43d8662055d263d2/src/core/OTContract.cpp#L1575
+
+
+
+[RewriteContract]: https://github.com/Open-Transactions/opentxs/blob/171bdbdd1327fa016f2043bf43d8662055d263d2/src/core/OTContract.cpp#1196
+
+[AddBookendsAroundContent]: https://github.com/Open-Transactions/opentxs/blob/171bdbdd1327fa016f2043bf43d8662055d263d2/src/core/OTContract.cpp#1148
+
+
+
+[VerifyContract]: https://github.com/Open-Transactions/opentxs/blob/171bdbdd1327fa016f2043bf43d8662055d263d2/src/core/OTContract.cpp#330
+
+[VerifySignature]: https://github.com/Open-Transactions/opentxs/blob/171bdbdd1327fa016f2043bf43d8662055d263d2/src/core/OTContract.cpp#818
