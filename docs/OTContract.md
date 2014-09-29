@@ -170,8 +170,8 @@ Defined by
 
 ### XML Serialization
 
-The method `CreateInnerContents()` must be called preceding to the section
-serialization.
+The method `CreateInnerContents()` is called from the inheriting subclasses and
+creates some default elements:
 
 ```xml
 
