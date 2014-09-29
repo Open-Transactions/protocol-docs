@@ -5,6 +5,8 @@ This is the superclass for many other classes in Open-Transactions, most notably
 
 A Contract has
 
+* A type. Default implementation sets `CONTRACT`. Subclasses use `MESSAGE`,
+  `LEDGER`, `TRANSACTION`, `TRANSACTION ITEM` and maybe more.
 * A map of conditions (`string -> string`).
 * A map of Nyms (`string -> nym`). Always contains entry _signer_.
 * A content section with the serialized XML of the attributes
@@ -75,7 +77,7 @@ Only the subsequent tags are recognized, all other content is ignored.
 
 <rootElement>
 
-<entity shortname="string" longname="string" email="string">
+<entity shortname="string" longname="string" email="string" />
 
 <condition name="key">
     Plain-Text Value
@@ -90,16 +92,21 @@ Only the subsequent tags are recognized, all other content is ignored.
 
 <signer nymID="mandatory string" hasCredentials="bool" altLocation="asciiarmor">
     <!-- altLocation is unsupported and is ignored, see comments -->
-    <nymIDSource>Mandatory ASCII Armored stuff</nymIDSource>
-    <credentials>
-    <!-- dearmored and decoded into type OTDB::StringMap -->
-    <credentials>
+    <nymIDSource>
+        ASCII Armored stuff (mandatory)
+    </nymIDSource>
+
     <credentialList>
         <!-- loaded into var ascArmor, dearmored into credentialList -->
     </credentialList>
+
+    <credentials>
+        <!-- dearmored and decoded into type OTDB::StringMap -->
+    <credentials>
+
     <!--
     Only the first credentials/credentialList seems to be recognized.
- 
+
     A new nym is initialized with the nymId, the credentialList
     and the credentialMap. If verification succeeds the method
     returns true, otherwise we continue.
@@ -167,20 +174,27 @@ The method `CreateInnerContents()` must be called preceding to the section
 serialization.
 
 ```xml
-<condition name="$name">$value</condition>
+
+<condition name="$name">
+    $value
+</condition>
 <!-- for all conditions -->
+
 
 <signer hasCredentials="$hasCredentials"
         nymId="$nymId"
         altLocation="$altLocation"
 
-    <nymIdSource>$nymIdSource (armored)</nymIdSource>
+    <nymIdSource>
+        $nymIdSource (armored)
+    </nymIdSource>
 
     <credentialList>
-      $credentialList (armored)
+        $credentialList (armored)
     </credentialList>
+
     <credentials>
-      $credentialMap (OTDB encoded, armored)
+        $credentialMap (OTDB encoded, armored)
     </credentials>
 </signer>
 ```
