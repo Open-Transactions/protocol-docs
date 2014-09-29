@@ -45,6 +45,7 @@ Entity Name | Description
 `condition` | Describes the contract condition. A contract can have multiple conditions.
 `signer`    | Describes the _signer_ Nym of this contract. The signer must provide a credential list that verifies the Nym.
 
+
 ### Sample document
 
 ```xml
@@ -127,14 +128,15 @@ Defined by
 
 Contract verification as defined in `VerifyContract()` succeeds if
 
-1. The contract-id field `m_ID` (hash) matches the hash of the trimmed field
-   `m_strRawFile`.
+1. The contract-id field `m_ID` (hash) matches the hash of the trimmed contents
+   of `m_strRawFile`.
 1. Check if one of the parsed signatures matches one of the _signing_ keys of
    the contract's `signer` Nym.
 
+
 ## Serialization
 
-Contracts can be serialized into strings
+Contracts can be serialized into strings.
 
 Defined by
 
@@ -142,20 +144,21 @@ Defined by
 * [AddBookendsAroundContent()][AddBookendsAroundContent]
 
 
-
-
-# Signature Format
-
-A signature block is written as:
+The serialization method reads the fields `content`, `contractType`, `hashType`
+and `listSignatures` and outputs a string with this structure
 
 ```
+-----BEGIN SIGNED $contractType-----
+Hash: $hashType
+$content
 -----BEGIN $contractType SIGNATURE-----
-Version: OpenTransactions [version] // ignored
-Comment: http://github.com/FellowTraveler/Open-Transactions/wiki // ignored
+Version: OpenTransactions [version] // ignored in parsing
+Comment: http://github.com/FellowTraveler/Open-Transactions/wiki // also ignored
 Meta:    [four-character tag]
-
 [signature data]
+// other signatures
 ```
+### Signature Format
 
 The four-character `Meta` tag is defined as:
 
@@ -164,9 +167,13 @@ The four-character `Meta` tag is defined as:
 * First character of the Master-Credential Id
 * First character of the Sub-Credential Id
 
-This tag aids the signature verification process. If the 
+This tag aids the signature verification process. If the meta-data doesn't match
+the key information gathered from the Nym's sub-credential, the verification
+fails.
 
-# Notes and open questions
+
+
+# Notes
 
 ## Deserialization
 
@@ -181,7 +188,8 @@ This tag aids the signature verification process. If the
   consequences, maybe even exploit.
 * The first character of metadata defines the type of key that is used. Is there
   any way that a key that doesn't start with `S` can be valid?
-
+* The XML parsing code includes support for the deprecated single-key system by
+  recognizing a `key` tag.
 
 ## Verification
 
@@ -194,6 +202,18 @@ This tag aids the signature verification process. If the
 * There deprecated single-key-system makes an appearance also when loading the
   public keys for signature verification.
 * Signature verification takes a `OTPasswordData` argument with unclear purpose.
+
+
+## Serialization
+
+* The serialization method does not generate the XML required for
+  deserialization. The content field is populated by the deriving subclasses.
+
+
+
+<!---
+Links
+-->
 
 [OTContract]: https://github.com/Open-Transactions/opentxs/blob/171bdbdd1327fa016f2043bf43d8662055d263d2/src/core/OTContract.cpp
 
