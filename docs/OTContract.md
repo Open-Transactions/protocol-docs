@@ -5,8 +5,9 @@ This is the superclass for many other classes in Open-Transactions, most notably
 
 A Contract has
 
-* A type. Default implementation sets `CONTRACT`. Subclasses use `MESSAGE`,
-  `LEDGER`, `TRANSACTION`, `TRANSACTION ITEM` and maybe more.
+* A type string (usually uppercase). OTContract sets `CONTRACT`.
+  subclasses use `MESSAGE`, `LEDGER`, `TRANSACTION`, `TRANSACTION ITEM` and
+  maybe others. Written in the content marker (see section Serialization)
 * A map of conditions (`string -> string`).
 * A map of Nyms (`string -> nym`). Always contains entry _signer_.
 * A content section with the serialized XML of the attributes
@@ -168,7 +169,24 @@ Defined by
 * [AddBookendsAroundContent()][AddBookendsAroundContent]
   -- Section Serialization
 
-### XML Serialization
+### Sections
+
+The serialization method reads the fields `content`, `contractType`, `hashType`
+and `listSignatures` and outputs a string with this structure
+
+```
+-----BEGIN SIGNED $type -----
+Hash: $hashType
+$content
+-----BEGIN $type SIGNATURE-----
+Version: OpenTransactions [version] // ignored in parsing
+Comment: http://github.com/FellowTraveler/Open-Transactions/wiki // also ignored
+Meta:    $signatureTag
+$signatureData
+// other signatures
+```
+
+### XML Content Section
 
 The method `CreateInnerContents()` is called from the inheriting subclasses and
 creates some default elements:
@@ -201,21 +219,7 @@ creates some default elements:
 
 
 
-The serialization method reads the fields `content`, `contractType`, `hashType`
-and `listSignatures` and outputs a string with this structure
-
-```
------BEGIN SIGNED $contractType-----
-Hash: $hashType
-$content
------BEGIN $contractType SIGNATURE-----
-Version: OpenTransactions [version] // ignored in parsing
-Comment: http://github.com/FellowTraveler/Open-Transactions/wiki // also ignored
-Meta:    [four-character tag]
-[signature data]
-// other signatures
-```
-### Signature Format
+### Signature Sections
 
 The four-character `Meta` tag is defined as:
 
@@ -235,16 +239,16 @@ fails.
 ## Deserialization
 
 * The current parser for this document format is too complex and probably has
-  some bugs.
+  some bugs, some of which I document here.
 * The content field is marked by the `BEGIN` marker, the signature field by the
   `SIGNATURE` marker. During serialization, the signature bookend is written as
-  `BEGIN <contractType> SIGNATURE`. When a contract is missing an explicit
+  `BEGIN $type SIGNATURE`. When a contract is missing an explicit
   content section, the first signature block is interpreted as the content.
 * The `HASH:` field is meant to be read right after the `BEGIN` marker, but can
   in fact be set anywhere: [Link][ProcessHash]. Possible unintended
-  consequences, maybe even exploit.
-* The first character of metadata defines the type of key that is used. Is there
-  any way that a key that doesn't start with `S` can be valid?
+  consequences, maybe even exploitation.
+* The first character of the signature metadata defines the type of key that is
+  used. Is there any way that a key that doesn't start with `S` can be valid?
 * The XML parsing code includes support for the deprecated single-key system by
   recognizing a `key` tag.
 
