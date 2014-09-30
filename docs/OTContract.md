@@ -18,125 +18,8 @@ A Contract has
 Although `OTContract` is mainly used through subclasses, there are some class
 methods for creating a contract (after initializing the class)
 
-
 * [CreateContract()][CreateContract]
 
-## Deserialization
-
-Strings can be parsed into instances of [`OTContract`][OTContract].
-
-Defined by
-
-* [ParseRawFile()][ParseRawFile]
-* [LoadContractXML()][LoadContractXML]
-* [ProcessXMLNode()][ProcessXMLNode]
-
-A contract can be loaded if:
-
-* it has a valid content section;
-* it has at least one valid (parsable) signature section.
-
-### Sections
-
-Contract documents are parsed line-by-line. Lines that start with a dash (`-`)
-have special meaning:
-
-* A line that starts with `---` and has the `BEGIN` keyword marks the beginning
-  of the content section, which is given in XML.
-
-* A line that starts with `---` and has the `SIGNATURE` keyword marks a
-  signature section, which is ended with a single dash `-`. A contract may
-  contain many signatures. For more information on the signature format, see
-  [Signatures](#Signatures).
-
-Inside the content section, lines that start with a dash must add a space after
-the first dash.
-
-### XML Structure
-
-A contract is defined by a root element with an arbitrary name, which is
-processed in the sub-classes. The root element has these XML elements:
-
-Entity Name | Description
-------------|------------
-`entity`    | Describes the name and email address of the contract author.
-`condition` | Describes the contract condition. A contract can have multiple conditions.
-`signer`    | Describes the _signer_ Nym of this contract. The signer must provide a credential list that verifies the Nym.
-
-
-### Sample document
-
-```xml
---- BEGIN
-HASH: foo
-
-<!--
-This content is aggregated into m_unsignedXML.
-
-Only the subsequent tags are recognized, all other content is ignored.
--->
-
-<rootElement>
-
-<entity shortname="string" longname="string" email="string" />
-
-<condition name="key">
-    Plain-Text Value
-    <!-- these end up in a map that is local to OTContract -->
-</condition>
-
-<condition name="other-key">
-   Plain-text
-   <!-- if a condition has the same name as a previous one,
-        the previous one is overwritten -->
-</condition>
-
-<signer nymID="mandatory string" hasCredentials="bool" altLocation="asciiarmor">
-    <!-- altLocation is unsupported and is ignored, see comments -->
-    <nymIDSource>
-        ASCII Armored stuff (mandatory)
-    </nymIDSource>
-
-    <credentialList>
-        <!-- loaded into var ascArmor, dearmored into credentialList -->
-    </credentialList>
-
-    <credentials>
-        <!-- dearmored and decoded into type OTDB::StringMap -->
-    <credentials>
-
-    <!--
-    Only the first credentials/credentialList seems to be recognized.
-
-    A new nym is initialized with the nymId, the credentialList
-    and the credentialMap. If verification succeeds the method
-    returns true, otherwise we continue.
-
-    The nym is stored as this contract's `signer`.
-    -->
-</signer>
-
-<!--
-Sometimes you want to embed book-ended sections that start with a triple-dash.
-You can do this by adding a space after the first dash.
--->
-
-- --- BEGIN
-- --- SIGNATURE
-
-<!-- the content section ends with a signature marker -->
---- SIGNATURE
-Meta: four-letter signature metadata
-
-<!-- encoded signature data -->
-
-</rootElement>
--
-
---- SIGNATURE
-multiple signatures allowed
--
-```
 
 ## Verification
 
@@ -147,7 +30,6 @@ Defined by
 
 * [VerifyContract(nym)][VerifyContract]
 * [VerifySignature(myn)][VerifySignature]
-
 
 Contract verification as defined in `VerifyContract()` succeeds if
 
@@ -188,10 +70,16 @@ $signatureData
 
 ### XML Content Section
 
-The method `CreateInnerContents()` is called from the inheriting subclasses and
-creates some default elements:
+The outer level of the XML section is written by the subclass. Some of the
+inner "default" elements are written when the subclass calls
+`OTContract::CreateInnerContents()`.
 
 ```xml
+
+<rootElement> <!-- written by subclass -->
+
+
+<!-- Written by OTContract::CreateInnerContents() -->
 
 <condition name="$name">
     $value
@@ -215,8 +103,12 @@ creates some default elements:
         $credentialMap (OTDB encoded, armored)
     </credentials>
 </signer>
-```
 
+
+<!-- other XML written by subclass -->
+
+</rootElement>
+```
 
 
 ### Signature Sections
@@ -232,6 +124,51 @@ This tag aids the signature verification process. If the meta-data doesn't match
 the key information gathered from the Nym's sub-credential, the verification
 fails.
 
+## Deserialization
+
+Strings can be parsed into instances of [`OTContract`][OTContract].
+Deserialization mirrors the serialization process, but does seem to call any
+methods of the subclasses.
+
+Defined by
+
+* [ParseRawFile()][ParseRawFile]
+* [LoadContractXML()][LoadContractXML]
+* [ProcessXMLNode()][ProcessXMLNode]
+
+A contract can be loaded if:
+
+* it has a content section that contains parsable XML
+* it has at least one signature section that contains a parsable signature
+
+### Section parsing
+
+Contract documents are parsed line-by-line. Lines that start with a dash (`-`)
+have special meaning:
+
+* A line that starts with `---` and has the `BEGIN` keyword marks the beginning
+  of the content section, which is given in XML.
+
+* A line that starts with `---` and has the `SIGNATURE` keyword marks a
+  signature section, which is ended with a single dash `-`. A contract may
+  contain many signatures. For more information on the signature format, see
+  [Signatures](#Signatures).
+
+Inside the content section, lines that start with a dash must add a space after
+the first dash.
+
+### Values read from XML
+
+The `LoadContractXML()` method tries to parse these elements and load them into
+fields. If a field cannot be read successfully, the content section is invalid.
+In general, later declarations override earlier ones.
+
+Entity Name | Description
+------------|------------
+`entity`    | Describes the name and email address of the contract author.
+`condition` | Describes the contract condition. A contract can have multiple conditions.
+`signer`    | Describes the _signer_ Nym of this contract. The signer must provide a credential list that verifies the Nym.
+`key`       | (Deprecated) support for single-key Nym system
 
 
 # Notes
@@ -240,17 +177,23 @@ fails.
 
 * The current parser for this document format is too complex and probably has
   some bugs, some of which I document here.
+* XML elements are processed sequentially. Most of the time, a later definition
+  of an XML element overrides a previous one (one exception is `m_strName`, for
+  instance) This should always be invalid and trigger an error condition.
 * The content field is marked by the `BEGIN` marker, the signature field by the
-  `SIGNATURE` marker. During serialization, the signature bookend is written as
-  `BEGIN $type SIGNATURE`. When a contract is missing an explicit
-  content section, the first signature block is interpreted as the content.
+  `SIGNATURE` marker, which is an ambiguous rule when it comes to the
+  `BEGIN $type SIGNATURE` marker. Thus the first signature section is
+  inadvertently recognized as the content section if an explicit content marker
+  is missing.
 * The `HASH:` field is meant to be read right after the `BEGIN` marker, but can
   in fact be set anywhere: [Link][ProcessHash]. Possible unintended
   consequences, maybe even exploitation.
-* The first character of the signature metadata defines the type of key that is
-  used. Is there any way that a key that doesn't start with `S` can be valid?
-* The XML parsing code includes support for the deprecated single-key system by
-  recognizing a `key` tag.
+* When multiple `<conditions>` share the same name attribute, only the last one
+  is processed. Should trigger error condition.
+* When multiple `<signer>` elements are found, only the last one is recognized.
+  Should trigger error condition.
+* Includes support for the deprecated single-key system by recognizing a `key`
+  tag.
 
 ## Verification
 
@@ -263,6 +206,9 @@ fails.
 * There deprecated single-key-system makes an appearance also when loading the
   public keys for signature verification.
 * Signature verification takes a `OTPasswordData` argument with unclear purpose.
+* The first character of the signature metadata defines the type of key that is
+  used. Is there any way that a key that doesn't start with `S` can be valid?
+
 
 
 ## Serialization
@@ -271,7 +217,6 @@ fails.
 
 * The serialization method does not generate the XML required for
   deserialization. The content field is populated by the deriving subclasses.
-
 
 
 <!---
