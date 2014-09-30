@@ -35,8 +35,8 @@ Contract verification as defined in `VerifyContract()` succeeds if
 
 1. The contract-id field `m_ID` (hash) matches the hash of the trimmed contents
    of `m_strRawFile`.
-1. Check if one of the parsed signatures matches one of the _signing_ keys of
-   the contract's `signer` Nym.
+1. One of the parsed signatures matches one of the _signing_ keys of the
+   contract's `signer` Nym.
 
 
 ## Serialization
@@ -181,8 +181,8 @@ Entity Name | Description
   of an XML element overrides a previous one (one exception is `m_strName`, for
   instance) This should always be invalid and trigger an error condition.
 * The content field is marked by the `BEGIN` marker, the signature field by the
-  `SIGNATURE` marker, which is an ambiguous rule when it comes to the
-  `BEGIN $type SIGNATURE` marker. Thus the first signature section is
+  `SIGNATURE` marker. This is an ambiguous rule when it comes to the
+  `BEGIN $type SIGNATURE` marker: the first signature section is
   inadvertently recognized as the content section if an explicit content marker
   is missing.
 * The `HASH:` field is meant to be read right after the `BEGIN` marker, but can
@@ -203,7 +203,7 @@ Entity Name | Description
 * We authenticate against either the `signer` field or the `contract` field that
   is not read during deserialization. I'm guessing that `contract` is
   deprecated.
-* There deprecated single-key-system makes an appearance also when loading the
+* The deprecated single-key-system makes an appearance also when loading the
   public keys for signature verification.
 * Signature verification takes a `OTPasswordData` argument with unclear purpose.
 * The first character of the signature metadata defines the type of key that is
