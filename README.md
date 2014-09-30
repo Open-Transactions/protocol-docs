@@ -10,6 +10,7 @@ communication system.
 
 * [OTContract](docs/OTContract.md)
 * [OTServerConnection](docs/OTServerConnection.md)
+* [Client -> Server transport](docs/transport.md)
 
 ### Guidelines
 
