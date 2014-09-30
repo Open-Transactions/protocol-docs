@@ -6,13 +6,13 @@ This document examines the program flow from the point a command is issued till 
 There are three differnt concepts which play a pivotal role in messaging.
 
 ### Request
-The is a generic object which has embedded in it the _type of request_ and _all required parameters_ for that request. For example createing an account or doing a transaction. The variable containing this concept is always called `theRequest`.
+The is a generic object of type `OTAPI_Func` which has embedded in it the _type of request_ and _all required parameters_ for that request. For example createing an account or doing a transaction. The variable containing this concept is always called `theRequest`.
 
 ### Message
-Once the request is executed a message is constructed. This message holds not only the passed arguments but also some bookkeeping in the form of request numbers and signatures. The variable is called `theMessage`.
+Once the request is executed a message is constructed. This message holds not only the passed arguments but also some bookkeeping in the form of request numbers and signatures. The variable is called `theMessage` and of type `OTMessage`.
 
 ### Envelope
-A message is eventually converted to `theEnvelope` (which is not an entirely accurate description). This is a serialized, armoured message. This is what is put on the wire. The variable is called `theEnvelope`.
+A message is eventually converted to `theEnvelope` (which is not an entirely accurate description). This is a serialized, armoured message. This is what is put on the wire. The variable is called `theEnvelope` and of type `OTEnvelope`.
 
 ## Exhaustive trace
 
