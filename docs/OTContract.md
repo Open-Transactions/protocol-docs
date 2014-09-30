@@ -20,25 +20,6 @@ methods for creating a contract (after initializing the class)
 
 * [CreateContract()][CreateContract]
 
-
-## Verification
-
-A contract instance can be verified for integrity for an authentic signature
-by the `signer` nym.
-
-Defined by
-
-* [VerifyContract(nym)][VerifyContract]
-* [VerifySignature(myn)][VerifySignature]
-
-Contract verification as defined in `VerifyContract()` succeeds if
-
-1. The contract-id field `m_ID` (hash) matches the hash of the trimmed contents
-   of `m_strRawFile`.
-1. One of the parsed signatures matches one of the _signing_ keys of the
-   contract's `signer` Nym.
-
-
 ## Serialization
 
 Contracts can be serialized into strings.
@@ -110,7 +91,6 @@ inner "default" elements are written when the subclass calls
 </rootElement>
 ```
 
-
 ### Signature Sections
 
 The four-character `Meta` tag is defined as:
@@ -123,6 +103,26 @@ The four-character `Meta` tag is defined as:
 This tag aids the signature verification process. If the meta-data doesn't match
 the key information gathered from the Nym's sub-credential, the verification
 fails.
+
+
+## Verification
+
+A contract instance can be verified for integrity for an authentic signature
+by the `signer` nym.
+
+Defined by
+
+* [VerifyContract(nym)][VerifyContract]
+* [VerifySignature(myn)][VerifySignature]
+
+Contract verification as defined in `VerifyContract()` succeeds if
+
+1. The contract-id field `m_ID` (hash) matches the hash of the trimmed contents
+   of `m_strRawFile`.
+1. One of the parsed signatures matches one of the _signing_ keys of the
+   contract's `signer` Nym.
+
+
 
 ## Deserialization
 
