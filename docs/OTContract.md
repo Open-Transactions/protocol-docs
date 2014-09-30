@@ -181,7 +181,7 @@ element. Most subclasses reimplement that method to call in this fashion:
 1. Call `OTContract::ProcessXMLNode()` and see if it is a default element
 1. If not, try to process the element in the subclass
 
-See [OTServerContract::ProcessXMLNode()][OTServerContract::ProcessXMLNode] for
+See [OTServerContract::ProcessXMLNode()][OTServerContract_ProcessXMLNode] for
 example.
 
 The default contract elements recognized by `OTContract::LoadContractXML()` are:
@@ -261,13 +261,15 @@ Links
 
 [OTContract]: https://github.com/Open-Transactions/opentxs/blob/171bdbdd1327fa016f2043bf43d8662055d263d2/src/core/OTContract.cpp
 
+[LoadContract]: https://github.com/Open-Transactions/opentxs/blob/db31c6aa45bbb773aebbdbd4298acd3755785420/src/core/OTContract.cpp#L1253
+
 [CreateContract]: https://github.com/Open-Transactions/opentxs/blob/db31c6aa45bbb773aebbdbd4298acd3755785420/src/core/OTContract.cpp#L2095
 
 [ParseRawFile]: https://github.com/Open-Transactions/opentxs/blob/db31c6aa45bbb773aebbdbd4298acd3755785420/src/core/OTContract.cpp#L1374
 
 [LoadContractXML]: https://github.com/Open-Transactions/opentxs/blob/db31c6aa45bbb773aebbdbd4298acd3755785420/src/core/OTContract.cpp#L1642
 
-[OTServerContract::ProcessXMLNode()]: https://github.com/Open-Transactions/opentxs/blob/5df178684104307d4dc098aacb8c9f9bfb6ca02e/src/core/OTServerContract.cpp#L251
+[OTServerContract_ProcessXMLNode]: https://github.com/Open-Transactions/opentxs/blob/5df178684104307d4dc098aacb8c9f9bfb6ca02e/src/core/OTServerContract.cpp#L251
 
 [ProcessXMLNode]: https://github.com/Open-Transactions/opentxs/blob/db31c6aa45bbb773aebbdbd4298acd3755785420/src/core/OTContract.cpp#L2391
 
