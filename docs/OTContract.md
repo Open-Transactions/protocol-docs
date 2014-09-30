@@ -131,13 +131,13 @@ Contract verification as defined in `VerifyContract()` succeeds if
 
 ## Deserialization
 
-Strings can be parsed into instances of [`OTContract`][OTContract].
+Strings can be parsed into instances of `OTContract` and subclasses:
 
 Defined by
 
 * [LoadContract()][LoadContract]
   -- Release, load from disk and call `ParseRawFile()`. Overridden only in
-     [Purse](Purse.md), [Mint](Mint.md), and [OTAccount](OTAccount.md)
+     [Purse](Purse.md), [Mint](Mint.md), and [OTAccount](OTAccount.md).
 * [ParseRawFile()][ParseRawFile]
   -- Parse local file into content and signature sections, call
      `LoadContractXML()`.
@@ -150,8 +150,8 @@ Defined by
 
 A contract can be loaded if:
 
-* it has a content section that contains parsable XML
-* it has at least one signature section that contains a parsable signature
+* It has a content section that contains parsable XML.
+* It has at least one signature section that contains a parsable signature.
 
 ### Section parsing
 
@@ -176,7 +176,7 @@ loads them into fields. If a field cannot be read successfully, the content
 section is invalid.
 
 The method loops over all XML elements and calls `ProcessXMLNode()` on each
-element. Most subclasses reimplement that method to call in this fashion:
+element. Most subclasses reimplement that method in this fashion:
 
 1. Call `OTContract::ProcessXMLNode()` and see if it is a default element
 1. If not, try to process the element in the subclass
