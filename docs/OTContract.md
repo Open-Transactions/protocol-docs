@@ -173,6 +173,29 @@ Entity Name | Description
 
 # Notes
 
+## Serialization
+
+* `CreateInnerContents()` supports the deprecated single-key system.
+
+* The serialization method does not generate the XML required for
+  deserialization. The content field is populated by the deriving subclasses.
+
+
+## Verification
+
+* The integrity check compares the value of class field `m_ID` against the
+  calculated hash value of the contract. When is the ID field passed explicitly
+  and not derived from the content section of the contract?
+* We authenticate against either the `signer` field or the `contract` field that
+  is not read during deserialization. I'm guessing that `contract` is
+  deprecated.
+* The deprecated single-key-system makes an appearance also when loading the
+  public keys for signature verification.
+* Signature verification takes a `OTPasswordData` argument with unclear purpose.
+* The first character of the signature metadata defines the type of key that is
+  used. Is there any way that a key that doesn't start with `S` can be valid?
+
+
 ## Deserialization
 
 * The current parser for this document format is too complex and probably has
@@ -194,29 +217,6 @@ Entity Name | Description
   Should trigger error condition.
 * Includes support for the deprecated single-key system by recognizing a `key`
   tag.
-
-## Verification
-
-* The integrity check compares the value of class field `m_ID` against the
-  calculated hash value of the contract. When is the ID field passed explicitly
-  and not derived from the content section of the contract?
-* We authenticate against either the `signer` field or the `contract` field that
-  is not read during deserialization. I'm guessing that `contract` is
-  deprecated.
-* The deprecated single-key-system makes an appearance also when loading the
-  public keys for signature verification.
-* Signature verification takes a `OTPasswordData` argument with unclear purpose.
-* The first character of the signature metadata defines the type of key that is
-  used. Is there any way that a key that doesn't start with `S` can be valid?
-
-
-
-## Serialization
-
-* `CreateInnerContents()` supports the deprecated single-key system.
-
-* The serialization method does not generate the XML required for
-  deserialization. The content field is populated by the deriving subclasses.
 
 
 <!---
