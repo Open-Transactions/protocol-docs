@@ -17,5 +17,11 @@
   3. Which calls `Get` on the `m_strRawfile` (not sure how that got populated or why this is a file all of the sudden).
   4. This just casts to a char pointer (from already a char pointer?).
 13. Which then delegates to `ProcessMessageOut` in `OTServerConnection`.
-14. The first character in the character buffer which was once `theMessage` determines how `theCMD`, which presumably goes to the server, is constructed.
-15. 
+14. The first character in the character buffer which was once `theMessage` determines how with function is passed into ProcessUserCommand, which populates a new `theMessage`.
+  1. The buffer seems really small. Only a [couple of characters](https://github.com/Open-Transactions/opentxs/blob/a29d030669b87308509ee0c29a6016f39c7fa6e0/src/client/OTServerConnection.cpp#L833) long.
+15. Flow is then directed to yet an other `ProcessMessageOut` this time _only_ accepting an `theMessage`.
+16. A header is constructed.
+  1. The header contains how long a message is and what the type of the message is.
+  2. Type of the message is defined by two integers. Presumably the server knows.
+  3. I don't think the header is actually used.
+17. 
