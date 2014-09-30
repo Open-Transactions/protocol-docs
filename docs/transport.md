@@ -1,5 +1,7 @@
 # Transport layer
 
+This document examines the program flow from the point a command is issued till it is put on the ZMQ socket.
+
 ## Concepts
 There are three differnt concepts which play a pivotal role in messaging.
 
