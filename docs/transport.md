@@ -1,11 +1,25 @@
 # Transport layer
 
+## Concepts
+There are three differnt concepts which play a pivotal role in messaging.
+
+### Request
+The is a generic object which has embedded in it the _type of request_ and _all required parameters_ for that request. For example createing an account or doing a transaction. The variable containing this concept is always called `theRequest`.
+
+### Message
+Once the request is executed a message is constructed. This message holds not only the passed arguments but also some bookkeeping in the form of request numbers and signatures. The variable is called `theMessage`.
+
+### Envelope
+A message is eventually converted to `theEnvelope` (which is not an entirely accurate description). This is a serialized, armoured message. This is what is put on the wire. The variable is called `theEnvelope`.
+
+## Exhaustive trace
+
 1. `OT_Made_Easy` has a `theRequest` object (no idea what that is or where it is instantiated). (I think it's an instance of `OTAPI_Func`).
 2. On that object `SendRequest` is called, which is defined in `OT_API`.
 3. `SendRequest` calls `SendRequestOnce`.
 4. `SendRequestOnce` calls `SendRequestLowLevel`.
 5. `theRequest` is being passed around in steps 2-4 and eventually `Run` is called on it.
-6. Based on whatever type the `theRequest` has a function in `OTAPI_Wrap` is called. For example `OTAPI_Wrap::createAssetAccount`.
+6. Based on whatever type the `theRequest` object has a function in `OTAPI_Wrap` is called. For example `OTAPI_Wrap::createAssetAccount`.
 7. All the while a couple of magically defined variables is accessable and passed as arguments. Eg: `serverID, nymID, assetID`.
 8. In the createAssetAccount method `theMessage` is constructed, fields are being populated (like `m_strCommand` and `m_strAssetID`).
 9. `theMessage` is saved (to disk?) with `SaveContract`.
