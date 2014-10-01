@@ -118,7 +118,7 @@ by the `signer` Nym.
 Defined by
 
 * [VerifyContract(nym)][VerifyContract]
-* [VerifySignature(myn)][VerifySignature]
+* [VerifySignature(nym)][VerifySignature]
 
 Contract verification as defined in `VerifyContract()` succeeds if
 
