@@ -14,6 +14,16 @@ Once the request is executed a message is constructed. This message holds not on
 ### Envelope
 A message is eventually converted to `theEnvelope` (which is not an entirely accurate description). This is a serialized, armoured message. This is what is put on the wire. The variable is called `theEnvelope` and of type `OTEnvelope`.
 
+## Conceptual view
+
+1. Command is issued by user.
+2. The command is serialized.
+3. Then encrypted.
+4. Then armored.
+5. Finally send.
+
+![](command_flow_client_to_server.png)
+
 ## Exhaustive trace
 
 1. [(`MadeEasy::create_asset_acc`, `ot_made_easy_ot`)](https://github.com/Open-Transactions/opentxs/blob/5c6e032db826797d49f58d8285c02c7368fac149/src/client/ot_made_easy_ot.cpp#L377) The methods defined in the class MadeEasy generally refer to a `theRequest` object which is an instance of `OTAPI_Func` (no idea where it is instantiated).
