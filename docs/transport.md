@@ -2,19 +2,8 @@
 
 This document examines the program flow from the point a command is issued till it is put on the ZMQ socket.
 
-## Concepts
-There are three differnt concepts which play a pivotal role in messaging.
-
-### Request
-The request is a generic object of type `OTAPI_Func` which has embedded in it the _type of request_ and _all required parameters_ for that request. For example createing an account or doing a transaction. The variable containing this concept is always called `theRequest`.
-
-### Message
-Once the request is executed a message is constructed. This message holds not only the passed arguments but also some bookkeeping in the form of request numbers and signatures. The variable is called `theMessage` and of type `OTMessage`.
-
-### Envelope
-A message is eventually converted to `theEnvelope` (which is not an entirely accurate description). This is a serialized, armoured message. This is what is put on the wire. The variable is called `theEnvelope` and of type `OTEnvelope`.
-
-## Conceptual view
+## Bird eye view
+After a command is issued the resulting message is transformed several times before being put on the wire and back again when received.
 
 1. Command is issued by user.
 2. The command is serialized.
@@ -22,9 +11,38 @@ A message is eventually converted to `theEnvelope` (which is not an entirely acc
 4. Then armored.
 5. Finally send.
 
-![](command_flow_client_to_server.png)
+![Data transformations](command_flow_client_to_server.png)
+
+## Conceptual steps
+For each RPC `<command>`:
+
+1. Create an `OTMessage` object in `OT_API::<command>` (`OpenTransactions.cpp`)
+  1. Pass command type, arguments and message instance to `OTClient::ProcessUserCommand`. Inside the mother of all switch-case statements, there is a `case` statement that matches the command type.
+    1. Set message command type `m_strCommandType` to string representation of `<command>`
+    1. Set other `OTMessage` attributes necessary for the RPC call.
+    1. Set the request number.
+    1. Sign the message with the Nym's signing key.
+  1. Pass message instance to `OTServerConnection::ProcessMessageOut`
+    1. Serialize `OTMessage` into string with XML/Signature sections
+    1. Encrypt ("seal") string to the servers public key (determined from server contract)
+    1. After some callback tango, go to `OT_API::TransportFunction`
+      1. Armor (base64-enode) and send over ZeroMQ
 
 ## Exhaustive trace
+
+### Supporting concepts
+There are three different concepts which play a pivotal role in messaging.
+
+#### Request
+The request is a generic object of type `OTAPI_Func` which has embedded in it the _type of request_ and _all required parameters_ for that request. For example createing an account or doing a transaction. The variable containing this concept is always called `theRequest`.
+
+#### Message
+Once the request is executed a message is constructed. This message holds not only the passed arguments but also some bookkeeping in the form of request numbers and signatures. The variable is called `theMessage` and of type `OTMessage`.
+
+#### Envelope
+A message is eventually converted to `theEnvelope` (which is not an entirely accurate description). This is a serialized, armoured message. This is what is put on the wire. The variable is called `theEnvelope` and of type `OTEnvelope`.
+
+### Code step through
 
 1. [(`MadeEasy::create_asset_acc`, `ot_made_easy_ot`)](https://github.com/Open-Transactions/opentxs/blob/5c6e032db826797d49f58d8285c02c7368fac149/src/client/ot_made_easy_ot.cpp#L377) The methods defined in the class MadeEasy generally refer to a `theRequest` object which is an instance of `OTAPI_Func` (no idea where it is instantiated).
 2. [(`OTAPI_Func::SendRequest`, `ot_otapi_ot`)](https://github.com/Open-Transactions/opentxs/blob/5c6e032db826797d49f58d8285c02c7368fac149/src/client/ot_otapi_ot.cpp#L996) On that object `SendRequest` is called, which is defined in on the class `OTAPI_Func`.
