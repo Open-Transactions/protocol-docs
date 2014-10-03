@@ -236,21 +236,21 @@ Defined by
 
 * The current parser for this document format is too complex and probably has
   some bugs, some of which I document here.
-* XML elements are processed sequentially. Most of the time, a later definition
-  of an XML element overrides a previous one (one exception is `m_strName`, for
-  instance) This should always be invalid and trigger an error condition.
 * The content field is marked by the `BEGIN` marker, the signature field by the
   `SIGNATURE` marker. This is an ambiguous rule when it comes to the
   `BEGIN $type SIGNATURE` marker: the first signature section is
   inadvertently recognized as the content section if an explicit content marker
   is missing.
+* If the last line of the contract starts a signature section, the process
+  terminates: [opentxs#247](https://github.com/Open-Transactions/opentxs/issues/247)
 * The `HASH:` field is meant to be read right after the `BEGIN` marker, but can
   in fact be set anywhere: [Link][ProcessHash]. Possible unintended
   consequences, maybe even exploitation.
-* When multiple `<conditions>` share the same name attribute, only the last one
-  is processed. Should trigger error condition.
-* When multiple `<signer>` elements are found, only the last one is recognized.
-  Should trigger error condition.
+
+### XML/Attribute Parser
+* XML elements are processed sequentially. Most of the time, a later definition
+  of an XML element overrides a previous one (one exception is `m_strName`, for
+  instance) This should always be invalid and trigger an error condition.
 * Includes support for the deprecated single-key system by recognizing a `key`
   tag.
 
