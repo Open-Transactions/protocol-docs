@@ -1,8 +1,46 @@
-# User Commands
+# OTMessage
 
-This document explains the structure of remote procedure calls in
-Open-Transactions and describes the creation, serialization, deserialization
-and execution of the messages.
+The `OTMessage` class is used for creating certain remote procedure calls from
+the client and creating a call reply on the server. It uses the XML
+serialization and deserialization systems inherited from the parent class
+[`OTContract`](OTContract.md).
+
+This document explains and describes the creation, serialization,
+deserialization and execution of the messages created by this class.
+
+## Commands
+
+Each message has a command attribute (string), which is one of those:
+
+* `getMarketList`
+* `getMarketOffers`
+* `getMarketRecentTrades`
+* `getNym_MarketOffers`
+* `checkServerID`
+* `createUserAccount`
+* `deleteUserAccount`
+* `getRequest`
+* `outmailMessage`
+* `usageCredits`
+* `checkUser`
+* `issueAssetType`
+* `queryAssetTypes`
+* `createAccount`
+* `getBoxReceipt`
+* `deleteAssetAccount`
+* `issueBasket`
+* `getTransactionNum`
+* `notarizeTransactions`
+* `getInbox`
+* `getNymbox`
+* `getOutbox`
+* `getAccount`
+* `getAccountFiles`
+* `getContract`
+* `getMint`
+* `triggerClause`
+* `processInbox`
+* `processNymbox`
 
 
 ## Structure
@@ -20,10 +58,10 @@ A remote procedure call is serialized to XML in this general shape
 </commandName>
 ```
 
-The server responds with a reply 
+The server responds with a reply:
 
 ```xml
-<!-- notice the leading @ -->
+<!-- notice the leading @ (invalid xml) -->
 <@commandName
     attribute="$value"
     other-attribute="$value"
