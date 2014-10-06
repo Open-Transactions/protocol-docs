@@ -16,4 +16,3 @@ This document examines the program flow from the point a message is received til
   3. Then the `m_strCommand` field of the incoming message is compared against a whole bunch of strings to determine what the user wants (eg. 'createAccount', which really should be called 'createAssetAccount').
   4. All the command handlers are passed the incoming message and the reply.
 5. The reply message is further processed, sealed and send back to the client.
-1. [(`Receive`, `Socket_ZMQ4`)](https://github.com/Open-Transactions/opentxs/blob/aea45331aa5b567fdee8500f90629e1a0046be8e/src/ext/Socket_ZMQ4.cpp#L422) A message is received and copied to the passed buffer.
