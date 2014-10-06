@@ -9,6 +9,9 @@ summarizing the parsing and serialization format of various classes and the
 communication system.
 
 * [OTContract](docs/OTContract.md)
+  * [OTMessage](docs/OTMessage.md)
+  * [OTTransactionType](docs/OTTransactionType.md) (TODO)
+  * [OTServerContract](docs/OTServerContract.md)
 * [OTServerConnection](docs/OTServerConnection.md)
 * [Client -> Server transport](docs/transport.md)
 
