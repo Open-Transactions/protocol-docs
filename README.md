@@ -15,6 +15,7 @@ communication system.
 * [OTServerConnection](docs/OTServerConnection.md)
 * [Client sending to Server transport](docs/transport_client_sending.md)
 * [Server receiving from Client transport](docs/transport_server_receiving.md)
+* [Armoring](docs/armoring.md)
 
 ### Guidelines
 
