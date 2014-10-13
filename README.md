@@ -8,14 +8,14 @@ The documentation process happens in [docs/](docs/). Currently, it's just
 summarizing the parsing and serialization format of various classes and the
 communication system.
 
+* [Armoring](docs/OTASCIIArmor.md)
 * [OTContract](docs/OTContract.md)
   * [OTMessage](docs/OTMessage.md)
   * [OTTransactionType](docs/OTTransactionType.md) (TODO)
   * [OTServerContract](docs/OTServerContract.md)
-* [OTServerConnection](docs/OTServerConnection.md)
+* [OTServerConnection](docs/OTServerConnection.md) (TODO)
 * [Client sending to Server transport](docs/transport_client_sending.md)
 * [Server receiving from Client transport](docs/transport_server_receiving.md)
-* [Armoring](docs/armoring.md)
 
 ### Guidelines
 
