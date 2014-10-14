@@ -35,7 +35,7 @@ files (non-exhaustive):
     subsystem.
 * [OTStoragePB.hpp][OTStoragePbHpp]: Protocol-buffer implementation of storage.
 * [Generics.proto][GenericsProto]: Protocol-buffer definitions for packing
-  generic data types like strings, binary data and key-value pairs.
+  generic data types like strings and binary data.
 
 #### Compression (strings only)
 
@@ -159,16 +159,6 @@ It is unclear what is meant by this. Byte sequences are always binary compatible
 across platforms. If anything, packing as implemented now increases
 platform-dependence.
 
-Human readability being a priority, an XML encoding of a `string ->
-string` map is preferable to packing with a binary format. This massively
-simplifies the messaging protocol by removing an unnecessary dependency:
-
-```xml
-<map>
-    <entry key="$key"> $value </key>
-    <!-- more entries -->
-</map>
-```
 
 #### Unnecessary Compression
 
