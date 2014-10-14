@@ -4,9 +4,9 @@ The opentxs class `OTASCIIArmor` defines an encoding for certain data types to
 an array of printable ASCII characters. This is useful in two contexts:
 
 * Embedding binary data in a plain-text document. The _Section Format_ used in
-  [OTContract](OTContract.md) is defined a document that is readable by humans.
-  In order to be able to attach signatures, it is necessary to encode the binary
-  data in a ([Base64][Base64]) encoded form.
+  [OTContract](OTContract.md) is defined as a document that is readable by
+  humans.  In order to be able to attach signatures, it is necessary to encode
+  the binary data in [Base64][Base64].
 * Embedding plain-text strings in XML documents. As structured data format, it
   is impossible to safely embed arbitrary data in an XML file when using string
   concatenation, which is currently used to assemble XML in opentxs.  Plain-text
