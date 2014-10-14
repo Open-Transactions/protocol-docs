@@ -53,6 +53,13 @@ method `OTString::Set(string)`.
 
 The encoded can be retrieved via the `OTString::Get()` method.
 
+All encoding and methods accept the boolean parameter `bLineBreaks`. This
+parameter is passed to the underlying OpenSSL routine. When `true`, the Base64
+output is formatted to produce lines with a length of 64 characters.
+
+The default value is `true`. I have not found an example where `false` is
+passed.
+
 #### Adding Bookends and Headers (Optional)
 
 The class supports methods for writing bookends around the encoded data
@@ -111,6 +118,19 @@ between different storage and encoding backends to some extent. It is possible
 to choose between the `MessagePack` and `ProtocolBuffer` libraries for packing.
 This however requires that server and client must be compiled using the same
 Packer in order to communicate.
+
+## Line Breaks
+
+ASCII-Armored Base64 output should always be formatted with a maximum line
+length. Having a single Base64-encoded line breaks readability.
+
+This is a flaw in the underlying Base64 encoding method that is used in
+`OTCryptoOpenSSL`, which does Base64 *plus* line breaking. Both can and should
+can be done separately (see [boost][boostBase64], [golang][golangBase64]).
+
+Decoding ASCII-Armored blocks should just strip all whitespace before base64
+decode (see [boost][boostBase64], [golang][golangBase64]).
+
 
 ## Unnecessary Operations
 
@@ -215,3 +235,7 @@ dropped for data and strings.
 [Deflate]: http://en.wikipedia.org/wiki/Zlib
 
 [GenericsProto]: https://github.com/Open-Transactions/opentxs/blob/7d2e2dbeca45256ce91b41f63d4aadb88f947169/src/core/otprotob/Generics.proto
+
+[boostBase64]: http://www.boost.org/doc/libs/1_36_0/libs/serialization/doc/dataflow.html
+
+[golangBase64]: http://golang.org/pkg/encoding/base64
