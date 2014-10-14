@@ -121,9 +121,22 @@ complexity and waste resources.
 #### Unnecessary Packing
 
 In addition being dependent on a compile-time flag, there is no discernible
-reason for packing. The comments indicate:
+reason for packing.
 
-> I added these pieces 1-by-1 over time. At first the messages were too int64_t,
+I managed to trace the packing code to these comments:
+
+```
+// If adding packing STILL didn't make us binary compatible, then I need to try this next:
+// Do the compression, THEN PACK...
+// On the other way, UNPACK, THEN Uncompress.
+//
+// Right now I'm doing packing before compression, and unpacking after uncompression.
+// Basically if that doesn't work (even though easyzlib appears to care about endian/platform)
+// then switch the, (though that seems to make less logical sense to me.)
+// Maybe have to pack before both? Seems crazy.
+```
+
+> I added these pieces 1-by-1 over time. At first the messages were too long,
 so I started compressing them. Then they were not binary compatible across
 various platforms, so I added the packing.
 
