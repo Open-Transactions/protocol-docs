@@ -157,16 +157,14 @@ simplifies the messaging protocol by removing an unnecessary dependency:
 
 #### Unnecessary Compression
 
-It is unclear whether compression and subsequent Base64 encoding reduces the
-size of the string. The Base64 encoding has a fixed space overhead of 33%
-([Source][Base64]).
+Assuming armoring is used in order to decrease overall message size, it is
+unclear whether that goal is achieved. Base64 encoding has a fixed space
+overhead of 33% ([Source][Base64]).
 
-Still, a compressed, Base64-encoded string might take less space than the
-unprocessed equivalent. However, it is possible that this decreases the level of
-achievable compression of the overall XML document which contains armored
-sections.
+The compression ratio is at least as good when embedding strings as plain-text
+and compressing the message in a final step, before encryption.
 
-Comparative measurements are necessary here.
+Analysis and comparative measurements are necessary here.
 
 #### Unnecessary Base64
 
