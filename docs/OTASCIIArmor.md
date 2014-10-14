@@ -38,12 +38,14 @@ When the input is of type `OTString`, the packed data is compressed using the
 #### Base64-Encoding
 
 The resulting byte array is Base64-encoded and stored using the superclass
-method `Set(string)`.
+method `OTString::Set(string)`.
+
+The encoded can be retrieved via the `OTString::Get()` method.
 
 #### Adding Bookends and Headers (Optional)
 
-The class supports methods for writing bookends around the encoded data. The
-format is as follows:
+The class supports methods for writing bookends around the encoded data
+using the Method `OTASCIIArmor::WriteArmoredString()`. The format is as follows:
 
 ```
 -----BEGIN OT ARMORED $type-----
@@ -58,11 +60,10 @@ Where `$type` is passed as a method parameter.
 
 The decoding steps mirror the encoding steps:
 
-1. Bookend parsing (optional)
+1. Bookend parsing (optional with `OTASCIIArmor::LoadFromString()`)
 1. Base64-decode
 1. Uncompress (strings only)
 1. Unpack
-
 
 # Notes
 
