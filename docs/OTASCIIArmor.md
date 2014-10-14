@@ -1,40 +1,46 @@
 # OTASCIIArmor
 
 The opentxs class `OTASCIIArmor` defines an encoding for certain data types to
-the printable ASCII character set. This is useful in two contexts:
+an array of printable ASCII characters. This is useful in two contexts:
 
 * Embedding binary data in a plain-text document. The _Section Format_ used in
   [OTContract](OTContract.md) is defined a document that is readable by humans.
   In order to be able to attach signatures, it is necessary to encode the binary
-  signature data a Base64 encoded form.
-* Embedding data in XML documents. As structured data format, it is impossible
-  to safely embed arbitrary data in an XML file when using string concatenation.
-  This is particularly true for binary data, but also for plain-text data where
-  characters with special meaning in like `<` and `&` can appear.
+  data in a ([Base64][Base64]) encoded form.
+* Embedding plain-text strings in XML documents. As structured data format, it
+  is impossible to safely embed arbitrary data in an XML file when using string
+  concatenation, which is currently used to assemble XML in opentxs.  Plain-text
+  data can contain characters with special meaning, like `<` and `&`.
 
 ## Encoding Algorithm
 
-### Packing
+#### Packing
 
 Armoring is defined for three input types:
 
 * `OTData` and `OTString`. Both input types are converted to byte arrays using
   the OT-defined default packer, which is hard-coded to Protocol Buffers in the
-  current source code [1]. The same packer must on the client and server.
+  current source code ([Source][ProtobufHardcode]). The same packer must on the
+  client and server.
 * `std::map<std::string, std::string>`. This data type is encoded using Protocol
   Buffers as well.
 
-### Compression (strings only)
+The packing of these generic data types is defined here:
+
+* [Generics.proto][GenericsProto]
+* TODO document more.
+
+#### Compression (strings only)
 
 When the input is of type `OTString`, the packed data is compressed using the
-zlib `deflate` algorithm.
+[_zlib_ `deflate` algorithm][Deflate].
 
-### Base64-Encoding
+#### Base64-Encoding
 
 The resulting byte array is Base64-encoded and stored using the superclass
 method `Set(string)`.
 
-### Adding Bookends and Headers (Optional)
+#### Adding Bookends and Headers (Optional)
 
 The class supports methods for writing bookends around the encoded data. The
 format is as follows:
@@ -46,7 +52,7 @@ $base64
 -----END OT ARMORED $type-----
 ```
 
-Where `$type` is passed as a parameter.
+Where `$type` is passed as a method parameter.
 
 ## Decoding Algorithm
 
@@ -81,11 +87,11 @@ Packer in order to communicate.
 
 ## Unnecessary Operations
 
-Armoring always combines three separate steps: packing, compression and base64
+Armoring combines three separate steps: packing, compression and Base64
 encoding. In many cases, some or all of the steps are unnecessary and waste
 resources.
 
-### Unnecessary Packing
+#### Unnecessary Packing
 
 In addition being dependent on a compile-time flag, there is no discernible
 reason for packing. The comments indicate:
@@ -99,8 +105,8 @@ across platforms. If anything, packing as implemented now increases
 platform-dependence.
 
 Human readability being a priority, an XML encoding of a `string ->
-string` map is preferable to packing with a binary format and massively
-simplifies the messaging format:
+string` map is preferable to packing with a binary format. This massively
+simplifies the messaging protocol by removing an unnecessary dependency:
 
 ```xml
 <map>
@@ -109,34 +115,57 @@ simplifies the messaging format:
 </map>
 ```
 
-### Unnecessary Compression
+#### Unnecessary Compression
 
-The `map<string, string>` structure is often used to carry data that cannot be
-compressed, like credentials.
+It is unclear whether compression and subsequent Base64 encoding reduces the
+size of the string. The Base64 encoding has a fixed space overhead of 33%
+([Source][Base64]).
 
-### Unnecessary Base64
+Still, a compressed, Base64-encoded string might take less space than the
+unprocessed equivalent. However, it is possible that this decreases the level of
+achievable compression of the overall XML document which contains armored
+sections.
 
-In some cases, Base64-encoding is applied even though there is no need to:
+Comparative measurements are necessary here.
+
+#### Unnecessary Base64
+
+In some cases, Base64-encoding of binary data is applied even though there is no
+need to:
 
 1. Base64-encoding a message before sending it via the ZeroMQ transport.
-1. Base64-encoding of plain-text strings. It is possible to encode arbitrary
-   plain-text data when using an XML serializer.
 
-
-### Loss of readability
+## Loss of Readability
 
 Each contract can have multiple nested contracts embedded in them. It is
 entirely possible that one needs to run the de-armor operation on a message
 several times before it is fully human readable.
 
-Plain strings can be embedded safely in XML using
-[`CDATA`](http://en.wikipedia.org/wiki/CDATA) sections.
+Using [`CDATA`](http://en.wikipedia.org/wiki/CDATA) sections in order to embed
+plain text data should be explored. Where byte-equivalence is necessary
+(contract signatures), it must be ensured that whitespace is not modified. An
+XML serializer might change line endings and indentation.
 
-There may be some increase in message length in some cases where the increase in
-size due to the base64 encoding is offset by the compression, this however
-should be measured and weighted against the loss of readability.
+One way to achieve byte equivalence is to normalize embedded sections. The
+normalization algorithm would trim whitespace for each line and set the line
+ending to `\n`.
 
+
+# Future Changes
+
+In order to simplify the protocol, we should explore the option of dropping
+armoring in the message protocol. Binary data can be encoded with traditional
+Base64 encoding and does not require a new encoding format.
+
+Outside the protocol, the _packing_ stage in armoring can almost certainly be
+dropped for data and strings.
 
 <!--- links -->
 
-[1]: https://github.com/Open-Transactions/opentxs/blob/c531e0faccfa370bb761711ff28ad2386abbcd75/include/opentxs/core/OTStorage.hpp#L148
+[ProtobufHardcode]: https://github.com/Open-Transactions/opentxs/blob/c531e0faccfa370bb761711ff28ad2386abbcd75/include/opentxs/core/OTStorage.hpp#L148
+
+[Base64]: http://en.wikipedia.org/wiki/Base64
+
+[Deflate]: http://en.wikipedia.org/wiki/Zlib
+
+[GenericsProto]: https://github.com/Open-Transactions/opentxs/blob/7d2e2dbeca45256ce91b41f63d4aadb88f947169/src/core/otprotob/Generics.proto
