@@ -20,8 +20,8 @@ Armoring is defined for three input types:
 
 * `OTData` and `OTString`. Both input types are converted to byte arrays using
   the OT-defined default packer, which is hard-coded to Protocol Buffers in the
-  current source code ([Source][ProtobufHardcode]). The same packer must on the
-  client and server.
+  current source code ([Source][ProtobufHardcode]). The same packer must be used
+  on the client and server.
 * `std::map<std::string, std::string>`. This data type is encoded using Protocol
   Buffers as well.
 
