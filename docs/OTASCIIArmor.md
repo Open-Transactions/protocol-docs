@@ -35,7 +35,7 @@ same packer must be used on the client and server.
 The packing is defined by the complex `OTDB`/`OTStorage` system defined by these
 files (non-exhaustive):
 
-* [OTStorage.cpp][OTStorageCpp], [OTStorage.cpp][OTStorageCpp]: Abstract storage
+* [OTStorage.cpp][OTStorageCpp], [OTStorage.hpp][OTStorageHpp]: Abstract storage
     subsystem.
 * [OTStoragePB.hpp][OTStoragePbHpp]: Protocol-buffer implementation of storage.
 * [Generics.proto][GenericsProto]: Protocol-buffer definitions for packing
@@ -193,7 +193,7 @@ dropped for data and strings.
 
 [OTASCIIArmorCpp]: https://github.com/Open-Transactions/opentxs/blob/c2c362e9fd77422fc1d0d82d0db6a58aa36c69db/src/core/crypto/OTASCIIArmor.cpp
 
-[OTStorageCpp]: https://github.com/Open-Transactions/opentxs/blob/7d2e2dbeca45256ce91b41f63d4aadb88f947169/src/opentxs/core/OTStorage.cpp
+[OTStorageCpp]: https://github.com/Open-Transactions/opentxs/blob/7d2e2dbeca45256ce91b41f63d4aadb88f947169/src/core/OTStorage.cpp
 
 [OTStorageHpp]: https://github.com/Open-Transactions/opentxs/blob/7d2e2dbeca45256ce91b41f63d4aadb88f947169/include/opentxs/core/OTStorage.hpp
 
