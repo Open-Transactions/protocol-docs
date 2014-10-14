@@ -199,6 +199,13 @@ need to:
 
 1. Base64-encoding a message before sending it via the ZeroMQ transport.
 
+## Unnecessary Conflation of Operations
+
+Even if the individual steps in armoring are useful (very debateable), there is
+no good reason to conflate them in armoring. There should only be one input
+type `OTData` (variable-length byte array). Any operation like packing or
+compression can be independent from Base64 encoding.
+
 ## Loss of Readability
 
 Each contract can have multiple nested contracts embedded in them. It is
