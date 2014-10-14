@@ -17,17 +17,12 @@ two contexts:
 
 #### Packing
 
-Armoring is defined for three input types:
+Armoring is defined for two input types:
 
 * `OTData` using `OTASCIIArmor::SetAndPackData()` (alias `SetData()`). Packs
   using `OTDB::CreateObject(OTDB::STORED_OBJ_BLOB)`.
 * `OTString` using `OTASCIIArmor::SetAndPackString()` (alias `SetString()`).
   Packs using `OTDB::CreateObject(OTDB::STORED_OBJ_STRING)`.
-* `std::map<std::string, std::string>` using
-    `OTASCIIArmor::SetAndPackStringMap()` (alias `SetStringMap()`).
-  Packs using `OTDB::CreateObject(OTDB::STORED_OBJ_STRING_MAP)`. This method
-  seems to be unused.
-
 
 The data types are packed using  OT-defined default packer, which is hard-coded
 to Protocol Buffers in the current source code ([Source][ProtobufHardcode]). The
@@ -91,7 +86,6 @@ The decode methods are:
   format)
 * `OTASCIIArmor::GetAndUnpackData()` (alias `GetData()`)
 * `OTASCIIArmor::GetAndUnpackString()` (alias `GetString()`)
-* `OTASCIIArmor::GetAndUnpackStringMap()` (alias `GetStringMap()`)
 
 
 # Notes
@@ -132,11 +126,6 @@ can be done separately (see [boost][boostBase64], [golang][golangBase64]).
 Decoding ASCII-Armored blocks should just strip all whitespace before base64
 decode (see [boost][boostBase64], [golang][golangBase64]).
 
-
-## Unused Code
-
-The methods `Get(AndUnpack)StringMap()` and `Set(AndPack)StringMap()` are
-unused. Which is good, because we can remove them easily here.
 
 ## Unnecessary Operations
 
