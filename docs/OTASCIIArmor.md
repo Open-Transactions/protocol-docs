@@ -18,17 +18,27 @@ an array of printable ASCII characters. This is useful in two contexts:
 
 Armoring is defined for three input types:
 
-* `OTData` and `OTString`. Both input types are converted to byte arrays using
-  the OT-defined default packer, which is hard-coded to Protocol Buffers in the
-  current source code ([Source][ProtobufHardcode]). The same packer must be used
-  on the client and server.
-* `std::map<std::string, std::string>`. This data type is encoded using Protocol
-  Buffers as well.
+* `OTData` using `OTASCIIArmor::SetAndPackData()` (alias `SetData()`). Packs
+  using `OTDB::CreateObject(OTDB::STORED_OBJ_BLOB)`.
+* `OTString` using `OTASCIIArmor::SetAndPackString()` (alias `SetString()`).
+  Packs using `OTDB::CreateObject(OTDB::STORED_OBJ_STRING)`.
+* `std::map<std::string, std::string>` using
+    `OTASCIIArmor::SetAndPackStringMap()` (alias `SetStringMap()`).
+  Packs using `OTDB::CreateObject(OTDB::STORED_OBJ_STRING_MAP)`.
 
-The packing of these generic data types is defined here:
 
-* [Generics.proto][GenericsProto]
-* TODO document more.
+The data types are packed using  OT-defined default packer, which is hard-coded
+to Protocol Buffers in the current source code ([Source][ProtobufHardcode]). The
+same packer must be used on the client and server.
+
+The packing is defined by the complex `OTDB`/`OTStorage` system defined by these
+files (non-exhaustive):
+
+* [OTStorage.cpp][OTStorageCpp], [OTStorage.cpp][OTStorageCpp]: Abstract storage
+    subsystem.
+* [OTStoragePB.hpp][OTStoragePbHpp]: Protocol-buffer implementation of storage.
+* [Generics.proto][GenericsProto]: Protocol-buffer definitions for packing
+  generic data types like strings, binary data and key-value pairs.
 
 #### Compression (strings only)
 
@@ -60,12 +70,27 @@ Where `$type` is passed as a method parameter.
 
 The decoding steps mirror the encoding steps:
 
-1. Bookend parsing (optional with `OTASCIIArmor::LoadFromString()`)
+1. Bookend parsing (optional)
 1. Base64-decode
 1. Uncompress (strings only)
 1. Unpack
 
+
+The decode methods are:
+
+* `OTASCIIArmor::LoadFromString()` (called first when reading from bookend
+  format)
+* `OTASCIIArmor::GetAndUnpackData()` (alias `GetData()`)
+* `OTASCIIArmor::GetAndUnpackString()` (alias `GetString()`)
+* `OTASCIIArmor::GetAndUnpackStringMap()` (alias `GetStringMap()`)
+
+
 # Notes
+
+## Naming
+
+The class is located in the `src/core/crypto` directory despite being unrelated
+to cryptography.
 
 ## Armoring in Other Contexts
 
@@ -89,8 +114,8 @@ Packer in order to communicate.
 ## Unnecessary Operations
 
 Armoring combines three separate steps: packing, compression and Base64
-encoding. In many cases, some or all of the steps are unnecessary and waste
-resources.
+encoding. In many cases, some or all of the steps are unnecessary, increase
+complexity and waste resources.
 
 #### Unnecessary Packing
 
@@ -164,6 +189,12 @@ dropped for data and strings.
 <!--- links -->
 
 [ProtobufHardcode]: https://github.com/Open-Transactions/opentxs/blob/c531e0faccfa370bb761711ff28ad2386abbcd75/include/opentxs/core/OTStorage.hpp#L148
+
+[OTStorageCpp]: https://github.com/Open-Transactions/opentxs/blob/7d2e2dbeca45256ce91b41f63d4aadb88f947169/src/opentxs/core/OTStorage.cpp
+
+[OTStorageHpp]: https://github.com/Open-Transactions/opentxs/blob/7d2e2dbeca45256ce91b41f63d4aadb88f947169/include/opentxs/core/OTStorage.hpp
+
+[OTStoragePbHpp]: https://github.com/Open-Transactions/opentxs/blob/7d2e2dbeca45256ce91b41f63d4aadb88f947169/include/opentxs/core/OTStoragePB.hpp
 
 [Base64]: http://en.wikipedia.org/wiki/Base64
 
