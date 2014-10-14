@@ -1,7 +1,8 @@
 # OTASCIIArmor
 
-The opentxs class `OTASCIIArmor` defines an encoding for certain data types to
-an array of printable ASCII characters. This is useful in two contexts:
+The opentxs class [`OTASCIIArmor`][OTASCIIArmorCpp] defines an encoding for
+certain data types to an array of printable ASCII characters. This is useful in
+two contexts:
 
 * Embedding binary data in a plain-text document. The _Section Format_ used in
   [OTContract](OTContract.md) is defined as a document that is readable by
@@ -59,7 +60,7 @@ using the Method `OTASCIIArmor::WriteArmoredString()`. The format is as follows:
 
 ```
 -----BEGIN OT ARMORED $type-----
-Version: Open Transactions %s
+Version: Open Transactions $version
 $base64
 -----END OT ARMORED $type-----
 ```
@@ -189,6 +190,8 @@ dropped for data and strings.
 <!--- links -->
 
 [ProtobufHardcode]: https://github.com/Open-Transactions/opentxs/blob/c531e0faccfa370bb761711ff28ad2386abbcd75/include/opentxs/core/OTStorage.hpp#L148
+
+[OTASCIIArmorCpp]: https://github.com/Open-Transactions/opentxs/blob/c2c362e9fd77422fc1d0d82d0db6a58aa36c69db/src/core/crypto/OTASCIIArmor.cpp
 
 [OTStorageCpp]: https://github.com/Open-Transactions/opentxs/blob/7d2e2dbeca45256ce91b41f63d4aadb88f947169/src/opentxs/core/OTStorage.cpp
 
