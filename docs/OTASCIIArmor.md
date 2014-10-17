@@ -8,10 +8,10 @@ two contexts:
   [OTContract](OTContract.md) is defined as a document that is readable by
   humans.  In order to be able to attach signatures, it is necessary to encode
   the binary data in [Base64][Base64].
-* Embedding plain-text strings in XML documents. As structured data format, it
-  is impossible to safely embed arbitrary data in an XML file when using string
-  concatenation, which is currently used to assemble XML in opentxs.  Plain-text
-  data can contain characters with special meaning, like `<` and `&`.
+* Embedding plain-text strings in Section-Format documents when using string
+  concatenation. (Lines starting with `-----` must be escaped)
+* Embedding plain-text strings in XML documents when using string concatenation.
+  (Characters like `<` and `&` must be escaped)
 
 ## Encoding Algorithm
 
@@ -100,10 +100,38 @@ to cryptography.
 [Ricardian contracts](http://iang.org/papers/ricardian_contract.html) form the
 foundation of OT. A Ricardian contract is a human and machine readable text and
 signed with OpenPGP in clear text form (see section 3.1 of aforementioned
-document). The OpenPGP [RFC](http://tools.ietf.org/html/rfc4880) states that in
-the case where there is a risk of damage to the data due to transport, data
-conversions or character set translations the content may be armored.
+document). The [_OpenPGP Document Format_](http://tools.ietf.org/html/rfc4880)
+states that in the case where there is a risk of damage to the data due to
+transport, data conversions or character set translations the content may be
+armored.
 
+
+## Inconsistent Use
+
+Because opentxs writes simultaneously XML and Section-Format using string
+concatenation, some kind of escaping is necessary when embedding strings.
+Base64 is a escaping mechanism that removes all problematic characters, at the
+cost of also removing all human readability. However, it is not enforced at the
+serialization level, which raises security concerns: Plain-text concatenation is
+used to construct messages in some places: [OTContract::CreateInnerContents()].
+
+String concatenation should be eliminated as a means of constructing messages
+and be replaced by document-specific serializers which take care of escaping
+strings.
+
+Where byte-equivalence is necessary (contract signatures), it must be ensured
+that whitespace is not modified. An XML serializer might change line endings and
+indentation.
+
+One way to achieve byte equivalence is to normalize embedded sections. The
+normalization algorithm would trim whitespace for each line and set the line
+ending to `\n`.
+
+## Loss of Readability
+
+When used as a format-agnostic escaping mechanism, all human readability of
+plain text is eliminated (the characters are still printable, but meaning is
+lost). This is opposite to the goal of a Ricardian contract.
 
 ## Network Message Format Depends on Storage System
 
@@ -171,12 +199,13 @@ and compressing the message in a final step, before encryption.
 
 Analysis and comparative measurements are necessary here.
 
+This procedure is also recommended in the [OpenPGP Document Format (Section
+2.3)](http://tools.ietf.org/html/rfc4880#section-2.3).
+
 #### Unnecessary Base64
 
 In some cases, Base64-encoding of binary data is applied even though there is no
-need to:
-
-1. Base64-encoding a message before sending it via the ZeroMQ transport.
+need to. For example, Base64-encoding is applied when via the ZeroMQ transport.
 
 ## Unnecessary Conflation of Operations
 
@@ -185,30 +214,65 @@ no good reason to conflate them in armoring. There should only be one input
 type `OTData` (variable-length byte array). Any operation like packing or
 compression can be independent from Base64 encoding.
 
-## Loss of Readability
-
-Each contract can have multiple nested contracts embedded in them. It is
-entirely possible that one needs to run the de-armor operation on a message
-several times before it is fully human readable.
-
-Using [`CDATA`](http://en.wikipedia.org/wiki/CDATA) sections in order to embed
-plain text data should be explored. Where byte-equivalence is necessary
-(contract signatures), it must be ensured that whitespace is not modified. An
-XML serializer might change line endings and indentation.
-
-One way to achieve byte equivalence is to normalize embedded sections. The
-normalization algorithm would trim whitespace for each line and set the line
-ending to `\n`.
-
 
 # Future Changes
 
-In order to simplify the protocol, we should explore the option of dropping
-armoring in the message protocol. Binary data can be encoded with traditional
-Base64 encoding and does not require a new encoding format.
+## Using Format-Specific Escaping
 
-Outside the protocol, the _packing_ stage in armoring can almost certainly be
-dropped for data and strings.
+In order to simplify the protocol, we should explore the option of dropping
+armoring in the message protocol as a means of escaping plain-text data.
+String concatenation should be abandoned as a means of generating XML or
+Section-Format documents.
+
+Binary data can be encoded with traditional Base64 encoding and does not require
+a new encoding format.
+
+## Alternatives to Nesting
+
+Nesting documents of the same format degrades human-readability, whether by
+Base64-encoding or other types of escaping.
+
+Alternatives should be considered. One possibility is referencing to another
+document by hash and attaching it to the message on the top level. This is
+common in legal documents as well. Example using the Section-Format:
+
+```xml
+-----BEGIN SIGNED CONTRACT-----
+<contract id="$hashOfContract">
+  <subcontract ref="$hashOfDocument" />
+</contract>
+-----BEGIN CONTRACT SIGNATURE-----
+$signature
+-----END CONTRACT SIGNATURE-----
+
+
+<!-- this is the subcontract -->
+-----BEGIN SIGNED CONTRACT-----
+Document-Id: $hashOfContent
+
+<contract>
+  $otherContract
+</contract>
+-----END CONTRACT SIGNATURE-----
+```
+
+When dropping Section-Format altogether:
+
+```xml
+<document id="$hashOfContent">
+  <content>
+    $content
+    <subdocument ref="$hashOfOtherDocument" />
+  </content>
+  <signature meta="$meta">signature</signature>
+</document>
+
+<document id="$hash">
+  <!-- etc -->
+</document>
+```
+
+This would probably also allow a higher compression level.
 
 <!--- links -->
 
@@ -231,3 +295,8 @@ dropped for data and strings.
 [boostBase64]: http://www.boost.org/doc/libs/1_36_0/libs/serialization/doc/dataflow.html
 
 [golangBase64]: http://golang.org/pkg/encoding/base64
+
+[CreateInnerContents]: https://github.com/Open-Transactions/opentxs/blob/develop/src/core/OTContract.cpp#L2172
+
+[Opentxs295]: https://github.com/Open-Transactions/opentxs/issues/295
+
