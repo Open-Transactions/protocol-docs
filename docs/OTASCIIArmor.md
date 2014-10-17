@@ -113,7 +113,8 @@ concatenation, some kind of escaping is necessary when embedding strings.
 Base64 is a escaping mechanism that removes all problematic characters, at the
 cost of also removing all human readability. However, it is not enforced at the
 serialization level, which raises security concerns: Plain-text concatenation is
-used to construct messages in some places: [OTContract::CreateInnerContents()].
+used to construct messages in some places:
+[OTContract::CreateInnerContents()][CreateInnerContents].
 
 String concatenation should be eliminated as a means of constructing messages
 and be replaced by document-specific serializers which take care of escaping
@@ -205,7 +206,8 @@ This procedure is also recommended in the [OpenPGP Document Format (Section
 #### Unnecessary Base64
 
 In some cases, Base64-encoding of binary data is applied even though there is no
-need to. For example, Base64-encoding is applied when via the ZeroMQ transport.
+need to. For example, Base64-encoding is applied when sending data via the
+ZeroMQ transport.
 
 ## Unnecessary Conflation of Operations
 
@@ -224,8 +226,7 @@ armoring in the message protocol as a means of escaping plain-text data.
 String concatenation should be abandoned as a means of generating XML or
 Section-Format documents.
 
-Binary data can be encoded with traditional Base64 encoding and does not require
-a new encoding format.
+Binary data can be encoded with traditional Base64 encoding.
 
 ## Alternatives to Nesting
 
