@@ -40,7 +40,10 @@ looking at a file on Github to get a stable link).
 ## Protocol Specification
 
 An attempt at specifying a more formal protocol can be found in
-[protocol/](protocol).
+[spec/](spec).
+
+
+* [SectionFormat](spec/SectionFormat.md)
 
 ### Guidelines
 
