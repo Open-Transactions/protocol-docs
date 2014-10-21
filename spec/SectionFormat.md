@@ -1,21 +1,24 @@
 # Section Format
 
 This format is used in the [OTContract](../docs/OTContract.md) class in
-Open-Transactions. It's purpose is to encode a human-readable, plain-text
+Open-Transactions. Its purpose is to encode a human-readable, plain-text
 document together with a list of digital signatures.
 
-The format should be easy to parse.
+The format should be easy to parse (automatically) and easy to read (manually)
+at the same time, as per the Ricardian contract criteria.
+
+
 
 ## Document Structure
-
-The document is read line-by-line. Line endings can be `\r\n` or `\n`.
-
-Lines preceding the content section are ignored.
 
 A document MUST contain a content section that CAN be followed by zero or more
 signature sections.
 
+Lines that are outside sections are ignored.
+
 ### Sections
+
+The document is read line-by-line. Line endings can be `\r\n` or `\n`.
 
 A section consists of:
 * a type specifier string;
@@ -26,6 +29,12 @@ The start of a section is defined by a section marker line. The line has five
 leading dashes, followed by the BEGIN keyword and a type specifier, ending with
 five dashes: `-----BEGIN $type-----`
 
+A document MUST NOT contain lines starting with two dashes that are not section
+markers. In order to encode a line like this, the dash-space (ASCII `0x2d 0x20)
+escape sequence can be prepended when encoding the document. During decoding,
+the sequence must be removed from the beginning of a line before adding it to
+the payload.
+
 The section marker line is followed by headers, in the form of header lines.
 Header lines have the format `Key: Value`, where key and value are separated by
 a colon-space sequence (ASCII `0x3a 0x20`).
@@ -34,28 +43,23 @@ Headers are terminated by an empty line.
 
 All subsequent lines define the payload. Line endings are normalized to `\n`.
 
-The dash-space escape sequence (ASCII `0x2d 0x20`) must be removed from the
-beginning of a line before adding it to the payload.
-
-A document MUST NOT contain lines starting with two dashes that are not section
-markers.
-
-An unterminated section is illegal.
+An unterminated section is illegal. Section termination is defined separately
+for each section type.
 
 ### Content Section
 
 The first section in a document is the content section. The type specifier must
-start with the character sequence `SIGNED`. Lines preceding the content section
-are ignored.
+start with the character sequence `SIGNED`.
 
-The content section is ended by the start of a signature section or `EOF`.
+The content section is terminated by the start of a signature section or `EOF`.
 
 ### Signature Section
+
 A signature section is defined by a section whose type specifier ends with
 `SIGNATURE`.
 
-A signature section must be ended by a line that starts with a dash (ASCII
-`0x2d`).
+
+Signature sections are terminated the _section end marker_: `-----END $type -----`
 
 ### Sample Document
 
@@ -73,12 +77,14 @@ Meta: $signatureTag
 
 $signatureData
 -----END CONTRACT SIGNATURE-----
+
 -----BEGIN CONTRACT SIGNATURE-----
 Version: OpenTransactions 0.99
 Comment: http://github.com/FellowTraveler/Open-Transactions/wiki
 Meta: $signatureTag
 
 $signatureData
+-----END CONTRACT SIGNATURE-----
 ```
 
 
@@ -105,14 +111,13 @@ This format has many similarities with the PEM format and the OpenPGP Message
 Format:
 
 * [RFC1421](https://tools.ietf.org/html/rfc1421)
-* [RFC1421](https://tools.ietf.org/html/rfc4880)
+* [RFC4880](https://tools.ietf.org/html/rfc4880)
 
 ## Section Validity
 
 The OTContract class defines further constraints on the content section (XML
 validity, semantic validity) and the signature sections (validity of signature
 format). These are not covered in this spec, but in other documents.
-
 
 ## Discussion
 
@@ -123,12 +128,9 @@ Lines preceding the content section are ignored. This is a source of ambiguity
 in the document. Suggestion: require the first line of the document to be the
 content section marker.
 
-The content section and the signature sections are terminated differently, and
-not using the end marker. The content section writing routine does not write an
-end marker at all. The signature section writing routine writes an end marker,
-but only looks for a single terminating dash. This also complicates the spec.
-Suggestion: require all sections to terminate using the matching end marker
-`-----END $type-----`.
+The content section does not use the end marker.  The signature section writing
+routine writes an end marker, but the parser only looks for a single terminating
+dash. This behavior is used in the CLI tool however.
 
 
 ## Compliance in Opentxs
@@ -142,7 +144,7 @@ changes.
 Making the parser reject all malformed input can only be achieved via a larger
 rewrite.
 
-## Necessary Changes
+### Necessary Changes
 
 The current opentxs writer and parser do not comply with this specification and
 have several bugs.
@@ -161,6 +163,8 @@ Changes in the document reading methods to accept valid documents:
 
 Changes in the document reading methods to reject malformed documents:
 
-* Section markers must be checked entirely.
-* Headers must only appear at the top and are terminated by an empty line.
+* Section start markers must be checked entirely.
+* Signature sections must require the section end marker instead only a dash
+* Headers must only appear at the top of a section and are terminated by an
+  empty line.
 
