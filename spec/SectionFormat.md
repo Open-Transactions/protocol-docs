@@ -38,7 +38,7 @@ Headers are terminated by an empty line.
 All subsequent lines define the payload. Line endings are normalized to `\n`.
 
 A document MUST NOT contain lines starting with two dashes that are not section
-markers. In order to encode a line like this, the dash-space (ASCII `0x2d 0x20)
+markers. In order to encode a line like this, the dash-space (ASCII `0x2d 0x20`)
 escape sequence can be prepended when encoding the document. During decoding,
 the sequence must be removed from the beginning of a line before adding it to
 the payload.
