@@ -29,12 +29,6 @@ The start of a section is defined by a section marker line. The line has five
 leading dashes, followed by the BEGIN keyword and a type specifier, ending with
 five dashes: `-----BEGIN $type-----`
 
-A document MUST NOT contain lines starting with two dashes that are not section
-markers. In order to encode a line like this, the dash-space (ASCII `0x2d 0x20)
-escape sequence can be prepended when encoding the document. During decoding,
-the sequence must be removed from the beginning of a line before adding it to
-the payload.
-
 The section marker line is followed by headers, in the form of header lines.
 Header lines have the format `Key: Value`, where key and value are separated by
 a colon-space sequence (ASCII `0x3a 0x20`).
@@ -42,6 +36,12 @@ a colon-space sequence (ASCII `0x3a 0x20`).
 Headers are terminated by an empty line.
 
 All subsequent lines define the payload. Line endings are normalized to `\n`.
+
+A document MUST NOT contain lines starting with two dashes that are not section
+markers. In order to encode a line like this, the dash-space (ASCII `0x2d 0x20)
+escape sequence can be prepended when encoding the document. During decoding,
+the sequence must be removed from the beginning of a line before adding it to
+the payload.
 
 An unterminated section is illegal. Section termination is defined separately
 for each section type.
