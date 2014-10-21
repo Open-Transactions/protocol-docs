@@ -34,8 +34,8 @@ Headers are terminated by an empty line.
 
 All subsequent lines define the payload. Line endings are normalized to `\n`.
 
-The dash-space escape sequence (ASCII `0x2d 0x20`) must be removed from a line
-before adding it to the payload.
+The dash-space escape sequence (ASCII `0x2d 0x20`) must be removed from the
+beginning of a line before adding it to the payload.
 
 A document MUST NOT contain lines starting with two dashes that are not section
 markers.
