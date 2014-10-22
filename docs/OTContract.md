@@ -246,6 +246,11 @@ Defined by
 * The `HASH:` field is meant to be read right after the `BEGIN` marker, but can
   in fact be set anywhere: [Link][ProcessHash]. Possible unintended
   consequences, maybe even exploitation.
+* In the content section, the characters `[dash][space]` (`- `) should be an
+  escape sequence and be removed from the line and added to the content section.
+  Instead, the line is added as-is. This makes it impossible to provide a
+  signature for a document that has a line starting with two dashes (e.g. an
+  embedded Section-Format document).
 
 ### XML/Attribute Parser
 * XML elements are processed sequentially. Most of the time, a later definition
