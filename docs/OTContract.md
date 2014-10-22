@@ -13,6 +13,9 @@ A Contract has
 * A content section with the serialized XML of the attributes
 * A list of signatures
 
+A specification that is compatible with documents written by OTContract
+can be found in [SectionFormat.md](../spec/SectionFormat.md).
+
 ## Creation
 
 Although `OTContract` is mainly used through subclasses, there are some class
@@ -244,8 +247,17 @@ Defined by
 * If the last line of the contract starts a signature section, the process
   terminates: [opentxs#247](https://github.com/Open-Transactions/opentxs/issues/247)
 * The `HASH:` field is meant to be read right after the `BEGIN` marker, but can
-  in fact be set anywhere: [Link][ProcessHash]. Possible unintended
-  consequences, maybe even exploitation.
+  in fact be set anywhere: [Link][ProcessHash]. Multiple occurrences are
+  possible. This allows the content section to contain lines starting with
+  `Hash: ` which will be excluded from the payload, as long as the last
+  occurrence is `Hash: samy`. This is an unexpected behavior that makes it
+  difficult to determine what is part of a signed message and what is not.
+* In the content section, the characters `[dash][space]` (ASCII `0x2d 0x20`) at
+  the start of a line should be an escape sequence (see [RFC4880 Section
+  7.1](https://tools.ietf.org/html/rfc4880#section-7.1)). The sequence should be
+  stripped before adding it to the payload. Instead, the line is added as-is.
+  This makes it impossible to provide a signature for a document that has a line
+  starting with two dashes (e.g. an embedded Section-Format document).
 
 ### XML/Attribute Parser
 * XML elements are processed sequentially. Most of the time, a later definition
