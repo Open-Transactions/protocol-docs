@@ -38,10 +38,7 @@ Headers are terminated by an empty line.
 All subsequent lines define the payload. Line endings are normalized to `\n`.
 
 A document MUST NOT contain lines starting with two dashes that are not section
-markers. In order to encode a line like this, the dash-space (ASCII `0x2d 0x20`)
-escape sequence can be prepended when encoding the document. During decoding,
-the sequence must be removed from the beginning of a line before adding it to
-the payload.
+markers.
 
 An unterminated section is illegal. Section termination is defined separately
 for each section type.
@@ -119,45 +116,19 @@ The OTContract class defines further constraints on the content section (XML
 validity, semantic validity) and the signature sections (validity of signature
 format). These are not covered in this spec, but in other documents.
 
-## Discussion
-
-This version of the specs aims for some compatibility with the current output of
-the writing routine. Possible improvements that can be made in future versions:
-
-Lines preceding the content section are ignored. This is a source of ambiguity
-in the document. Suggestion: require the first line of the document to be the
-content section marker.
-
-The content section does not use the end marker.  The signature section writing
-routine writes an end marker, but the parser only looks for a single terminating
-dash. This behavior is used in the CLI tool however.
-
-
 ## Compliance in Opentxs
 
 Long-term, all documents created and accepted by opentxs (`OTContract.cpp`)
 should conform to this specification.
 
-Compliance of the serialization routine can be achieved with a series of small
-changes.
-
 Making the parser reject all malformed input can only be achieved via a larger
 rewrite.
 
-### Necessary Changes
-
-The current opentxs writer and parser do not comply with this specification and
-have several bugs.
-
-Changes in the document generation methods: (relevant for signature generation)
-
-* Header lines must be excluded from the payload.
-* The dash-space escape sequence must be excluded from the payload.
+The current opentxs parser does not comply with this specification and has
+several bugs.
 
 Changes in the document reading methods to accept valid documents:
 
-* Header lines must be excluded from the payload.
-* The dash-space escape sequence must be excluded from the payload.
 * Do not check number of spaces in header fields.
 * Accept arbitrary string values in header fields.
 
@@ -167,4 +138,37 @@ Changes in the document reading methods to reject malformed documents:
 * Signature sections must require the section end marker instead only a dash
 * Headers must only appear at the top of a section and are terminated by an
   empty line.
+
+
+## Future Improvements
+
+This version of the specs aims for some compatibility with the current output of
+the writing routine. Possible improvements that can be made in future versions.
+
+### Dash-Escape Sequence
+
+The dash-space escape should be excluded from the payload. This would simplify
+other processing steps, because it would allow the payload to contain
+arbitrary plain text (other Section-Formatted text in particular).
+
+"Section" would then contain this paragraph:
+
+> A document MUST NOT contain lines starting with two dashes that are not section
+markers. In order to encode a line like this, the dash-space (ASCII `0x2d 0x20`)
+escape sequence can be prepended when encoding the document. During decoding,
+the sequence must be removed from the beginning of a line before adding it to
+the payload.
+
+### Lines Outside Content Sections
+
+Lines outside sections are ignored. This is a source of ambiguity in the
+document. Suggestion: require the first line of the document to be the content
+section marker.
+
+
+### End Markers
+
+The content section does not use the end marker.  The signature section writing
+routine writes an end marker, but the parser only looks for a single terminating
+dash. This behavior is used in the CLI tool however.
 
