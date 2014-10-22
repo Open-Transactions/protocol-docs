@@ -244,8 +244,11 @@ Defined by
 * If the last line of the contract starts a signature section, the process
   terminates: [opentxs#247](https://github.com/Open-Transactions/opentxs/issues/247)
 * The `HASH:` field is meant to be read right after the `BEGIN` marker, but can
-  in fact be set anywhere: [Link][ProcessHash]. Possible unintended
-  consequences, maybe even exploitation.
+  in fact be set anywhere: [Link][ProcessHash]. Multiple occurrences are
+  possible. This allows the content section to contain lines starting with
+  `Hash: ` which will be excluded from the payload, as long as the last
+  occurrence is `Hash: samy`. This is an unexpected behavior that makes it
+  difficult to determine what is part of a signed message and what is not.
 * In the content section, the characters `[dash][space]` (`- `) should be an
   escape sequence and be removed from the line and added to the content section.
   Instead, the line is added as-is. This makes it impossible to provide a
