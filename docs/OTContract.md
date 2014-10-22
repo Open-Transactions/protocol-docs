@@ -252,9 +252,9 @@ Defined by
   `Hash: ` which will be excluded from the payload, as long as the last
   occurrence is `Hash: samy`. This is an unexpected behavior that makes it
   difficult to determine what is part of a signed message and what is not.
-* In the content section, the characters `[dash][space]` (`- `) at the start of
-  a line should be an escape sequence (see [RFC4880 Section
-  7.1](https://tools.ietf.org/html/rfc4880#section-7.1). The sequence should be
+* In the content section, the characters `[dash][space]` (ASCII `0x2d 0x20`) at
+  the start of a line should be an escape sequence (see [RFC4880 Section
+  7.1](https://tools.ietf.org/html/rfc4880#section-7.1)). The sequence should be
   stripped before adding it to the payload. Instead, the line is added as-is.
   This makes it impossible to provide a signature for a document that has a line
   starting with two dashes (e.g. an embedded Section-Format document).
