@@ -17,16 +17,21 @@ After a command is issued the resulting message is transformed several times bef
 For each RPC `<command>`:
 
 1. Create an `OTMessage` object in `OT_API::<command>` (`OpenTransactions.cpp`)
-  1. Pass command type, arguments and message instance to `OTClient::ProcessUserCommand`. Inside the mother of all switch-case statements, there is a `case` statement that matches the command type.
-    1. Set message command type `m_strCommandType` to string representation of `<command>`
-    1. Set other `OTMessage` attributes necessary for the RPC call.
-    1. Set the request number.
-    1. Sign the message with the Nym's signing key.
+  1. (Deprecated, only for few commands) Pass command type, arguments and
+     message instance to `OTClient::ProcessUserCommand`. Inside the mother of
+     all switch-case statements, there is a `case` statement that matches the
+     command type. The code is being updated to move all message construction
+     steps to `OT_API`.
+  1. Set message command type `m_strCommandType` to string representation of
+     `<command>`
+  1. Set other `OTMessage` attributes necessary for the RPC call.
+  1. Set the request number.
+  1. Sign the message with the Nym's signing key.
   1. Pass message instance to `OTServerConnection::ProcessMessageOut`
     1. Serialize `OTMessage` into string with XML/Signature sections
     1. Encrypt ("seal") string to the servers public key (determined from server contract)
     1. After some callback tango, go to `OT_API::TransportFunction`
-      1. Armor (base64-enode) and send over ZeroMQ
+      1. Armor (base64-encode) and send over ZeroMQ
 
 ## Exhaustive trace
 
@@ -34,15 +39,27 @@ For each RPC `<command>`:
 There are three different concepts which play a pivotal role in messaging.
 
 #### Request
-The request is a generic object of type `OTAPI_Func` which has embedded in it the _type of request_ and _all required parameters_ for that request. For example createing an account or doing a transaction. The variable containing this concept is always called `theRequest`.
+The request is a generic object of type `OTAPI_Func` which has embedded in it
+the _type of request_ and _all required parameters_ for that request. For
+example creating an account or doing a transaction. The variable containing
+this concept is always called `theRequest`.
 
 #### Message
-Once the request is executed a message is constructed. This message holds not only the passed arguments but also some bookkeeping in the form of request numbers and signatures. The variable is called `theMessage` and of type `OTMessage`.
+Once the request is executed a message is constructed. This message holds not
+only the passed arguments but also some bookkeeping in the form of request
+numbers and signatures. The variable is called `theMessage` and of type
+`OTMessage`.
 
 #### Envelope
-A message is eventually converted to `theEnvelope` (which is not an entirely accurate description). This is a serialized, armoured message. This is what is put on the wire. The variable is called `theEnvelope` and of type `OTEnvelope`.
+A message is eventually converted to `theEnvelope` (which is not an entirely
+accurate description). This is a serialized, armored message. This is what is
+put on the wire. The variable is called `theEnvelope` and of type `OTEnvelope`.
 
-### Code step through
+
+### Code step through for `CreateAssetAccount`
+
+This is a sample trace for one that involves the deprecated message generation
+using `ProcessUserCommand`:
 
 1. [(`MadeEasy::create_asset_acc`, `ot_made_easy_ot`)](https://github.com/Open-Transactions/opentxs/blob/5c6e032db826797d49f58d8285c02c7368fac149/src/client/ot_made_easy_ot.cpp#L377) The methods defined in the class MadeEasy generally refer to a `theRequest` object which is an instance of `OTAPI_Func` (no idea where it is instantiated).
 2. [(`OTAPI_Func::SendRequest`, `ot_otapi_ot`)](https://github.com/Open-Transactions/opentxs/blob/5c6e032db826797d49f58d8285c02c7368fac149/src/client/ot_otapi_ot.cpp#L996) On that object `SendRequest` is called, which is defined in on the class `OTAPI_Func`.
