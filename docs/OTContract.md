@@ -13,6 +13,9 @@ A Contract has
 * A content section with the serialized XML of the attributes
 * A list of signatures
 
+A specification that is compatible with documents written by OTContract
+can be found in [SectionFormat.md](../spec/SectionFormat.md).
+
 ## Creation
 
 Although `OTContract` is mainly used through subclasses, there are some class
@@ -249,11 +252,12 @@ Defined by
   `Hash: ` which will be excluded from the payload, as long as the last
   occurrence is `Hash: samy`. This is an unexpected behavior that makes it
   difficult to determine what is part of a signed message and what is not.
-* In the content section, the characters `[dash][space]` (`- `) should be an
-  escape sequence and be removed from the line and added to the content section.
-  Instead, the line is added as-is. This makes it impossible to provide a
-  signature for a document that has a line starting with two dashes (e.g. an
-  embedded Section-Format document).
+* In the content section, the characters `[dash][space]` (`- `) at the start of
+  a line should be an escape sequence (see [RFC4880 Section
+  7.1](https://tools.ietf.org/html/rfc4880#section-7.1). The sequence should be
+  stripped before adding it to the payload. Instead, the line is added as-is.
+  This makes it impossible to provide a signature for a document that has a line
+  starting with two dashes (e.g. an embedded Section-Format document).
 
 ### XML/Attribute Parser
 * XML elements are processed sequentially. Most of the time, a later definition
