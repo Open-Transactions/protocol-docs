@@ -9,7 +9,7 @@ Key: Value
 Other-Key: Value
 
 payload plain-text
-which can have multpile lines
+which can have multiple lines
 -----END $TYPE-----
 ```
 
@@ -71,7 +71,7 @@ defined for each section type.
     to provide human readers a hint to the type of the encoded data.
 
 
-These use of the Section Format in these instances is defined below.
+Use of the Section Format in these document types is defined below.
 
 # Signed Message Document
 
@@ -96,7 +96,7 @@ the start of a signature section or `EOF`.
 A signature section is defined by a section whose type specifier ends with
 `SIGNATURE`.
 
-Signature sections are terminated the _section end marker_:
+Signature sections are terminated by the _section end marker_:
 `-----END $type -----`
 
 #### Sample Signed Message
@@ -145,7 +145,7 @@ stripped.
 The parsing routine MUST Base64-decode the payload.
 
 Note: currently, the Base64-decoded content is still encoded using Protocol
-Buffers and may also been compressed using the zlib DEFLATE algorithm. These
+Buffers and may also be compressed using the zlib DEFLATE algorithm. These
 encodings may be removed in the future and are thus not part of this
 specification.
 
@@ -294,7 +294,8 @@ Changes in the document reading methods to reject malformed documents:
 ## Future Improvements
 
 This version of the specs aims for some compatibility with the current output of
-the writing routine. Possible improvements that can be made in future versions.
+the writing routine. This section lists possible improvements that can be made
+in future versions.
 
 ### Signed Message Format
 
@@ -336,6 +337,4 @@ however.
 The ASCII-Armored section writes an end marker and requires (part) of an end
 marker.
 
-Suggestion: In order to simplify the specification, always require section end
-markers.
-
+Suggestion: In order to simplify the format, always require section end markers.
