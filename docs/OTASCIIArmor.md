@@ -56,25 +56,18 @@ output is formatted to produce lines with a length of 64 characters.
 The default value is `true`. I have not found an example where `false` is
 passed.
 
-#### Adding Bookends and Headers (Optional)
+#### Adding Section Markers and Headers (Optional)
 
-The class supports methods for writing bookends around the encoded data
-using the Method `OTASCIIArmor::WriteArmoredString()`. The format is as follows:
+The class supports methods for writing section markers around the encoded data
+using the method `OTASCIIArmor::WriteArmoredString()`. The format is defined in
+[SectionFormat.md](../spec/SectionFormat.md).
 
-```
------BEGIN OT ARMORED $type-----
-Version: Open Transactions $version
-$base64
------END OT ARMORED $type-----
-```
-
-Where `$type` is passed as a method parameter.
 
 ## Decoding Algorithm
 
 The decoding steps mirror the encoding steps:
 
-1. Bookend parsing (optional)
+1. Section Format parsing (optional)
 1. Base64-decode
 1. Uncompress (strings only)
 1. Unpack
@@ -82,11 +75,25 @@ The decoding steps mirror the encoding steps:
 
 The decode methods are:
 
-* `OTASCIIArmor::LoadFromString()` (called first when reading from bookend
+* `OTASCIIArmor::LoadFromString()` (called first when reading from section
   format)
 * `OTASCIIArmor::GetAndUnpackData()` (alias `GetData()`)
 * `OTASCIIArmor::GetAndUnpackString()` (alias `GetString()`)
 
+
+### Section Format
+
+The parser for the section format is similar to the one used in
+[OTContract](OTContract.md). As with the contract format, it unintentionally
+recognizes a much broader set of messages than what is actually written:
+
+
+* The begin marker is completely parameterized and defaults to `----BEGIN`
+* The end marker is not parameterized and is hard-coded to `-----END`
+* Lines leading up to the section marker are ignored.
+* Lines after the end marker are ignored.
+* Lines starting with `Version:` and `Comment:` are valid everywhere and skipped
+  completely
 
 # Notes
 
