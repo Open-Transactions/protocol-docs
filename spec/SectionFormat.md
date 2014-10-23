@@ -234,9 +234,11 @@ type Section struct {
     Payload string
 }
 
-func ParseSection(doc string) (Section, error)
+// Returns the first section and rest of the document, or error
+func ParseSection(doc string) (Section, string, error)
 
 // For sections without end marker (Content in Signed Message)
+// Terminates when new section is found
 func ParseUnterminatedSection(doc string) (Section, error)
 ```
 
@@ -261,7 +263,8 @@ Loading ASCII-Armoring only decodes the Base64 payload. Type information
 and headers are ignored.
 
 ```
-func ParseAsciiArmor(doc string) ([]byte, error)
+// Returns payload base64-decoded, rest of document and error
+func ParseAsciiArmor(doc string) ([]byte, string, error)
 ```
 
 
@@ -288,11 +291,16 @@ Changes in the document reading methods to reject malformed documents:
 * Headers must only appear at the top of a section and are terminated by an
   empty line.
 
-
 ## Future Improvements
 
 This version of the specs aims for some compatibility with the current output of
 the writing routine. Possible improvements that can be made in future versions.
+
+### Signed Message Format
+
+In some settings, contracts `OTContract`-derived do not contain a list of
+signatures, but exactly one signature (`OTMessage`). This is not reflected or
+enforced at the moment in opentxs.
 
 ### Dash-Escape Sequence
 
