@@ -13,6 +13,8 @@ which can have multpile lines
 -----END $TYPE-----
 ```
 
+Sections are used in different document types, which are defined later.
+
 ## Specification
 
 The document is read line-by-line. Line endings can be `\r\n` or `\n`.
