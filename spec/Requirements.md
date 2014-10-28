@@ -35,8 +35,11 @@ Communication should be *state-less and message-based*, as opposed to something
 stream-based like FTP or SSH.
 
 As the name implies, most communication in Open-Transaction is transactional
-and can be expressed a message. A message should contain a document containing
-everything that the recipients needs to know in order to perform an action.
+and can be expressed a message. From a protocol perspective, a message should
+contain a document with everything that the recipients needs to know in
+order to perform an action.
+
+The only state should application-level, like Nyms, accounts and balances.
 
 
 ## Authenticity
