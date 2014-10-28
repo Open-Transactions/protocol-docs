@@ -39,8 +39,9 @@ and can be expressed a message. From a protocol perspective, a message should
 contain a document with everything that the recipients needs to know in
 order to perform an action.
 
-The only state should application-level, like Nyms, accounts and balances.
-
+Exceptions are:
+* Application-level state, like Nyms, accounts and balances.
+* Request numbers (*Authenticity* requirement)
 
 ## Authenticity
 
