@@ -45,6 +45,12 @@ An attempt at specifying a more formal protocol can be found in
 
 * [SectionFormat](spec/SectionFormat.md)
 
+* [DocumentType](spec/DocumentType.md): How we will describe messages
+* [NotaryRequest and NotaryReply](spec/NotaryRequestAndNotaryReply.md):
+  Base document types for communication between Client and Notary.
+* [UserCommand/RegisterNym](spec/UserCommand/RegisterNym.md):
+  Instances of NotaryRequest and NotaryReply for Nym registration.
+
 ### Guidelines
 
 The goal of the spec is to define a more formalized, cleaned-up "1.1" version
