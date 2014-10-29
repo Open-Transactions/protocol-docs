@@ -6,7 +6,7 @@ message deriving from `NotaryRequest` and message deriving from `NotaryReply`.
 
 # Base Document Types
 
-## `NotaryRequest`
+## NotaryRequest
 
 This document type is the base type for all requests written by the Client and
 read by the Notary.
@@ -20,7 +20,7 @@ Default Attributes:
   See [RequestNumbers.md](RequestNumbers.md) for more information.
 
 
-## `NotaryReply`
+## NotaryReply
 
 This is the base type for messages sent by the Notary in response to a
 _NotaryRequest_ by the Client.
@@ -48,7 +48,7 @@ Default Elements:
 
 ----
 
-# `RegisterNym`
+# RegisterNym
 
 Elements:
 
@@ -57,7 +57,7 @@ Elements:
 * `Credentials`: Contains signed Key-Value pairs. TODO.
 
 
-## `RegisterNymReply`
+## RegisterNymReply
 
 Elements:
 
@@ -74,7 +74,7 @@ Elements:
 
 ----
 
-# `GetTransactionNum`
+# GetTransactionNum
 
 Requests a new list of [Transaction Numbers](TransactionNumbers.md)
 
@@ -83,7 +83,7 @@ Attributes:
 * `NymboxHash`: Identifier. Hash of the current [Nymbox](Nymbox.md) (?).
 
 
-## `GetTransactionNumReply`
+## GetTransactionNumReply
 
 Attributes:
 
@@ -91,14 +91,14 @@ Attributes:
 
 ----
 
-# `CreateAccount`
+# CreateAccount
 
 Attributes:
 
 * `AssetTypeID`: Identifier. ID of the [AssetContract](AssetContract.md)
 
 
-## `CreateAccountReply`
+## CreateAccountReply
 
 Attributes:
 
@@ -115,27 +115,13 @@ Elements:
 
 ----
 
-# `IssueAssetType`
+# IssueAssetType
 
 Attributes:
 
 Elements:
 
-## `IssueAssetTypeReply`
-
-Attributes:
-
-Elements:
-
-----
-
-# `NotarizeTransaction`
-
-Attributes:
-
-Elements:
-
-## `NotarizeTransactionReply`
+## IssueAssetTypeReply
 
 Attributes:
 
@@ -143,27 +129,13 @@ Elements:
 
 ----
 
-# `GetRequest`
+# NotarizeTransaction
 
 Attributes:
 
 Elements:
 
-## `GetRequestReply`
-
-Attributes:
-
-Elements:
-
-----
-
-# `GetNymbox`
-
-Attributes:
-
-Elements:
-
-## `GetNymboxReply`
+## NotarizeTransactionReply
 
 Attributes:
 
@@ -171,27 +143,13 @@ Elements:
 
 ----
 
-# `GetBoxReceipt`
+# GetRequest
 
 Attributes:
 
 Elements:
 
-## `GetBoxReceiptReply`
-
-Attributes:
-
-Elements:
-
-----
-
-# `GetAccountFiles`
-
-Attributes:
-
-Elements:
-
-## `GetAccountFilesReply`
+## GetRequestReply
 
 Attributes:
 
@@ -199,13 +157,55 @@ Elements:
 
 ----
 
-# `ProcessInbox`
+# GetNymbox
 
 Attributes:
 
 Elements:
 
-## `ProcessInboxReply`
+## GetNymboxReply
+
+Attributes:
+
+Elements:
+
+----
+
+# GetBoxReceipt
+
+Attributes:
+
+Elements:
+
+## GetBoxReceiptReply
+
+Attributes:
+
+Elements:
+
+----
+
+# GetAccountFiles
+
+Attributes:
+
+Elements:
+
+## GetAccountFilesReply
+
+Attributes:
+
+Elements:
+
+----
+
+# ProcessInbox
+
+Attributes:
+
+Elements:
+
+## ProcessInboxReply
 
 Attributes:
 
