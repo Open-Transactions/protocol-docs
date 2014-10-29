@@ -32,11 +32,13 @@ An attribute can have one of these types:
 
 Elements can have these *additional* types:
 
-* **Key-Value Pairs**: Keys and values are UTF8-encoded strings.
+* **Key-Value Pairs**: Keys and values are UTF8-encoded strings. Serialized as
+  a list of `<item key="$key">$value</item>`.
 * **Sub-Document**: the element contains a (signed) sub-document. This is key
   for building complex messages.
 
 Elements may be optional or appear multiple times.
+
 
 ## Signed Documents
 
