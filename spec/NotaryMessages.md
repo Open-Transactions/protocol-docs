@@ -25,7 +25,8 @@ Default Attributes:
 This is the base type for messages sent by the Notary in response to a
 _NotaryRequest_ by the Client.
 
-The element name is the same as for the corresponding request name, but ends with `Reply`.
+The element name is the same as for the corresponding request name, but ends
+with `Reply`.
 
 Default Attributes:
 
@@ -38,7 +39,7 @@ Default Elements:
 
 * `InResponseTo`: Identifier. Hash of request message.
 
-## Notes
+### Notes
 
 * The old protocol had the attribute `serverID` instead of `notaryID`.
 * The old protocol version has an `@` prefix for Notary responses instead of a
@@ -50,10 +51,11 @@ Default Elements:
 
 ## RegisterNym
 
+Requests the registration of a new Nym on the server.
+
 Elements:
 
-* `CredentialList`: Contains a signed document of type
-  [PublicNymfile](../PublicNymfile.md)
+* `CredentialList`: Contains a signed document of type [Nymfile](Nymfile.md)
 * `Credentials`: Contains signed Key-Value pairs. TODO.
 
 
@@ -61,10 +63,9 @@ Elements:
 
 Elements:
 
-* `Nymfile`: Contains a signed document of type
-  [PublicNymfile](../PublicNymfile.md)
+* `Nymfile`: Contains a signed document of type [Nymfile](Nymfile.md)
 
-## Notes
+### Notes
 
 * The original root element name was `createUserAccount`. The new element name
   matches the new naming conventions.
@@ -95,6 +96,8 @@ The list of transaction numbers will be in the Nymbox.
 
 ## CreateAccount
 
+Requests creation of a new account.
+
 Attributes:
 
 * `AssetTypeID`: Identifier. ID of the [AssetContract](AssetContract.md)
@@ -110,7 +113,7 @@ Elements:
 
 * `NewAccount`: Signed [Account](Account.md) document.
 
-## Notes
+### Notes
 
 * `AssetTypeID` previously was `assetType`
 
@@ -119,51 +122,80 @@ Elements:
 
 ## IssueAssetType
 
+Issues an asset and creates an _issuer account_ on the Notary.
+
 Attributes:
 
+* `AssetTypeID`: Identifier. Hash of the AssetContract.
+
 Elements:
+
+* `AssetContract`: Signed document of type [AssetContract](AssetContract.md).
 
 ## IssueAssetTypeReply
 
 Attributes:
 
+* `AssetTypeID`: Identifier. Hash of AssetContract.
+* `AccountID`: Identifier. Hash of the Account.
+
 Elements:
+
+* `IssuerAccount`: Signed document of type [Account](Account.md).
+
+### Notes
+
+* `AssetTypeID` previously was `assetType`
 
 ----
 
 ## NotarizeTransaction
 
+Requests the notarization of a transaction. TODO more detail.
+
 Attributes:
 
+* `NymboxHash`: Identifier. Hash of Nymbox.
+* `AccountID`: Identifier. Account ID referenced in transaction (?).
+
 Elements:
+
+* `Transaction`: Signed document of type [Transaction](Transaction.md)
 
 ## NotarizeTransactionReply
 
 Attributes:
 
+* `AccountID`: Identifier. Account ID referenced in transaction (?).
+
 Elements:
+
+* `ResponseTransaction`: Signed document of type [Transaction](Transaction.md).
+
+### Notes
+
+* `Transaction` previously was deprecated type `Ledger`.
 
 ----
 
 ## GetRequest
 
-Attributes:
+Requests new request numbers.
 
-Elements:
+No additional attributes or elements.
 
 ## GetRequestReply
 
 Attributes:
 
-Elements:
+* `NymboxHash`: Identifier. Hash of remote Nymbox. TODO purpose?
+* `NewRequestNum`: Integer. Next request number to be used.
 
 ----
 
 ## GetNymbox
 
-Attributes:
-
-Elements:
+Requests current [Nymbox](Nymbox.md).
 
 ## GetNymboxReply
 
