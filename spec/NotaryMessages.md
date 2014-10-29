@@ -47,9 +47,8 @@ Default Elements:
   documented for the inheriting document type.
 
 
-# UserCommand `RegisterNym`
 
-## Document Type `RegisterNym`
+# `RegisterNym`
 
 Elements:
 
@@ -58,7 +57,7 @@ Elements:
 * `Credentials`: Contains signed Key-Value pairs. TODO.
 
 
-## Document Type `RegisterNymReply`
+## `RegisterNymReply`
 
 Elements:
 
@@ -74,152 +73,119 @@ Elements:
   type.
 
 
-# UserCommand `NotarizeTransactions`
-
-## Document Type `NotarizeTransaction`
+# `GetTransactionNum`
 
 Attributes:
 
 Elements:
 
-## Document Type `NotarizeTransactionReply`
-
-Attributes:
-
-Elements:
-
-
-# UserCommand `GetTransactionNum`
-
-## Document Type `GetTransactionNum`
+## `GetTransactionNumReply`
 
 Attributes:
 
 Elements:
 
 
-## Document Type `GetTransactionNumReply`
+# `CreateAccount`
 
 Attributes:
 
 Elements:
 
-# UserCommand `CreateAccount`
-
-## Document Type `CreateAccount`
-
-Attributes:
-
-Elements:
-
-
-## Document Type `CreateAccountReply`
-
-Attributes:
-
-Elements:
-
-# UserCommand `IssueAssetType`
-
-## Document Type `IssueAssetType`
+## `CreateAccountReply`
 
 Attributes:
 
 Elements:
 
 
-## Document Type `IssueAssetTypeReply`
+# `IssueAssetType`
 
 Attributes:
 
 Elements:
 
-# UserCommand `NotarizeTransaction`
-
-## Document Type `NotarizeTransaction`
-
-Attributes:
-
-Elements:
-
-
-## Document Type `NotarizeTransactionReply`
-
-Attributes:
-
-Elements:
-
-# UserCommand `GetRequest`
-
-## Document Type `GetRequest`
+## `IssueAssetTypeReply`
 
 Attributes:
 
 Elements:
 
 
-## Document Type `GetRequestReply`
+# `NotarizeTransaction`
 
 Attributes:
 
 Elements:
 
-# UserCommand `GetNymbox`
-
-## Document Type `GetNymbox`
-
-Attributes:
-
-Elements:
-
-
-## Document Type `GetNymboxReply`
-
-Attributes:
-
-Elements:
-
-# UserCommand `GetBoxReceipt`
-
-## Document Type `GetBoxReceipt`
+## `NotarizeTransactionReply`
 
 Attributes:
 
 Elements:
 
 
-## Document Type `GetBoxReceiptReply`
+# `GetRequest`
 
 Attributes:
 
 Elements:
 
-# UserCommand `GetAccountFiles`
-
-## Document Type `GetAccountFiles`
-
-Attributes:
-
-Elements:
-
-
-## Document Type `GetAccountFilesReply`
-
-Attributes:
-
-Elements:
-
-# UserCommand `ProcessInbox`
-
-## Document Type `ProcessInbox`
+## `GetRequestReply`
 
 Attributes:
 
 Elements:
 
 
-## Document Type `ProcessInboxReply`
+# `GetNymbox`
 
 Attributes:
 
 Elements:
+
+## `GetNymboxReply`
+
+Attributes:
+
+Elements:
+
+
+# `GetBoxReceipt`
+
+Attributes:
+
+Elements:
+
+## `GetBoxReceiptReply`
+
+Attributes:
+
+Elements:
+
+
+# `GetAccountFiles`
+
+Attributes:
+
+Elements:
+
+## `GetAccountFilesReply`
+
+Attributes:
+
+Elements:
+
+
+# `ProcessInbox`
+
+Attributes:
+
+Elements:
+
+## `ProcessInboxReply`
+
+Attributes:
+
+Elements:
+
