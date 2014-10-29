@@ -37,19 +37,19 @@ Please use links to commit hashes, not to branches (hit the `y` key if you are
 looking at a file on Github to get a stable link).
 
 
-## Protocol Specification
+## Specification
 
-An attempt at specifying a more formal protocol can be found in
-[spec/](spec).
+A specification for the new protocol can be found in [spec/](spec).
 
-
-* [SectionFormat](spec/SectionFormat.md)
 
 * [DocumentType](spec/DocumentType.md): How we will describe messages
-* [NotaryRequest and NotaryReply](spec/NotaryRequestAndNotaryReply.md):
-  Base document types for communication between Client and Notary.
-* [UserCommand/RegisterNym](spec/UserCommand/RegisterNym.md):
-  Instances of NotaryRequest and NotaryReply for Nym registration.
+* [NotaryMessages](spec/NotaryMessages.md):
+  Document types for communication between Client and Notary.
+
+### Encoding
+
+* [SectionFormat](spec/SectionFormat.md) (might become deprecated)
+
 
 ### Guidelines
 

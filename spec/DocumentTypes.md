@@ -56,9 +56,8 @@ type name, the attributes and elements.
 
 ## Example
 
-* The document types
-  [NotaryRequest and NotaryReply](NotaryRequestAndNotaryReply.md)
-  document types of the user command [RegisterNym](UserCommand/RegisterNym.md).
+* The document types described in the [NotaryMessage](NotaryMessage.md)
+  document.
 
 # Notes
 
