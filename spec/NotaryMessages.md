@@ -15,8 +15,9 @@ read by the Notary.
 It has some attributes that are shared by deriving document types.
 
 Default Attributes:
-* `nymID`: Identifier. The Nym which makes the request.
-* `notaryID`: Identifier. The Notary which should process the request.
+* `nymID`: Identifier. The ID of the Nym which makes the request.
+* `notaryID`: Identifier. The ID of the Notary which should process the request,
+  as defined in the [ServerContract](ServerContract.md).
 * `requestNum`: Integer. The index of the current request being sent.
   See [RequestNumbers](RequestNumbers.md) for more information.
 
@@ -32,7 +33,7 @@ with `Response`.
 Attributes:
 
 * `nymID`: Identifier. The Nym which made the request.
-* `notaryID`: Identifier. The id of the notary
+* `notaryID`: Identifier. The ID of the responding Notary.
 * `requestNum`: Integer. Same as in the request.
 * `success`: Boolean. Indicates whether request was successful.
 
@@ -56,7 +57,7 @@ Requests the registration of a new Nym on the Notary.
 
 Elements:
 
-* `CredentialList`: Contains a signed document of type [Nymfile](Nymfile.md)
+* `CredentialList`: Contains a signed document of type [Nymfile](Nymfile.md).
 * `Credentials`: Contains signed Key-Value pairs. TODO.
 
 
@@ -101,7 +102,7 @@ Requests creation of a new account.
 
 Attributes:
 
-* `assetTypeID`: Identifier. ID of the [AssetContract](AssetContract.md)
+* `assetTypeID`: Identifier. ID of the [AssetContract](AssetContract.md).
 
 
 ## CreateAccountResponse
@@ -116,7 +117,7 @@ Elements:
 
 ### Notes
 
-* `assetTypeID` previously was `assetType`
+* `assetTypeID` previously was `assetType`.
 
 
 ----
@@ -146,7 +147,7 @@ Elements:
 
 ### Notes
 
-* `assetTypeID` previously was `assetType`
+* `assetTypeID` previously was `assetType`.
 
 ----
 
@@ -161,7 +162,7 @@ Attributes:
 
 Elements:
 
-* `Transaction`: Signed document of type [Transaction](Transaction.md)
+* `Transaction`: Signed document of type [Transaction](Transaction.md).
 
 ## NotarizeTransactionResponse
 
