@@ -44,7 +44,7 @@ Default Elements:
 * The old protocol had the attribute `serverID` instead of `notaryID`.
 * The old protocol version has an `@` prefix for Notary responses instead of a
   `Reply` suffix.
-* A few User Commands do not inherit all of the attributes. These exceptions are
+* A few requests do not inherit all of the attributes. These exceptions are
   documented for the inheriting document type.
 
 ----
