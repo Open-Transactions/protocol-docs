@@ -7,16 +7,18 @@ Open-Transactions.
 
 This is usually done using XML schemas, but given the complexity of schema
 languages, we will use our own language. A document type describes the XML
-elements, their attributes and sub-elements. We will not use any advance XML
+elements, their attributes and sub-elements. We will not use any advanced XML
 features like namespaces, entities or transformations.
 
 ## Document Type Definition
 
 A document type consists of
 
-* The root element name (ASCII alphabetic characters)
-* A list of attributes
-* A list of sub-elements
+* The name (ASCII alphabetic characters). Same as the name of the root element.
+* A list of attributes and their data types.
+* A list of sub-elements and their data types.
+
+Element names must be in `PascalCase`, attributes in `lowerCamelCase`.
 
 ## Data Types
 
@@ -33,7 +35,7 @@ An attribute can have one of these types:
 Elements can have these *additional* types:
 
 * **Key-Value Pairs**: Keys and values are UTF8-encoded strings. Serialized as
-  a list of `<item key="$key">$value</item>`.
+  a list of `<Item key="$key">$value</Item>`.
 * **Sub-Document**: the element contains a (signed) sub-document. This is key
   for building complex messages.
 

@@ -15,9 +15,9 @@ read by the Notary.
 It has some attributes that are shared by deriving document types.
 
 Default Attributes:
-* `NymID`: Identifier. The Nym which makes the request.
-* `NotaryID`: Identifier. The Notary which should process the request.
-* `RequestNum`: Integer. The index of the current request being sent.
+* `nymID`: Identifier. The Nym which makes the request.
+* `notaryID`: Identifier. The Notary which should process the request.
+* `requestNum`: Integer. The index of the current request being sent.
   See [RequestNumbers](RequestNumbers.md) for more information.
 
 
@@ -29,14 +29,14 @@ _NotaryRequest_ by the Client.
 The element name is the same as for the corresponding request name, but ends
 with `Response`.
 
-Default Attributes:
+Attributes:
 
-* `NymID`: Identifier. The Nym which made the request.
-* `NotaryID`: Identifier. The id of the notary
-* `RequestNum`: Integer. Same as in the request.
-* `Success`: Boolean. Indicates whether request was successful.
+* `nymID`: Identifier. The Nym which made the request.
+* `notaryID`: Identifier. The id of the notary
+* `requestNum`: Integer. Same as in the request.
+* `success`: Boolean. Indicates whether request was successful.
 
-Default Elements:
+Elements:
 
 * `InResponseTo`: Identifier. Hash of request message.
 
@@ -52,12 +52,11 @@ Default Elements:
 
 ## RegisterNym
 
-Requests the registration of a new Nym on the server.
+Requests the registration of a new Nym on the Notary.
 
 Elements:
 
-* `CredentialList`: Contains a signed document of type [Nymfile
-  (TODO)](Nymfile.md)
+* `CredentialList`: Contains a signed document of type [Nymfile](Nymfile.md)
 * `Credentials`: Contains signed Key-Value pairs. TODO.
 
 
@@ -71,7 +70,7 @@ Elements:
 
 * The original root element name was `createUserAccount`. The new element name
   matches the new naming conventions.
-* The attribute `RequestNum` has the fixed value of `1` in this message.
+* The attribute `requestNum` has the fixed value of `1` in this message.
 * `CredentialList` and `Credentials` can probably be merged into one document
   type.
 
@@ -79,18 +78,18 @@ Elements:
 
 ## GetTransactionNum
 
-Requests a new list of [TransactionNumbers (TODO)](TransactionNumbers.md)
+Requests a new list of [TransactionNumbers](TransactionNumbers.md)
 
 Attributes:
 
-* `NymboxHash`: Identifier. Hash of the current Nymbox.
+* `nymboxHash`: Identifier. Hash of the current Nymbox.
 
 
 ## GetTransactionNumResponse
 
 Attributes:
 
-* `NymboxHash`: Identifier. New Nymbox hash (?).
+* `nymboxHash`: Identifier. New Nymbox hash (?).
 
 The list of transaction numbers will be in the Nymbox.
 
@@ -102,14 +101,14 @@ Requests creation of a new account.
 
 Attributes:
 
-* `AssetTypeID`: Identifier. ID of the [AssetContract](AssetContract.md)
+* `assetTypeID`: Identifier. ID of the [AssetContract](AssetContract.md)
 
 
 ## CreateAccountResponse
 
 Attributes:
 
-* `AssetTypeID`: Identifier. Same as in Request.
+* `assetTypeID`: Identifier. Same as in Request.
 
 Elements:
 
@@ -117,7 +116,7 @@ Elements:
 
 ### Notes
 
-* `AssetTypeID` previously was `assetType`
+* `assetTypeID` previously was `assetType`
 
 
 ----
@@ -128,7 +127,7 @@ Issues an asset and creates an _issuer account_ on the Notary.
 
 Attributes:
 
-* `AssetTypeID`: Identifier. Hash of the AssetContract.
+* `assetTypeID`: Identifier. Hash of the AssetContract.
 
 Elements:
 
@@ -138,8 +137,8 @@ Elements:
 
 Attributes:
 
-* `AssetTypeID`: Identifier. Hash of AssetContract.
-* `AccountID`: Identifier. Hash of the Account.
+* `assetTypeID`: Identifier. Hash of AssetContract.
+* `accountID`: Identifier. Hash of the Account.
 
 Elements:
 
@@ -147,7 +146,7 @@ Elements:
 
 ### Notes
 
-* `AssetTypeID` previously was `assetType`
+* `assetTypeID` previously was `assetType`
 
 ----
 
@@ -157,8 +156,8 @@ Requests the notarization of a transaction. TODO more detail.
 
 Attributes:
 
-* `NymboxHash`: Identifier. Hash of Nymbox.
-* `AccountID`: Identifier. Account ID referenced in transaction (?).
+* `nymboxHash`: Identifier. Hash of Nymbox.
+* `accountID`: Identifier. Account ID referenced in transaction (?).
 
 Elements:
 
@@ -168,7 +167,7 @@ Elements:
 
 Attributes:
 
-* `AccountID`: Identifier. Account ID referenced in transaction (?).
+* `accountID`: Identifier. Account ID referenced in Transaction (?).
 
 Elements:
 
@@ -176,7 +175,8 @@ Elements:
 
 ### Notes
 
-* `Transaction` previously was deprecated type `Ledger`.
+* `Transaction` and `ResponseTransaction` previously was of deprecated type
+  `Ledger` that only contained one item.
 
 ----
 
@@ -190,8 +190,8 @@ No additional attributes or elements.
 
 Attributes:
 
-* `NymboxHash`: Identifier. Hash of remote Nymbox. TODO purpose?
-* `NewRequestNum`: Integer. Next request number to be used.
+* `nymboxHash`: Identifier. Hash of remote Nymbox. TODO purpose?
+* `newRequestNum`: Integer. Next request number to be used.
 
 ----
 
