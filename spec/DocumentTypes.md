@@ -52,7 +52,7 @@ Some document types have commonalities (User Commands). One way to express these
 commonalities is by _inheritance_.
 
 When a document types inherits from another document type, it inherits the
-type name, the attributes and elements.
+attributes and elements.
 
 ## Example
 
