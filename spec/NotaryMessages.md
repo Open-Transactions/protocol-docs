@@ -6,7 +6,7 @@ message deriving from `NotaryRequest` and message deriving from `NotaryReply`.
 
 # Base Document Types
 
-## Document Type "NotaryRequest"
+## `NotaryRequest`
 
 This document type is the base type for all requests written by the Client and
 read by the Notary.
@@ -20,7 +20,7 @@ Default Attributes:
   See [RequestNumbers.md](RequestNumbers.md) for more information.
 
 
-## Document Type "NotaryReply"
+## `NotaryReply`
 
 This is the base type for messages sent by the Notary in response to a
 _NotaryRequest_ by the Client.
@@ -46,7 +46,7 @@ Default Elements:
 * A few User Commands do not inherit all of the attributes. These exceptions are
   documented for the inheriting document type.
 
-
+----
 
 # `RegisterNym`
 
@@ -72,32 +72,48 @@ Elements:
 * `CredentialList` and `Credentials` can probably be merged into one document
   type.
 
+----
 
 # `GetTransactionNum`
 
+Requests a new list of [Transaction Numbers](TransactionNumbers.md)
+
 Attributes:
 
-Elements:
+* `NymboxHash`: Identifier. Hash of the current [Nymbox](Nymbox.md) (?).
+
 
 ## `GetTransactionNumReply`
 
 Attributes:
 
-Elements:
+* `NymboxHash`: Identifier. New Nymbox hash (?).
 
+----
 
 # `CreateAccount`
 
 Attributes:
 
-Elements:
+* `AssetTypeID`: Identifier. ID of the [AssetContract](AssetContract.md)
+
 
 ## `CreateAccountReply`
 
 Attributes:
 
+* `AssetTypeID`: Identifier. Same as in Request.
+
 Elements:
 
+* `NewAccount`: Signed [Account](Account.md) document.
+
+## Notes
+
+* `AssetTypeID` previously was `assetType`
+
+
+----
 
 # `IssueAssetType`
 
@@ -111,6 +127,7 @@ Attributes:
 
 Elements:
 
+----
 
 # `NotarizeTransaction`
 
@@ -124,6 +141,7 @@ Attributes:
 
 Elements:
 
+----
 
 # `GetRequest`
 
@@ -137,6 +155,7 @@ Attributes:
 
 Elements:
 
+----
 
 # `GetNymbox`
 
@@ -150,6 +169,7 @@ Attributes:
 
 Elements:
 
+----
 
 # `GetBoxReceipt`
 
@@ -163,6 +183,7 @@ Attributes:
 
 Elements:
 
+----
 
 # `GetAccountFiles`
 
@@ -176,6 +197,7 @@ Attributes:
 
 Elements:
 
+----
 
 # `ProcessInbox`
 
