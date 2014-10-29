@@ -39,10 +39,10 @@ looking at a file on Github to get a stable link).
 
 ## Specification
 
-A specification for the new protocol can be found in [spec/](spec).
+A specification for the new protocol can be found in [spec/](spec/).
 
 
-* [DocumentType](spec/DocumentType.md): How we will describe messages
+* [DocumentTypes](spec/DocumentTypes.md): How we will describe messages
 * [NotaryMessages](spec/NotaryMessages.md):
   Document types for communication between Client and Notary.
 

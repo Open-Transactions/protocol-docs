@@ -56,7 +56,7 @@ type name, the attributes and elements.
 
 ## Example
 
-* The document types described in the [NotaryMessage](NotaryMessage.md)
+* The document types described in the [NotaryMessages](NotaryMessages.md)
   document.
 
 # Notes
@@ -65,4 +65,4 @@ type name, the attributes and elements.
    * **Big Integer**
    * **Double**
 * A formal definition of document can be translated into source code.
-  [Example](CodeFromSpecification.md)
+  [Example (TODO)](CodeFromSpecification.md)

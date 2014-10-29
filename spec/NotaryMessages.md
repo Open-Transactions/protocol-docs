@@ -17,7 +17,7 @@ Default Attributes:
 * `NymID`: Identifier. The Nym which makes the request.
 * `NotaryID`: Identifier. The Notary which should process the request.
 * `RequestNum`: Integer. The index of the current request being sent.
-  See [RequestNumbers.md](RequestNumbers.md) for more information.
+  See [RequestNumbers](RequestNumbers.md) for more information.
 
 
 ## NotaryReply
@@ -63,7 +63,7 @@ Elements:
 
 Elements:
 
-* `Nymfile`: Contains a signed document of type [Nymfile](Nymfile.md)
+* `Nymfile`: Contains a signed document of type Nymfile.
 
 ### Notes
 
