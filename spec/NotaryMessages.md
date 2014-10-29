@@ -48,7 +48,7 @@ Default Elements:
 
 ----
 
-# RegisterNym
+## RegisterNym
 
 Elements:
 
@@ -74,7 +74,7 @@ Elements:
 
 ----
 
-# GetTransactionNum
+## GetTransactionNum
 
 Requests a new list of [Transaction Numbers](TransactionNumbers.md)
 
@@ -89,9 +89,11 @@ Attributes:
 
 * `NymboxHash`: Identifier. New Nymbox hash (?).
 
+The list of transaction numbers will be in the Nymbox.
+
 ----
 
-# CreateAccount
+## CreateAccount
 
 Attributes:
 
@@ -115,7 +117,7 @@ Elements:
 
 ----
 
-# IssueAssetType
+## IssueAssetType
 
 Attributes:
 
@@ -129,7 +131,7 @@ Elements:
 
 ----
 
-# NotarizeTransaction
+## NotarizeTransaction
 
 Attributes:
 
@@ -143,7 +145,7 @@ Elements:
 
 ----
 
-# GetRequest
+## GetRequest
 
 Attributes:
 
@@ -157,7 +159,7 @@ Elements:
 
 ----
 
-# GetNymbox
+## GetNymbox
 
 Attributes:
 
@@ -171,7 +173,7 @@ Elements:
 
 ----
 
-# GetBoxReceipt
+## GetBoxReceipt
 
 Attributes:
 
@@ -185,7 +187,7 @@ Elements:
 
 ----
 
-# GetAccountFiles
+## GetAccountFiles
 
 Attributes:
 
@@ -199,7 +201,7 @@ Elements:
 
 ----
 
-# ProcessInbox
+## ProcessInbox
 
 Attributes:
 
