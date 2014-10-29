@@ -1,7 +1,8 @@
 # Notary Messages
 
-Client and Notary communicate through a request-reply model. The Client sends a
-message deriving from `NotaryRequest` and message deriving from `NotaryReply`.
+Client and Notary communicate through a request-response model. The Client sends
+a message deriving from `NotaryRequest` and message deriving from
+`NotaryResponse`.
 
 
 # Base Document Types
@@ -20,13 +21,13 @@ Default Attributes:
   See [RequestNumbers](RequestNumbers.md) for more information.
 
 
-## NotaryReply
+## NotaryResponse
 
 This is the base type for messages sent by the Notary in response to a
 _NotaryRequest_ by the Client.
 
 The element name is the same as for the corresponding request name, but ends
-with `Reply`.
+with `Response`.
 
 Default Attributes:
 
@@ -43,7 +44,7 @@ Default Elements:
 
 * The old protocol had the attribute `serverID` instead of `notaryID`.
 * The old protocol version has an `@` prefix for Notary responses instead of a
-  `Reply` suffix.
+  `Response` suffix.
 * A few requests do not inherit all of the attributes. These exceptions are
   documented for the inheriting document type.
 
@@ -55,11 +56,12 @@ Requests the registration of a new Nym on the server.
 
 Elements:
 
-* `CredentialList`: Contains a signed document of type [Nymfile](Nymfile.md)
+* `CredentialList`: Contains a signed document of type [Nymfile
+  (TODO)](Nymfile.md)
 * `Credentials`: Contains signed Key-Value pairs. TODO.
 
 
-## RegisterNymReply
+## RegisterNymResponse
 
 Elements:
 
@@ -77,14 +79,14 @@ Elements:
 
 ## GetTransactionNum
 
-Requests a new list of [Transaction Numbers](TransactionNumbers.md)
+Requests a new list of [TransactionNumbers (TODO)](TransactionNumbers.md)
 
 Attributes:
 
-* `NymboxHash`: Identifier. Hash of the current [Nymbox](Nymbox.md) (?).
+* `NymboxHash`: Identifier. Hash of the current Nymbox.
 
 
-## GetTransactionNumReply
+## GetTransactionNumResponse
 
 Attributes:
 
@@ -103,7 +105,7 @@ Attributes:
 * `AssetTypeID`: Identifier. ID of the [AssetContract](AssetContract.md)
 
 
-## CreateAccountReply
+## CreateAccountResponse
 
 Attributes:
 
@@ -132,7 +134,7 @@ Elements:
 
 * `AssetContract`: Signed document of type [AssetContract](AssetContract.md).
 
-## IssueAssetTypeReply
+## IssueAssetTypeResponse
 
 Attributes:
 
@@ -162,7 +164,7 @@ Elements:
 
 * `Transaction`: Signed document of type [Transaction](Transaction.md)
 
-## NotarizeTransactionReply
+## NotarizeTransactionResponse
 
 Attributes:
 
@@ -184,7 +186,7 @@ Requests new request numbers.
 
 No additional attributes or elements.
 
-## GetRequestReply
+## GetRequestResponse
 
 Attributes:
 
@@ -197,7 +199,7 @@ Attributes:
 
 Requests current [Nymbox](Nymbox.md).
 
-## GetNymboxReply
+## GetNymboxResponse
 
 Attributes:
 
@@ -211,7 +213,7 @@ Attributes:
 
 Elements:
 
-## GetBoxReceiptReply
+## GetBoxReceiptResponse
 
 Attributes:
 
@@ -225,7 +227,7 @@ Attributes:
 
 Elements:
 
-## GetAccountFilesReply
+## GetAccountFilesResponse
 
 Attributes:
 
@@ -239,7 +241,7 @@ Attributes:
 
 Elements:
 
-## ProcessInboxReply
+## ProcessInboxResponse
 
 Attributes:
 
