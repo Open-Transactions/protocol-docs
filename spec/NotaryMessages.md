@@ -76,16 +76,16 @@ Elements:
 
 ----
 
-## GetTransactionNum
+## GetTransactionNumbers
 
-Requests a new list of [TransactionNumbers](TransactionNumbers.md)
+Requests a new list of transaction numbers.
 
 Attributes:
 
 * `nymboxHash`: Identifier. Hash of the current Nymbox.
 
 
-## GetTransactionNumResponse
+## GetTransactionNumbersResponse
 
 Attributes:
 
