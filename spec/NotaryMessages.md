@@ -12,7 +12,7 @@ a message deriving from `NotaryRequest` and message deriving from
 This document type is the base type for all requests written by the Client and
 read by the Notary.
 
-It has some default attributes that are shared by deriving document types.
+It has some attributes that are shared by deriving document types.
 
 Default Attributes:
 * `NymID`: Identifier. The Nym which makes the request.
