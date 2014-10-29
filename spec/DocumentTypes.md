@@ -63,6 +63,7 @@ attributes and elements.
 
 * Data types that might be included:
    * **Big Integer**
-   * **Double**
+   * **Decimal** (Double will not be
+       supported: http://stackoverflow.com/questions/3730019/)
 * A formal definition of document can be translated into source code.
   [Example (TODO)](CodeFromSpecification.md)
