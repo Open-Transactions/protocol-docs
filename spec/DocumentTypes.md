@@ -1,7 +1,6 @@
 # Document Type
 
-Open-Transactions uses XML (and some hand-written formats) for serialization of
-local data and network messages.
+Open-Transactions uses XML for serialization of local data and network messages.
 
 The specification describes all _Document Types_ that occur in
 Open-Transactions.
