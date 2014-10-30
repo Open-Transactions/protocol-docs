@@ -30,11 +30,12 @@ The XML of this contract extends the superclass using the classical method:
 <notaryProviderContract version="2.0">
     <entity shortname="$shortname"
             longname="$longname"
+            email="$email"
             serverURL="$serverURL">
 
     <notaryServer hostname="$hostname"
                   port="$port"
-                  URL="$url" />
+                  URL="$URL" />
 
     <!-- CreateInnerContents() -->
 </notaryProviderContract>
