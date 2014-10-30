@@ -54,3 +54,13 @@ for readability):
 * `hostname`: The hostname of the server.
 * `port`: The port the server is listening on.
 * `URL`: The URL of the server, which includes the hostname and is the same as the `serverURL`.
+
+# Notes
+Perhaps the `entity` element is reused somewhere. If it is not it might be
+interesting to merge `entity` and `notaryServer` into one element. Both
+elements now describe the same thing. 
+
+Also the attributes `hostname` and `port` seems quite redundant since both can
+(and should) be encoded in the `URL` attribute. Perhaps this was done for the
+benefit of the client. If that is the case one should consider adding the
+attribute `protocol`. These three attributes combine into an URL.
