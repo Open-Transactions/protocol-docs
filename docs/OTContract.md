@@ -111,6 +111,44 @@ inner "default" elements are written when the subclass calls
 * nymID: the Nym doing the signing.
 * altLocation: some optional value passed when creating a Nym.
 
+
+The content of `$nymIDSource` is as follows:
+```xml
+<?xml version="2.0"?>
+<OTuser version="1.0"
+ nymID="voeqDVAJwDwROywFtg5mEyYpcu2dcPJRLFHYh7tyhqk">
+
+  <nymIDSource>
+    $nymIDSource (armored and the same as the earlier defined nymIDSource)
+  </nymIDSource>
+
+  <masterCredential
+   ID="UESzvzSw6zqC7BuvlcHmbPKTmf5BIbG0RNvCTpDx1kH"
+   valid="true"/>
+
+  <keyCredential
+   ID="EvcfMaNJ3fiK4lUVhQNhHmX1Qc3mjlA6q0MS96JXNNO"
+   masterID="UESzvzSw6zqC7BuvlcHmbPKTmf5BIbG0RNvCTpDx1kH"
+   valid="true"/>
+
+</OTuser>
+```
+
+#### Elements
+* OTuser: a container.
+* nymIDSource: a repeatition of the earlier nymIDSource element.
+* masterCredential: TODO: I believe this is the top level key of the set of
+  credentials a Nym has. I though this was only used so sign other keys or
+  something so I don't know why it's included here.
+* keyCredential: presumably one of the encryption or signing keys.
+
+#### Attributes
+* version: the container version.
+* nymID: The ID of the Nym being described.
+* ID: The ID of the (sub)credential.
+* masterID: The ID of the master credential.
+* valid: whether or not this key is still valid. TODO: who/what determines this?
+
 ### Signature Sections
 
 The four-character `Meta` tag is defined as:
