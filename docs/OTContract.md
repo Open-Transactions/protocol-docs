@@ -99,6 +99,18 @@ inner "default" elements are written when the subclass calls
 </rootElement>
 ```
 
+#### Elements
+* signer: the Nym doing the signing.
+* nymIDSource: the source passed to the 'newnym' command when the Nym was
+  created, or the generated public key when nothing was passed.
+* credentialList: a list of public credentials if present.
+* credentials: TODO figure out what this is.
+
+#### Attributes
+* hasCredentials: whether or not the signer has credentials associated with it.
+* nymID: the Nym doing the signing.
+* altLocation: some optional value passed when creating a Nym.
+
 ### Signature Sections
 
 The four-character `Meta` tag is defined as:
