@@ -77,12 +77,12 @@ inner "default" elements are written when the subclass calls
 
 
 <signer hasCredentials="$hasCredentials"
-        nymId="$nymId"
+        nymID="$nymId"
         altLocation="$altLocation">
 
-    <nymIdSource>
-        $nymIdSource (armored)
-    </nymIdSource>
+    <nymIDSource>
+        $nymIDSource (armored)
+    </nymIDSource>
 
     <credentialList>
         $credentialList (armored)
