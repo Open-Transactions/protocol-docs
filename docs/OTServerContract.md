@@ -58,7 +58,8 @@ for readability):
 # Notes
 Perhaps the `entity` element is reused somewhere. If it is not it might be
 interesting to merge `entity` and `notaryServer` into one element. Both
-elements now describe the same thing. 
+elements now describe the same thing. This would also take care of the
+duplicate `serverURL` and `URL` attributes.
 
 Also the attributes `hostname` and `port` seems quite redundant since both can
 (and should) be encoded in the `URL` attribute. Perhaps this was done for the
