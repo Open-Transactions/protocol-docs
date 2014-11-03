@@ -16,7 +16,7 @@ read by the Notary.
 
 * Attribute `nymID`: Identifier. The ID of the Nym which makes the request.
 * Attribute `serverID`: Identifier. The ID of the Notary which should process
-  the request, as defined in the [ServerContract](ServerContract.md).
+  the request, as defined in the ServerContract.
 * Attribute `requestNum`: Integer. The request number.
 
 ## Base Response
@@ -75,13 +75,13 @@ the request was successful.
 
 Requests creation of a new asset account on the Notary.
 
-* Attribute `assetType`: Identifier. ID of the [AssetContract](AssetContract.md).
+* Attribute `assetType`: Identifier. ID of the AssetContract.
 
 
 ## @createAccount
 
 * Attribute `assetType`: Identifier. Same as in Request.
-* Element `newAccount`: Signed [Account](Account.md) document.
+* Element `newAccount`: Signed Account document.
 
 ----
 
@@ -90,13 +90,13 @@ Requests creation of a new asset account on the Notary.
 Request creation of a new _issuer asset account_ on the Notary.
 
 * Attribute `assetTypeID`: Identifier. Hash of the AssetContract.
-* Element `assetContract`: Signed document of type [AssetContract](AssetContract.md).
+* Element `assetContract`: Signed document of type AssetContract.
 
 ## @issueAssetType
 
 * Attribute `accountID`: Identifier.
 * Attribute `assetType`: Identifier. Hash of AssetContract.
-* Element `issuerAccount`: Signed document of type [Account](Account.md).
+* Element `issuerAccount`: Signed document of type Account.
 
 ----
 
@@ -131,7 +131,7 @@ what the current one is.
 
 ## getNymbox
 
-Requests current [Nymbox](Nymbox.md).
+Requests current Nymbox.
 
 ## @getNymbox
 
