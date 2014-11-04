@@ -187,3 +187,14 @@ Requests a transaction receipt from a Nymbox, Inbox or Outbox.
 * Element `responseLedger`. Document of type OTledger.
 
 
+----
+
+# References
+
+* [OTMessage::UpdateContents()](https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/core/OTMessage.cpp#L298).
+  Ctrl-F for `$UserCommand` or `At$UserCommand` in order to see the see the
+  serialization for the different subtypes.
+* [OT_API](https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/client/OpenTransactions.cpp).
+  This is where the `OTMessage` is initialized and the sub-documents are built.
+* [OTClient](https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/client/OTClient.cpp).
+  This is where server replies are processed.
