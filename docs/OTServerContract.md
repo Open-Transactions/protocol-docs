@@ -42,18 +42,16 @@ for readability):
     <!-- CreateInnerContents() -->
 </notaryProviderContract>
 ```
-## Elements
-* `Entity`: The server this contract is about.
-* `notaryServer`: The technical details about this server.
-
-## Attributes
-* `shortname`: An arbitrary name chosen by the server.
-* `longname`: A, presumably longer, arbitrary name chosen by the server.
-* `email`: The email address of the server.
-* `serverURL`: The URL of the server.
-* `hostname`: The hostname of the server.
-* `port`: The port the server is listening on.
-* `URL`: The URL of the server, which includes the hostname and is the same as the `serverURL`.
+## Elements and attributes
+* Element `entity`: The legal entity this contract is about.
+  * Attribute `shortname`: An arbitrary name chosen upon creation of the entity.
+  * Attribute `longname`: A, presumably longer, arbitrary name chosen upon creation of the entity.
+  * Attribute `email`: The email address of the entity.
+  * Attribute `serverURL`: The URL of the server with which the entity is registered.
+* Element `notaryServer`: The technical details about the notary the entity is registered.
+  * Attribute `hostname`: The hostname of the server.
+  * Attribute `port`: The port the server is listening on.
+  * Attribute `URL`: The URL of the server, which includes the hostname and is the same as the `serverURL`.
 
 # Notes
 Perhaps the `entity` element is reused somewhere. If it is not it might be
