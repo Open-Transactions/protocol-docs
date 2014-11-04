@@ -1,4 +1,4 @@
-# OTServerContract Summary
+# Document type `<notaryProviderContract>`
 
 This class derives from [OTContract](OTContract.md) and provides methods for
 creating an loading authenticated server references.
