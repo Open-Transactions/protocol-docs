@@ -1,11 +1,12 @@
 An new version of these document types can be found in the
 [NotaryMessage.md](../spec/NotaryMessage.md) directory.
 
-# Document Type _OTmessage_
+# Document Type `<OTmessage>`
 
 * Attribute `version`: Integer.
 * Attribute `dateSigned`: Timestamp.
 * Element that is instance of document type _UserCommand_.
+* Optional element `ackReplies`. ASCII-Armored list of seen server replies.
 
 # Base Document Type _UserCommand_
 
