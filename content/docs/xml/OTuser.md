@@ -32,12 +32,12 @@
   set of credentials a Nym has. I though this was only used so sign other keys
   or something so I don't know why it's included here.
   * Attribute `ID`: Identifier. The ID of the (sub)credential.
-  * Attribute `valid`: String. Whether or not this key is still valid. TODO: who/what
+  * Attribute `valid`: Boolean. Whether or not this key is still valid. TODO: who/what
     determines this?
 * Element `keyCredential`: presumably one of the encryption or signing keys.
   * Attribute `masterID`: Identifier. The ID of the master credential.
   * Attribute `ID`: Identifier. The ID of the (sub)credential.
-  * Attribute `valid`: String. Whether or not this key is still valid. TODO: who/what
+  * Attribute `valid`: Boolean. Whether or not this key is still valid. TODO: who/what
     determines this?
 
 ## References
