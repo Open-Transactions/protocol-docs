@@ -1,12 +1,12 @@
-An new version of these document types can be found in the
-[NotaryMessage.md](../spec/NotaryMessage.md) directory.
+An new version of these document types can be found in
+[spec/NotaryMessage.md](../spec/NotaryMessage.md).
 
 # Document Type `<OTmessage>`
 
-* Attribute `version`: Integer.
+* Attribute `version`: String. Hard-coded to be `2.0`.
 * Attribute `dateSigned`: Timestamp.
 * Element that is instance of document type _UserCommand_.
-* Optional element `ackReplies`. ASCII-Armored list of seen server replies.
+* Optional element `ackReplies`. Armored list of seen server replies.
 
 # Base Document Type _UserCommand_
 
@@ -32,16 +32,7 @@ prefixed with the at symbol (`@`).
 * Attribute `serverID`: Identifier. The ID of the responding Notary.
 * Attribute `requestNum`: Integer. Same as in the request.
 * Attribute `success`: Boolean. Indicates whether request was successful.
-* Element `inResponseTo`: ASCII-Armored text. The original request. Always the
-  last element inside document body.
-
-## Reoccurring Attributes
-
-Some attribute types that only occur for some subtypes:
-
-* Attribute `nymboxHash`: Identifier. Hash of the Nymbox.
-* Attribute `accountID`: Identifier. Specifies the asset account the request is
-    for.
+* Element `inResponseTo`: Armored text. The original request.
 
 
 # User Commands
@@ -55,20 +46,20 @@ Requests the registration of a new Nym on the Notary.
 
 ## @createUserAccount
 
-* Element `nymfile`: Contains a signed document of type Nymfile.
+* Element `nymfile`: Contains a signed document of type `<OTuser>`.
 
 ----
 
 ## getTransactionNum
 
-Requests a new list of transaction numbers. The list will  be in the Nymbox if
+Requests a new list of transaction numbers. The list will be in the Nymbox if
 the request was successful.
 
-* Attribute `nymboxHash`: Identifier.
+* Attribute `nymboxHash`: Identifier. TODO.
 
 ## @getTransactionNum
 
-* Attribute `nymboxHash`: Identifier.
+* Attribute `nymboxHash`: Identifier. TODO.
 
 ----
 
@@ -81,8 +72,8 @@ Requests creation of a new asset account on the Notary.
 
 ## @createAccount
 
-* Attribute `assetType`: Identifier. Same as in Request.
-* Element `newAccount`: Signed Account document.
+* Attribute `assetType`: Identifier. Same as in request.
+* Element `newAccount`: Signed document of type `<assetAccount>`.
 
 ----
 
@@ -90,31 +81,31 @@ Requests creation of a new asset account on the Notary.
 
 Request creation of a new _issuer asset account_ on the Notary.
 
-* Attribute `assetTypeID`: Identifier. Hash of the AssetContract.
+* Attribute `assetType`: Identifier. Hash of the AssetContract.
 * Element `assetContract`: Signed document of type AssetContract.
 
 ## @issueAssetType
 
 * Attribute `accountID`: Identifier.
 * Attribute `assetType`: Identifier. Hash of AssetContract.
-* Element `issuerAccount`: Signed document of type Account.
+* Element `issuerAccount`: Signed document of type `<assetAccount>`.
 
 ----
 
-## notarizeTransaction
+## notarizeTransactions
 
 Requests the notarization of a transaction. TODO more detail.
 
-* Attribute `nymboxHash`: Identifier.
+* Attribute `nymboxHash`: Identifier. TODO.
 * Attribute `accountID`: Identifier.
-* Element `transaction`: Signed document of type `OTledger` that only has one
-    item.
+* Element `transaction`: Signed document of type `<accountLedger>` that only has
+  one item.
 
-## @notarizeTransaction
+## @notarizeTransactions
 
 * Attribute `accountID`: Identifier.
-* Element `responseTransaction`: Signed document of type OTledger that only has
-    one item.
+* Element `responseTransaction`: Signed document of type `<accountLedger>` that
+  only has one item.
 
 ----
 
@@ -125,7 +116,7 @@ what the current one is.
 
 ## @getRequestNum
 
-* Attribute `nymboxHash`: Identifier.
+* Attribute `nymboxHash`: Identifier. TODO.
 * Attribute `newRequestNum`: Integer. Next request number to be used (?).
 
 ----
@@ -136,8 +127,8 @@ Requests current Nymbox.
 
 ## @getNymbox
 
-* Attribute `nymboxHash`: Identifier.
-* Element `nymboxLedger`: Document of type OTledger.
+* Attribute `nymboxHash`: Identifier. TODO.
+* Element `nymboxLedger`: Document of type `<accountLedger>`.
 
 ----
 
@@ -178,14 +169,14 @@ Requests a transaction receipt from a Nymbox, Inbox or Outbox.
 
 ## processInbox
 
-* Attribute `nymboxHash`: Identifier.
+* Attribute `nymboxHash`: Identifier. TODO.
 * Attribute `accountID`: Identifier.
-* Element `processLedger`. Document of type OTledger.
+* Element `processLedger`. Document of type `<accountLedger>`.
 
 ## @processInbox
 
 * Attribute `accountID`: Identifier.
-* Element `responseLedger`. Document of type OTledger.
+* Element `responseLedger`. Document of type `<accountLedger>`.
 
 
 ----
