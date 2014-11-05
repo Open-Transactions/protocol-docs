@@ -11,7 +11,7 @@ After a command is issued the resulting message is transformed several times bef
 4. Then [armored](armoring.md).
 5. Finally send.
 
-![Data transformations](command_flow_client_to_server.png)
+![Data transformations](../img/command_flow_client_to_server.png)
 
 ## Conceptual steps
 For each RPC `<command>`:

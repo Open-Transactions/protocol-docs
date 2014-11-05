@@ -136,7 +136,7 @@ message_ to the Notary, which replies with a _response message_.
 
 1. *Authenticity*: Open-Transactions solves this problem with the concept of a
 Nym and public-key cryptography. The actual message, encoded in XML, is wrapped
-inside a container format ([SectionFormat.md](spec/SectionFormat.md)) that
+inside a container format ([Section Format](SectionFormat.md)) that
 separates content and signatures.  The sender declares his identity in the
 message attribute `nymID`, specifies the intended recipient in the message
 `serverID` and declares the chronological order in the `requestNum` attribute.

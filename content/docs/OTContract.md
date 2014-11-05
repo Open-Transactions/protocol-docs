@@ -14,7 +14,7 @@ A Contract has
 * A list of signatures
 
 A specification that is compatible with documents written by OTContract
-can be found in [SectionFormat.md](../spec/SectionFormat.md).
+can be found in [Section Format](../spec/SectionFormat.md).
 
 ## Creation
 
