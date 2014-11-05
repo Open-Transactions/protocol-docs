@@ -2,7 +2,7 @@
 
 The opentxs class [`OTASCIIArmor`][OTASCIIArmorCpp] defines an encoding for
 certain data types to an array of printable ASCII characters. This is useful in
-two contexts:
+three contexts:
 
 * Embedding binary data in a plain-text document. The _Section Format_ used in
   [OTContract](OTContract.md) is defined as a document that is readable by
