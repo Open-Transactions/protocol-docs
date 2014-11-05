@@ -2,7 +2,6 @@
 
 ## Example
 ```xml
-<?xml version="2.0"?>
 <OTuser version="1.0"
  nymID="voeqDVAJwDwROywFtg5mEyYpcu2dcPJRLFHYh7tyhqk">
 
