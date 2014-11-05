@@ -5,8 +5,8 @@ the client and creating a call reply on the server. It uses the XML
 serialization and deserialization systems inherited from the parent class
 [`OTContract`](OTContract.md).
 
-This document explains and describes the creation, serialization,
-deserialization and execution of the messages created by this class.
+The document type created by this class is documented in
+[xml/OTMessage.md](xml/OTMessage.md).
 
 ## Commands
 
@@ -83,52 +83,6 @@ The server responds with a reply:
 
 ## Implementation in Opentxs
 
-### Creation
-
-The command-specific message creation on the client side happens in
-[`OTClient::ProcessUserCommand(command, message, nym)`][ProcessUserCommand].
-The switch happens on the enum [`OT_CLIENT_CMD_TYPE`][EnumCmdType]. Each `case`
-block contains these types of actions:
-
-* Prepare necessary attributes (initialize nym, get balance)
-* Set attributes
-* Set request number (TODO explain)
-* Add signature
-
-The message creation on the server side happens in TODO
-
-### Serialization
-
-After the attributes and the command type is set, the message is serialized in
-side [`OTMessage::UpdateContents()`][UpdateContents].
-
-The method consists of (what is equivalent to) a very, very long switch on the
-`strCommand` attribute that was set previously. If the attribute starts with the
-`@` character, a server reply is being serialized that matches the request.
-
-The serialization outputs a single XML element with the `strCommand` as the
-element name and the other class attributes as XML element attributes. Common
-class attributes are
-
-* `requestNum`
-* `nymId`
-* `serverId`
-
-Server replies usually contain the attribute `success` and an element
-`messagePayload` that is conditional on the successful execution of the request.
-
-
-### Deserialization
-
-The deserialization happens in [`OTMessage::ProcessXMLNode`][ProcessXMLNode] and
-mirrors the serialization process. There is a switch on the XML element name
-being read. The command string and other class attributes are set accordingly
-when there is a match.
-
-Note that XML elements are processed in the orderas they are found in the
-document. A later definition of a command overrides a previous one (but doesn't
-clear the attributes).
-
 ### Execution
 
 The server processes received client commands in
@@ -138,48 +92,6 @@ server reply message is preparted. The reply message has the "command string" of
 the request with a leading `@` sign.
 
 # Example: analysis of `createUserAccount`
-
-### Construction
-
-In `case (OTClient::createUserAccount)`[Construction_createUserAccount]:
-
-* Initialize Nym that is to be registered
-* Set attributes `nymId` and `serverId`
-* Set request number
-* Sign with Nym
-
-### Serialization
-
-In [`if (strNode.Compare("createUserAccount"))`][Serialization_createUserAccount]:
-
-Creates this XML:
-
-```
-<createUserAccount
-    requestNum="$requestNum"
-    nymId="$nymId"
-    serverId="$serverId">
-
-    <credentialList>
-        $credentialList (ascii-armored)
-    </credentialList>
-
-    <credentials>
-        $credentials (ascii-armored)
-    </credentials>
-
-</credentials>
-```
-
-### Deserialization
-
-Once the message is received on the server side, it is deserialized in
-[`OTMessage::ProcessXMLNode()`][Deserialization_CreateUserAccount]
-
-* Reads attributes `requestNum`, `nymId` and `serverId`.
-
-* Reads `credentialList` element into field `ascPayload` and `credentials`
-  element into field `ascPayload2`.
 
 ### Execution
 
