@@ -99,51 +99,17 @@ inner "default" elements are written when the subclass calls
 </rootElement>
 ```
 
-#### Elements
-* signer: the Nym doing the signing.
-  * hasCredentials: whether or not the signer has credentials associated with it.
-  * nymID: the Nym doing the signing.
-  * altLocation: some optional value passed when creating a Nym.
-* nymIDSource: the source passed to the 'newnym' command when the Nym was
-  created, or the generated public key when nothing was passed.
-* credentialList: a list of public credentials if present.
-* credentials: TODO figure out what this is.
-
-The content of `$nymIDSource` is as follows:
-```xml
-<?xml version="2.0"?>
-<OTuser version="1.0"
- nymID="voeqDVAJwDwROywFtg5mEyYpcu2dcPJRLFHYh7tyhqk">
-
-  <nymIDSource>
-    $nymIDSource (armored and the same as the earlier defined nymIDSource)
-  </nymIDSource>
-
-  <masterCredential
-   ID="UESzvzSw6zqC7BuvlcHmbPKTmf5BIbG0RNvCTpDx1kH"
-   valid="true"/>
-
-  <keyCredential
-   ID="EvcfMaNJ3fiK4lUVhQNhHmX1Qc3mjlA6q0MS96JXNNO"
-   masterID="UESzvzSw6zqC7BuvlcHmbPKTmf5BIbG0RNvCTpDx1kH"
-   valid="true"/>
-
-</OTuser>
-```
-
-#### Elements
-* OTuser: a container.
-  * version: the container version.
-  * nymID: The ID of the Nym being described.
-* nymIDSource: a repeatition of the earlier nymIDSource element.
-* masterCredential: TODO: I believe this is the top level key of the set of
-  credentials a Nym has. I though this was only used so sign other keys or
-  something so I don't know why it's included here.
-  * ID: The ID of the (sub)credential.
-  * masterID: The ID of the master credential.
-  * valid: whether or not this key is still valid. TODO: who/what determines this?
-* keyCredential: presumably one of the encryption or signing keys.
-  * The attributes are the same as for masterCredential.
+#### Elements and attributes
+* Element `condition`: a human readable piece of (legal) text.
+* Element `signer`: the Nym doing the signing.
+  * Attribute `hasCredentials`: whether or not the signer has credentials associated with it.
+  * Attribute `nymID`: the Nym doing the signing.
+  * Attribute `altLocation`: some optional value passed when creating a Nym.
+* Element `nymIDSource`: the source passed to the 'newnym' command when the Nym
+  was created, or the generated public key when nothing was passed.
+* Element `credentialList`: a list of public credentials if present.See
+  [OTuser](xml/OTuser.md).
+* Element `credentials`: TODO figure out what this is.
 
 ### Signature Sections
 
