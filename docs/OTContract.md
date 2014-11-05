@@ -77,12 +77,12 @@ inner "default" elements are written when the subclass calls
 
 
 <signer hasCredentials="$hasCredentials"
-        nymId="$nymId"
+        nymID="$nymId"
         altLocation="$altLocation">
 
-    <nymIdSource>
-        $nymIdSource (armored)
-    </nymIdSource>
+    <nymIDSource>
+        $nymIDSource (armored)
+    </nymIDSource>
 
     <credentialList>
         $credentialList (armored)
@@ -98,6 +98,18 @@ inner "default" elements are written when the subclass calls
 
 </rootElement>
 ```
+
+#### Elements and attributes
+* Element `condition`: a human readable piece of (legal) text.
+* Element `signer`: the Nym doing the signing.
+  * Attribute `hasCredentials`: whether or not the signer has credentials associated with it.
+  * Attribute `nymID`: the Nym doing the signing.
+  * Attribute `altLocation`: some optional value passed when creating a Nym.
+* Element `nymIDSource`: the source passed to the 'newnym' command when the Nym
+  was created, or the generated public key when nothing was passed.
+* Element `credentialList`: a list of public credentials if present.See
+  [OTuser](xml/OTuser.md).
+* Element `credentials`: TODO figure out what this is.
 
 ### Signature Sections
 
