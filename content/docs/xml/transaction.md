@@ -1,7 +1,12 @@
 # Document Type `<transaction>`
 
+
+Contained in [`<accountLedger>` documents](accountLedger.md).
+
 Transactions can either be _full_ or _abbreviated_. They are abbreviated when
-inside `OTledger`, except `OTMessage`, which is not abbreviated there.
+inside `<accountLedger>`, except `<OTmessage>`.
+
+Full transactions contain a list of [`<item>` documents](item.md).
 
 # Base Document Type
 
@@ -63,7 +68,7 @@ Possible values for the `type` attribute. Taken from `OTTransaction.hpp`.
 * Optional element `inReferenceTo`. ASCII-Armored document. TODO
 * Optional element `cancelRequest`. ASCII-Armored document. TODO
 * List of ASCII-Armored `<item>` elements.
-  See [Document Type `<item>`](OTItem.md).
+  See [Document Type `<item>`](item.md).
 
 
 ## Document Types: Abbreviated Form
@@ -79,7 +84,7 @@ These attributes are common for all abbreviated records (?)
 * Attribute `inRefDisplay`: Integer. TODO
 * Attribute `inReferenceTo`: Integer. TODO
 
-If `type` is `OTTransaction::finalReceipt` or `OTTransaction::basketReceipt`:
+If `type` is `finalReceipt` or `basketReceipt`:
 
 * Attribute `closingNum`: Integer. TODO
 
@@ -120,4 +125,4 @@ Possible improvements
 
 * Use composition over inheritance.
 * Use document types over `type` attribute.
-* Move `message` type in particular is out of place.
+* The `message` type in particular is out of place.

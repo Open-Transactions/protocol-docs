@@ -1,6 +1,6 @@
 # Document Type `<accountLedger>`
 
-Typed container of abbreviated transactions.
+Typed container of abbreviated [<transaction> documents](transaction.md).
 
 ## Structure
 
@@ -10,9 +10,8 @@ Typed container of abbreviated transactions.
 * Attribute `accountID`: Identifier.
 * Attribute `userID`: Identifier. The Nym the ledger belongs to.
 * Attribute `serverID`: Identifier. The Notary the ledger is stored with.
-* List of ASCII-Armored `transaction` elements. Only ledgers of type
-    `message` are not stored in abbreviated form. See [Document Type
-    `<transaction>`](OTTransaction.md)
+* List of ASCII-Armored [`<transaction>` documents](transaction.md). Only
+  ledgers of type `message` are not stored in abbreviated form.
 
 ## Ledger Types
 

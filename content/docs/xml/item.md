@@ -1,8 +1,11 @@
 # Document Type `<item>`
 
+Contained in unabbreviated [`<transaction> documents`](transaction.md).
+
 Quote from comment in `OTItem.hpp`:
 
 > Item as in "Transaction Item"
+
 > An OTLedger contains a list of transactions (pending transactions, inbox or
 outbox.) Each transaction has a list of items that make up that transaction.
 I think that the Item ID shall be the order in which the items are meant to be
