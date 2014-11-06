@@ -41,12 +41,12 @@ prefixed with the at symbol (`@`).
 
 Requests the registration of a new Nym on the Notary.
 
-* Element `credentialList`: TODO.
-* Element `credentials`: TODO.
+* Element `credentialList`: Contains armored [`<OTuser>` document](OTuser.md).
+* Element `credentials`: Armored key-value pairs of credentials. TODO.
 
 ## @createUserAccount
 
-* Element `nymfile`: Contains a signed [`<OTuser>` document](OTuser.md).
+* Element `nymfile`: Contains [`<OTuser>` document](OTuser.md).
 
 ----
 
@@ -71,7 +71,7 @@ Requests creation of a new asset account on the Notary.
 
 ## @createAccount
 
-* Attribute `assetType`: Identifier. Same as in request.
+* Attribute `accountID`: Identifier.
 * Element `newAccount`: Signed [`<assetAccount>` document](assetAccount.md).
 
 ----
@@ -99,23 +99,23 @@ Requests the notarization of a transaction. TODO more detail.
 * Attribute `nymboxHash`: Identifier. Optional. Request will fail if it doesn't
     match the server version.
 * Attribute `accountID`: Identifier.
-* Element `transaction`: Signed document of type `<accountLedger>` that only has
+* Element `accountLedger`: Signed document of type `<accountLedger>` that only has
   one `<transaction>`.
 
 ## @notarizeTransactions
 
 * Attribute `accountID`: Identifier.
-* Element `responseTransaction`: Signed document of type `<accountLedger>` that
+* Element `responseLedger`: Signed document of type `<accountLedger>` that
   only has one `<transaction>`.
 
 ----
 
-## getRequestNum
+## getRequest
 
 Get the current request number from the Notary. When the client doesn't know
 what the current one is.
 
-## @getRequestNum
+## @getRequest
 
 * Attribute `nymboxHash`: Identifier. TODO.
 * Attribute `newRequestNum`: Integer. Next request number to be used (?).
@@ -128,8 +128,8 @@ Requests current Nymbox.
 
 ## @getNymbox
 
-* Attribute `nymboxHash`: Identifier. TODO.  Element `nymboxLedger`:
-  [`<accountLedger>` document](accountLedger.md) of type `nymbox`.
+* Attribute `nymboxHash`: Identifier. TODO.
+* Element `nymboxLedger`: [`<accountLedger>` document](accountLedger.md) of type `nymbox`.
 
 ----
 
@@ -163,7 +163,7 @@ Requests a transaction receipt from a Nymbox, Inbox or Outbox.
 * Attribute `accountID`: Identifier.
 * Attribute `inboxHash`: Identifier. Hash of the contained Inbox.
 * Attribute `outboxHash`: Identifier. Hash of the contained Outbox.
-* Element `acctFiles`: The account files.
+* Element `acctFiles`: The account files as armored key-value pairs. Keys are `account`, `inbox`, `outbox`.
   * TODO document sub-elements
 
 ----
