@@ -46,7 +46,7 @@ Requests the registration of a new Nym on the Notary.
 
 ## @createUserAccount
 
-* Element `nymfile`: Contains a [`<OTuser>` document](OTuser.md).
+* Element `nymfile`: Contains a signed [`<OTuser>` document](OTuser.md).
 
 ----
 
