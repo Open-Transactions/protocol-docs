@@ -1,6 +1,6 @@
 # Document Type `<accountLedger>`
 
-Typed container of abbreviated [<transaction> documents](transaction.md).
+Typed container of abbreviated [`<transaction>` documents](transaction.md).
 
 ## Structure
 

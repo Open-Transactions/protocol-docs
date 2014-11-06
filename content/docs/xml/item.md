@@ -1,6 +1,6 @@
 # Document Type `<item>`
 
-Contained in unabbreviated [`<transaction> documents`](transaction.md).
+Contained in unabbreviated [`<transaction>` documents](transaction.md).
 
 Quote from comment in `OTItem.hpp`:
 
