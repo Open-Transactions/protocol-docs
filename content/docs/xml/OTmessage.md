@@ -100,13 +100,13 @@ Requests the notarization of a transaction. TODO more detail.
     match the server version.
 * Attribute `accountID`: Identifier.
 * Element `transaction`: Signed document of type `<accountLedger>` that only has
-  one item.
+  one `<transaction>`.
 
 ## @notarizeTransactions
 
 * Attribute `accountID`: Identifier.
 * Element `responseTransaction`: Signed document of type `<accountLedger>` that
-  only has one item.
+  only has one `<transaction>`.
 
 ----
 
@@ -128,8 +128,8 @@ Requests current Nymbox.
 
 ## @getNymbox
 
-* Attribute `nymboxHash`: Identifier. TODO.
-* Element `nymboxLedger`: Document of type `<accountLedger>`.
+* Attribute `nymboxHash`: Identifier. TODO.  Element `nymboxLedger`:
+  [`<accountLedger>` document](accountLedger.md) of type `nymbox`.
 
 ----
 
@@ -172,12 +172,14 @@ Requests a transaction receipt from a Nymbox, Inbox or Outbox.
 
 * Attribute `nymboxHash`: Identifier. TODO.
 * Attribute `accountID`: Identifier.
-* Element `processLedger`. Document of type `<accountLedger>`.
+* Element `processLedger`. Armored [`<accountLedger>`
+    document](accountLedger.md).
 
 ## @processInbox
 
 * Attribute `accountID`: Identifier.
-* Element `responseLedger`. Document of type `<accountLedger>`.
+* Element `responseLedger`. Armored [`<accountLedger>`
+    document](accountLedger.md).
 
 
 ----
