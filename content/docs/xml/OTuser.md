@@ -22,9 +22,8 @@
 ```
 
 ## Elements and attributes
-* Element `OTuser`: a container.
-  * Attribute `version`: String. the container version.
-  * Attribute `nymID`: Identifier. The ID of the Nym being described.
+* Attribute `version`: String. the container version.
+* Attribute `nymID`: Identifier. The ID of the Nym being described.
 * Element `nymIDSource`: the source passed to the 'newnym' command when the Nym
   was created, or the generated public key when nothing was passed. This is a
   repeatition of the earlier nymIDSource element.
