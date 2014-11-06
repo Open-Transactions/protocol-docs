@@ -9,7 +9,7 @@ the XML structures that are created by `opentxs`.
 
 * [Document Type `<notaryProviderContract>`](content/docs/xml/notaryProviderContract.md)
 * [Document Type `<digitalAssetContract>`](content/docs/xml/digitalAssetContract.md)
-* [Document Type `<OTuser>`](content/docs/xml/notaryProviderContract.md)
+* [Document Type `<OTuser>`](content/docs/xml/OTuser.md)
 * [Document Type `<OTmessage>`](content/docs/xml/OTmessage.md)
 * [Document Type `<accountLedger>`](content/docs/xml/accountLedger.md)
 * [Document Type `<transaction>`](content/docs/xml/transaction.md)
