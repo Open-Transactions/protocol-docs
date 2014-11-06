@@ -36,9 +36,3 @@ please hard-wrap text at 72 chars, and code blocks at 79.
 
 Please use links to commit hashes, not to branches (hit the `y` key if you are
 looking at a file on Github to get a stable link).
-
-
-Recommended vim settings:
-```
-set textwidth=72 wrap linebreak nolist
-```
