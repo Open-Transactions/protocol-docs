@@ -27,9 +27,9 @@ single entity, not the item. A transaction contains a list of items.
 * Attribute `fromAccountID`. Identifier.
 * Attribute `toAccountID`. Identifier.
 * Attribute `inReferenceTo`. Integer.
-* Optional element `note`. ASCII-Armored. TODO
-* Optional element `inReferenceTo`. ASCII-Armored. TODO
-* Optional element `attachment`. ASCII-Armored. TODO
+* Optional element `note`. Armored. TODO
+* Optional element `inReferenceTo`. Armored. TODO
+* Optional element `attachment`. Armored. TODO
 * If type is `balanceStatment`: Element `transactionReport`
     * Attribute `type`. String. Specifies receipt type. TODO.
     * Attribute `adjustment`. Integer.

@@ -65,10 +65,9 @@ Possible values for the `type` attribute. Taken from `OTTransaction.hpp`.
 
 ## Document Type: Full Form
 
-* Optional element `inReferenceTo`. ASCII-Armored document. TODO
-* Optional element `cancelRequest`. ASCII-Armored document. TODO
-* List of ASCII-Armored `<item>` elements.
-  See [Document Type `<item>`](item.md).
+* Optional element `inReferenceTo`. Armored document. TODO
+* Optional element `cancelRequest`. Armored document. TODO
+* List of armored [`<item>` documents](item.md).
 
 
 ## Document Types: Abbreviated Form
