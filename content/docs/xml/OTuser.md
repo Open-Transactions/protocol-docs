@@ -39,6 +39,11 @@
   * Attribute `valid`: Boolean. Whether or not this key is still valid. TODO: who/what
     determines this?
 
+## Notes
+This document type is often embedded in other document types which already
+include `nymIDSource` leading to some duplication here. TODO it's unclear how
+prevalent this is or whether it is necessary to correct this.
+
 ## References
 * [OTPseudonym::OTPseudonym::SavePseudonym](https://github.com/Open-Transactions/opentxs/blob/0de3b72/src/core/OTPseudonym.cpp#L4273)
 * [OTPseudonym::SaveCredentialListToString](https://github.com/Open-Transactions/opentxs/blob/0de3b72/src/core/OTPseudonym.cpp#L4098)
