@@ -1,6 +1,16 @@
 # Document type `<notaryProviderContract>`
 
-Inherits from base document type [Contract.md].
+Previously know as _server contract_.
+
+Defines the terms and conditions of a Notary, as well as methods to connect to
+that notary.
+
+The hash of the `notaryProviderContract` yields the `serverID`.
+
+A request to a Notary that has the `serverID` attribute implies that the client
+agrees with the terms and conditions in the contract.
+
+Inherits from base document type OTContract. TODO
 
 ## Structure
 
@@ -13,4 +23,3 @@ Inherits from base document type [Contract.md].
   * Attribute `hostname`: The hostname of the server.
   * Attribute `port`: The port the server is listening on.
   * Attribute `URL`: The URL of the server, which includes the hostname and is the same as the `serverURL`.
-
