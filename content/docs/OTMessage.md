@@ -3,7 +3,7 @@
 The `OTMessage` class is used for creating certain remote procedure calls from
 the client and creating a call reply on the server. It uses the XML
 serialization and deserialization systems inherited from the parent class
-[`OTContract`](OTContract.md).
+[OTContract](OTContract.md).
 
 The document type created by this class is documented in
 [xml/OTMessage.md](xml/OTMessage.md).
@@ -108,7 +108,7 @@ The re-assembled `OTMessage` object is processed in the conditional block
 
 
 * Some command names can be improved. The `createUserAccount` name should match
-    the command `registerNym` in the `opentxs` shell and API. See 
+    the command `registerNym` in the `opentxs` shell and API. See
 * `ProcessUserCommand` relies on `stdin` for some messages
 * OTMessage is too generic to handle all the specific subtypes.
 * There should only be one command type element allowed in a OTMessage.

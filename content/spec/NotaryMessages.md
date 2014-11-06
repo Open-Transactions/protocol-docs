@@ -17,9 +17,9 @@ It has some attributes that are shared by deriving document types.
 Default Attributes:
 * `nymID`: Identifier. The ID of the Nym which makes the request.
 * `notaryID`: Identifier. The ID of the Notary which should process the request,
-  as defined in the [ServerContract](ServerContract.md).
+  as defined in the [Server Contract](../docs/xml/ServerContract.md).
 * `requestNum`: Integer. The index of the current request being sent.
-  See [RequestNumbers](RequestNumbers.md) for more information.
+  See [Request Numbers](RequestNumbers.md) for more information.
 
 
 ## NotaryResponse
@@ -102,7 +102,7 @@ Requests creation of a new account.
 
 Attributes:
 
-* `assetTypeID`: Identifier. ID of the [AssetContract](AssetContract.md).
+* `assetTypeID`: Identifier. ID of the [Asset Contract](AssetContract.md).
 
 
 ## CreateAccountResponse
@@ -132,7 +132,7 @@ Attributes:
 
 Elements:
 
-* `AssetContract`: Signed document of type [AssetContract](AssetContract.md).
+* `AssetContract`: Signed document of type [Asset Contract](AssetContract.md).
 
 ## IssueAssetTypeResponse
 
@@ -247,4 +247,3 @@ Elements:
 Attributes:
 
 Elements:
-

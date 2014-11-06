@@ -59,7 +59,7 @@ attributes and elements.
 
 ## Example
 
-* The document types described in the [NotaryMessages](NotaryMessages.md)
+* The document types described in the [Notary Messages](NotaryMessages.md)
   document.
 
 # Notes

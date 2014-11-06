@@ -60,7 +60,7 @@ passed.
 
 The class supports methods for writing section markers around the encoded data
 using the method `OTASCIIArmor::WriteArmoredString()`. The format is defined in
-[SectionFormat.md](../spec/SectionFormat.md).
+[Section Format](../spec/SectionFormat.md).
 
 
 ## Decoding Algorithm
@@ -307,4 +307,3 @@ This would probably also allow a higher compression level.
 [CreateInnerContents]: https://github.com/Open-Transactions/opentxs/blob/develop/src/core/OTContract.cpp#L2172
 
 [Opentxs295]: https://github.com/Open-Transactions/opentxs/issues/295
-

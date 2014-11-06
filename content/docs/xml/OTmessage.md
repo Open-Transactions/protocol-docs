@@ -1,5 +1,5 @@
-An new version of these document types can be found in
-[spec/NotaryMessage.md](../spec/NotaryMessage.md).
+A new version of these document types can be found in
+[Notary Messages](../../spec/NotaryMessages.md).
 
 # Document Type `<OTmessage>`
 
