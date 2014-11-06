@@ -4,14 +4,11 @@ Documentation for the current opentxs protocol and spec for a new version.
 
 ## Protocol Documentation
 
-The directory [content/docs/](content/docs/)
-summarizes the parsing and serialization methods of various classes in
-`opentxs`.
+
+### Document Types
 
 The directory [content/docs/xml/](content/docs/xml/) contains descriptions of
 the XML structure that is created.
-
-### Document Types
 
 * [Document Type `<OTuser>`](content/docs/xml/notaryProviderContract.md)
 * [Document Type `<notaryProviderContract>`](content/docs/xml/notaryProviderContract.md)
@@ -21,12 +18,14 @@ the XML structure that is created.
   * [Document Type `<transaction>`](content/docs/xml/transaction.md)
     * [Document Type `<item>`](content/docs/xml/item.md)
 
-### Encodings
-
-* [Armoring](content/docs/OTASCIIArmor.md)
 
 ### Implementation
 
+The directory [content/docs/](content/docs/)
+summarizes the parsing and serialization methods of various classes in
+`opentxs`.
+
+* [OTASCIIArmor](content/docs/OTASCIIArmor.md)
 * [OTContract](content/docs/OTContract.md)
   * [OTMessage](content/docs/OTMessage.md)
   * [OTTransactionType](content/docs/OTTransactionType.md) (TODO)
@@ -37,25 +36,11 @@ the XML structure that is created.
 
 ### Guidelines
 
-The goal is to provide summaries for the various message types. Message types
-are strongly correlated to classes that derive from
-[OTContract.cpp](https://github.com/Open-Transactions/opentxs/blob/3d651e813b20
-5d44a467b2c91ee7782a8d4ebe5a/src/client/OTClient.cpp), so it makes sense to
-just write a summary for each deriving class and write a _Notes_ section that
-describe improvements or other observations.
-
-The communication system is defined by these classes (non-exhaustive)
-
-* [OTClient.cpp](https://github.com/Open-Transactions/opentxs/blob/3d651e813b205d44a467b2c91ee7782a8d4ebe5a/src/client/OTClient.cpp#L8905)
-* [UserCommandProcessor.cpp](https://github.com/Open-Transactions/opentxs/blob/3d651e813b205d44a467b2c91ee7782a8d4ebe5a/src/server/UserCommandProcessor.cpp#L166)
-* [OTServerContract](https://github.com/Open-Transactions/opentxs/blob/3d651e813b205d44a467b2c91ee7782a8d4ebe5a/src/core/OTServerContract.cpp)
-* [OTServerConnection](https://github.com/Open-Transactions/opentxs/blob/3d651e813b205d44a467b2c91ee7782a8d4ebe5a/src/client/OTServerConnection.cpp)
-
 Please use links to commit hashes, not to branches (hit the `y` key if you are
 looking at a file on Github to get a stable link).
 
 
-## Specification
+## Protocol Specification
 
 A specification for the new protocol can be found in [content/spec/](content/spec/).
 
@@ -67,13 +52,6 @@ A specification for the new protocol can be found in [content/spec/](content/spe
 ### Encoding
 
 * [SectionFormat](content/spec/SectionFormat.md) (might become deprecated)
-
-
-### Guidelines
-
-The goal of the spec is to define a more formalized, cleaned-up "1.1" version
-of the current protocol that should be easy to process and implement in
-different languages. It should not be too far removed from the current system.
 
 
 # Documentation Format
