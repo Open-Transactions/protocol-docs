@@ -41,12 +41,12 @@ prefixed with the at symbol (`@`).
 
 Requests the registration of a new Nym on the Notary.
 
-* Element `credentialList`: TODO.
-* Element `credentials`: TODO.
+* Element `credentialList`: Contains armored [`<OTuser>` document](OTuser.md).
+* Element `credentials`: Armored key-value pairs of credentials. TODO.
 
 ## @createUserAccount
 
-* Element `nymfile`: Contains a signed [`<OTuser>` document](OTuser.md).
+* Element `nymfile`: Contains [`<OTuser>` document](OTuser.md).
 
 ----
 
@@ -163,7 +163,7 @@ Requests a transaction receipt from a Nymbox, Inbox or Outbox.
 * Attribute `accountID`: Identifier.
 * Attribute `inboxHash`: Identifier. Hash of the contained Inbox.
 * Attribute `outboxHash`: Identifier. Hash of the contained Outbox.
-* Element `acctFiles`: The account files.
+* Element `acctFiles`: The account files as armored key-value pairs. Keys are `account`, `inbox`, `outbox`.
   * TODO document sub-elements
 
 ----
