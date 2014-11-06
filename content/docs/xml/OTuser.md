@@ -7,7 +7,7 @@
   was created, or the generated public key when nothing was passed. This is a
   repeatition of the earlier nymIDSource element.
 * Element `masterCredential`: This is the top level key of the set of
-  credentials a Nym has.
+  credentials a Nym has. Is used to validate the signature on the subcredentials.
   * Attribute `ID`: Identifier. The ID of the (sub)credential.
   * Attribute `valid`: Boolean. Whether or not this key is still valid. TODO: who/what
     determines this?
@@ -49,9 +49,6 @@
 This document type is often embedded in other document types which already
 include `nymIDSource` leading to some duplication here. TODO it's unclear how
 prevalent this is or whether it is necessary to correct this.
-
-I though the `masterCredential` was only used so sign other keys or something
-so I don't know why it's included here.
 
 ## References
 * [OTPseudonym::OTPseudonym::SavePseudonym](https://github.com/Open-Transactions/opentxs/blob/0de3b72/src/core/OTPseudonym.cpp#L4273)
