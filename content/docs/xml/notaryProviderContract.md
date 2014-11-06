@@ -1,5 +1,9 @@
 # Document type `<notaryProviderContract>`
-## Elements and attributes
+
+Inherits from base document type [Contract.md].
+
+## Structure
+
 * Element `entity`: The legal entity this contract is about.
   * Attribute `shortname`: An arbitrary name chosen upon creation of the entity.
   * Attribute `longname`: A, presumably longer, arbitrary name chosen upon creation of the entity.
