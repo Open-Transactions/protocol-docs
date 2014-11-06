@@ -20,9 +20,3 @@
 
 #References
 [Account::UpdateContents()](https://github.com/Open-Transactions/opentxs/blob/d032df5e2012ca15be9d09231e46e4a28c6cd51c/src/core/Account.cpp#l749)
-
-#Notes
-
-* The attribute `assetTypeID` is called `assetType` in other
-  document types. Should be unified in future versions of the
-  protocol.
