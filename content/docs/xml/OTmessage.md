@@ -32,7 +32,7 @@ prefixed with the at symbol (`@`).
 * Attribute `serverID`: Identifier. The ID of the responding Notary.
 * Attribute `requestNum`: Integer. Same as in the request.
 * Attribute `success`: Boolean. Indicates whether request was successful.
-* Element `inResponseTo`: Armored text. The original request.
+* Element `inReferenceTo`: Armored text. The original request.
 
 
 # User Commands
@@ -60,6 +60,7 @@ the request was successful.
 ## @getTransactionNum
 
 * Attribute `nymboxHash`: Identifier. TODO.
+* this response does not have element `inReferenceTo`
 
 ----
 
@@ -119,6 +120,7 @@ what the current one is.
 
 * Attribute `nymboxHash`: Identifier. TODO.
 * Attribute `newRequestNum`: Integer. Next request number to be used (?).
+* this response does not have element `inReferenceTo`
 
 ----
 
@@ -130,6 +132,8 @@ Requests current Nymbox.
 
 * Attribute `nymboxHash`: Identifier. TODO.
 * Element `nymboxLedger`: [`<accountLedger>` document](accountLedger.md) of type `nymbox`.
+  * present only if `success` is `true`
+* Element `inReferenceTo`: only if `success` is `false`.
 
 ----
 
@@ -164,7 +168,9 @@ Requests a transaction receipt from a Nymbox, Inbox or Outbox.
 * Attribute `inboxHash`: Identifier. Hash of the contained Inbox.
 * Attribute `outboxHash`: Identifier. Hash of the contained Outbox.
 * Element `acctFiles`: The account files as armored key-value pairs. Keys are `account`, `inbox`, `outbox`.
+  * present only if `success` is `true`
   * TODO document sub-elements
+* Element `inReferenceTo`: only if `success` is `false`.
 
 ----
 
