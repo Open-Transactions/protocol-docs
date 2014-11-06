@@ -15,8 +15,8 @@ the XML structure that is created.
 * [Document Type `<OTmessage>`](content/docs/xml/OTmessage.md)
 * [Document Type `<digitalAssetContract>`](content/docs/xml/digitalAssetContract.md)
 * [Document Type `<accountLedger>`](content/docs/xml/accountLedger.md)
-  * [Document Type `<transaction>`](content/docs/xml/transaction.md)
-    * [Document Type `<item>`](content/docs/xml/item.md)
+* [Document Type `<transaction>`](content/docs/xml/transaction.md)
+* [Document Type `<item>`](content/docs/xml/item.md)
 
 
 ### Implementation
