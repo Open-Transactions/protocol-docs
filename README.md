@@ -4,16 +4,16 @@ Documentation for the current opentxs protocol
 
 ### Document Types
 
-The directory [content/docs/xml/](content/docs/xml/) contains descriptions of
+The directory [content/doctypes/](content/doctypes/) contains descriptions of
 the XML structures that are created by `opentxs`.
 
-* [Document Type `<notaryProviderContract>`](content/docs/xml/notaryProviderContract.md)
-* [Document Type `<digitalAssetContract>`](content/docs/xml/digitalAssetContract.md)
-* [Document Type `<OTuser>`](content/docs/xml/OTuser.md)
-* [Document Type `<OTmessage>`](content/docs/xml/OTmessage.md)
-* [Document Type `<accountLedger>`](content/docs/xml/accountLedger.md)
-* [Document Type `<transaction>`](content/docs/xml/transaction.md)
-* [Document Type `<item>`](content/docs/xml/item.md)
+* [Document Type `<notaryProviderContract>`](content/doctypes/notaryProviderContract.md)
+* [Document Type `<digitalAssetContract>`](content/doctypes/digitalAssetContract.md)
+* [Document Type `<OTuser>`](content/doctypes/OTuser.md)
+* [Document Type `<OTmessage>`](content/doctypes/OTmessage.md)
+* [Document Type `<accountLedger>`](content/doctypes/accountLedger.md)
+* [Document Type `<transaction>`](content/doctypes/transaction.md)
+* [Document Type `<item>`](content/doctypes/item.md)
 
 
 ### Description of Implementation
