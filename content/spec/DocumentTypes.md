@@ -1,3 +1,7 @@
+---
+title: "Document Type"
+---
+
 # Document Type
 
 Open-Transactions uses XML for serialization of local data and network messages.

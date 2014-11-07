@@ -1,5 +1,8 @@
-# Document Type `<transaction>`
+---
+title: Document Type transaction
+---
 
+# Document Type `<transaction>`
 
 Contained in [`<accountLedger>` documents](accountLedger.md).
 

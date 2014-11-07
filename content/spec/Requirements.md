@@ -1,3 +1,7 @@
+---
+title: "Requirements for the Open-Transactions Document Format and Protocol"
+---
+
 # Requirements for the Open-Transactions Document Format and Protocol
 
 Quote from OpenTransactions.org:

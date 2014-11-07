@@ -1,3 +1,7 @@
+---
+title: "OTMessage"
+---
+
 # OTMessage
 
 The `OTMessage` class is used for creating certain remote procedure calls from
@@ -6,7 +10,7 @@ serialization and deserialization systems inherited from the parent class
 [OTContract](OTContract.md).
 
 The document type created by this class is documented in
-[OTmessage.md](../doctypes/OTmessage.md).
+[OTMessage](../doctypes/OTMessage.md).
 
 ## Commands
 
@@ -131,5 +135,3 @@ The re-assembled `OTMessage` object is processed in the conditional block
 [UpdateContents]: https://github.com/Open-Transactions/opentxs/blob/e03d287573a4f69a7e3acc1346a5b32492d7c502/src/core/OTMessage.cpp#L310
 
 [ProcessXMLNode]: https://github.com/Open-Transactions/opentxs/blob/e03d287573a4f69a7e3acc1346a5b32492d7c502/src/core/OTMessage.cpp#L1676
-
-

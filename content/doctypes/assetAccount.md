@@ -1,4 +1,8 @@
-#Document Type `<assetAccount>`
+---
+title: Document Type assetAccount
+---
+
+# Document Type `<assetAccount>`
 
 * Attribute `version`. Integer. Hard-coded to 1.0.
 * Attribute `type`. String. TODO

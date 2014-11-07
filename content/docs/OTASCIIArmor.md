@@ -1,3 +1,7 @@
+---
+title: "OTASCIIArmor"
+---
+
 # OTASCIIArmor
 
 The opentxs class [`OTASCIIArmor`][OTASCIIArmorCpp] defines an encoding for
