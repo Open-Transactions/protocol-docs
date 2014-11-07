@@ -6,7 +6,7 @@ serialization and deserialization systems inherited from the parent class
 [OTContract](OTContract.md).
 
 The document type created by this class is documented in
-[xml/OTmessage.md](xml/OTmessage.md).
+[OTmessage.md](../doctypes/OTmessage.md).
 
 ## Commands
 
