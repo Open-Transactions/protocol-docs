@@ -1,3 +1,7 @@
+---
+title: Document Type item
+---
+
 # Document Type `<item>`
 
 Contained in unabbreviated [`<transaction>` documents](transaction.md).

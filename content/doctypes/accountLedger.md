@@ -1,3 +1,7 @@
+---
+title: Document Type accountLedger
+---
+
 # Document Type `<accountLedger>`
 
 Typed container of abbreviated [`<transaction>` documents](transaction.md).

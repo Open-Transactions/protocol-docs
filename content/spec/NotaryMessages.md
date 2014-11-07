@@ -1,3 +1,7 @@
+---
+title: "Notary Messages"
+---
+
 # Notary Messages
 
 Client and Notary communicate through a request-response model. The Client sends

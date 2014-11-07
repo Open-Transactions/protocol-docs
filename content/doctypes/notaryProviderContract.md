@@ -1,3 +1,7 @@
+---
+title: Document Type notaryProviderContract
+---
+
 # Document type `<notaryProviderContract>`
 
 The contract contains

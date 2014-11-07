@@ -1,3 +1,7 @@
+---
+title: Document Type OTmessage
+---
+
 A new version of these document types can be found in
 [Notary Messages](../../spec/NotaryMessages.md).
 

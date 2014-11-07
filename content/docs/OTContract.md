@@ -1,3 +1,7 @@
+---
+title: "OTContract Summary"
+---
+
 # OTContract Summary
 
 This is the superclass for many other classes in Open-Transactions, most notably

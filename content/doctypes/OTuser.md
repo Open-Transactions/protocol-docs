@@ -1,3 +1,7 @@
+---
+title: Document Type OTuser
+---
+
 # Document type `<OTuser>`
 
 ## Example

@@ -2,7 +2,7 @@
 
 Documentation for the current opentxs protocol
 
-### Document Types
+## Document Types
 
 The directory [content/doctypes/](content/doctypes/) contains descriptions of
 the XML structures that are created by `opentxs`.
@@ -15,8 +15,7 @@ the XML structures that are created by `opentxs`.
 * [Document Type `<transaction>`](content/doctypes/transaction.md)
 * [Document Type `<item>`](content/doctypes/item.md)
 
-
-### Description of Implementation
+## Description of Implementation
 
 The files in the directory [content/docs/](content/docs/) summarize the
 parsing, serialization and transport methods in `opentxs`.
@@ -28,6 +27,16 @@ parsing, serialization and transport methods in `opentxs`.
 * [Description of Client sending to Server](content/docs/transport_client_sending.md)
 * [Description of Server receiving from Client](content/docs/transport_server_receiving.md)
 
+# Offline rendering
+
+The documentation can be rendered offline by means of the [Hugo](http://gohugo.io/)
+static generator. Install it, run the `hugo` command in the top level directory
+of the repo, and a static website will be generated in the `public` directory.
+
+You can also run the `hugo server` command and point a browser at
+<http://localhost:1313/>.
+
+FIXME: links among documents are currently broken in the rendered website.
 
 # Documentation Format
 
