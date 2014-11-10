@@ -60,7 +60,7 @@ Every type has a corresponding `at` type, which indicates the server response.
 * `acceptMessage`
 * `acceptNotice`
 
-#### Inbox Resoultion
+#### Inbox Resolution
 
 * `acceptPending`
 * `rejectPending`
