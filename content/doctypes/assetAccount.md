@@ -11,11 +11,11 @@ title: Document Type assetAccount
 * Attribute `userID`. Identifier.
 * Attribute `serverID`. Identifier.
 * Attribute `assetTypeID`. Identifier.
-* Optional element `stashinfo cornItemNum` (optional)
+* Optional element `stashinfo` (optional)
     * Attribute `cronItemNum`. Integer. TODO
-* Optional element `inboxHash value`. TODO when included?
+* Optional element `inboxHash`. TODO when included?
     * Attribute `value`. Identifier.
-* Optional element `outboxHash value`. TODO when included?
+* Optional element `outboxHash`. TODO when included?
     * Attribute `value`. Identifier.
 * Element `balance`.
     * Attribute `date`. Timestamp.
