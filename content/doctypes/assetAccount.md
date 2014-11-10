@@ -30,15 +30,17 @@ title: Document Type assetAccount
 * Attribute `serverID`. Identifier.
 * Attribute `assetTypeID`. Identifier.
 * Optional element `stashinfo` (optional)
-    * Attribute `cronItemNum`. Integer. TODO
-* Optional element `inboxHash`. TODO when included?
+    * Attribute `cronItemNum`. Integer. Never set anywhere in the old code. Probably dead code.
+* Optional element `inboxHash value`. Only included after at least one 
+transaction was recieved in this account.
     * Attribute `value`. Identifier.
-* Optional element `outboxHash`. TODO when included?
+* Optional element `outboxHash`. Only included after at least one 
+outgoing transaction was done from this account.
     * Attribute `value`. Identifier.
 * Element `balance`.
-    * Attribute `date`. Timestamp.
+    * Attribute `date`. Timestamp when balance was last modified.
     * Attribute `amount`. Integer.
-* Optional element `MARKED_FOR_DELETION`. TODO: client only?
+* Optional element `MARKED_FOR_DELETION`.
 
 #References
 [Account::UpdateContents()](https://github.com/Open-Transactions/opentxs/blob/d032df5e2012ca15be9d09231e46e4a28c6cd51c/src/core/Account.cpp#l749)
