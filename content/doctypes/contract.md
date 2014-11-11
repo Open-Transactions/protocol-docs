@@ -60,3 +60,6 @@ Inheriting Document types:
 
 ## References
 [OTContract::CreateInnerContents](https://github.com/Open-Transactions/opentxs/blob/7cf2be697c5dc4e06cd95d77787373c9285ecce3/src/core/OTContract.cpp#L2158)
+[BasketContract::CreateContents](https://github.com/Open-Transactions/opentxs/blob/7cf2be697c5dc4e06cd95d77787373c9285ecce3/src/basket/BasketContract.cpp#L175)
+[AssetContract::CreateContents](https://github.com/Open-Transactions/opentxs/blob/7cf2be697c5dc4e06cd95d77787373c9285ecce3/src/core/AssetContract.cpp#L776)
+[OTServerContract::CreateContents](https://github.com/Open-Transactions/opentxs/blob/7cf2be697c5dc4e06cd95d77787373c9285ecce3/src/core/OTServerContract.cpp#L204)

@@ -4,7 +4,7 @@ title: Document Type notaryProviderContract
 
 # Document type `<notaryProviderContract>`
 
-Inherits from base Document Type Contract.
+Inherits from Base Document Type [Contract](contract.md).
 
 The contract contains
 
