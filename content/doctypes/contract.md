@@ -1,8 +1,8 @@
 ---
-title: Document Type Contract
+title: Base Document Type Contract
 ---
 
-# Document type `<Contract>`
+# Base Document Type `<Contract>`
 
 This document type does not manifest itself alone. But several Document types
 inherit from this type.
