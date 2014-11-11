@@ -15,6 +15,7 @@ Inheriting Document types:
 # Elements and attributes
 * Element `condition`: a human readable piece of (legal) text. Can appear more
   than once.
+  * Attribute `name`: a human readable marker.
 * Element `signer`: the Nym doing the signing.
   * Attribute `hasCredentials`: whether or not the signer has credentials
     associated with it.
