@@ -8,8 +8,7 @@ title: Document Type OTuser
 * Attribute `version`: String. the container version.
 * Attribute `nymID`: Identifier. The ID of the Nym being described.
 * Element `nymIDSource`: the source passed to the 'newnym' command when the Nym
-  was created, or the generated public key when nothing was passed. This is a
-  repeatition of the earlier nymIDSource element.
+  was created, or the generated public key when nothing was passed.
 * Element `masterCredential`: This is the top level key of the set of
   credentials a Nym has. Is used to validate the signature on the subcredentials.
   * Attribute `ID`: Identifier. The ID of the (sub)credential.
@@ -25,8 +24,8 @@ title: Document Type OTuser
   Can occur more than once.
   * Attribute `masterID`: Identifier. The ID of the master credential.
   * Attribute `ID`: Identifier. The ID of the (sub)credential.
-  * Attribute `valid`: Boolean. Whether or not this key is still valid. TODO: who/what
-    determines this?
+  * Attribute `valid`: Boolean. Whether or not this key is still valid, eg not
+    revoked. TODO: who/what determines this?
 
 ## Example
 ```xml
