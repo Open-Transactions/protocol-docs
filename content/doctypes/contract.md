@@ -12,7 +12,7 @@ Inheriting Document types:
 * digitalAssetContract
 * TODO: anything else?
 
-# Elements and attributes
+## Elements and attributes
 * Element `condition`: a human readable piece of (legal) text. Can appear more
   than once.
   * Attribute `name`: a human readable marker.
@@ -27,7 +27,7 @@ Inheriting Document types:
   [OTuser](OTuser.md).
 * Element `credentials`: TODO figure out what this is.
 
-# Example
+## Example
 
 ```xml
 <rootElement> <!-- written by subclass -->
@@ -58,5 +58,5 @@ Inheriting Document types:
 </rootElement>
 ```
 
-# References
+## References
 [OTContract::CreateInnerContents](https://github.com/Open-Transactions/opentxs/blob/7cf2be697c5dc4e06cd95d77787373c9285ecce3/src/core/OTContract.cpp#L2158)
