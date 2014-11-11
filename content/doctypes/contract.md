@@ -10,7 +10,7 @@ inherit from this type.
 Inheriting Document types:
 * notaryProviderContract
 * digitalAssetContract
-* TODO: anything else?
+* basketContract
 
 ## Elements and attributes
 * Element `condition`: a human readable piece of (legal) text. Can appear more
