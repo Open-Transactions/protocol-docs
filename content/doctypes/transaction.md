@@ -7,19 +7,29 @@ title: Document Type transaction
 Contained in [`<accountLedger>` documents](accountLedger.md).
 
 Transactions can either be _full_ or _abbreviated_. They are abbreviated when
-inside `<accountLedger>`, except `<OTmessage>`.
+inside `<accountLedger>`, except for ledger type "message" (`<OTmessage>`).
 
 Full transactions contain a list of [`<item>` documents](item.md).
+
+Abbreviated transactions do not contain the list of [`<item>` documents](item.md). The items will be loaded one by one during verification, using the [`getBoxReceipt`](OTmessage.md#getboxreceipt) message. [TODO, verify if this is true]. Reason: if the inbox contains hundreds of receipts (items), downloading the inbox would take too long or fail altogether, creating resyncing issues.
+
+A transaction can be "in reference to" an [`<item>`](item.md).
 
 # Base Document Type
 
 * Attribute `type`: String. See section _Transaction Types_.
-* Attribute `dateSigned`: Time.
+* Attribute `dateSigned`: Time. The date when the instrument was last signed.
 * Attribute `accountID`: Identifier.
 * Attribute `userID`: Identifier.
 * Attribute `serverID`: Identifier.
-* Attribute `numberOfOrigin`: Integer. TODO
-* Attribute `transactionNum`: Integer. TODO
+* Attribute `numberOfOrigin`: Integer.
+    * Constant `0` if not applicable.
+    * If `type` is one of (`chequeReceipt`, `voucherReceipt`) and the referenced [`<item>`](item.md) is of type [`depositCheque`](item.md#cheques-and-vouchers): Same as the referenced item's [`numberOfOrigin`](item.md#structure).
+    * If `type` is one of (`pending`, `marketReceipt`, `paymentReceipt`, `finalReceipt`, `basketReceipt`): same as `inReferenceTo`.
+    * If `type` is one of (`blank`, `message`, `notice`, `replyNotice`, `successNotice`, `processNymbox`, `atProcessNymbox`, `transferReceipt`, `deposit`, `atDeposit`, `instrumentNotice`, `instrumentRejection`): Not applicable.
+    * For all other `type`s: same as `transactionNum`.
+* Attribute `transactionNum`: Integer. The notary issues this in response to a [`getTransactionNum` message](OTmessage.md#gettransactionnum). [TODO: link to tx num spec](https://github.com/monetas/opentxs-protocol/issues/89).        
+* Attribute `inReferenceTo`: Integer. Transaction number of the item this transaction is in reference to. 
 
 ## Transaction Types
 
@@ -68,7 +78,8 @@ Possible values for the `type` attribute. Taken from `OTTransaction.hpp`.
 
 ## Document Type: Full Form
 
-* Optional element `inReferenceTo`. Armored document. TODO
+* Optional element `closingTransactionNumber`. Only if `type` is `finalReceipt` or `basketReceipt`. TODO
+* Optional element `inReferenceTo`. Item whose transaction number is the transaction's `inReferenceTo`. Armored document. TODO
 * Optional element `cancelRequest`. Armored document. TODO
 * List of armored [`<item>` documents](item.md).
 
@@ -133,6 +144,7 @@ Inherits from Document Type `<outboxRecord>`.
 
 * [enum transactionType](https://github.com/Open-Transactions/opentxs/blob/682fd05f/include/opentxs/core/OTTransaction.hpp#L450)
 * [OTTransaction::UpdateContents()](https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/core/OTTransaction.cpp#L4352)
+* [numberOfOrigin](https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/core/OTTransaction.cpp#L5790)
 
 # Notes
 
