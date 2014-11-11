@@ -1,69 +1,47 @@
 # opentxs-protocol
 
-Documentation for the current opentxs protocol and spec for a new version.
+Documentation for the current opentxs protocol
 
-## Protocol Documentation
+## Document Types
 
-The documentation process happens in [docs/](docs/). Currently, it's just
-summarizing the parsing and serialization format of various classes and the
-communication system.
+The directory [content/doctypes/](content/doctypes/) contains descriptions of
+the XML structures that are created by `opentxs`.
 
-* [Armoring](docs/OTASCIIArmor.md)
-* [OTContract](docs/OTContract.md)
-  * [OTMessage](docs/OTMessage.md)
-  * [OTTransactionType](docs/OTTransactionType.md) (TODO)
-  * [OTServerContract](docs/OTServerContract.md)
-* [OTServerConnection](docs/OTServerConnection.md) (TODO)
-* [Client sending to Server transport](docs/transport_client_sending.md)
-* [Server receiving from Client transport](docs/transport_server_receiving.md)
+* [Document Type `<notaryProviderContract>`](content/doctypes/notaryProviderContract.md)
+* [Document Type `<digitalAssetContract>`](content/doctypes/digitalAssetContract.md)
+* [Document Type `<OTuser>`](content/doctypes/OTuser.md)
+* [Document Type `<OTmessage>`](content/doctypes/OTmessage.md)
+* [Document Type `<accountLedger>`](content/doctypes/accountLedger.md)
+* [Document Type `<transaction>`](content/doctypes/transaction.md)
+* [Document Type `<item>`](content/doctypes/item.md)
 
-### Guidelines
+## Description of Implementation
 
-The goal is to provide summaries for the various message types. Message types
-are strongly correlated to classes that derive from
-[OTContract.cpp](https://github.com/Open-Transactions/opentxs/blob/3d651e813b20
-5d44a467b2c91ee7782a8d4ebe5a/src/client/OTClient.cpp), so it makes sense to
-just write a summary for each deriving class and write a _Notes_ section that
-describe improvements or other observations.
+The files in the directory [content/docs/](content/docs/) summarize the
+parsing, serialization and transport methods in `opentxs`.
 
-The communication system is defined by these classes (non-exhaustive)
+* [OTASCIIArmor](content/docs/OTASCIIArmor.md)
+* [OTContract](content/docs/OTContract.md)
+  * [OTMessage](content/docs/OTMessage.md)
+  * [OTServerContract](content/docs/OTServerContract.md)
+* [Description of Client sending to Server](content/docs/transport_client_sending.md)
+* [Description of Server receiving from Client](content/docs/transport_server_receiving.md)
 
-* [OTClient.cpp](https://github.com/Open-Transactions/opentxs/blob/3d651e813b205d44a467b2c91ee7782a8d4ebe5a/src/client/OTClient.cpp#L8905)
-* [UserCommandProcessor.cpp](https://github.com/Open-Transactions/opentxs/blob/3d651e813b205d44a467b2c91ee7782a8d4ebe5a/src/server/UserCommandProcessor.cpp#L166)
-* [OTServerContract](https://github.com/Open-Transactions/opentxs/blob/3d651e813b205d44a467b2c91ee7782a8d4ebe5a/src/core/OTServerContract.cpp)
-* [OTServerConnection](https://github.com/Open-Transactions/opentxs/blob/3d651e813b205d44a467b2c91ee7782a8d4ebe5a/src/client/OTServerConnection.cpp)
+# Offline rendering
 
-Please use links to commit hashes, not to branches (hit the `y` key if you are
-looking at a file on Github to get a stable link).
+The documentation can be rendered offline by means of the [Hugo](http://gohugo.io/)
+static generator. Install it, run the `hugo` command in the top level directory
+of the repo, and a static website will be generated in the `public` directory.
 
+You can also run the `hugo server` command and point a browser at
+<http://localhost:1313/>.
 
-## Specification
-
-A specification for the new protocol can be found in [spec/](spec/).
-
-
-* [DocumentTypes](spec/DocumentTypes.md): How we will describe messages
-* [NotaryMessages](spec/NotaryMessages.md):
-  Document types for communication between Client and Notary.
-
-### Encoding
-
-* [SectionFormat](spec/SectionFormat.md) (might become deprecated)
-
-
-### Guidelines
-
-The goal of the spec is to define a more formalized, cleaned-up "1.1" version
-of the current protocol that should be easy to process and implement in
-different languages. It should not be too far removed from the current system.
-
+FIXME: links among documents are currently broken in the rendered website.
 
 # Documentation Format
 
 All documentation is written in Markdown. To help readability of text and diffs
 please hard-wrap text at 72 chars, and code blocks at 79.
 
-Recommended vim settings:
-```
-set textwidth=0 wrap linebreak nolist
-```
+Please use links to commit hashes, not to branches (hit the `y` key if you are
+looking at a file on Github to get a stable link).

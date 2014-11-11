@@ -1,3 +1,7 @@
+---
+title: "Requirements for the Open-Transactions Document Format and Protocol"
+---
+
 # Requirements for the Open-Transactions Document Format and Protocol
 
 Quote from OpenTransactions.org:
@@ -110,6 +114,10 @@ Since Open-Transactions should be able to run on systems with limited resources:
 A simple format and protocol has small documents that are easy to decode. Modern
 XML parsers are very optimized and have minimal space an computation
 requirements.
+
+A Notary should be able to quickly identify the resources that need to
+be manipulated from a request. This simplifies concurrent processing of
+transactions.
 
 Compression can be used to reduce space requirements on disk or network.
 

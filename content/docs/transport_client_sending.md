@@ -1,4 +1,8 @@
-# Transport layer
+---
+title: "Outgoing transport layer"
+---
+
+# Outgoing transport layer
 
 This document examines the program flow from the point a command is issued till it is put on the ZMQ socket.
 

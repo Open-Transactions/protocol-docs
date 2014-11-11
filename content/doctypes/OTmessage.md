@@ -1,3 +1,7 @@
+---
+title: Document Type OTmessage
+---
+
 A new version of these document types can be found in
 [Notary Messages](../../spec/NotaryMessages.md).
 
@@ -32,7 +36,7 @@ prefixed with the at symbol (`@`).
 * Attribute `serverID`: Identifier. The ID of the responding Notary.
 * Attribute `requestNum`: Integer. Same as in the request.
 * Attribute `success`: Boolean. Indicates whether request was successful.
-* Element `inResponseTo`: Armored text. The original request.
+* Element `inReferenceTo`: Armored text. The original request.
 
 
 # User Commands
@@ -41,12 +45,12 @@ prefixed with the at symbol (`@`).
 
 Requests the registration of a new Nym on the Notary.
 
-* Element `credentialList`: TODO.
-* Element `credentials`: TODO.
+* Element `credentialList`: Contains armored [`<OTuser>` document](OTuser.md).
+* Element `credentials`: Armored key-value pairs of credentials. TODO.
 
 ## @createUserAccount
 
-* Element `nymfile`: Contains a signed document of type `<OTuser>`.
+* Element `nymfile`: Contains [`<OTuser>` document](OTuser.md).
 
 ----
 
@@ -60,6 +64,7 @@ the request was successful.
 ## @getTransactionNum
 
 * Attribute `nymboxHash`: Identifier. TODO.
+* this response does not have element `inReferenceTo`
 
 ----
 
@@ -67,13 +72,12 @@ the request was successful.
 
 Requests creation of a new asset account on the Notary.
 
-* Attribute `assetType`: Identifier. ID of the AssetContract.
-
+* Attribute `assetType`: Identifier. ID of the asset type for the account.
 
 ## @createAccount
 
-* Attribute `assetType`: Identifier. Same as in request.
-* Element `newAccount`: Signed document of type `<assetAccount>`.
+* Attribute `accountID`: Identifier.
+* Element `newAccount`: Signed [`<assetAccount>` document](assetAccount.md).
 
 ----
 
@@ -81,14 +85,15 @@ Requests creation of a new asset account on the Notary.
 
 Request creation of a new _issuer asset account_ on the Notary.
 
-* Attribute `assetType`: Identifier. Hash of the AssetContract.
-* Element `assetContract`: Signed document of type AssetContract.
+* Attribute `assetType`: Identifier. Hash of the `<digitalAssetContract>`.
+* Element `assetContract`: Signed [`<digitalAssetContract>`
+    document](digitalAssetContract.md)
 
 ## @issueAssetType
 
 * Attribute `accountID`: Identifier.
-* Attribute `assetType`: Identifier. Hash of AssetContract.
-* Element `issuerAccount`: Signed document of type `<assetAccount>`.
+* Attribute `assetType`: Identifier. Hash of the `<digitalAssetContract>`.
+* Element `issuerAccount`: Signed [`<assetAccount>` document](assetAccount.md).
 
 ----
 
@@ -96,28 +101,30 @@ Request creation of a new _issuer asset account_ on the Notary.
 
 Requests the notarization of a transaction. TODO more detail.
 
-* Attribute `nymboxHash`: Identifier. TODO.
+* Attribute `nymboxHash`: Identifier. Optional. Request will fail if it doesn't
+    match the server version.
 * Attribute `accountID`: Identifier.
-* Element `transaction`: Signed document of type `<accountLedger>` that only has
-  one item.
+* Element `accountLedger`: Signed document of type `<accountLedger>` that only has
+  one `<transaction>`.
 
 ## @notarizeTransactions
 
 * Attribute `accountID`: Identifier.
-* Element `responseTransaction`: Signed document of type `<accountLedger>` that
-  only has one item.
+* Element `responseLedger`: Signed document of type `<accountLedger>` that
+  only has one `<transaction>`.
 
 ----
 
-## getRequestNum
+## getRequest
 
 Get the current request number from the Notary. When the client doesn't know
 what the current one is.
 
-## @getRequestNum
+## @getRequest
 
 * Attribute `nymboxHash`: Identifier. TODO.
 * Attribute `newRequestNum`: Integer. Next request number to be used (?).
+* this response does not have element `inReferenceTo`
 
 ----
 
@@ -128,7 +135,9 @@ Requests current Nymbox.
 ## @getNymbox
 
 * Attribute `nymboxHash`: Identifier. TODO.
-* Element `nymboxLedger`: Document of type `<accountLedger>`.
+* Element `nymboxLedger`: [`<accountLedger>` document](accountLedger.md) of type `nymbox`.
+  * present only if `success` is `true`
+* Element `inReferenceTo`: only if `success` is `false`.
 
 ----
 
@@ -162,8 +171,10 @@ Requests a transaction receipt from a Nymbox, Inbox or Outbox.
 * Attribute `accountID`: Identifier.
 * Attribute `inboxHash`: Identifier. Hash of the contained Inbox.
 * Attribute `outboxHash`: Identifier. Hash of the contained Outbox.
-* Element `acctFiles`: The account files.
+* Element `acctFiles`: The account files as armored key-value pairs. Keys are `account`, `inbox`, `outbox`.
+  * present only if `success` is `true`
   * TODO document sub-elements
+* Element `inReferenceTo`: only if `success` is `false`.
 
 ----
 
@@ -171,12 +182,14 @@ Requests a transaction receipt from a Nymbox, Inbox or Outbox.
 
 * Attribute `nymboxHash`: Identifier. TODO.
 * Attribute `accountID`: Identifier.
-* Element `processLedger`. Document of type `<accountLedger>`.
+* Element `processLedger`. Armored [`<accountLedger>`
+    document](accountLedger.md).
 
 ## @processInbox
 
 * Attribute `accountID`: Identifier.
-* Element `responseLedger`. Document of type `<accountLedger>`.
+* Element `responseLedger`. Armored [`<accountLedger>`
+    document](accountLedger.md).
 
 
 ----

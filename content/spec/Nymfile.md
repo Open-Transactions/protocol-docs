@@ -1,3 +1,7 @@
+---
+title: "Document Type Nymfile"
+---
+
 # Document Type _Nymfile_
 
 Attributes:

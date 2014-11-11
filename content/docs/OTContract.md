@@ -1,3 +1,7 @@
+---
+title: "OTContract Summary"
+---
+
 # OTContract Summary
 
 This is the superclass for many other classes in Open-Transactions, most notably
@@ -108,7 +112,7 @@ inner "default" elements are written when the subclass calls
 * Element `nymIDSource`: the source passed to the 'newnym' command when the Nym
   was created, or the generated public key when nothing was passed.
 * Element `credentialList`: a list of public credentials if present.See
-  [OTuser](xml/OTuser.md).
+  [OTuser](../doctypes/OTuser.md).
 * Element `credentials`: TODO figure out what this is.
 
 ### Signature Sections

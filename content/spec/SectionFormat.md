@@ -1,3 +1,7 @@
+---
+title: "Section Format"
+---
+
 # Section Format
 
 Open-Transactions uses the _Section Format_ in some plain-text documents. This

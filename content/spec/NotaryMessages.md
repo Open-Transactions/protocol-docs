@@ -1,3 +1,7 @@
+---
+title: "Notary Messages"
+---
+
 # Notary Messages
 
 Client and Notary communicate through a request-response model. The Client sends
@@ -17,7 +21,7 @@ It has some attributes that are shared by deriving document types.
 Default Attributes:
 * `nymID`: Identifier. The ID of the Nym which makes the request.
 * `notaryID`: Identifier. The ID of the Notary which should process the request,
-  as defined in the [Server Contract](../docs/xml/ServerContract.md).
+  as defined in the [Server Contract](../doctypes/ServerContract.md).
 * `requestNum`: Integer. The index of the current request being sent.
   See [Request Numbers](RequestNumbers.md) for more information.
 

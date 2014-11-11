@@ -1,0 +1,31 @@
+{{ partial "header.html" . }}
+
+<h1>opentxs-protocol</h1>
+<p>Documentation for the current opentxs protocol</p>
+
+<h2>Document Types</h2>
+<p>The directory <tt>/docs/xml/</tt> contains descriptions of the XML structures that are created by <tt>opentxs</tt>.</p>
+{{ range .Data.Pages.ByTitle }}
+  {{ if eq .Type "doctypes"}}
+    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  {{ end }}
+{{ end }}
+
+<h2>Description of Implementation</h2>
+<p>The files in the directory <tt>/docs/</tt> summarize the parsing, serialization and transport methods in <tt>opentxs</tt>.</p>
+{{ range .Data.Pages.ByTitle }}
+  {{ if eq .Type "docs"}}
+    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  {{ end }}
+{{ end }}
+
+{{/* TODO: not working on specs for now, uncomment later
+<h2>Specifications</h2>
+{{ range .Data.Pages.ByTitle }}
+  {{ if eq .Type "spec" }}
+    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  {{ end }}
+{{ end }}
+*/}}
+
+{{ partial "footer.html" . }}
