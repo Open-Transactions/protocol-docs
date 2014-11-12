@@ -176,6 +176,8 @@ getBoxReceipt downloads full receipts because the nymbox, inbox, or outbox will 
 
 ## getAccountFiles
 
+Downloads the inbox, the outbox, and the account balance file.
+
 * Attribute `accountID`: Identifier.
 
 ## @getAccountFiles
@@ -191,6 +193,8 @@ getBoxReceipt downloads full receipts because the nymbox, inbox, or outbox will 
 ----
 
 ## processInbox
+
+ProcessInbox is the only transaction that has its own message.  It includes a balance agreement and it has a process inbox item, which is the only type of item that it can have. The process inbox item contains information about the receipts in the inbox that the client is accepting. The client can selectively accept the receipts in the inbox. It does not have to accept all of the receipts in the inbox when performing this transaction. Only the receipts specified in this transaction will be accepted.
 
 * Attribute `nymboxHash`: Identifier. TODO.
 * Attribute `accountID`: Identifier.
