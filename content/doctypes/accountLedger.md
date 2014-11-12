@@ -6,7 +6,7 @@ title: Document Type accountLedger
 
 Typed container of abbreviated [`<transaction>` documents](transaction.md).
 
-## Structure
+## Elements and attributes
 
 * Attribute `version`: Integer.
 * Attribute `type`: String. Specifies the ledger type. See _Ledger Types_ below.

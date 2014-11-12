@@ -18,7 +18,7 @@ of them, they come in packs. You normally would deal with the transaction as a
 single entity, not the item. A transaction contains a list of items.
 
 
-# Structure
+## Elements and attributes
 
 * Attribute `type`. String. See section _Item Types_
 * Attribute `status`. String. Possible values:

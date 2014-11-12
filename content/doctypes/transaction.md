@@ -17,6 +17,8 @@ A transaction can be "in reference to" an [`<item>`](item.md).
 
 # Base Document Type
 
+## Elements and attributes
+
 * Attribute `type`: String. See section _Transaction Types_.
 * Attribute `dateSigned`: Time. The date when the instrument was last signed.
 * Attribute `accountID`: Identifier.
@@ -90,6 +92,8 @@ Possible values for the `type` attribute. Taken from `OTTransaction.hpp`.
 
 These attributes are common for all abbreviated records (?)
 
+#### Elements and attributes
+
 * Attribute `type`: String. See Transaction Types
 * Attribute `dateSigned`: Time in seconds, when the instrument was last signed.
 * Attribute `receiptHash`: Identifier. TODO
@@ -103,9 +107,13 @@ If `type` is `finalReceipt` or `basketReceipt`:
 
 ### Document Type `<paymentInboxRecord>`
 
+#### Elements and attributes
+
 * Attribute `displayValue`: TODO
 
 ### Document Type `<nymboxRecord>`
+
+#### Elements and attributes
 
 * Attribute `totalListOfNumbers`: Comma separated list of transaction numbers successfully signed out.
 * TODO funny stuff is happening
@@ -125,6 +133,8 @@ If `type` is `finalReceipt` or `basketReceipt`:
 ```
 ### Document Type `<outboxRecord>`
 
+#### Elements and attributes
+
 * Attribute `displayValue`: TODO
 * Attribute `adjustment`: Integer. TODO
 * Attribute `numberOfOrigin`: Integer. TODO
@@ -134,6 +144,8 @@ If `type` is `finalReceipt` or `basketReceipt`:
 Inherits from Document Type `<outboxRecord>`.
 
 ### Document Type `<recordBoxRecord>`
+
+#### Elements and attributes
 
 * Attribute `displayValue`: TODO
 * Attribute `adjustment`: Integer. TODO
