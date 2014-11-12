@@ -10,8 +10,7 @@ described by _Document Types_.
 A document type consists of
 
 * A list of attributes and their data types.
-* A list of sub-elements with attributes and content. A sub-element can be
-  document or contain a document that is described by a document type.
+* A list of sub-elements with attributes and content.
 
 # Example
 
@@ -39,7 +38,7 @@ Elements can have attributes have and contain these *additional* types:
 * **Sub-Document**: the element contains a sub-document. Usually armored or
     signed and armored.
 
-Elements may be optional or appear multiple times.
+Elements can be optional or occur repeatedly.
 
 ## Inheritance
 
