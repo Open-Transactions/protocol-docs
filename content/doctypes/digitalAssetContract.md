@@ -1,3 +1,7 @@
+---
+title: Document Type digitalAssetContract
+---
+
 #Document Type `<digitalAssetContract>`
 
 Inherits from base Document Type Contract.
