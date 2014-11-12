@@ -30,7 +30,7 @@ Those attributes are common to the [full form document type](#document-type-full
 * Attribute `userID`: Identifier.
 * Attribute `serverID`: Identifier.
 * Attribute `numberOfOrigin`: Integer.
-    * Constant `0` if not applicable.
+    * Constant _0_ if not applicable.
     * If `type` is one of (`chequeReceipt`, `voucherReceipt`) and the referenced [`<item>`](item.md) is of type [`depositCheque`](item.md#cheques-and-vouchers): Same as the referenced item's [`numberOfOrigin`](item.md#structure).
     * If `type` is one of (`pending`, `marketReceipt`, `paymentReceipt`, `finalReceipt`, `basketReceipt`): same as `inReferenceTo`.
     * If `type` is one of (`blank`, `message`, `notice`, `replyNotice`, `successNotice`, `processNymbox`, `atProcessNymbox`, `transferReceipt`, `deposit`, `atDeposit`, `instrumentNotice`, `instrumentRejection`): Not applicable.
