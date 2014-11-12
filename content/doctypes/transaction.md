@@ -6,18 +6,23 @@ title: Document Type transaction
 
 Contained in [`<accountLedger>` documents](accountLedger.md).
 
-Transactions can either be _full_ or _abbreviated_. They are abbreviated when
+Transactions can either be in _full_ or _abbreviated_ form. They are abbreviated when
 inside `<accountLedger>`, except for ledger type "message" (`<OTmessage>`).
 
 Full transactions contain a list of [`<item>` documents](item.md).
 
-Abbreviated transactions do not contain the list of [`<item>` documents](item.md). The items will be loaded one by one during verification, using the [`getBoxReceipt`](OTmessage.md#getboxreceipt) message. [TODO, verify if this is true]. Reason: if the inbox contains hundreds of receipts (items), downloading the inbox would take too long or fail altogether, creating resyncing issues.
-
+Abbreviated transactions do not contain the list of [`<item>` documents](item.md). The items will be loaded one by one during verification, using the [`getBoxReceipt`](OTmessage.md#getboxreceipt) message.
+* [TODO, verify if this is true].
+* Reason: if the inbox contains hundreds of receipts (items), downloading the inbox would take too long or fail altogether, creating resyncing issues.
+* The full transactions referenced by abbreviated transactions are stored in the "*box/*.r/*.rct" files. See [OTTransaction::SaveBoxReceipt()](#ref-saveboxreceipt).
+ 
 A transaction can be "in reference to" an [`<item>`](item.md).
 
 # Base Document Type
 
 ## Elements and attributes
+
+Those attributes are common to the [full form document type](#document-type-full-form) and the [abbreviated form document types](#document-types-abbreviated-form).
 
 * Attribute `type`: String. See section _Transaction Types_.
 * Attribute `dateSigned`: Time. The date when the instrument was last signed.
@@ -75,13 +80,12 @@ Possible values for the `type` attribute. Taken from `OTTransaction.hpp`.
 * `atTransfer`
 * `deposit`
 * `atDeposit`
-*
 
 
 ## Document Type: Full Form
 
 * Optional element `closingTransactionNumber`. Only if `type` is `finalReceipt` or `basketReceipt`. TODO
-* Optional element `inReferenceTo`. Item whose transaction number is the transaction's `inReferenceTo`. Armored document. TODO
+* Optional element `inReferenceTo`. Armored contract (TODO: figure out if needed and what can be in there, looks like it can contain different document types depending on the situation).
 * Optional element `cancelRequest`. Armored document. TODO
 * List of armored [`<item>` documents](item.md).
 
@@ -157,7 +161,7 @@ Inherits from Document Type `<outboxRecord>`.
 * [enum transactionType](https://github.com/Open-Transactions/opentxs/blob/682fd05f/include/opentxs/core/OTTransaction.hpp#L450)
 * [OTTransaction::UpdateContents()](https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/core/OTTransaction.cpp#L4352)
 * [numberOfOrigin](https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/core/OTTransaction.cpp#L5790)
-
+* <a name="ref-saveboxreceipt"></a>[OTTransaction::SaveBoxReceipt()](https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/core/OTTransaction.cpp#L3007)
 # Notes
 
 Possible improvements
@@ -165,3 +169,4 @@ Possible improvements
 * Use composition over inheritance.
 * Use document types over `type` attribute.
 * The `message` type in particular is out of place.
+* Clean up this hack: https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/server/OTServer.cpp#L786-802
