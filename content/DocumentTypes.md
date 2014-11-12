@@ -32,7 +32,7 @@ An attribute can have one of these types:
     processing. Explained in [Armoring.md](encoding/Armoring.md) TODO fix link.
     Optional whitespace (line breaks) is ignored during decoding.
 
-Elements can have attributes have and contain these *additional* types:
+Elements can have attributes and contain these *additional* types:
 
 * **Key-Value Pairs**: Protocol-Buffer encoded key-value pairs. TODO clean up or
     describe.
@@ -50,4 +50,4 @@ attributes from.
 
 ## More Examples
 
-* See directory [`doctypes/`](https://github.com/monetas/opentxs-protocol/tree/master/content/doctypes)
+* See directory [`doctypes/`](doctypes/)
