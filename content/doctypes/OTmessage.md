@@ -7,9 +7,11 @@ A new version of these document types can be found in
 
 # Document Type `<OTmessage>`
 
+## Elements and attributes
+
 * Attribute `version`: String. Hard-coded to be `2.0`.
 * Attribute `dateSigned`: Timestamp.
-* Element that is instance of document type _UserCommand_.
+* Element that is instance of document type _UserCommand_. See below.
 * Optional element `ackReplies`. Armored list of seen server replies.
 
 # Base Document Type _UserCommand_
@@ -18,6 +20,8 @@ A new version of these document types can be found in
 
 This document type is the base type for all requests written by the Client and
 read by the Notary.
+
+### Elements and attributes
 
 * Attribute `nymID`: Identifier. The ID of the Nym which makes the request.
 * Attribute `serverID`: Identifier. The ID of the Notary which should process
@@ -31,6 +35,8 @@ _Base Request_ by the Client.
 
 The element name is the same as for the corresponding request name, but is
 prefixed with the at symbol (`@`).
+
+### Elements and attributes
 
 * Attribute `nymID`: Identifier. The Nym which made the request.
 * Attribute `serverID`: Identifier. The ID of the responding Notary.

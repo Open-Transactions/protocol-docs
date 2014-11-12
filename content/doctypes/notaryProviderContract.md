@@ -20,7 +20,8 @@ agrees with the terms and conditions in the contract.
 
 Previously know as _server contract_.
 
-## Structure
+## Elements and attributes
+
 * Attribute `version`. String. Hard-coded to `2.0`.
 * Element `entity`. The legal entity this contract is about.
   * Attribute `shortname`. String. An arbitrary name chosen upon creation of the
@@ -42,7 +43,7 @@ by the superclass `OTContract` (for example `<entity>`, but also `<condition>`
 which isn't mentioned here). Either explain them here or refer to a base
 document type.
 
-## Example
+# Example
 
 TODO: incomplete
 
@@ -62,9 +63,14 @@ TODO: incomplete
 </notaryProviderContract>
 ```
 
+# References
+
+* TODO
+
 # Notes
 
 Also the attributes `hostname` and `port` seems quite redundant since both can
 (and should) be encoded in the `URL` attribute. Perhaps this was done for the
 benefit of the client. If that is the case one should consider adding the
 attribute `protocol`. These three attributes combine into an URL.
+
