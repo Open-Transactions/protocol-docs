@@ -140,7 +140,8 @@ For example, when a client sends a message with request #100, the Notary will ex
 
 ## getNymbox
 
-Requests current Nymbox.
+Downloads current Nymbox from the Notary. A Nymbox is where any messages, instruments, notices, and new transaction numbers are sent to a Nym from the Notary. The Nymbox is signed and it has a hash.
+
 
 ## @getNymbox
 
