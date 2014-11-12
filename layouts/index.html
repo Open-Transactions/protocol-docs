@@ -1,10 +1,14 @@
 {{ partial "header.html" . }}
 
 <h1>opentxs-protocol</h1>
-<p>Documentation for the current opentxs protocol</p>
+<p>Documentation for the current opentxs protocol. The transport is described
+in <a href="Transport.html">Transport</a>.</p>
 
 <h2>Document Types</h2>
-<p>The directory <tt>/docs/xml/</tt> contains descriptions of the XML structures that are created by <tt>opentxs</tt>.</p>
+<p>The directory <tt>/doctypes/</tt> contains descriptions of the XML structures
+that are created by <tt>opentxs</tt>. The format is described in
+<a href="DocumentTypes.html">Document Types</a>.</p>
+
 {{ range .Data.Pages.ByTitle }}
   {{ if eq .Type "doctypes"}}
     <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>

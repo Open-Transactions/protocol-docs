@@ -12,7 +12,7 @@ After a command is issued the resulting message is transformed several times bef
 1. Command is issued by user.
 2. The command is serialized.
 3. Then encrypted.
-4. Then [armored](armoring.md).
+4. Then [armored](armoring.md). [TODO: fix link]
 5. Finally send.
 
 ![Data transformations](../img/command_flow_client_to_server.png)
