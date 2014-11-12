@@ -49,7 +49,8 @@ prefixed with the at symbol (`@`).
 
 ## createUserAccount
 
-Requests the registration of a new Nym on the Notary.
+Requests the registration of a new Nym on the Notary. It uploads the NYM file and sends the public credentials. It does not send the private credentials.
+The public credentials will include the master credentials and the sub credentials. For example, it could be a master credential and four sub credentials, or two master credentials and two separate credential.
 
 * Element `credentialList`: Contains armored [`<OTuser>` document](OTuser.md).
 * Element `credentials`: Armored key-value pairs of credentials. TODO.
@@ -63,7 +64,7 @@ Requests the registration of a new Nym on the Notary.
 ## getTransactionNum
 
 Requests a new list of transaction numbers. The list will be in the Nymbox if
-the request was successful.
+the request was successful. Transaction numbers need to be requested from each Notary that a client transacts with. Additionally, each NYM on a client needs it's own transaction numbers. When the requested Transaction Numbers arrive in the corresponding NYMbox, the client performs a ProcessNYMBox to accept and sign the transaction numbers. Each transaction sent to a notary needs to include a transaction number provided by that same notary. Some complex financial instruments may require multiple transaction numbers.
 
 * Attribute `nymboxHash`: Identifier. TODO.
 
