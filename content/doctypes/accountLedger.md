@@ -4,7 +4,11 @@ title: Document Type accountLedger
 
 # Document Type `<accountLedger>`
 
-Typed container of abbreviated [`<transaction>` documents](transaction.md).
+Typed container of [`<transaction>` documents](transaction.md).
+
+For all`type`s but `message`, the transactions are included in abbreviated form (`nymboxRecord`, `inboxRecord`, ..., see below). Those include the hash of the transaction in the record's `receiptHash` attribute. The transactions themselves are stored separately, see [`<transaction>`](transaction.md).
+
+If the `type` is `message`, the transactions are included in full as a list of `transaction` elements.
 
 ## Elements and attributes
 
@@ -14,8 +18,19 @@ Typed container of abbreviated [`<transaction>` documents](transaction.md).
 * Attribute `accountID`: Identifier.
 * Attribute `userID`: Identifier. The Nym the ledger belongs to.
 * Attribute `serverID`: Identifier. The Notary the ledger is stored with.
-* List of armored [`<transaction>` documents](transaction.md). Only
-  ledgers of type `message` are not stored in abbreviated form.
+
+For ledgers in full form (only for ledgers of `type` `message`), for each transaction:
+
+* Element `transaction`: [`<transaction>` document](transaction.md).
+  
+For ledgers in abbreviated form, the transactions are stored in abbreviated form:
+
+* For ledger type `nymbox`: Element `nymboxRecord`: [`nymboxRecord` document](transaction.md#document-type-nymboxrecord)
+* For ledger type `inbox`: Element `inboxRecord`: [`inboxRecord` document](transaction.md#document-type-inboxrecord)
+* For ledger type `outbox`: Element `outboxRecord`: [`outboxRecord` document](transaction.md#document-type-outboxrecord)
+* For ledger type `paymentInbox`: Element `paymentInboxRecord`: [`paymentInboxRecord` document](transaction.md#document-type-paymentinboxrecord)
+* For ledger type `recordBox`: Element `recordBoxRecord`: [`recordBoxRecord` document](transaction.md#document-type-recordboxrecord)
+* For ledger type `expiredBox`: Element `expiredBoxRecord`: [`expiredBoxRecord` document](transaction.md#document-type-expiredboxrecord)
 
 ## Ledger Types
 
