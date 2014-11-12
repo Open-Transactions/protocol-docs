@@ -154,7 +154,8 @@ Downloads current Nymbox from the Notary. A Nymbox is where any messages, instru
 
 ## getBoxReceipt
 
-Requests a transaction receipt from a Nymbox, Inbox or Outbox.
+Requests a transaction receipt from a Nymbox, Inbox or Outbox. This message includes the Nym ID, Notary ID, transaction number, and request number. Additionally, the message must specify the box type: Nymbox, Inbox or Outbox. 
+getBoxReceipt downloads full receipts because the nymbox, inbox, or outbox will only contain the stub and not the full receipt. When the client has downloaded the full receipt, it will hash the receipt and compare it to the hash that is stored in the stub to verify that it corresponds to the same receipt. 
 
 * Attribute `transactionNum`: Integer. Transaction number for which to get the
   receipt.
