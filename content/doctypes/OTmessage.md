@@ -194,7 +194,7 @@ Downloads the inbox, the outbox, and the account balance file.
 
 ## processInbox
 
-ProcessInbox is the only transaction that has its own message.  It includes a balance agreement and it has a process inbox item, which is the only type of item that it can have. The process inbox item contains information about the receipts in the inbox that the client is accepting. The client can selectively accept the receipts in the inbox. It does not have to accept all of the receipts in the inbox when performing this transaction. Only the receipts specified in this transaction will be accepted.
+*processInbox* is the only transaction that has its own message.  It includes a balance agreement and it has a process inbox item, which is the only type of item that it can have. The process inbox item contains information about the receipts in the inbox that the client is accepting. The client can selectively accept the receipts in the inbox. It does not have to accept all of the receipts in the inbox when performing this transaction. Only the receipts specified in this transaction will be accepted. Processing an inbox item means accepting it and signing it.
 
 * Attribute `nymboxHash`: Identifier. TODO.
 * Attribute `accountID`: Identifier.
