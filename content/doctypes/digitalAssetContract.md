@@ -2,7 +2,7 @@
 title: Document Type digitalAssetContract
 ---
 
-#Document Type `<digitalAssetContract>`
+# Document Type `<digitalAssetContract>`
 
 Inherits from base Document Type Contract.
 
@@ -32,5 +32,5 @@ Inherits from base Document Type Contract.
     * Attribute `type`. String.
     * Attribute `issuedate`. String.
 
-#References
+# References
 [AssetContract::CreateContents()](https://github.com/Open-Transactions/opentxs/blob/be111238c0feb569462b2e710e7570c00aa3d8db/src/core/AssetContract.cpp#L776)

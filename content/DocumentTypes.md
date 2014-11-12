@@ -1,8 +1,8 @@
 ---
-title: "Document Type"
+title: "Document Types"
 ---
 
-# Document Type
+# Document Types
 
 The structure and meaning of the messages exchanged between Client and Notary is
 described by _Document Types_.
@@ -15,7 +15,6 @@ A document type consists of
 # Example
 
 TODO I want to use `<notaryProviderContract>` and am waiting for a merge.
-
 
 ## Data Types
 
