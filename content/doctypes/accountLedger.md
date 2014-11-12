@@ -6,7 +6,7 @@ title: Document Type accountLedger
 
 Typed container of [`<transaction>` documents](transaction.md).
 
-For all`type`s but `message`, the transactions are included in abbreviated form (`nymboxRecord`, `inboxRecord`, ..., see below). Those include the hash of the transaction in the record's `receiptHash` attribute. The transactions themselves are stored separately, see [`<transaction>`](transaction.md).
+For all`type`s but `message`, all transactions are included in abbreviated form (`nymboxRecord`, `inboxRecord`, ..., see below). Those include the hash of the transaction in the record's `receiptHash` attribute. The transactions themselves are stored separately, see [`<transaction>`](transaction.md).
 
 If the `type` is `message`, the transactions are included in full as a list of `transaction` elements.
 
@@ -14,7 +14,7 @@ If the `type` is `message`, the transactions are included in full as a list of `
 
 * Attribute `version`: Integer.
 * Attribute `type`: String. Specifies the ledger type. See _Ledger Types_ below.
-* Attribute `numPartialRecords`: Integer. In abbreviated form, it is the number of abbreviated transaction elements (see below). In full form, it is constant _0_.
+* Attribute `numPartialRecords`: Integer. In abbreviated form, it is the number of transaction elements (see below). In full form, it is constant _0_.
 * Attribute `accountID`: Identifier.
 * Attribute `userID`: Identifier. The Nym the ledger belongs to.
 * Attribute `serverID`: Identifier. The Notary the ledger is stored with.
