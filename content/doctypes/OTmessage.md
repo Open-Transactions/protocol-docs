@@ -107,7 +107,7 @@ Request creation of a new _issuer asset account_ on the Notary. issueAssetType i
 
 ## notarizeTransactions
 
-Requests the notarization of a transaction. TODO more detail.
+Requests the notarization of a transaction. This is the primary method of processing transactions. Only one transaction can be processed at one time by *notarizeTransactions*. Two transaction items are attached; the first item is a balance agreement, which contains the balance and the list of transaction numbers currently signed out to this nym, and the second item contains specific information about what the of transaction to be performed (for example, transfer or withdrawal).
 
 * Attribute `nymboxHash`: Identifier. Optional. Request will fail if it doesn't
     match the server version.
