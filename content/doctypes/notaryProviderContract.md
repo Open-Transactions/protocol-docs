@@ -4,13 +4,15 @@ title: Document Type notaryProviderContract
 
 # Document type `<notaryProviderContract>`
 
+Inherits from Base Document Type [Contract](contract.md).
+
 The contract contains
 
-* Terms and conditions of using the Notary
 * Description of the entity running the Notary.
 * Description of how to connect to the Notary.
+* Terms and conditions of using the Notary (inherited from Contract)
 * A description of the keys to use in order to verify received messages and send
-  encrypted message.
+  encrypted message (inherited from Contract)
 
 The hash of the `notaryProviderContract` yields the `serverID`, which is set in
 [`<OTmessage>` documents](OTmessage.md).
@@ -21,7 +23,6 @@ agrees with the terms and conditions in the contract.
 Previously know as _server contract_.
 
 ## Elements and attributes
-
 * Attribute `version`. String. Hard-coded to `2.0`.
 * Element `entity`. The legal entity this contract is about.
   * Attribute `shortname`. String. An arbitrary name chosen upon creation of the
@@ -38,17 +39,8 @@ Previously know as _server contract_.
   * Attribute `URL`. String. The URL of the server, which includes the hostname
     and is the same as the `serverURL`. TODO is that a requirement?
 
-TODO: a `<notaryProviderContract>` can contain some elements that are processed
-by the superclass `OTContract` (for example `<entity>`, but also `<condition>`
-which isn't mentioned here). Either explain them here or refer to a base
-document type.
-
-# Example
-
-TODO: incomplete
-
+## Example
 ```xml
-<?xml version="1.0"?>
 <notaryProviderContract version="2.0">
     <entity shortname="$shortname"
             longname="$longname"
@@ -59,18 +51,15 @@ TODO: incomplete
                   port="$port"
                   URL="$URL" />
 
-    <!-- CreateInnerContents() -->
+    <!-- Other elements written by super class -->
 </notaryProviderContract>
 ```
 
-# References
+## References
+[OTServerContract::CreateContents](https://github.com/Open-Transactions/opentxs/blob/7cf2be697c5dc4e06cd95d77787373c9285ecce3/src/core/OTServerContract.cpp#L204)
 
-* TODO
-
-# Notes
-
+## Notes
 Also the attributes `hostname` and `port` seems quite redundant since both can
-(and should) be encoded in the `URL` attribute. Perhaps this was done for the
-benefit of the client. If that is the case one should consider adding the
-attribute `protocol`. These three attributes combine into an URL.
-
+be encoded in the `URL` attribute. Perhaps this was done for the benefit of the
+client. If that is the case one should consider adding the attribute
+`protocol`. These three attributes combine into an URL.
