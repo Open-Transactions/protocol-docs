@@ -77,7 +77,8 @@ the request was successful. Transaction numbers need to be requested from each N
 
 ## createAccount
 
-Requests creation of a new asset account on the Notary.
+Requests creation of a new asset account on the Notary. It includes the NYM ID, notary ID and asset type. The reply to this message from the Notary includes a True or False success variable, the account ID of the new account, and the account itself, which is a signed balance file. The account file contains the NYM ID of the account owner, the notary ID where the account is located, the AssetType ID of the account, the balance, and the account type. The new account starts with a zero balance.
+
 
 * Attribute `assetType`: Identifier. ID of the asset type for the account.
 
