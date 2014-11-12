@@ -91,7 +91,7 @@ Requests creation of a new asset account on the Notary. It includes the NYM ID, 
 
 ## issueAssetType
 
-Request creation of a new _issuer asset account_ on the Notary.
+Request creation of a new _issuer asset account_ on the Notary. issueAssetType is a message sent by an issuer that wants to issue currency onto the notary. An asset contract must be uploaded to the notary by the currency issuer that wants to issue a currency on that notary. The issuer is the one who made the asset contract and signed it.  This message includes the NYM ID, the notary ID, the queried asset types, and the asset contract. The asset type is the hash of the asset contract. The notary verifies that the asset contract hash equals the asset type ID. The notary will also load up the public credentials for the NYM, to verify the signature on the asset contract.
 
 * Attribute `assetType`: Identifier. Hash of the `<digitalAssetContract>`.
 * Element `assetContract`: Signed [`<digitalAssetContract>`
