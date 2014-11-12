@@ -125,8 +125,10 @@ Requests the notarization of a transaction. TODO more detail.
 
 ## getRequest
 
-Get the current request number from the Notary. When the client doesn't know
-what the current one is.
+Get the current request number from the Notary, when the client doesn't know
+what the current one is.  Request numbers ensure synchronization of messages, between a client and a Notary, and also reduce the risk of replay attacks.
+For example, when a client sends a message with request #100, the Notary will expect the next message from this client to use request#101. However, if the client sends a series of messages that do not arrive at the Notary, the next message received by the Notary from this client might be request#105. This is not the request number expected by the Notary and it will be rejected. To resync messages with the Notary, the client makes a getRequest to the Notary to check which request# the Notary is expecting. The client can then retry with the request# expected by the Notary.
+
 
 ## @getRequest
 
