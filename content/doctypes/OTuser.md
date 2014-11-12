@@ -5,9 +5,9 @@ title: Document Type OTuser
 # Document type `<OTuser>`
 
 ## Elements and attributes
-* Attribute `version`: String. the container version.
+* Attribute `version`: String. The container version.
 * Attribute `nymID`: Identifier. The ID of the Nym being described.
-* Element `nymIDSource`: the source passed to the 'newnym' command when the Nym
+* Element `nymIDSource`: the source passed to the `newnym` command when the Nym
   was created, or the generated public key when nothing was passed.
 * Element `masterCredential`: This is the top level key of the set of
   credentials a Nym has. Is used to validate the signature on the subcredentials.
@@ -27,7 +27,8 @@ title: Document Type OTuser
   * Attribute `valid`: Boolean. Whether or not this key is still valid, eg not
     revoked. TODO: who/what determines this?
 
-## Example
+
+# Example
 ```xml
 <OTuser version="1.0"
  nymID="voeqDVAJwDwROywFtg5mEyYpcu2dcPJRLFHYh7tyhqk">
@@ -48,14 +49,15 @@ title: Document Type OTuser
 </OTuser>
 ```
 
-## Notes
-This document type is often embedded in other document types which already
-include `nymIDSource` leading to some duplication here. TODO it's unclear how
-prevalent this is or whether it is necessary to correct this.
-
-## References
+# References
 * [OTPseudonym::OTPseudonym::SavePseudonym](https://github.com/Open-Transactions/opentxs/blob/0de3b72/src/core/OTPseudonym.cpp#L4273)
 * [OTPseudonym::SaveCredentialListToString](https://github.com/Open-Transactions/opentxs/blob/0de3b72/src/core/OTPseudonym.cpp#L4098)
 * [OTPseudonym::GetPublicCredentials](https://github.com/Open-Transactions/opentxs/blob/0de3b72/src/core/OTPseudonym.cpp#L4023)
 * [OTPseudonym::GetPrivateCredentials](https://github.com/Open-Transactions/opentxs/blob/0de3b72/src/core/OTPseudonym.cpp#L4055)
 * [OTCredential::SerializeIDs](https://github.com/Open-Transactions/opentxs/blob/da07760/src/core/crypto/OTCredential.cpp#L1553)
+
+# Notes
+This document type is often embedded in other document types which already
+include `nymIDSource` leading to some duplication here. TODO it's unclear how
+prevalent this is or whether it is necessary to correct this.
+

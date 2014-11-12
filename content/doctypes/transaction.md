@@ -162,6 +162,7 @@ Inherits from Document Type `<outboxRecord>`.
 * [OTTransaction::UpdateContents()](https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/core/OTTransaction.cpp#L4352)
 * [numberOfOrigin](https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/core/OTTransaction.cpp#L5790)
 * <a name="ref-saveboxreceipt"></a>[OTTransaction::SaveBoxReceipt()](https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/core/OTTransaction.cpp#L3007)
+
 # Notes
 
 Possible improvements
