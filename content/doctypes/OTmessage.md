@@ -210,6 +210,138 @@ Downloads the inbox, the outbox, and the account balance file.
 
 ----
 
+## queryAssetTypes
+
+TODO
+
+* Attribute `nymboxHash`: Identifier. TODO.
+
+## @queryAssetTypes
+
+* Attribute `nymboxHash`: Identifier. TODO.
+
+----
+
+## sendUserInstrument
+
+TODO
+
+* Attribute `nymboxHash`: Identifier. TODO.
+
+## @sendUserInstrument
+
+* Attribute `nymboxHash`: Identifier. TODO.
+
+----
+
+## sendUserMessage
+
+TODO
+
+* Attribute `nymboxHash`: Identifier. TODO.
+
+## @sendUserMessage
+
+* Attribute `nymboxHash`: Identifier. TODO.
+
+----
+
+## usageCredits
+
+TODO
+
+* Attribute `nymboxHash`: Identifier. TODO.
+
+## @usageCredits
+
+* Attribute `nymboxHash`: Identifier. TODO.
+
+----
+
+## checkUser
+
+TODO
+
+* Attribute `nymboxHash`: Identifier. TODO.
+
+## @checkUser
+
+* Attribute `nymboxHash`: Identifier. TODO.
+
+----
+
+## deleteUserAccount
+
+TODO
+
+* Attribute `nymboxHash`: Identifier. TODO.
+
+## @deleteUserAccount
+
+* Attribute `nymboxHash`: Identifier. TODO.
+
+----
+
+## checkServerID
+
+TODO
+
+* Attribute `nymboxHash`: Identifier. TODO.
+
+## @checkServerID
+
+* Attribute `nymboxHash`: Identifier. TODO.
+
+----
+
+## triggerClause
+
+TODO
+
+* Attribute `nymboxHash`: Identifier. TODO.
+
+## @triggerClause
+
+* Attribute `nymboxHash`: Identifier. TODO.
+
+----
+
+## getMint
+
+TODO
+
+* Attribute `nymboxHash`: Identifier. TODO.
+
+## @getMint
+
+* Attribute `nymboxHash`: Identifier. TODO.
+
+----
+
+## getContract
+
+TODO
+
+* Attribute `nymboxHash`: Identifier. TODO.
+
+## @getContract
+
+* Attribute `nymboxHash`: Identifier. TODO.
+
+----
+
+## deleteAssetAccount
+
+TODO
+
+* Attribute `nymboxHash`: Identifier. TODO.
+
+## @deleteAssetAccount
+
+* Attribute `nymboxHash`: Identifier. TODO.
+
+----
+
 # References
 
 * [OTMessage::UpdateContents()](https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/core/OTMessage.cpp#L298).
