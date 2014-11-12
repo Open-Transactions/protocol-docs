@@ -4,13 +4,14 @@ title: "Document Type"
 
 # Document Type
 
-The structure and meaning of the messages exchanged between client and Notary is
+The structure and meaning of the messages exchanged between Client and Notary is
 described by _Document Types_.
 
 A document type consists of
 
 * A list of attributes and their data types.
-* A list of sub-elements with attributes and content.
+* A list of sub-elements with attributes and content. A sub-element can be
+  document or contain a document that is described by a document type.
 
 # Example
 
