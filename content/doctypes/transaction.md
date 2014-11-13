@@ -14,7 +14,7 @@ Full transactions contain a list of [`<item>` documents](item.md).
 Abbreviated transactions do not contain the list of [`<item>` documents](item.md). The items will be loaded one by one during verification, using the [`getBoxReceipt`](OTmessage.md#getboxreceipt) message.
 * [TODO, verify if this is true].
 * Reason: if the inbox contains hundreds of receipts (items), downloading the inbox would take too long or fail altogether, creating resyncing issues.
-* The full transactions referenced by abbreviated transactions are stored in the "*box/*.r/*.rct" files. See [OTTransaction::SaveBoxReceipt()](#ref-saveboxreceipt).
+* The full transactions referenced by abbreviated transactions are stored in the `*box/*.r/*.rct` files. See [OTTransaction::SaveBoxReceipt()](#ref-saveboxreceipt).
  
 A transaction can be "in reference to" an [`<item>`](item.md).
 
