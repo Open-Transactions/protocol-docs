@@ -6,7 +6,6 @@ title: Document Type digitalAssetContract
 
 Inherits from base Document Type Contract.
 
-* Attribute `version`. Integer. Hard-coded to 1.0.
 * Attribute `type`. String. TODO
 * Attribute `version`. Integer. Hard-coded to 2.0
 * Element `entity`.
