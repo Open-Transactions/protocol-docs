@@ -301,7 +301,8 @@ TODO
 
 ## triggerClause
 
-TODO
+*triggerClause* is a transaction used for triggering scripts on smart contracts. Smart contracts have clauses, which are scripts on the contract that can be activated in response to a condition or scheduled to run at certain times. 
+For example, a smart contract may have a clause that can be triggered in case of a dispute. Or there may be clauses that are triggered everyday to perform a daily action.
 
 * Attribute `nymboxHash`: Identifier. TODO.
 
