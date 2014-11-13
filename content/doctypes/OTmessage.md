@@ -260,7 +260,8 @@ TODO
 
 ## checkUser
 
-TODO
+*checkUser* downloads the public information for another client. For example, this message would be used to download another client’s public key so that we can send him a message and encrypt it to his key. If this message succeeds, it provides the public key for the specified user. If it fails, it returns your original request.
+
 
 * Attribute `nymboxHash`: Identifier. TODO.
 
@@ -286,7 +287,7 @@ TODO
 
 *checkServerID* is similar to a ping command. It sends a message to the Notary to see if it can get a reply. It verifies if the Notary is listening and responding. This is the first message used in a transaction.
 
-*checkServerID* sends the NYM authentication key and the encryption key to the notary. It’s one of the few messages that must include these keys in the message. In most other messages the Notary already has these keys, because the NYM is already registered with the notary.  The notary Replies to *checkServerID* with true or false. The notary replies false to this message if an incorrect notaryID is used in this message.
+*checkServerID* sends the NYM authentication key and the encryption key to the Notary. This is one of the few messages that must include these keys in the message. In most other messages the Notary already has these keys, because the NYM is already registered with the Notary.  The Notary replies to *checkServerID* with true or false. The Notary replies false to this message if an incorrect *notaryID* is used in this message.
 
 * Attribute `nymboxHash`: Identifier. TODO.
 
