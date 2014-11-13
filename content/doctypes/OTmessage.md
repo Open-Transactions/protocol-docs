@@ -224,7 +224,8 @@ Downloads the inbox, the outbox, and the account balance file.
 
 ## sendUserInstrument
 
-TODO
+*sendUserInstrument* is used to send a payment instrument to another client.
+The message is encrypted with the recipient's public key. If the sender does not have the recipient's public key, it will call the *checkUser* message, download the user's public key, encrypt the message to that public key, and then call *sendUserInstrument* to send it to the user. The message goes into the recipient’s nymbox.
 
 * Attribute `nymboxHash`: Identifier. TODO.
 
