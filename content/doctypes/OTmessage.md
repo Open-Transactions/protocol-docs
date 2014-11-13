@@ -274,7 +274,8 @@ TODO
 
 ## deleteUserAccount
 
-TODO
+*deleteUserAccount* deletes the specified NYM from the Notary. However, this action will fail if the NYM has any accounts on the notary that do not have a zero balance. If the client wants to delete an asset account, it needs to first reduce the account balance to zero, delete the account, and then delete the NYM off the Notary.  Alternatively, the user could stop using a NYM without deleting it and just leave it on the Notary. However, as a courtesy, the unused NYM should be deleted from the Notary.
+
 
 * Attribute `nymboxHash`: Identifier. TODO.
 
