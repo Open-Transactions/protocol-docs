@@ -214,11 +214,11 @@ Downloads the inbox, the outbox, and the account balance file.
 
 *queryAssetTypes* sends the notary a list of asset type IDs in a string map (for example, gold or silver), to query the Notary if it supports these asset types. It is a simple message for determining if certain asset types are there are not. The Notary replies with true or false, in response to each queried asset type.
 
-* Attribute `nymboxHash`: Identifier. TODO.
+* Attribute: TODO.
 
 ## @queryAssetTypes
 
-* Attribute `nymboxHash`: Identifier. TODO.
+* Attribute: TODO.
 
 ----
 
@@ -227,11 +227,11 @@ Downloads the inbox, the outbox, and the account balance file.
 *sendUserInstrument* is used to send a payment instrument to another client.
 The message is encrypted with the recipient's public key. If the sender does not have the recipient's public key, it will call the *checkUser* message, download the user's public key, encrypt the message to that public key, and then call *sendUserInstrument* to send it to the user. The message goes into the recipient’s **nymbox**.
 
-* Attribute `nymboxHash`: Identifier. TODO.
+* Attribute: TODO.
 
 ## @sendUserInstrument
 
-* Attribute `nymboxHash`: Identifier. TODO.
+* Attribute: TODO.
 
 ----
 
@@ -240,11 +240,11 @@ The message is encrypted with the recipient's public key. If the sender does not
 *sendUserMessage* is used to send a message to another client. The message is encrypted with the recipient's public key. If the sender does not have the recipient's public key, it will call the *checkUser* message, download the user's public key, encrypt the message to that public key, and then call *sendUserMessage* to send it to the user. The message goes into the recipient’s **nymbox**.
 
 
-* Attribute `nymboxHash`: Identifier. TODO.
+* Attribute: TODO.
 
 ## @sendUserMessage
 
-* Attribute `nymboxHash`: Identifier. TODO.
+* Attribute: TODO.
 
 ----
 
@@ -252,11 +252,11 @@ The message is encrypted with the recipient's public key. If the sender does not
 
 *usageCredits* can be used by a client to ask the Notary how many usage credits are available for the specified **nym**. Usage Credits is a number that can be attached to a **nym**. The Notary can turn Usage Credits on or off. If the Notary turns the feature on, then the usage credits of the **nym** will decrement with every protocol message and with every request reply.  All messages (except *usageCredits*) will fail when a **nym** has consumed all of its' usage credits.
 
-* Attribute `nymboxHash`: Identifier. TODO.
+* Attribute: TODO.
 
 ## @usageCredits
 
-* Attribute `nymboxHash`: Identifier. TODO.
+* Attribute: TODO.
 
 ----
 
@@ -265,11 +265,11 @@ The message is encrypted with the recipient's public key. If the sender does not
 *checkUser* downloads the public information for another client. For example, this message would be used to download another client’s public key so that we can send him a message and encrypt it to his key. If this message succeeds, it provides the public key for the specified user. If it fails, it returns your original request.
 
 
-* Attribute `nymboxHash`: Identifier. TODO.
+* Attribute: TODO.
 
 ## @checkUser
 
-* Attribute `nymboxHash`: Identifier. TODO.
+* Attribute: TODO.
 
 ----
 
@@ -278,11 +278,11 @@ The message is encrypted with the recipient's public key. If the sender does not
 *deleteUserAccount* deletes the specified **nym** from the Notary. However, this action will fail if the **nym** has any accounts on the notary that do not have a zero balance. If the client wants to delete an asset account, it needs to first reduce the account balance to zero, delete the account, and then delete the **nym** off the Notary.  Alternatively, the user could stop using a **nym** without deleting it and just leave it on the Notary. However, as a courtesy, the unused **nym** should be deleted from the Notary.
 
 
-* Attribute `nymboxHash`: Identifier. TODO.
+* Attribute: TODO.
 
 ## @deleteUserAccount
 
-* Attribute `nymboxHash`: Identifier. TODO.
+* Attribute: TODO.
 
 ----
 
@@ -292,11 +292,11 @@ The message is encrypted with the recipient's public key. If the sender does not
 
 *checkServerID* sends the **nym** authentication key and the encryption key to the Notary. This is one of the few messages that must include these keys in the message. In most other messages the Notary already has these keys, because the **nym** is already registered with the Notary.  The Notary replies to *checkServerID* with true or false. The Notary replies false to this message if an incorrect *notaryID* is used in this message.
 
-* Attribute `nymboxHash`: Identifier. TODO.
+* Attribute: TODO.
 
 ## @checkServerID
 
-* Attribute `nymboxHash`: Identifier. TODO.
+* Attribute: TODO.
 
 ----
 
@@ -305,23 +305,23 @@ The message is encrypted with the recipient's public key. If the sender does not
 *triggerClause* is a transaction used for triggering scripts on smart contracts. Smart contracts have clauses, which are scripts on the contract that can be activated in response to a condition or scheduled to run at certain times. 
 For example, a smart contract may have a clause that can be triggered in case of a dispute. Or there may be clauses that are triggered everyday to perform a daily action.
 
-* Attribute `nymboxHash`: Identifier. TODO.
+* Attribute: TODO.
 
 ## @triggerClause
 
-* Attribute `nymboxHash`: Identifier. TODO.
+* Attribute: TODO.
 
 ----
 
 ## getMint
 
-TODO
+*getMint* requests the Notary to provide the public mint key for the cash instrument. The cash instrument has a series of minting keys and the minting keys are stored in the mint.There is a public mint and a private mint, the notary keeps the private mint key and it will give a copy of the public mint key to the requesting client. The notary should give all clients the same public mint key. If different public mint keys were provided to different clients, the cash would become traceable.
 
-* Attribute `nymboxHash`: Identifier. TODO.
+* Attribute: TODO.
 
 ## @getMint
 
-* Attribute `nymboxHash`: Identifier. TODO.
+* Attribute: TODO.
 
 ----
 
@@ -329,11 +329,11 @@ TODO
 
 Downloads an asset contract from the Notary. The response message from the Notary, if the success is *true*, will include the associated asset contract for the  specified asset type ID. The client can hash the contract provided by the Notary and compare the hash with the asset type ID. 
 
-* Attribute `nymboxHash`: Identifier. TODO.
+* Attribute: TODO.
 
 ## @getContract
 
-* Attribute `nymboxHash`: Identifier. TODO.
+* Attribute: TODO.
 
 ----
 
@@ -344,11 +344,11 @@ Firstly, the account balance needs to be reduced to zero. The Notary won’t all
 Once the inbox is empty and the account balance is zero, the *deleteAssetAccount* message can be sent to the Notary and the specified asset account is deleted.
 
 
-* Attribute `nymboxHash`: Identifier. TODO.
+* Attribute: TODO.
 
 ## @deleteAssetAccount
 
-* Attribute `nymboxHash`: Identifier. TODO.
+* Attribute: TODO.
 
 ----
 
