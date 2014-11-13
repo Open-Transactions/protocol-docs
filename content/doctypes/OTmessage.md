@@ -212,7 +212,7 @@ Downloads the inbox, the outbox, and the account balance file.
 
 ## queryAssetTypes
 
-TODO
+*queryAssetTypes* sends the notary a list of asset type IDs in a string map (for example, gold or silver), to query the Notary if it supports these asset types. It is a simple message for determining if certain asset types are there are not. The notary replies with true or false, in response to each queried asset type.
 
 * Attribute `nymboxHash`: Identifier. TODO.
 
