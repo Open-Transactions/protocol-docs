@@ -337,7 +337,10 @@ Downloads an asset contract from the Notary. The response message from the Notar
 
 ## deleteAssetAccount
 
-TODO
+Deletes the specified asset account from the Notary. A number of prerequisite actions must be performed before the *deleteAssetAccount* request can be  sent to the Notary.
+Firstly, the account balance needs to be reduced to zero. The Notary won’t allow the deletion of an asset account that contains a balance. Secondly, the inbox needs to be empty. Any transaction receipts in the inbox must be closed out.
+Once the inbox is empty and the account balance is zero, the *deleteAssetAccount* message can be sent to the Notary and the specified asset account is deleted.
+
 
 * Attribute `nymboxHash`: Identifier. TODO.
 
