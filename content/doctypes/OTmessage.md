@@ -324,7 +324,7 @@ TODO
 
 ## getContract
 
-TODO
+Downloads an asset contract from the Notary. The response message from the Notary, if the success is *true*, will include the associated asset contract for the  specified asset type ID. The client can hash the contract provided by the Notary and compare the hash with the asset type ID. 
 
 * Attribute `nymboxHash`: Identifier. TODO.
 
