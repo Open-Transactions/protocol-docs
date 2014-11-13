@@ -236,7 +236,8 @@ TODO
 
 ## sendUserMessage
 
-TODO
+*sendUserMessage* is used to send a message to another client. The message is encrypted with the recipient's public key. If the sender does not have the recipient's public key, it will call the *checkUser* message, download the user's public key, encrypt the message to that public key, and then call *sendUserMessage* to send it to the user. The message goes into the recipient’s nymbox.
+
 
 * Attribute `nymboxHash`: Identifier. TODO.
 
