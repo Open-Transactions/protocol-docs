@@ -110,9 +110,6 @@ The re-assembled `OTMessage` object is processed in the conditional block
 
 # Notes
 
-
-* Some command names can be improved. The `createUserAccount` name should match
-    the command `registerNym` in the `opentxs` shell and API. See
 * `ProcessUserCommand` relies on `stdin` for some messages
 * OTMessage is too generic to handle all the specific subtypes.
 * There should only be one command type element allowed in a OTMessage.
