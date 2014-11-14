@@ -32,7 +32,7 @@ single entity, not the item. A transaction contains a list of items.
 * Attribute `numberOfOrigin`. Integer. Reference to original transaction.
 * Attribute `transactionNum`. Integer. Number of current transaction.
 * Attribute `serverID`. Identifier.
-* Attribute `userID`. Identifier. NymID of the user who created this item. 
+* Attribute `userID`. Identifier. NymID of the user who created this item. On items from client it is client user ID, on items from server it is server user id.
 * Attribute `fromAccountID`. Identifier. Source account ID
 * Attribute `toAccountID`. Identifier. Destination account ID.
 * Attribute `inReferenceTo`. Integer. Reference to transaction which does not need to be included in items.
@@ -47,8 +47,8 @@ single entity, not the item. A transaction contains a list of items.
     * Attribute `userID`. Identifier. User ID.
     * Attribute `numberOfOrigin`. Integer. Reference to original transaction.
     * Attribute `transactionNum`. Integer.
-          * the attribute could have special value 1 that is used when client does not know transaction number. The transaction number will be in response in `outboxNewTransNum`.
-          * see https://github.com/Open-Transactions/opentxs/blob/develop/src/client/OpenTransactions.cpp#L12418 and https://github.com/Open-Transactions/opentxs/blob/develop/src/core/OTTransaction.cpp#L1987
+        * the attribute could have special value 1 that is used when client does not know transaction number. The transaction number will be in response in attribute `outboxNewTransNum`.
+        * see https://github.com/Open-Transactions/opentxs/blob/develop/src/client/OpenTransactions.cpp#L12418 and https://github.com/Open-Transactions/opentxs/blob/develop/src/core/OTTransaction.cpp#L1987
     * Attribute `closingTransactionNum`. Integer. Only for `finalReceipt` or `basketReceipt`.
     * Attribute `inReferenceTo`. Integer.
 
@@ -136,7 +136,9 @@ amount="0" >
 </item>
 ```
 * `acceptMessage`
+   * client-side acceptance of a transaction message in the Nymbox
 * `acceptNotice`
+   * client-side acceptance of a server notification in the Nymbox
 
 #### Inbox Resolution
 
@@ -154,7 +156,7 @@ amount="0" >
     * element `attachment`
         * contains armored [`OTuser` document](../doctypes/OTuser.md) that updates issued nums and transaction nums.
     * element `transactionReport`
-        * balance statement contains transactionReport for each transaction in inbox or outbox.
+        * balance statement contains `transactionReport` for each transaction in inbox or outbox.
 
 ##### Example
 
@@ -195,25 +197,55 @@ inReferenceTo="710" />
 </item>
 ```
 * `transactionStatement`
+    * client has to sign new `transactionStatement` when transaction nums changed to update information on which nums has client responsibility. It could changed when client receive new nums from server or when some transaction is cleared.
+    * element `attachment` contains document [`OTuser`](OTuser.md) with actual list of nums
 
 #### Cash Withdrawal and Deposit
 
+* used in `notarizeTransactions`
+* attachment contains [purse](purse.md) document
+
 * `withdrawal`
+    * client digital cash withdrawal
 * `deposit`
+    * client cash deposit (of a purse containing blinded tokens)
 
 #### Cheques and Vouchers
 
 * `withdrawVoucher`
+    * client request to purchase a voucher (a cashier's cheque)
+    * element `attachment` contains voucher (document cheque)
+    * used in transaction `withdrawal`
 * `depositCheque`
+    * client request to deposit a cheque
+    * used in transaction `deposit`
+    * element `attachment` contains voucher (document cheque)
 
 #### Receipt Types
 
+* `replyNotice`
+    * for some special messages, server drop reply also into Nymbox to be guaranteed that the Nym will receive and process the message. Used in transaction `replyNotice`
+         * used as reply for messages: `issueAssetType`, `createAccount`, `deleteUser`, `deleteAssetAcct`, `processNymbox`, `processInbox`, `notarizeTransactions`
+    * element `attachment` contains the reply message
+    * TODO I do not see replyNotice in communication
+* `successNotice`
+    * seems that never used, see `successNotice` in [transaction](transaction.md)
+
+##### Payment receipts
+
+* used only in `balanceStatement`, not in `item` but as `transactionReport`, for usage in inbox see [transaction](transaction.md)
+* TODO this should be moved, is not part `item`, it is only part of OTItem.hpp
+
 * `voucherReceipt`
 * `marketReceipt`
+    * server result of market trading
+    * element `attachment` contains document `marketOffer`
 * `paymentReceipt`
+    * server result of smart contract
+    * element `attachment` contains document `smartContract`
+    * used also in transaction `paymentReceipt`
 * `transferReceipt`
-* `replyNotice`
-* `successNotice`
+    * server receipt dropped into an inbox as result of transfer being accepted
 
 # References
 
@@ -257,6 +289,8 @@ Outside the current description task
 #### Cron / Basket Transactions
 
 * `finalReceipt` (cron)
+      * server receipt dropped into inbox / nymbox as result
+      * TODO
 * `basketReceipt`
 
 #### Paying Dividend on Shares of Stock
