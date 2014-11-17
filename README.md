@@ -30,12 +30,18 @@ parsing, serialization and transport methods in `opentxs`.
 * [Description of Client sending to Server](content/docs/transport_client_sending.md)
 * [Description of Server receiving from Client](content/docs/transport_server_receiving.md)
 
+# Monetas Enhancement Proposals
+
+Significant changes to the code follow a process using MEP documents
+(Monetas Enhancement Proposals), stored in the [`mep`](content/mep/)
+directory.
+
 # Offline rendering
 
-The documentation can be rendered offline by means of the [Hugo](http://gohugo.io/)
-static generator, v. 0.12 or greater. Install it, run the `hugo` command in the
-top level directory of the repo, and a static website will be generated in the
-`public` directory.
+The documentation can be rendered offline by means of the
+[Hugo](http://gohugo.io/) static generator, v. 0.12 or greater. Install it, run
+the `hugo` command in the top level directory of the repo, and a static website
+will be generated in the `public` directory.
 
 You can also run the `hugo server` command and point a browser at
 <http://localhost:1313/>.
