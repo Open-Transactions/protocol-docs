@@ -47,9 +47,6 @@ Elements:
 
 ### Notes
 
-* The old protocol had the attribute `serverID` instead of `notaryID`.
-* The old protocol version has an `@` prefix for Notary responses instead of a
-  `Response` suffix.
 * A few requests do not inherit all of the attributes. These exceptions are
   documented for the inheriting document type.
 
@@ -73,8 +70,6 @@ Elements:
 
 ### Notes
 
-* The original root element name was `createUserAccount`. The new element name
-  matches the new naming conventions.
 * The attribute `requestNum` has the fixed value of `1` in this message.
 * `CredentialList` and `Credentials` can probably be merged into one document
   type.
@@ -121,9 +116,6 @@ Elements:
 
 ### Notes
 
-* `assetTypeID` previously was `assetType`.
-
-
 ----
 
 ## IssueAssetType
@@ -150,8 +142,6 @@ Elements:
 * `IssuerAccount`: Signed document of type [Account](Account.md).
 
 ### Notes
-
-* `assetTypeID` previously was `assetType`.
 
 ----
 

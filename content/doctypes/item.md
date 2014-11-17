@@ -254,55 +254,6 @@ inReferenceTo="710" />
 
 # Notes
 
-## TODO: Special Casing
-
-On these item types:
-
-* `acceptTransaction`
-* `request`
-* `acknowledgement`
-* `rejection`
-
-## TODO: other item types
-
-Outside the current description task
-
-#### Receipt Acknowledgement and Dispute
-
-* `acceptCronReceipt`
-* `disputeCronReceipt`
-
-* `acceptItemReceipt`
-* `disputeItemReceipt`
-
-* `acceptFinalReceipt`
-* `disputeFinalReceipt`
-
-* `acceptBasketReceipt`
-* `disputeBasketReceipt`
-
-#### Fees
-
-* `serverfee`
-* `issuerfee`
-
-#### Cron / Basket Transactions
-
-* `finalReceipt` (cron)
-      * server receipt dropped into inbox / nymbox as result
-      * TODO
-* `basketReceipt`
-
-#### Paying Dividend on Shares of Stock
-
-#### Trading On Markets
-
-#### Payment Plans
-
-#### Smart Contracts
-
-#### Cancelling of Market Offers and Payment Plans
-
 ## Code Smell: Switch Statement
 
 [Source](http://sourcemaking.com/refactoring/switch-statements). In this case on
