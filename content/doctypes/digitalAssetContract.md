@@ -8,7 +8,6 @@ Inherits from base Document Type Contract.
 
 ## Elements and attributes
 
-* Attribute `type`. String. TODO
 * Attribute `version`. Integer. Hard-coded to 2.0
 * Element `entity`.
     * Attribute `shortname`. String.
@@ -18,8 +17,8 @@ Inherits from base Document Type Contract.
     * Attribute `company`. String.
     * Attribute `email`. String.
     * Attribute `contractUrl`. String.
-    * Attribute `type`. String.
-* Optional element `currency`. TODO when included?
+    * Attribute `type`. String. "currency" or "shares"
+* Optional element `currency`. Included if type is "currency".
     * Attribute `name`. String.
     * Attribute `tla`. String.
     * Attribute `symbol`. String.
@@ -27,7 +26,7 @@ Inherits from base Document Type Contract.
     * Attribute `factor`. String.
     * Attribute `decimal_power`. String.
     * Attribute `fraction`. String.
-* Optional element `shares`. TODO when included?
+* Optional element `shares`. Included if type is "shares".
     * Attribute `name`. String.
     * Attribute `symbol`. String.
     * Attribute `type`. String.
