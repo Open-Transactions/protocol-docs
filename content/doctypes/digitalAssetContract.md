@@ -6,7 +6,8 @@ title: Document Type digitalAssetContract
 
 Inherits from base Document Type Contract.
 
-* Attribute `type`. String. TODO
+## Elements and attributes
+
 * Attribute `version`. Integer. Hard-coded to 2.0
 * Element `entity`.
     * Attribute `shortname`. String.
@@ -16,8 +17,8 @@ Inherits from base Document Type Contract.
     * Attribute `company`. String.
     * Attribute `email`. String.
     * Attribute `contractUrl`. String.
-    * Attribute `type`. String.
-* Optional element `currency`. TODO when included?
+    * Attribute `type`. String. "currency" or "shares"
+* Optional element `currency`. Included if type is "currency".
     * Attribute `name`. String.
     * Attribute `tla`. String.
     * Attribute `symbol`. String.
@@ -25,11 +26,37 @@ Inherits from base Document Type Contract.
     * Attribute `factor`. String.
     * Attribute `decimal_power`. String.
     * Attribute `fraction`. String.
-* Optional element `shares`. TODO when included?
+* Optional element `shares`. Included if type is "shares".
     * Attribute `name`. String.
     * Attribute `symbol`. String.
     * Attribute `type`. String.
     * Attribute `issuedate`. String.
 
-# References
+## Example
+```xml
+<digitalAssetContract version="2.0">
+
+<entity shortname="Satoshi"
+ longname="Satoshi Nakamoto"
+ email="satoshi@nakamoto.com"/>
+
+<issue company="Swedish Coins"
+ email="info@swedishcoins.net"
+ contractUrl="https://swedishcoins.net/contract"
+ type="currency"/>
+
+<currency name="Bitcoins" tla="BTC" symbol="BTC" type="decimal" factor="1000"
+decimal_power="3" fraction="mBTC" />
+
+<!-- CONDITIONS -->
+
+<condition name="audit">
+  Bitcoins are audited monthly by highly trusted people.
+</condition>
+
+</digitalAssetContract>
+```
+
+
+## References
 [AssetContract::CreateContents()](https://github.com/Open-Transactions/opentxs/blob/be111238c0feb569462b2e710e7570c00aa3d8db/src/core/AssetContract.cpp#L776)
