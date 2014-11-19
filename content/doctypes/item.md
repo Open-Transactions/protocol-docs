@@ -61,7 +61,7 @@ Every type has a corresponding `at` type, which indicates the server response.
 #### Transfer
 
 * `transfer`
-    * used in `notarizeTransactions` by client to initiate transfer from one account to another account.
+    * used in `notarizeTransaction` by client to initiate transfer from one account to another account.
     * `note` contains user defined description
     * only one `transfer` can be in transaction
     * amount must be positive integer
@@ -202,7 +202,7 @@ inReferenceTo="710" />
 
 #### Cash Withdrawal and Deposit
 
-* used in `notarizeTransactions`
+* used in `notarizeTransaction`
 * attachment contains [purse](purse.md) document
 
 * `withdrawal`
@@ -225,7 +225,7 @@ inReferenceTo="710" />
 
 * `replyNotice`
     * for some special messages, server drop reply also into Nymbox to be guaranteed that the Nym will receive and process the message. Used in transaction `replyNotice`
-         * used as reply for messages: `issueAssetType`, `createAccount`, `deleteUser`, `deleteAssetAcct`, `processNymbox`, `processInbox`, `notarizeTransactions`
+         * used as reply for messages: `issueAssetType`, `createAccount`, `deleteUser`, `deleteAssetAcct`, `processNymbox`, `processInbox`, `notarizeTransaction`
     * element `attachment` contains the reply message
     * TODO I do not see replyNotice in communication
 * `successNotice`
