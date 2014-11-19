@@ -123,14 +123,14 @@ Requests the notarization of a transaction. This is the primary method of proces
 
 ----
 
-## getRequest
+## getRequestNumber
 
 Get the current request number from the Notary, when the client doesn't know
 what the current one is.  Request numbers ensure synchronization of messages, between a client and a Notary, and also reduce the risk of replay attacks.
-For example, when a client sends a message with request #100, the Notary will expect the next message from this client to use request#101. However, if the client sends a series of messages that do not arrive at the Notary, the next message received by the Notary from this client might be request#105. This is not the request number expected by the Notary and it will be rejected. To resync messages with the Notary, the client makes a getRequest to the Notary to check which request# the Notary is expecting. The client can then retry with the request# expected by the Notary.
+For example, when a client sends a message with request #100, the Notary will expect the next message from this client to use request#101. However, if the client sends a series of messages that do not arrive at the Notary, the next message received by the Notary from this client might be request#105. This is not the request number expected by the Notary and it will be rejected. To resync messages with the Notary, the client makes a getRequestNumber to the Notary to check which request# the Notary is expecting. The client can then retry with the request# expected by the Notary.
 
 
-## getRequestResponse
+## getRequestNumberResponse
 
 * Attribute `nymboxHash`: Identifier. TODO.
 * Attribute `newRequestNum`: Integer. Next request number to be used (?).
@@ -235,14 +235,14 @@ The message is encrypted with the recipient's public key. If the sender does not
 
 ----
 
-## sendUserMessage
+## sendNymMessage
 
-*sendUserMessage* is used to send a message to another client. The message is encrypted with the recipient's public key. If the sender does not have the recipient's public key, it will call the *checkNym* message, download the user's public key, encrypt the message to that public key, and then call *sendUserMessage* to send it to the user. The message goes into the recipient’s **nymbox**.
+*sendNymMessage* is used to send a message to another client. The message is encrypted with the recipient's public key. If the sender does not have the recipient's public key, it will call the *checkNym* message, download the user's public key, encrypt the message to that public key, and then call *sendNymMessage* to send it to the user. The message goes into the recipient’s **nymbox**.
 
 
 * Attribute: TODO.
 
-## sendUserMessageResponse
+## sendNymMessageResponse
 
 * Attribute: TODO.
 
