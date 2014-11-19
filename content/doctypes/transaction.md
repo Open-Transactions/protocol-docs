@@ -35,7 +35,7 @@ Those attributes are common to the [full form document type](#document-type-full
     * If `type` is one of (`pending`, `marketReceipt`, `paymentReceipt`, `finalReceipt`, `basketReceipt`): same as `inReferenceTo`.
     * If `type` is one of (`blank`, `message`, `notice`, `replyNotice`, `successNotice`, `processNymbox`, `atProcessNymbox`, `transferReceipt`, `deposit`, `atDeposit`, `instrumentNotice`, `instrumentRejection`): Not applicable.
     * For all other `type`s: same as `transactionNum`.
-* Attribute `transactionNum`: Integer. The notary issues this in response to a [`getTransactionNum` message](OTmessage.md#gettransactionnum). [TODO: link to tx num spec](https://github.com/monetas/opentxs-protocol/issues/89).        
+* Attribute `transactionNum`: Integer. The notary issues this in response to a [`getTransactionNumbers` message](OTmessage.md#gettransactionnumbers). [TODO: link to tx num spec](https://github.com/monetas/opentxs-protocol/issues/89).        
 * Attribute `inReferenceTo`: Integer. Transaction number of the item this transaction is in reference to. 
 
 ## Transaction Types
