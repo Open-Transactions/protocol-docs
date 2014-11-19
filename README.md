@@ -19,17 +19,6 @@ the XML structures that are created by `opentxs`. The format is described in
 * [Document Type `<item>`](content/doctypes/item.md)
 * [Document Type `<assetAccount>`](content/doctypes/assetAccount.md)
 
-## Description of Implementation
-
-The files in the directory [content/docs/](content/docs/) summarize the
-parsing, serialization and transport methods in `opentxs`.
-
-* [OTASCIIArmor](content/docs/OTASCIIArmor.md)
-* [OTContract](content/docs/OTContract.md)
-  * [OTMessage](content/docs/OTMessage.md)
-* [Description of Client sending to Server](content/docs/transport_client_sending.md)
-* [Description of Server receiving from Client](content/docs/transport_server_receiving.md)
-
 # Monetas Enhancement Proposals
 
 Significant changes to the code follow a process using MEP documents
