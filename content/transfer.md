@@ -21,7 +21,7 @@ Everything is signed by Alice.
 
 # Alice initialize transfer
 
-Notary responds with message `@notarizeTransactions`. It contains `accountLedger` with transaction type `atTransfer` (response to transaction `transfer`). The transaction contains response for each item. The items' status is `acknowledgement` or `rejection`.
+Notary responds with message `@notarizeTransaction`. It contains `accountLedger` with transaction type `atTransfer` (response to transaction `transfer`). The transaction contains response for each item. The items' status is `acknowledgement` or `rejection`.
 
 * `atBalanceStatement`
   * contains attribute `outboxNewTransNum` that contains number of new transaction that the Notary dropped to Alice's outbox and Bob's inbox.
@@ -32,11 +32,11 @@ Both items contain in `inReferenceTo` whole copy of original item. The response 
 When Notary accepts Alice's transaction the Notary creates new `pending` transaction and put it to Bob's inbox and Alice's outbox.
 
 
-Alice expects new transaction in outbox so she download it by combination of `getAccountFiles`, `getBoxReceipt`. TODO: why has Alice new copy of transfer
+Alice expects new transaction in outbox so she download it by combination of `getAccountData`, `getBoxReceipt`. TODO: why has Alice new copy of transfer
 
 # Bob gets transfer to inbox
 
-The same is done by Bob. By messages `getAccountFiles`, `getBoxReceipt` Bob downloads new receipt from his inbox. The receipt contains `pending` transaction signed by Notary. The transaction contains original Alice's `transfer` with her signature.
+The same is done by Bob. By messages `getAccountData`, `getBoxReceipt` Bob downloads new receipt from his inbox. The receipt contains `pending` transaction signed by Notary. The transaction contains original Alice's `transfer` with her signature.
 
 Bob accepts the `pending` transaction by new transaction `processInbox` in message `processInbox`. The transaction contains two items
 

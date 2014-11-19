@@ -34,7 +34,7 @@ This is the base type for messages sent by the Notary in response to a
 _Base Request_ by the Client.
 
 The element name is the same as for the corresponding request name, but is
-prefixed with the at symbol (`@`).
+suffixed with "Response".
 
 ### Elements and attributes
 
@@ -55,7 +55,7 @@ The public credentials will include the master credentials and the sub credentia
 * Element `credentialList`: Contains armored [`<OTuser>` document](OTuser.md).
 * Element `credentials`: Armored key-value pairs of credentials. TODO.
 
-## @createUserAccount
+## createUserAccountResponse
 
 * Element `nymfile`: Contains [`<OTuser>` document](OTuser.md).
 
@@ -68,7 +68,7 @@ the request was successful. Transaction numbers need to be requested from each N
 
 * Attribute `nymboxHash`: Identifier. TODO.
 
-## @getTransactionNum
+## getTransactionNumResponse
 
 * Attribute `nymboxHash`: Identifier. TODO.
 * this response does not have element `inReferenceTo`
@@ -82,7 +82,7 @@ Requests creation of a new asset account on the Notary. It includes the **nym** 
 
 * Attribute `assetType`: Identifier. ID of the asset type for the account.
 
-## @createAccount
+## createAccountResponse
 
 * Attribute `accountID`: Identifier.
 * Element `newAccount`: Signed [`<assetAccount>` document](assetAccount.md).
@@ -97,7 +97,7 @@ Request creation of a new _issuer asset account_ on the Notary. issueAssetType i
 * Element `assetContract`: Signed [`<digitalAssetContract>`
     document](digitalAssetContract.md)
 
-## @issueAssetType
+## issueAssetTypeResponse
 
 * Attribute `accountID`: Identifier.
 * Attribute `assetType`: Identifier. Hash of the `<digitalAssetContract>`.
@@ -105,9 +105,9 @@ Request creation of a new _issuer asset account_ on the Notary. issueAssetType i
 
 ----
 
-## notarizeTransactions
+## notarizeTransaction
 
-Requests the notarization of a transaction. This is the primary method of processing transactions. Only one transaction can be processed at one time by *notarizeTransactions*. Two transaction items are attached; the first item is a balance agreement, which contains the balance and the list of transaction numbers currently signed out to this **nym**, and the second item contains specific information about the of transaction to be performed (for example, transfer or withdrawal).
+Requests the notarization of a transaction. This is the primary method of processing transactions. Only one transaction can be processed at one time by *notarizeTransaction*. Two transaction items are attached; the first item is a balance agreement, which contains the balance and the list of transaction numbers currently signed out to this **nym**, and the second item contains specific information about the of transaction to be performed (for example, transfer or withdrawal).
 
 * Attribute `nymboxHash`: Identifier. Optional. Request will fail if it doesn't
     match the server version.
@@ -115,7 +115,7 @@ Requests the notarization of a transaction. This is the primary method of proces
 * Element `accountLedger`: Signed document of type `<accountLedger>` that only has
   one `<transaction>`.
 
-## @notarizeTransactions
+## notarizeTransactionResponse
 
 * Attribute `accountID`: Identifier.
 * Element `responseLedger`: Signed document of type `<accountLedger>` that
@@ -130,7 +130,7 @@ what the current one is.  Request numbers ensure synchronization of messages, be
 For example, when a client sends a message with request #100, the Notary will expect the next message from this client to use request#101. However, if the client sends a series of messages that do not arrive at the Notary, the next message received by the Notary from this client might be request#105. This is not the request number expected by the Notary and it will be rejected. To resync messages with the Notary, the client makes a getRequest to the Notary to check which request# the Notary is expecting. The client can then retry with the request# expected by the Notary.
 
 
-## @getRequest
+## getRequestResponse
 
 * Attribute `nymboxHash`: Identifier. TODO.
 * Attribute `newRequestNum`: Integer. Next request number to be used (?).
@@ -143,7 +143,7 @@ For example, when a client sends a message with request #100, the Notary will ex
 Downloads current **nymbox** from the Notary. A **nymbox** is where any messages, instruments, notices, and new transaction numbers are sent to a **nym** from the Notary. The **nymbox** is signed and it has a hash.
 
 
-## @getNymbox
+## getNymboxResponse
 
 * Attribute `nymboxHash`: Identifier. TODO.
 * Element `nymboxLedger`: [`<accountLedger>` document](accountLedger.md) of type `nymbox`.
@@ -164,7 +164,7 @@ Requests a transaction receipt from a **nymbox**, **inbox** or **outbox**. This 
 * Attribute `accountID`: Identifier. When `boxType` is `inbox` or `outbox`, this
   specifies the account. When `boxType` is `nymbox`, must be equal to `nymID`.
 
-## @getBoxReceipt
+## getBoxReceiptResponse
 
 * Attribute `transactionNum`: Integer. Same as in request?
 * Attribute `boxType`: String. Same as in request?
@@ -174,13 +174,13 @@ Requests a transaction receipt from a **nymbox**, **inbox** or **outbox**. This 
 
 ----
 
-## getAccountFiles
+## getAccountData
 
 Downloads the inbox, the outbox, and the account balance file.
 
 * Attribute `accountID`: Identifier.
 
-## @getAccountFiles
+## getAccountDataResponse
 
 * Attribute `accountID`: Identifier.
 * Attribute `inboxHash`: Identifier. Hash of the contained Inbox.
@@ -201,7 +201,7 @@ Downloads the inbox, the outbox, and the account balance file.
 * Element `processLedger`. Armored [`<accountLedger>`
     document](accountLedger.md).
 
-## @processInbox
+## processInboxResponse
 
 * Attribute `accountID`: Identifier.
 * Element `responseLedger`. Armored [`<accountLedger>`
@@ -216,7 +216,7 @@ Downloads the inbox, the outbox, and the account balance file.
 
 * Attribute: TODO.
 
-## @queryAssetTypes
+## queryAssetTypesResponse
 
 * Attribute: TODO.
 
@@ -225,11 +225,11 @@ Downloads the inbox, the outbox, and the account balance file.
 ## sendUserInstrument
 
 *sendUserInstrument* is used to send a payment instrument to another client.
-The message is encrypted with the recipient's public key. If the sender does not have the recipient's public key, it will call the *checkUser* message, download the user's public key, encrypt the message to that public key, and then call *sendUserInstrument* to send it to the user. The message goes into the recipient’s **nymbox**.
+The message is encrypted with the recipient's public key. If the sender does not have the recipient's public key, it will call the *checkNym* message, download the user's public key, encrypt the message to that public key, and then call *sendUserInstrument* to send it to the user. The message goes into the recipient’s **nymbox**.
 
 * Attribute: TODO.
 
-## @sendUserInstrument
+## sendUserInstrumentResponse
 
 * Attribute: TODO.
 
@@ -237,12 +237,12 @@ The message is encrypted with the recipient's public key. If the sender does not
 
 ## sendUserMessage
 
-*sendUserMessage* is used to send a message to another client. The message is encrypted with the recipient's public key. If the sender does not have the recipient's public key, it will call the *checkUser* message, download the user's public key, encrypt the message to that public key, and then call *sendUserMessage* to send it to the user. The message goes into the recipient’s **nymbox**.
+*sendUserMessage* is used to send a message to another client. The message is encrypted with the recipient's public key. If the sender does not have the recipient's public key, it will call the *checkNym* message, download the user's public key, encrypt the message to that public key, and then call *sendUserMessage* to send it to the user. The message goes into the recipient’s **nymbox**.
 
 
 * Attribute: TODO.
 
-## @sendUserMessage
+## sendUserMessageResponse
 
 * Attribute: TODO.
 
@@ -254,20 +254,20 @@ The message is encrypted with the recipient's public key. If the sender does not
 
 * Attribute: TODO.
 
-## @usageCredits
+## usageCreditsResponse
 
 * Attribute: TODO.
 
 ----
 
-## checkUser
+## checkNym
 
-*checkUser* downloads the public information for another client. For example, this message would be used to download another client’s public key so that we can send him a message and encrypt it to his key. If this message succeeds, it provides the public key for the specified user. If it fails, it returns your original request.
+*checkNym* downloads the public information for another client. For example, this message would be used to download another client’s public key so that we can send him a message and encrypt it to his key. If this message succeeds, it provides the public key for the specified user. If it fails, it returns your original request.
 
 
 * Attribute: TODO.
 
-## @checkUser
+## checkNymResponse
 
 * Attribute: TODO.
 
@@ -280,7 +280,7 @@ The message is encrypted with the recipient's public key. If the sender does not
 
 * Attribute: TODO.
 
-## @deleteUserAccount
+## deleteUserAccountResponse
 
 * Attribute: TODO.
 
@@ -294,7 +294,7 @@ The message is encrypted with the recipient's public key. If the sender does not
 
 * Attribute: TODO.
 
-## @checkServerID
+## checkServerIDResponse
 
 * Attribute: TODO.
 
@@ -307,7 +307,7 @@ For example, a smart contract may have a clause that can be triggered in case of
 
 * Attribute: TODO.
 
-## @triggerClause
+## triggerClauseResponse
 
 * Attribute: TODO.
 
@@ -319,7 +319,7 @@ For example, a smart contract may have a clause that can be triggered in case of
 
 * Attribute: TODO.
 
-## @getMint
+## getMintResponse
 
 * Attribute: TODO.
 
@@ -331,7 +331,7 @@ Downloads an asset contract from the Notary. The response message from the Notar
 
 * Attribute: TODO.
 
-## @getContract
+## getContractResponse
 
 * Attribute: TODO.
 
@@ -346,7 +346,7 @@ Once the inbox is empty and the account balance is zero, the *deleteAssetAccount
 
 * Attribute: TODO.
 
-## @deleteAssetAccount
+## deleteAssetAccountResponse
 
 * Attribute: TODO.
 
