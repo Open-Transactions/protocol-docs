@@ -40,6 +40,12 @@ Elements can have attributes and contain these *additional* types:
 
 Elements can be optional or occur repeatedly.
 
+
+## Custom Encodings
+
+* [Armoring](encoding/Armoring.md)
+* [Section Format](encoding/SectionFormat.md)
+
 ## Inheritance
 
 Some document types have commonalities (UserCommands, `<notaryProviderContract>`
