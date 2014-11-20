@@ -279,14 +279,14 @@ The message is encrypted with the recipient's public key. If the sender does not
 
 ----
 
-## deleteNym
+## unregisterNym
 
-*deleteNym* deletes the specified **nym** from the Notary. However, this action will fail if the **nym** has any accounts on the notary that do not have a zero balance. If the client wants to delete an asset account, it needs to first reduce the account balance to zero, delete the account, and then delete the **nym** off the Notary.  Alternatively, the user could stop using a **nym** without deleting it and just leave it on the Notary. However, as a courtesy, the unused **nym** should be deleted from the Notary.
+*unregisterNym* deletes the specified **nym** from the Notary. However, this action will fail if the **nym** has any accounts on the notary that do not have a zero balance. If the client wants to delete an asset account, it needs to first reduce the account balance to zero, delete the account, and then delete the **nym** off the Notary.  Alternatively, the user could stop using a **nym** without deleting it and just leave it on the Notary. However, as a courtesy, the unused **nym** should be deleted from the Notary.
 
 
 * Attribute: TODO.
 
-## deleteNymResponse
+## unregisterNymResponse
 
 * Attribute: TODO.
 
