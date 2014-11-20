@@ -292,15 +292,15 @@ The message is encrypted with the recipient's public key. If the sender does not
 
 ----
 
-## checkNotaryID
+## pingNotary
 
-*checkNotaryID* is similar to a ping command. It sends a message to the Notary to see if it can get a reply. It verifies if the Notary is listening and responding. This is the first message used in a transaction.
+*pingNotary* is similar to a ping command. It sends a message to the Notary to see if it can get a reply. It verifies if the Notary is listening and responding. This is the first message used in a transaction.
 
-*checkNotaryID* sends the **nym** authentication key and the encryption key to the Notary. This is one of the few messages that must include these keys in the message. In most other messages the Notary already has these keys, because the **nym** is already registered with the Notary.  The Notary replies to *checkNotaryID* with true or false. The Notary replies false to this message if an incorrect *notaryID* is used in this message.
+*pingNotary* sends the **nym** authentication key and the encryption key to the Notary. This is one of the few messages that must include these keys in the message. In most other messages the Notary already has these keys, because the **nym** is already registered with the Notary.  The Notary replies to *pingNotary* with true or false. The Notary replies false to this message if an incorrect *notaryID* is used in this message.
 
 * Attribute: TODO.
 
-## checkNotaryIDResponse
+## pingNotaryResponse
 
 * Attribute: TODO.
 
