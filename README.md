@@ -22,7 +22,6 @@ the XML structures that are created by `opentxs`. The format is described in
 
 The encoding is detailed in the `/encoding/` directory.
 
-* [OTASCIIArmor](content/encoding/Armoring.md)
 * [Section Format](content/encoding/SectionFormat.md)
 
 # Monetas Enhancement Proposals
