@@ -154,7 +154,7 @@ amount="0" >
 * `balanceStatement`
     * is created by client to change its own account balance with respect to other items in the transaction. The balance statement is then validated and signed by server.
     * element `attachment`
-        * contains armored [`OTuser` document](../doctypes/OTuser.md) that updates issued nums and transaction nums.
+        * contains armored [`nymData` document](../doctypes/nymData.md) that updates issued nums and transaction nums.
     * element `transactionReport`
         * balance statement contains `transactionReport` for each transaction in inbox or outbox.
 
@@ -198,7 +198,7 @@ inReferenceTo="710" />
 ```
 * `transactionStatement`
     * client has to sign new `transactionStatement` when transaction nums changed to update information on which nums has client responsibility. It could changed when client receive new nums from server or when some transaction is cleared.
-    * element `attachment` contains document [`OTuser`](OTuser.md) with actual list of nums
+    * element `attachment` contains document [`nymData`](nymData.md) with actual list of nums
 
 #### Cash Withdrawal and Deposit
 

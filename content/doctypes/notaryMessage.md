@@ -52,12 +52,12 @@ suffixed with "Response".
 Requests the registration of a new **nym** on the Notary. It uploads the **nym** file and sends the public credentials. It does not send the private credentials.
 The public credentials will include the master credentials and the sub credentials. For example, it could be a master credential and four sub credentials, or two master credentials and two separate credential.
 
-* Element `credentialList`: Contains armored [`<OTuser>` document](OTuser.md).
+* Element `credentialList`: Contains armored [`<nymData>` document](nymData.md).
 * Element `credentials`: Armored key-value pairs of credentials. TODO.
 
 ## createUserAccountResponse
 
-* Element `nymfile`: Contains [`<OTuser>` document](OTuser.md).
+* Element `nymfile`: Contains [`<nymData>` document](nymData.md).
 
 ----
 

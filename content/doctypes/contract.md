@@ -25,7 +25,7 @@ Inheriting Document types:
 * Element `nymIDSource`: the source passed to the 'newnym' command when the Nym
   was created, or the generated public key when nothing was passed.
 * Element `credentialList`: a list of public credentials if present. See
-  [OTuser](OTuser.md).
+  [nymData](nymData.md).
 * Element `credentials`: TODO figure out what this is.
 
 ## Example

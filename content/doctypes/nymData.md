@@ -1,8 +1,8 @@
 ---
-title: Document Type OTuser
+title: Document Type nymData
 ---
 
-# Document type `<OTuser>`
+# Document type `<nymData>`
 
 ## Elements and attributes
 * Attribute `version`: String. The container version.
@@ -30,7 +30,7 @@ title: Document Type OTuser
 
 # Example
 ```xml
-<OTuser version="1.0"
+<nymData version="1.0"
  nymID="voeqDVAJwDwROywFtg5mEyYpcu2dcPJRLFHYh7tyhqk">
 
   <nymIDSource>
@@ -46,7 +46,7 @@ title: Document Type OTuser
    masterID="UESzvzSw6zqC7BuvlcHmbPKTmf5BIbG0RNvCTpDx1kH"
    valid="true"/>
 
-</OTuser>
+</nymData>
 ```
 
 # References
