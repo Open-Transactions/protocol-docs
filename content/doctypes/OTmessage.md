@@ -61,14 +61,14 @@ The public credentials will include the master credentials and the sub credentia
 
 ----
 
-## getTransactionNum
+## getTransactionNumbers
 
 Requests a new list of transaction numbers. The list will be in the **nymbox** if
 the request was successful. Transaction numbers need to be requested from each Notary that a client transacts with. Additionally, each **nym** on a client needs it's own transaction numbers. When the requested Transaction Numbers arrive in the corresponding **nymbox**, the client performs a ProcessNYMBox to accept and sign the transaction numbers. Each transaction sent to the Notary needs to include a transaction number provided by that same Notary. Some complex financial instruments may require multiple transaction numbers.
 
 * Attribute `nymboxHash`: Identifier. TODO.
 
-## getTransactionNumResponse
+## getTransactionNumbersResponse
 
 * Attribute `nymboxHash`: Identifier. TODO.
 * this response does not have element `inReferenceTo`
@@ -222,14 +222,14 @@ Downloads the inbox, the outbox, and the account balance file.
 
 ----
 
-## sendUserInstrument
+## sendNymInstrument
 
-*sendUserInstrument* is used to send a payment instrument to another client.
-The message is encrypted with the recipient's public key. If the sender does not have the recipient's public key, it will call the *checkNym* message, download the user's public key, encrypt the message to that public key, and then call *sendUserInstrument* to send it to the user. The message goes into the recipient’s **nymbox**.
+*sendNymInstrument* is used to send a payment instrument to another client.
+The message is encrypted with the recipient's public key. If the sender does not have the recipient's public key, it will call the *checkNym* message, download the user's public key, encrypt the message to that public key, and then call *sendNymInstrument* to send it to the user. The message goes into the recipient’s **nymbox**.
 
 * Attribute: TODO.
 
-## sendUserInstrumentResponse
+## sendNymInstrumentResponse
 
 * Attribute: TODO.
 
@@ -273,14 +273,14 @@ The message is encrypted with the recipient's public key. If the sender does not
 
 ----
 
-## deleteUserAccount
+## deleteNym
 
-*deleteUserAccount* deletes the specified **nym** from the Notary. However, this action will fail if the **nym** has any accounts on the notary that do not have a zero balance. If the client wants to delete an asset account, it needs to first reduce the account balance to zero, delete the account, and then delete the **nym** off the Notary.  Alternatively, the user could stop using a **nym** without deleting it and just leave it on the Notary. However, as a courtesy, the unused **nym** should be deleted from the Notary.
+*deleteNym* deletes the specified **nym** from the Notary. However, this action will fail if the **nym** has any accounts on the notary that do not have a zero balance. If the client wants to delete an asset account, it needs to first reduce the account balance to zero, delete the account, and then delete the **nym** off the Notary.  Alternatively, the user could stop using a **nym** without deleting it and just leave it on the Notary. However, as a courtesy, the unused **nym** should be deleted from the Notary.
 
 
 * Attribute: TODO.
 
-## deleteUserAccountResponse
+## deleteNymResponse
 
 * Attribute: TODO.
 
