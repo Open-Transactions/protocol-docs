@@ -80,7 +80,7 @@ the request was successful. Transaction numbers need to be requested from each N
 Requests creation of a new asset account on the Notary. It includes the **nym** ID, notary ID and asset type. The reply to this message from the Notary includes a True or False success variable, the account ID of the new account, and the account itself, which is a signed balance file. The account file contains the **nymID** of the account owner, the notaryID where the account is located, the AssetType ID of the account, the balance, and the account type. The new account starts with a zero balance.
 
 
-* Attribute `assetType`: Identifier. ID of the asset type for the account.
+* Attribute `instrumentDefinitionID`: Identifier. ID of the asset type for the account.
 
 ## createAccountResponse
 
@@ -93,14 +93,14 @@ Requests creation of a new asset account on the Notary. It includes the **nym** 
 
 Request creation of a new _issuer asset account_ on the Notary. issueAssetType is a message sent by an issuer that wants to issue currency onto the notary. An asset contract must be uploaded to the notary by the currency issuer that wants to issue a currency on that notary. The issuer is the one who made the asset contract and signed it.  This message includes the **nymID**, the notary ID, the queried asset types, and the asset contract. The asset type is the hash of the asset contract. The notary verifies that the asset contract hash equals the asset type ID. The notary will also load up the public credentials for the **nym**, to verify the signature on the asset contract.
 
-* Attribute `assetType`: Identifier. Hash of the `<instrumentDefinition>`.
+* Attribute `instrumentDefinitionID`: Identifier. Hash of the `<instrumentDefinition>`.
 * Element `assetContract`: Signed [`<instrumentDefinition>`
     document](instrumentDefinition.md)
 
 ## issueAssetTypeResponse
 
 * Attribute `accountID`: Identifier.
-* Attribute `assetType`: Identifier. Hash of the `<instrumentDefinition>`.
+* Attribute `instrumentDefinitionID`: Identifier. Hash of the `<instrumentDefinition>`.
 * Element `issuerAccount`: Signed [`<assetAccount>` document](assetAccount.md).
 
 ----
