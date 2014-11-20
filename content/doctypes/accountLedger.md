@@ -6,7 +6,7 @@ title: Document Type accountLedger
 
 Typed container of [`<transaction>` documents](transaction.md).
 
-For all`type`s but `message`, all transactions are included in abbreviated form (`nymboxRecord`, `inboxRecord`, ..., see below). Those include the hash of the transaction in the record's `receiptHash` attribute. The transactions themselves are stored separately, see [`<transaction>`](transaction.md).
+For all `type`s except `message`, all transactions are included in abbreviated form (`nymboxRecord`, `inboxRecord`, ..., see below). Those include the hash of the transaction in the record's `receiptHash` attribute. The transactions themselves are stored separately, see [`<transaction>`](transaction.md).
 
 If the `type` is `message`, the transactions are included in full as a list of `transaction` elements.
 
