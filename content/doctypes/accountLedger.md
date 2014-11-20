@@ -42,7 +42,6 @@ For ledgers in full form (only for ledgers of `type` `message`), for each transa
 * `recordBox`. Client-side only.
 * `expiredBox`. Client-side only.
 
-
 # References
 
 * [enum ledgerType](https://github.com/Open-Transactions/opentxs/blob/682fd05f/include/opentxs/core/OTLedger.hpp#L181)
