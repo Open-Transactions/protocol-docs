@@ -14,10 +14,10 @@ The contract contains
 * A description of the keys to use in order to verify received messages and send
   encrypted message (inherited from Contract)
 
-The hash of the `notaryProviderContract` yields the `serverID`, which is set in
+The hash of the `notaryProviderContract` yields the `notaryID`, which is set in
 [`<notaryMessage>` documents](notaryMessage.md).
 
-A request to a Notary that has the `serverID` attribute implies that the client
+A request to a Notary that has the `notaryID` attribute implies that the client
 agrees with the terms and conditions in the contract.
 
 Previously know as _server contract_.

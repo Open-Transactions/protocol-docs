@@ -147,7 +147,7 @@ Nym and public-key cryptography. The actual message, encoded in XML, is wrapped
 inside a container format ([Section Format](SectionFormat.md)) that
 separates content and signatures.  The sender declares his identity in the
 message attribute `nymID`, specifies the intended recipient in the message
-`serverID` and declares the chronological order in the `requestNum` attribute.
+`notaryID` and declares the chronological order in the `requestNum` attribute.
 
 1. *Readability*: Open-Transactions uses XML as the document format as and
 _Section-Format_ as the container format. Encoding schemes that degrade

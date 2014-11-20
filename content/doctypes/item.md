@@ -31,7 +31,7 @@ single entity, not the item. A transaction contains a list of items.
     Used only in `atBalanceStatement` with status `acknowledgement`. Server informs client that server issued new transaction number and put new transaction with this number into outbox.
 * Attribute `numberOfOrigin`. Integer. Reference to original transaction.
 * Attribute `transactionNum`. Integer. Number of current transaction.
-* Attribute `serverID`. Identifier.
+* Attribute `notaryID`. Identifier.
 * Attribute `userID`. Identifier. NymID of the user who created this item. On items from client it is client user ID, on items from server it is server user id.
 * Attribute `fromAccountID`. Identifier. Source account ID
 * Attribute `toAccountID`. Identifier. Destination account ID.
@@ -75,7 +75,7 @@ Every type has a corresponding `at` type, which indicates the server response.
 status="request"
 numberOfOrigin="0"
 transactionNum="608"
-serverID="otx127PFVQPLRrYrCENt4yqeHXcYxZtZ4669V"
+notaryID="otx127PFVQPLRrYrCENt4yqeHXcYxZtZ4669V"
 userID="otx16n7N8Mxd8CiY4M6zhrbeatiMbbTBUQctN"
 fromAccountID="otx1DuqE35bzbuDv2kwMPmWt7EdxVMZtds1Ew"
 toAccountID="otx14N8M2es7RRbraFtFRib4njx4zJGvd5gKV"
@@ -98,7 +98,7 @@ eNrjyi3PLMlIKUosV/B09/MPclXQ1VXw8w9xVQhwdHHx9HMH8XHIcJGuAwB9Yxw2
 status="acknowledgement"
 numberOfOrigin="608"
 transactionNum="608"
-serverID="otx127PFVQPLRrYrCENt4yqeHXcYxZtZ4669V"
+notaryID="otx127PFVQPLRrYrCENt4yqeHXcYxZtZ4669V"
 userID="otx1iDN28aAkxYsFQreU1hBC4X4Ss6btPKGR"
 fromAccountID="otx1DuqE35bzbuDv2kwMPmWt7EdxVMZtds1Ew"
 toAccountID=""
@@ -126,7 +126,7 @@ status="request"
 numberOfOrigin="0"
 transactionNum="0"
 totalListOfNumbers="509,510,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,572,573,574,575,576,577,578,579,580,581,582,583,584,585,586,587,588,589,590,591,592,593,594,595,596,597,598,599,600,601,602,603,604,605,606,607,608"
-serverID="otx127PFVQPLRrYrCENt4yqeHXcYxZtZ4669V"
+notaryID="otx127PFVQPLRrYrCENt4yqeHXcYxZtZ4669V"
 userID="otx16n7N8Mxd8CiY4M6zhrbeatiMbbTBUQctN"
 fromAccountID="otx16n7N8Mxd8CiY4M6zhrbeatiMbbTBUQctN"
 toAccountID=""
@@ -165,7 +165,7 @@ amount="0" >
 status="request"
 numberOfOrigin="0"
 transactionNum="710"
-serverID="otx1C2jLg8GpXB7An3pWv1eQdbkV4sCiDGQzt"
+notaryID="otx1C2jLg8GpXB7An3pWv1eQdbkV4sCiDGQzt"
 userID="otx1FQ6w3YBsijh24BYRxCAPFqvwj1oiwMpMJ"
 fromAccountID="otx1K4mr87GwCXt83xsneQhPYE6ztwSyNSi7b"
 toAccountID=""
@@ -178,7 +178,7 @@ amount="999998" >
 adjustment="-1"
 accountID="otx1K4mr87GwCXt83xsneQhPYE6ztwSyNSi7b"
 userID="otx1FQ6w3YBsijh24BYRxCAPFqvwj1oiwMpMJ"
-serverID="otx1C2jLg8GpXB7An3pWv1eQdbkV4sCiDGQzt"
+notaryID="otx1C2jLg8GpXB7An3pWv1eQdbkV4sCiDGQzt"
 numberOfOrigin="711"
 transactionNum="827"
 closingTransactionNum="0"
@@ -188,7 +188,7 @@ inReferenceTo="823" />
 adjustment="-1"
 accountID="otx1K4mr87GwCXt83xsneQhPYE6ztwSyNSi7b"
 userID="otx1FQ6w3YBsijh24BYRxCAPFqvwj1oiwMpMJ"
-serverID="otx1C2jLg8GpXB7An3pWv1eQdbkV4sCiDGQzt"
+notaryID="otx1C2jLg8GpXB7An3pWv1eQdbkV4sCiDGQzt"
 numberOfOrigin="710"
 transactionNum="1"
 closingTransactionNum="0"

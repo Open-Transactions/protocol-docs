@@ -28,7 +28,7 @@ Those attributes are common to the [full form document type](#document-type-full
 * Attribute `dateSigned`: Time. The date when the instrument was last signed.
 * Attribute `accountID`: Identifier.
 * Attribute `userID`: Identifier.
-* Attribute `serverID`: Identifier.
+* Attribute `notaryID`: Identifier.
 * Attribute `numberOfOrigin`: Integer.
     * Constant _0_ if not applicable.
     * If `type` is one of (`chequeReceipt`, `voucherReceipt`) and the referenced [`<item>`](item.md) is of type [`depositCheque`](item.md#cheques-and-vouchers): Same as the referenced item's [`numberOfOrigin`](item.md#structure).
