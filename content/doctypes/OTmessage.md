@@ -185,9 +185,15 @@ Downloads the inbox, the outbox, and the account balance file.
 * Attribute `accountID`: Identifier.
 * Attribute `inboxHash`: Identifier. Hash of the contained Inbox.
 * Attribute `outboxHash`: Identifier. Hash of the contained Outbox.
-* Element `acctFiles`: The account files as armored key-value pairs. Keys are `account`, `inbox`, `outbox`.
+* Element `account`
+  * contains armored signed [`assetAccount` document](assetAccount.md)
   * present only if `success` is `true`
-  * TODO document sub-elements
+* Element `inbox`
+  * contains armored signed [`accountLedger` document](accountLedger.md)
+  * present only if `success` is `true`
+* Element `outbox`
+  * contains armored signed [`accountLedger` document](accountLedger.md)
+  * present only if `success` is `true`
 * Element `inReferenceTo`: only if `success` is `false`.
 
 ----
