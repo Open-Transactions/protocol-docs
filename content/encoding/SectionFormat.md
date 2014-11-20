@@ -63,7 +63,6 @@ The classes can define further constraints on the sections (XML validity,
 semantic validity, signature and Base64 encoding). These constraints can be
 defined for each section type.
 
-
 ## Usage In Open-Transactions
 
 * [OTContract](../docs/OTContract.md): Contracts should be easy to read by humans
@@ -73,7 +72,6 @@ defined for each section type.
 
 * [OTASCIIArmor](../docs/OTASCIIArmor.md): Section Format is used here in order
     to provide human readers a hint to the type of the encoded data.
-
 
 Use of the Section Format in these document types is defined below.
 
@@ -130,7 +128,6 @@ Meta: $signatureTag
 $signatureData
 -----END CONTRACT SIGNATURE-----
 ```
-
 
 # ASCII-Armored Document
 
@@ -260,7 +257,6 @@ type SignedMessage struct {
 func ParseSignedMessage(doc string) (SignedMessage, error)
 ```
 
-
 ### For ASCII-Armored Documents
 
 Loading ASCII-Armoring only decodes the Base64 payload. Type information
@@ -270,7 +266,6 @@ and headers are ignored.
 // Returns payload base64-decoded, rest of document and error
 func ParseAsciiArmor(doc string) ([]byte, string, error)
 ```
-
 
 ## Compliance in Opentxs
 
@@ -328,7 +323,6 @@ document. It is unclear whether lines outside section markers are ever generated
 in opentxs.
 
 Suggestion: Make non-whitespace lines outside sections illegal.
-
 
 ### End Markers
 

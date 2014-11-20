@@ -64,8 +64,7 @@ passed.
 
 The class supports methods for writing section markers around the encoded data
 using the method `OTASCIIArmor::WriteArmoredString()`. The format is defined in
-[Section Format](../spec/SectionFormat.md).
-
+[Section Format](SectionFormat.md).
 
 ## Decoding Algorithm
 
@@ -76,7 +75,6 @@ The decoding steps mirror the encoding steps:
 1. Uncompress (strings only)
 1. Unpack
 
-
 The decode methods are:
 
 * `OTASCIIArmor::LoadFromString()` (called first when reading from section
@@ -84,13 +82,11 @@ The decode methods are:
 * `OTASCIIArmor::GetAndUnpackData()` (alias `GetData()`)
 * `OTASCIIArmor::GetAndUnpackString()` (alias `GetString()`)
 
-
 ### Section Format
 
 The parser for the section format is similar to the one used in
 [OTContract](OTContract.md). As with the contract format, it unintentionally
 recognizes a much broader set of messages than what is actually written:
-
 
 * The begin marker is completely parameterized and defaults to `----BEGIN`
 * The end marker is not parameterized and is hard-coded to `-----END`
@@ -115,7 +111,6 @@ document). The [_OpenPGP Document Format_](http://tools.ietf.org/html/rfc4880)
 states that in the case where there is a risk of damage to the data due to
 transport, data conversions or character set translations the content may be
 armored.
-
 
 ## Inconsistent Use
 
@@ -166,7 +161,6 @@ can be done separately (see [boost][boostBase64], [golang][golangBase64]).
 Decoding ASCII-Armored blocks should just strip all whitespace before base64
 decode (see [boost][boostBase64], [golang][golangBase64]).
 
-
 ## Unnecessary Operations
 
 Armoring combines three separate steps: packing, compression and Base64
@@ -199,7 +193,6 @@ It is unclear what is meant by this. Byte sequences are always binary compatible
 across platforms. If anything, packing as implemented now increases
 platform-dependence.
 
-
 #### Unnecessary Compression
 
 Assuming armoring is used in order to decrease overall message size, it is
@@ -226,7 +219,6 @@ Even if the individual steps in armoring are useful (very debateable), there is
 no good reason to conflate them in armoring. There should only be one input
 type `OTData` (variable-length byte array). Any operation like packing or
 compression can be independent from Base64 encoding.
-
 
 # Future Changes
 
@@ -256,7 +248,6 @@ common in legal documents as well. Example using the Section-Format:
 -----BEGIN CONTRACT SIGNATURE-----
 $signature
 -----END CONTRACT SIGNATURE-----
-
 
 <!-- this is the subcontract -->
 -----BEGIN SIGNED CONTRACT-----

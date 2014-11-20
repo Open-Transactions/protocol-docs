@@ -2,9 +2,6 @@
 title: Document Type notaryMessage
 ---
 
-A new version of these document types can be found in
-[Notary Messages](../../spec/NotaryMessages.md).
-
 # Document Type `<notaryMessage>`
 
 ## Elements and attributes
@@ -43,7 +40,6 @@ suffixed with "Response".
 * Attribute `requestNum`: Integer. Same as in the request.
 * Attribute `success`: Boolean. Indicates whether request was successful.
 * Element `inReferenceTo`: Armored text. The original request.
-
 
 # User Commands
 
@@ -154,8 +150,8 @@ Downloads current **nymbox** from the Notary. A **nymbox** is where any messages
 
 ## getBoxReceipt
 
-Requests a transaction receipt from a **nymbox**, **inbox** or **outbox**. This message includes the **nymID**, Notary ID, transaction number, and request number. Additionally, the message must specify the box type: **nymbox**, **inbox** or **outbox**. 
-*getBoxReceipt* downloads full receipts because the **nymbox**, **inbox**, or **outbox** will only contain the stub and not the full receipt. When the client has downloaded the full receipt, it will hash the receipt and compare it to the hash that is stored in the stub to verify that it corresponds to the same receipt. 
+Requests a transaction receipt from a **nymbox**, **inbox** or **outbox**. This message includes the **nymID**, Notary ID, transaction number, and request number. Additionally, the message must specify the box type: **nymbox**, **inbox** or **outbox**.
+*getBoxReceipt* downloads full receipts because the **nymbox**, **inbox**, or **outbox** will only contain the stub and not the full receipt. When the client has downloaded the full receipt, it will hash the receipt and compare it to the hash that is stored in the stub to verify that it corresponds to the same receipt.
 
 * Attribute `transactionNum`: Integer. Transaction number for which to get the
   receipt.
@@ -213,7 +209,6 @@ Downloads the inbox, the outbox, and the account balance file.
 * Element `responseLedger`. Armored [`<accountLedger>`
     document](accountLedger.md).
 
-
 ----
 
 ## queryAssetTypes
@@ -270,7 +265,6 @@ The message is encrypted with the recipient's public key. If the sender does not
 
 *checkNym* downloads the public information for another client. For example, this message would be used to download another client’s public key so that we can send him a message and encrypt it to his key. If this message succeeds, it provides the public key for the specified user. If it fails, it returns your original request.
 
-
 * Attribute: TODO.
 
 ## checkNymResponse
@@ -282,7 +276,6 @@ The message is encrypted with the recipient's public key. If the sender does not
 ## unregisterNym
 
 *unregisterNym* deletes the specified **nym** from the Notary. However, this action will fail if the **nym** has any accounts on the notary that do not have a zero balance. If the client wants to delete an asset account, it needs to first reduce the account balance to zero, delete the account, and then delete the **nym** off the Notary.  Alternatively, the user could stop using a **nym** without deleting it and just leave it on the Notary. However, as a courtesy, the unused **nym** should be deleted from the Notary.
-
 
 * Attribute: TODO.
 
@@ -308,7 +301,7 @@ The message is encrypted with the recipient's public key. If the sender does not
 
 ## triggerClause
 
-*triggerClause* is a transaction used for triggering scripts on smart contracts. Smart contracts have clauses, which are scripts on the contract that can be activated in response to a condition or scheduled to run at certain times. 
+*triggerClause* is a transaction used for triggering scripts on smart contracts. Smart contracts have clauses, which are scripts on the contract that can be activated in response to a condition or scheduled to run at certain times.
 For example, a smart contract may have a clause that can be triggered in case of a dispute. Or there may be clauses that are triggered everyday to perform a daily action.
 
 * Attribute: TODO.
@@ -333,7 +326,7 @@ For example, a smart contract may have a clause that can be triggered in case of
 
 ## getContract
 
-Downloads an asset contract from the Notary. The response message from the Notary, if the success is *true*, will include the associated asset contract for the  specified asset type ID. The client can hash the contract provided by the Notary and compare the hash with the asset type ID. 
+Downloads an asset contract from the Notary. The response message from the Notary, if the success is *true*, will include the associated asset contract for the  specified asset type ID. The client can hash the contract provided by the Notary and compare the hash with the asset type ID.
 
 * Attribute: TODO.
 
@@ -348,7 +341,6 @@ Downloads an asset contract from the Notary. The response message from the Notar
 Deletes the specified asset account from the Notary. A number of prerequisite actions must be performed before the *deleteAssetAccount* request can be  sent to the Notary.
 Firstly, the account balance needs to be reduced to zero. The Notary won’t allow the deletion of an asset account that contains a balance. Secondly, the inbox needs to be empty. Any transaction receipts in the inbox must be closed out.
 Once the inbox is empty and the account balance is zero, the *deleteAssetAccount* message can be sent to the Notary and the specified asset account is deleted.
-
 
 * Attribute: TODO.
 

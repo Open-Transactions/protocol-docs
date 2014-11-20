@@ -17,7 +17,6 @@ processed.  Items are like tracks on a CD. It is assumed there will be several
 of them, they come in packs. You normally would deal with the transaction as a
 single entity, not the item. A transaction contains a list of items.
 
-
 ## Elements and attributes
 
 * Attribute `type`. String. See section _Item Types_
@@ -147,7 +146,6 @@ amount="0" >
 * `rejectPending`
     * client-side rejection of a pending transfer
     * TODO never used in current implementation
-
 
 #### Info
 

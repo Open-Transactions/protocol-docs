@@ -27,7 +27,6 @@ title: Document Type nymData
   * Attribute `valid`: Boolean. Whether or not this key is still valid, eg not
     revoked. TODO: who/what determines this?
 
-
 # Example
 ```xml
 <nymData version="1.0"
@@ -60,4 +59,3 @@ title: Document Type nymData
 This document type is often embedded in other document types which already
 include `nymIDSource` leading to some duplication here. TODO it's unclear how
 prevalent this is or whether it is necessary to correct this.
-

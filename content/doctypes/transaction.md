@@ -15,7 +15,7 @@ Abbreviated transactions do not contain the list of [`<item>` documents](item.md
 * [TODO, verify if this is true].
 * Reason: if the inbox contains hundreds of receipts (items), downloading the inbox would take too long or fail altogether, creating resyncing issues.
 * The full transactions referenced by abbreviated transactions are stored in the `*box/*.r/*.rct` files. See [OTTransaction::SaveBoxReceipt()](#ref-saveboxreceipt).
- 
+
 A transaction can be "in reference to" an [`<item>`](item.md).
 
 # Base Document Type
@@ -35,8 +35,8 @@ Those attributes are common to the [full form document type](#document-type-full
     * If `type` is one of (`pending`, `marketReceipt`, `paymentReceipt`, `finalReceipt`, `basketReceipt`): same as `inReferenceTo`.
     * If `type` is one of (`blank`, `message`, `notice`, `replyNotice`, `successNotice`, `processNymbox`, `atProcessNymbox`, `transferReceipt`, `deposit`, `atDeposit`, `instrumentNotice`, `instrumentRejection`): Not applicable.
     * For all other `type`s: same as `transactionNum`.
-* Attribute `transactionNum`: Integer. The notary issues this in response to a [`getTransactionNumbers` message](notaryMessage.md#gettransactionnumbers). [TODO: link to tx num spec](https://github.com/monetas/opentxs-protocol/issues/89).        
-* Attribute `inReferenceTo`: Integer. Transaction number of the item this transaction is in reference to. 
+* Attribute `transactionNum`: Integer. The notary issues this in response to a [`getTransactionNumbers` message](notaryMessage.md#gettransactionnumbers). [TODO: link to tx num spec](https://github.com/monetas/opentxs-protocol/issues/89).
+* Attribute `inReferenceTo`: Integer. Transaction number of the item this transaction is in reference to.
 
 ## Transaction Types
 
@@ -81,14 +81,12 @@ Possible values for the `type` attribute. Taken from `OTTransaction.hpp`.
 * `deposit`
 * `atDeposit`
 
-
 ## Document Type: Full Form
 
 * Optional element `closingTransactionNumber`. Only if `type` is `finalReceipt` or `basketReceipt`. TODO
 * Optional element `inReferenceTo`. Armored contract (TODO: figure out if needed and what can be in there, looks like it can contain different document types depending on the situation).
 * Optional element `cancelRequest`. Armored document. TODO
 * List of armored [`<item>` documents](item.md).
-
 
 ## Document Types: Abbreviated Form
 
@@ -154,7 +152,6 @@ Inherits from Document Type `<outboxRecord>`.
 * Attribute `displayValue`: TODO
 * Attribute `adjustment`: Integer. TODO
 * Attribute `numberOfOrigin`: Integer. TODO
-
 
 # References
 
