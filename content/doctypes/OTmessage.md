@@ -176,7 +176,7 @@ Requests a transaction receipt from a **nymbox**, **inbox** or **outbox**. This 
 
 ## getAccountData
 
-Downloads the inbox, the outbox, and the account balance file.
+Downloads the inbox, the outbox, and the account balance file to the client.
 
 * Attribute `accountID`: Identifier.
 
