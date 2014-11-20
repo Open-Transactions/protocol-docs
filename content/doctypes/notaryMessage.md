@@ -1,11 +1,11 @@
 ---
-title: Document Type OTmessage
+title: Document Type notaryMessage
 ---
 
 A new version of these document types can be found in
 [Notary Messages](../../spec/NotaryMessages.md).
 
-# Document Type `<OTmessage>`
+# Document Type `<notaryMessage>`
 
 ## Elements and attributes
 

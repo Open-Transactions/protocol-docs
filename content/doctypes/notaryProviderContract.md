@@ -15,7 +15,7 @@ The contract contains
   encrypted message (inherited from Contract)
 
 The hash of the `notaryProviderContract` yields the `serverID`, which is set in
-[`<OTmessage>` documents](OTmessage.md).
+[`<notaryMessage>` documents](notaryMessage.md).
 
 A request to a Notary that has the `serverID` attribute implies that the client
 agrees with the terms and conditions in the contract.
