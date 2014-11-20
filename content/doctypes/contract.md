@@ -10,7 +10,7 @@ inherit from this type.
 Inheriting Document types:
 
 * [notaryProviderContract](notaryProviderContract.md)
-* [digitalAssetContract](digitalAssetContract.md)
+* [instrumentDefinition](instrumentDefinition.md)
 * basketContract
 
 ## Elements and attributes

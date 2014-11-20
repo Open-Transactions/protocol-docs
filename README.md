@@ -11,7 +11,7 @@ the XML structures that are created by `opentxs`. The format is described in
 
 * [Base Document Type `<Contract>`](content/doctypes/contract.md)
 * [Document Type `<notaryProviderContract>`](content/doctypes/notaryProviderContract.md)
-* [Document Type `<digitalAssetContract>`](content/doctypes/digitalAssetContract.md)
+* [Document Type `<instrumentDefinition>`](content/doctypes/instrumentDefinition.md)
 * [Document Type `<OTuser>`](content/doctypes/OTuser.md)
 * [Document Type `<OTmessage>`](content/doctypes/OTmessage.md)
 * [Document Type `<accountLedger>`](content/doctypes/accountLedger.md)
