@@ -7,11 +7,11 @@ title: Document Type transaction
 Contained in [`<accountLedger>` documents](accountLedger.md).
 
 Transactions can either be in _full_ or _abbreviated_ form. They are abbreviated when
-inside `<accountLedger>`, except for ledger type "message" (`<OTmessage>`).
+inside `<accountLedger>`, except for ledger type "message" (`<notaryMessage>`).
 
 Full transactions contain a list of [`<item>` documents](item.md).
 
-Abbreviated transactions do not contain the list of [`<item>` documents](item.md). The items will be loaded one by one during verification, using the [`getBoxReceipt`](OTmessage.md#getboxreceipt) message.
+Abbreviated transactions do not contain the list of [`<item>` documents](item.md). The items will be loaded one by one during verification, using the [`getBoxReceipt`](notaryMessage.md#getboxreceipt) message.
 * [TODO, verify if this is true].
 * Reason: if the inbox contains hundreds of receipts (items), downloading the inbox would take too long or fail altogether, creating resyncing issues.
 * The full transactions referenced by abbreviated transactions are stored in the `*box/*.r/*.rct` files. See [OTTransaction::SaveBoxReceipt()](#ref-saveboxreceipt).
@@ -28,14 +28,14 @@ Those attributes are common to the [full form document type](#document-type-full
 * Attribute `dateSigned`: Time. The date when the instrument was last signed.
 * Attribute `accountID`: Identifier.
 * Attribute `userID`: Identifier.
-* Attribute `serverID`: Identifier.
+* Attribute `notaryID`: Identifier.
 * Attribute `numberOfOrigin`: Integer.
     * Constant _0_ if not applicable.
     * If `type` is one of (`chequeReceipt`, `voucherReceipt`) and the referenced [`<item>`](item.md) is of type [`depositCheque`](item.md#cheques-and-vouchers): Same as the referenced item's [`numberOfOrigin`](item.md#structure).
     * If `type` is one of (`pending`, `marketReceipt`, `paymentReceipt`, `finalReceipt`, `basketReceipt`): same as `inReferenceTo`.
     * If `type` is one of (`blank`, `message`, `notice`, `replyNotice`, `successNotice`, `processNymbox`, `atProcessNymbox`, `transferReceipt`, `deposit`, `atDeposit`, `instrumentNotice`, `instrumentRejection`): Not applicable.
     * For all other `type`s: same as `transactionNum`.
-* Attribute `transactionNum`: Integer. The notary issues this in response to a [`getTransactionNumbers` message](OTmessage.md#gettransactionnumbers). [TODO: link to tx num spec](https://github.com/monetas/opentxs-protocol/issues/89).        
+* Attribute `transactionNum`: Integer. The notary issues this in response to a [`getTransactionNumbers` message](notaryMessage.md#gettransactionnumbers). [TODO: link to tx num spec](https://github.com/monetas/opentxs-protocol/issues/89).        
 * Attribute `inReferenceTo`: Integer. Transaction number of the item this transaction is in reference to. 
 
 ## Transaction Types

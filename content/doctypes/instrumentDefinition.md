@@ -1,8 +1,8 @@
 ---
-title: Document Type digitalAssetContract
+title: Document Type instrumentDefinition
 ---
 
-# Document Type `<digitalAssetContract>`
+# Document Type `<instrumentDefinition>`
 
 Inherits from base Document Type Contract.
 
@@ -34,7 +34,7 @@ Inherits from base Document Type Contract.
 
 ## Example
 ```xml
-<digitalAssetContract version="2.0">
+<instrumentDefinition version="2.0">
 
 <entity shortname="Satoshi"
  longname="Satoshi Nakamoto"
@@ -54,7 +54,7 @@ decimal_power="3" fraction="mBTC" />
   Bitcoins are audited monthly by highly trusted people.
 </condition>
 
-</digitalAssetContract>
+</instrumentDefinition>
 ```
 
 

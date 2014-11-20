@@ -10,7 +10,7 @@ title: Document Type assetAccount
 * Attribute `version`. Integer?
 * Attribute `accountID`. Identifier.
 * Attribute `userID`. Identifier.
-* Attribute `serverID`. Identifier.
+* Attribute `notaryID`. Identifier.
 * Attribute `assetTypeID`. Identifier.
 * Optional element `stashinfo` (optional)
     * Attribute `cronItemNum`. Integer. Never set anywhere in the old code.
@@ -33,7 +33,7 @@ title: Document Type assetAccount
  type="issuer"
  accountID="otxDTMAWCgcwmyUhWcQWYJk8ZUNd9ybiE7is"
  userID="otxEFjTbwqL45w6HMtJXGE4rkfdtzzser5pb"
- serverID="otxCCaj94hNjhTc9Gz8CJ6c8yKNLvBY4iDAs"
+ notaryID="otxCCaj94hNjhTc9Gz8CJ6c8yKNLvBY4iDAs"
  assetTypeID="otxSRp81acSP921Z748v7CpD2xwpxSTT1e88" >
 
 <balance date="1415624440" amount="0"/>

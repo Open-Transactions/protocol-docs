@@ -1,11 +1,11 @@
 ---
-title: Document Type OTmessage
+title: Document Type notaryMessage
 ---
 
 A new version of these document types can be found in
 [Notary Messages](../../spec/NotaryMessages.md).
 
-# Document Type `<OTmessage>`
+# Document Type `<notaryMessage>`
 
 ## Elements and attributes
 
@@ -24,7 +24,7 @@ read by the Notary.
 ### Elements and attributes
 
 * Attribute `nymID`: Identifier. The ID of the Nym which makes the request.
-* Attribute `serverID`: Identifier. The ID of the Notary which should process
+* Attribute `notaryID`: Identifier. The ID of the Notary which should process
   the request, as defined in the ServerContract.
 * Attribute `requestNum`: Integer. The request number.
 
@@ -39,7 +39,7 @@ suffixed with "Response".
 ### Elements and attributes
 
 * Attribute `nymID`: Identifier. The Nym which made the request.
-* Attribute `serverID`: Identifier. The ID of the responding Notary.
+* Attribute `notaryID`: Identifier. The ID of the responding Notary.
 * Attribute `requestNum`: Integer. Same as in the request.
 * Attribute `success`: Boolean. Indicates whether request was successful.
 * Element `inReferenceTo`: Armored text. The original request.
@@ -52,12 +52,12 @@ suffixed with "Response".
 Requests the registration of a new **nym** on the Notary. It uploads the **nym** file and sends the public credentials. It does not send the private credentials.
 The public credentials will include the master credentials and the sub credentials. For example, it could be a master credential and four sub credentials, or two master credentials and two separate credential.
 
-* Element `credentialList`: Contains armored [`<OTuser>` document](OTuser.md).
+* Element `credentialList`: Contains armored [`<nymData>` document](nymData.md).
 * Element `credentials`: Armored key-value pairs of credentials. TODO.
 
 ## createUserAccountResponse
 
-* Element `nymfile`: Contains [`<OTuser>` document](OTuser.md).
+* Element `nymfile`: Contains [`<nymData>` document](nymData.md).
 
 ----
 
@@ -93,14 +93,14 @@ Requests creation of a new asset account on the Notary. It includes the **nym** 
 
 Request creation of a new _issuer asset account_ on the Notary. issueAssetType is a message sent by an issuer that wants to issue currency onto the notary. An asset contract must be uploaded to the notary by the currency issuer that wants to issue a currency on that notary. The issuer is the one who made the asset contract and signed it.  This message includes the **nymID**, the notary ID, the queried asset types, and the asset contract. The asset type is the hash of the asset contract. The notary verifies that the asset contract hash equals the asset type ID. The notary will also load up the public credentials for the **nym**, to verify the signature on the asset contract.
 
-* Attribute `assetType`: Identifier. Hash of the `<digitalAssetContract>`.
-* Element `assetContract`: Signed [`<digitalAssetContract>`
-    document](digitalAssetContract.md)
+* Attribute `assetType`: Identifier. Hash of the `<instrumentDefinition>`.
+* Element `assetContract`: Signed [`<instrumentDefinition>`
+    document](instrumentDefinition.md)
 
 ## issueAssetTypeResponse
 
 * Attribute `accountID`: Identifier.
-* Attribute `assetType`: Identifier. Hash of the `<digitalAssetContract>`.
+* Attribute `assetType`: Identifier. Hash of the `<instrumentDefinition>`.
 * Element `issuerAccount`: Signed [`<assetAccount>` document](assetAccount.md).
 
 ----
@@ -279,28 +279,28 @@ The message is encrypted with the recipient's public key. If the sender does not
 
 ----
 
-## deleteNym
+## unregisterNym
 
-*deleteNym* deletes the specified **nym** from the Notary. However, this action will fail if the **nym** has any accounts on the notary that do not have a zero balance. If the client wants to delete an asset account, it needs to first reduce the account balance to zero, delete the account, and then delete the **nym** off the Notary.  Alternatively, the user could stop using a **nym** without deleting it and just leave it on the Notary. However, as a courtesy, the unused **nym** should be deleted from the Notary.
+*unregisterNym* deletes the specified **nym** from the Notary. However, this action will fail if the **nym** has any accounts on the notary that do not have a zero balance. If the client wants to delete an asset account, it needs to first reduce the account balance to zero, delete the account, and then delete the **nym** off the Notary.  Alternatively, the user could stop using a **nym** without deleting it and just leave it on the Notary. However, as a courtesy, the unused **nym** should be deleted from the Notary.
 
 
 * Attribute: TODO.
 
-## deleteNymResponse
+## unregisterNymResponse
 
 * Attribute: TODO.
 
 ----
 
-## checkServerID
+## pingNotary
 
-*checkServerID* is similar to a ping command. It sends a message to the Notary to see if it can get a reply. It verifies if the Notary is listening and responding. This is the first message used in a transaction.
+*pingNotary* is similar to a ping command. It sends a message to the Notary to see if it can get a reply. It verifies if the Notary is listening and responding. This is the first message used in a transaction.
 
-*checkServerID* sends the **nym** authentication key and the encryption key to the Notary. This is one of the few messages that must include these keys in the message. In most other messages the Notary already has these keys, because the **nym** is already registered with the Notary.  The Notary replies to *checkServerID* with true or false. The Notary replies false to this message if an incorrect *notaryID* is used in this message.
+*pingNotary* sends the **nym** authentication key and the encryption key to the Notary. This is one of the few messages that must include these keys in the message. In most other messages the Notary already has these keys, because the **nym** is already registered with the Notary.  The Notary replies to *pingNotary* with true or false. The Notary replies false to this message if an incorrect *notaryID* is used in this message.
 
 * Attribute: TODO.
 
-## checkServerIDResponse
+## pingNotaryResponse
 
 * Attribute: TODO.
 
