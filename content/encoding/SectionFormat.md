@@ -65,13 +65,13 @@ defined for each section type.
 
 ## Usage In Open-Transactions
 
-* [OTContract](../docs/OTContract.md): Contracts should be easy to read by humans
+*  Signed documents: Contracts should be easy to read by humans
     and easy to parse by computers, as per Ricardian Contract criteria. A
     contract contains a list of digital signatures, which are encoded in Base64.
     Content and signatures are encoded using the section format.
 
-* [OTASCIIArmor](../docs/OTASCIIArmor.md): Section Format is used here in order
-    to provide human readers a hint to the type of the encoded data.
+* Armored data: Section Format is used here in order to provide human readers a
+  hint to the type of the encoded data.
 
 Use of the Section Format in these document types is defined below.
 
@@ -131,8 +131,8 @@ $signatureData
 
 # ASCII-Armored Document
 
-Defined by the _OTASCIIArmor_ class. Here, section format is used to add a type
-hint for a Base64-encoded data block.
+Here, section format is used to add a type hint for a compressed and
+Base64-encoded data block adjusted to a line length of 64 characters.
 
 An ASCII-Armored document consists of exactly one section. The type specifier
 MUST start with `OT ARMORED`. The section is terminated by the default section
@@ -140,15 +140,8 @@ end marker.
 
 Lines outside the section markers MUST be ignored.
 
-The payload is encoded in Base64 which MAY contain line breaks that are to be
-stripped.
-
-The parsing routine MUST Base64-decode the payload.
-
-Note: currently, the Base64-decoded content is still encoded using Protocol
-Buffers and may also be compressed using the zlib DEFLATE algorithm. These
-encodings may be removed in the future and are thus not part of this
-specification.
+The parsing routine MUST strip whitespace and newlines, Base64-decode and
+decompress the payload.
 
 #### Sample Document
 
@@ -298,8 +291,8 @@ in future versions.
 
 ### Signed Message Format
 
-In some settings, contracts `OTContract`-derived do not contain a list of
-signatures, but exactly one signature (`OTMessage`). This is not reflected or
+In some settings, contracts `Contract`-derived do not contain a list of
+signatures, but exactly one signature (`Message`). This is not reflected or
 enforced at the moment in opentxs.
 
 ### Dash-Escape Sequence
