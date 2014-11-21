@@ -1,10 +1,13 @@
 ---
 title: Document Type account
+menu:
+  main:
+    parent: doctypes
 ---
 
-# Document Type `<account>`
+## Document Type `<account>`
 
-## Elements and attributes
+### Elements and attributes
 * Attribute `version`. Integer. Hard-coded to 1.0.
 * Attribute `type`. String. TODO
 * Attribute `version`. Integer?
@@ -26,7 +29,7 @@ title: Document Type account
     * Attribute `date`. Timestamp. When balance was last modified.
     * Attribute `amount`. Integer.
 
-# Example
+## Example
 ```xml
 <account
  version="2.0"
@@ -41,6 +44,6 @@ title: Document Type account
 </account>
 ```
 
-# References
+## References
 
 [Account::UpdateContents()](https://github.com/Open-Transactions/opentxs/blob/d032df5e2012ca15be9d09231e46e4a28c6cd51c/src/core/Account.cpp#l749)

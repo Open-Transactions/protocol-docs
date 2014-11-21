@@ -1,8 +1,11 @@
 ---
 title: Document Type accountLedger
+menu:
+  main:
+    parent: doctypes
 ---
 
-# Document Type `<accountLedger>`
+## Document Type `<accountLedger>`
 
 Typed container of [`<transaction>` documents](transaction.md).
 
@@ -10,7 +13,7 @@ For all`type`s but `message`, all transactions are included in abbreviated form 
 
 If the `type` is `message`, the transactions are included in full as a list of `transaction` elements.
 
-## Elements and attributes
+### Elements and attributes
 
 * Attribute `version`: Integer.
 * Attribute `type`: String. Specifies the ledger type. See _Ledger Types_ below.
@@ -22,8 +25,8 @@ If the `type` is `message`, the transactions are included in full as a list of `
 For ledgers in full form (only for ledgers of `type` `message`), for each transaction:
 
 * Element `transaction`: [`<transaction>` document](transaction.md).
-  
-<a href="tx-abbreviated-elements"></a>For ledgers in abbreviated form, the transactions are stored in abbreviated form:
+
+<a name="tx-abbreviated-elements"></a>For ledgers in abbreviated form, the transactions are stored in abbreviated form:
 
 * For ledger type `nymbox`: Element `nymboxRecord`: [`nymboxRecord` document](transaction.md#document-type-nymboxrecord)
 * For ledger type `inbox`: Element `inboxRecord`: [`inboxRecord` document](transaction.md#document-type-inboxrecord)
@@ -32,7 +35,7 @@ For ledgers in full form (only for ledgers of `type` `message`), for each transa
 * For ledger type `recordBox`: Element `recordBoxRecord`: [`recordBoxRecord` document](transaction.md#document-type-recordboxrecord)
 * For ledger type `expiredBox`: Element `expiredBoxRecord`: [`expiredBoxRecord` document](transaction.md#document-type-expiredboxrecord)
 
-## Ledger Types
+### Ledger Types
 
 * `nymbox`. Nym-scoped.
 * `inbox`. Account-scoped. Contains pending incoming transfers.
@@ -42,17 +45,17 @@ For ledgers in full form (only for ledgers of `type` `message`), for each transa
 * `recordBox`. Client-side only.
 * `expiredBox`. Client-side only.
 
-# References
+## References
 
 * [enum ledgerType](https://github.com/Open-Transactions/opentxs/blob/682fd05f/include/opentxs/core/OTLedger.hpp#L181)
 * [OTLedger::UpdateContents()](https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/core/OTLedger.cpp#L1779)
 
-# Notes
+## Notes
 
-Possible improvements
+Possible improvements:
 
 * Remove attribute `numPartialRecords`. It is redundant information, as it is either:
     * The number of transactions, if the ledger is in abbreviated form
     * 0 otherwise
    I.e., `numPartialRecords` is the number of [abbreviated transaction elements](#tx-abbreviated-elements).
-   That element was probably added to make parsing simpler. The format should be easy to parse in the first place. 
+   That element was probably added to make parsing simpler. The format should be easy to parse in the first place.

@@ -1,10 +1,14 @@
 ---
 title: Document Type nymData
+menu:
+  main:
+    parent: doctypes
 ---
 
-# Document type `<nymData>`
+## Document type `<nymData>`
 
-## Elements and attributes
+### Elements and attributes
+
 * Attribute `version`: String. The container version.
 * Attribute `nymID`: Identifier. The ID of the Nym being described.
 * Element `nymIDSource`: the source passed to the `newnym` command when the Nym
@@ -27,7 +31,7 @@ title: Document Type nymData
   * Attribute `valid`: Boolean. Whether or not this key is still valid, eg not
     revoked. TODO: who/what determines this?
 
-# Example
+## Example
 ```xml
 <nymData version="1.0"
  nymID="voeqDVAJwDwROywFtg5mEyYpcu2dcPJRLFHYh7tyhqk">
@@ -48,14 +52,15 @@ title: Document Type nymData
 </nymData>
 ```
 
-# References
+## References
 * [OTPseudonym::OTPseudonym::SavePseudonym](https://github.com/Open-Transactions/opentxs/blob/0de3b72/src/core/OTPseudonym.cpp#L4273)
 * [OTPseudonym::SaveCredentialListToString](https://github.com/Open-Transactions/opentxs/blob/0de3b72/src/core/OTPseudonym.cpp#L4098)
 * [OTPseudonym::GetPublicCredentials](https://github.com/Open-Transactions/opentxs/blob/0de3b72/src/core/OTPseudonym.cpp#L4023)
 * [OTPseudonym::GetPrivateCredentials](https://github.com/Open-Transactions/opentxs/blob/0de3b72/src/core/OTPseudonym.cpp#L4055)
 * [OTCredential::SerializeIDs](https://github.com/Open-Transactions/opentxs/blob/da07760/src/core/crypto/OTCredential.cpp#L1553)
 
-# Notes
+## Notes
+
 This document type is often embedded in other document types which already
 include `nymIDSource` leading to some duplication here. TODO it's unclear how
 prevalent this is or whether it is necessary to correct this.

@@ -1,8 +1,11 @@
 ---
 title: Document Type transaction
+menu:
+  main:
+    parent: doctypes
 ---
 
-# Document Type `<transaction>`
+## Document Type `<transaction>`
 
 Contained in [`<accountLedger>` documents](accountLedger.md).
 
@@ -18,9 +21,9 @@ Abbreviated transactions do not contain the list of [`<item>` documents](item.md
 
 A transaction can be "in reference to" an [`<item>`](item.md).
 
-# Base Document Type
+## Base Document Type
 
-## Elements and attributes
+### Elements and attributes
 
 Those attributes are common to the [full form document type](#document-type-full-form) and the [abbreviated form document types](#document-types-abbreviated-form).
 
@@ -35,14 +38,14 @@ Those attributes are common to the [full form document type](#document-type-full
     * If `type` is one of (`pending`, `marketReceipt`, `paymentReceipt`, `finalReceipt`, `basketReceipt`): same as `inReferenceTo`.
     * If `type` is one of (`blank`, `message`, `notice`, `replyNotice`, `successNotice`, `processNymbox`, `atProcessNymbox`, `transferReceipt`, `deposit`, `atDeposit`, `instrumentNotice`, `instrumentRejection`): Not applicable.
     * For all other `type`s: same as `transactionNum`.
-* Attribute `transactionNum`: Integer. The notary issues this in response to a [`getTransactionNumbers` message](notaryMessage.md#gettransactionnumbers). [TODO: link to tx num spec](https://github.com/monetas/opentxs-protocol/issues/89).
+* Attribute `transactionNum`: Integer. The notary issues this in response to a [`getTransactionNumbers` message](notaryMessage.md#gettransactionnumbers). TODO: link to [tx num spec](https://github.com/monetas/opentxs-protocol/issues/89).
 * Attribute `inReferenceTo`: Integer. Transaction number of the item this transaction is in reference to.
 
-## Transaction Types
+### Transaction Types
 
 Possible values for the `type` attribute. Taken from `OTTransaction.hpp`.
 
-### Nymbox Transaction Types
+#### Nymbox Transaction Types
 
 * `blank`: Freshly issued transaction number
 * `message`: Message from another Nym
@@ -50,12 +53,12 @@ Possible values for the `type` attribute. Taken from `OTTransaction.hpp`.
 * `replyNotice`: A copy of a server reply to a previous request you sent
 * `successNotice`: A transaction number has successfully been signed out
 
-### Inbox and Outbox Transaction Types
+#### Inbox and Outbox Transaction Types
 
 * `pending`: Server puts this in your outbox (when sending) and in recipient's
     inbox.
 
-### Inbox receipts
+#### Inbox receipts
 
 * `transferReceipt`
 * `chequeReceipt`
@@ -65,12 +68,12 @@ Possible values for the `type` attribute. Taken from `OTTransaction.hpp`.
 * `finalReceipt`: When a cron item is expired or cancelled.
 * `basketReceipt`: When a basket exchange is processed.
 
-### Payment Inbox, Payment Outbox, Record Box
+#### Payment Inbox, Payment Outbox, Record Box
 
 * `instrumentNotice`
 * `instrumentRejection`
 
-### Messages
+#### Messages
 
 * `processNymbox`
 * `atProcessNymbox`
@@ -81,20 +84,20 @@ Possible values for the `type` attribute. Taken from `OTTransaction.hpp`.
 * `deposit`
 * `atDeposit`
 
-## Document Type: Full Form
+### Document Type: Full Form
 
 * Optional element `closingTransactionNumber`. Only if `type` is `finalReceipt` or `basketReceipt`. TODO
 * Optional element `inReferenceTo`. Armored contract (TODO: figure out if needed and what can be in there, looks like it can contain different document types depending on the situation).
 * Optional element `cancelRequest`. Armored document. TODO
 * List of armored [`<item>` documents](item.md).
 
-## Document Types: Abbreviated Form
+### Document Types: Abbreviated Form
 
-### Base Document Type
+#### Base Document Type
 
 These attributes are common for all abbreviated records (?)
 
-#### Elements and attributes
+###### Elements and attributes
 
 * Attribute `type`: String. See Transaction Types
 * Attribute `dateSigned`: Time in seconds, when the instrument was last signed.
@@ -107,21 +110,22 @@ If `type` is `finalReceipt` or `basketReceipt`:
 
 * Attribute `closingNum`: Integer. TODO
 
-### Document Type `<paymentInboxRecord>`
+#### Document Type `<paymentInboxRecord>`
 
-#### Elements and attributes
+##### Elements and attributes
 
 * Attribute `displayValue`: TODO
 
-### Document Type `<nymboxRecord>`
+#### Document Type `<nymboxRecord>`
 
-#### Elements and attributes
+##### Elements and attributes
 
 * Attribute `totalListOfNumbers`: Comma separated list of transaction numbers successfully signed out.
 * TODO funny stuff is happening
     [here](https://github.com/Open-Transactions/opentxs/blob/63fcfb34c406e83d89b903ffe3c217f01614f445/src/core/OTTransaction.cpp#L4971)
 
-#### Example
+##### Example
+
 ```xml
 <nymboxRecord type="successNotice"
  dateSigned="1414495363"
@@ -133,34 +137,35 @@ If `type` is `finalReceipt` or `basketReceipt`:
  inRefDisplay="614"
  inReferenceTo="614" />
 ```
-### Document Type `<outboxRecord>`
 
-#### Elements and attributes
+#### Document Type `<outboxRecord>`
+
+##### Elements and attributes
 
 * Attribute `displayValue`: TODO
 * Attribute `adjustment`: Integer. TODO
 * Attribute `numberOfOrigin`: Integer. TODO
 
-### Document Type `<expiredBoxRecord>`
+#### Document Type `<expiredBoxRecord>`
 
 Inherits from Document Type `<outboxRecord>`.
 
-### Document Type `<recordBoxRecord>`
+#### Document Type `<recordBoxRecord>`
 
-#### Elements and attributes
+##### Elements and attributes
 
 * Attribute `displayValue`: TODO
 * Attribute `adjustment`: Integer. TODO
 * Attribute `numberOfOrigin`: Integer. TODO
 
-# References
+## References
 
 * [enum transactionType](https://github.com/Open-Transactions/opentxs/blob/682fd05f/include/opentxs/core/OTTransaction.hpp#L450)
 * [OTTransaction::UpdateContents()](https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/core/OTTransaction.cpp#L4352)
 * [numberOfOrigin](https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/core/OTTransaction.cpp#L5790)
 * <a name="ref-saveboxreceipt"></a>[OTTransaction::SaveBoxReceipt()](https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/core/OTTransaction.cpp#L3007)
 
-# Notes
+## Notes
 
 Possible improvements
 
