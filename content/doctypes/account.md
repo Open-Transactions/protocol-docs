@@ -1,15 +1,15 @@
 ---
-title: Document Type assetAccount
+title: Document Type account
 ---
 
-# Document Type `<assetAccount>`
+# Document Type `<account>`
 
 ## Elements and attributes
 * Attribute `version`. Integer. Hard-coded to 1.0.
 * Attribute `type`. String. TODO
 * Attribute `version`. Integer?
 * Attribute `accountID`. Identifier.
-* Attribute `userID`. Identifier.
+* Attribute `nymID`. Identifier.
 * Attribute `notaryID`. Identifier.
 * Attribute `instrumentDefinitionID`. Identifier.
 * Optional element `stashinfo` (optional)
@@ -28,17 +28,17 @@ title: Document Type assetAccount
 
 # Example
 ```xml
-<assetAccount
+<account
  version="2.0"
  type="issuer"
  accountID="otxDTMAWCgcwmyUhWcQWYJk8ZUNd9ybiE7is"
- userID="otxEFjTbwqL45w6HMtJXGE4rkfdtzzser5pb"
+ nymID="otxEFjTbwqL45w6HMtJXGE4rkfdtzzser5pb"
  notaryID="otxCCaj94hNjhTc9Gz8CJ6c8yKNLvBY4iDAs"
  instrumentDefinitionID="otxSRp81acSP921Z748v7CpD2xwpxSTT1e88" >
 
 <balance date="1415624440" amount="0"/>
 
-</assetAccount>
+</account>
 ```
 
 # References

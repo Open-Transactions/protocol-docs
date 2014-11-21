@@ -43,7 +43,7 @@ suffixed with "Response".
 
 # User Commands
 
-## createUserAccount
+## registerNym
 
 Requests the registration of a new **nym** on the Notary. It uploads the **nym** file and sends the public credentials. It does not send the private credentials.
 The public credentials will include the master credentials and the sub credentials. For example, it could be a master credential and four sub credentials, or two master credentials and two separate credential.
@@ -51,7 +51,7 @@ The public credentials will include the master credentials and the sub credentia
 * Element `credentialList`: Contains armored [`<nymData>` document](nymData.md).
 * Element `credentials`: Armored key-value pairs of credentials. TODO.
 
-## createUserAccountResponse
+## registerNymResponse
 
 * Element `nymfile`: Contains [`<nymData>` document](nymData.md).
 
@@ -71,33 +71,33 @@ the request was successful. Transaction numbers need to be requested from each N
 
 ----
 
-## createAccount
+## registerAccount
 
-Requests creation of a new asset account on the Notary. It includes the **nym** ID, notary ID and asset type. The reply to this message from the Notary includes a True or False success variable, the account ID of the new account, and the account itself, which is a signed balance file. The account file contains the **nymID** of the account owner, the notaryID where the account is located, the AssetType ID of the account, the balance, and the account type. The new account starts with a zero balance.
+Requests creation of a new asset account on the Notary. It includes the **nym** ID, notary ID and instrument definition. The reply to this message from the Notary includes a True or False success variable, the account ID of the new account, and the account itself, which is a signed balance file. The account file contains the **nymID** of the account owner, the notaryID where the account is located, the AssetType ID of the account, the balance, and the account type. The new account starts with a zero balance.
 
 
-* Attribute `instrumentDefinitionID`: Identifier. ID of the asset type for the account.
+* Attribute `instrumentDefinitionID`: Identifier. ID of the instrument definition for the account.
 
-## createAccountResponse
+## registerAccountResponse
 
 * Attribute `accountID`: Identifier.
-* Element `newAccount`: Signed [`<assetAccount>` document](assetAccount.md).
+* Element `newAccount`: Signed [`<account>` document](account.md).
 
 ----
 
-## issueAssetType
+## issueInstrumentDefinition
 
-Request creation of a new _issuer asset account_ on the Notary. issueAssetType is a message sent by an issuer that wants to issue currency onto the notary. An asset contract must be uploaded to the notary by the currency issuer that wants to issue a currency on that notary. The issuer is the one who made the asset contract and signed it.  This message includes the **nymID**, the notary ID, the queried asset types, and the asset contract. The asset type is the hash of the asset contract. The notary verifies that the asset contract hash equals the asset type ID. The notary will also load up the public credentials for the **nym**, to verify the signature on the asset contract.
+Request creation of a new _issuer asset account_ on the Notary. issueInstrumentDefinition is a message sent by an issuer that wants to issue currency onto the notary. An instrument definition contract must be uploaded to the notary by the currency issuer that wants to issue a currency on that notary. The issuer is the one who made the asset contract and signed it.  This message includes the **nymID**, the notary ID, the queried instrument definitions, and the asset contract. The instrument definition is the hash of the asset contract. The notary verifies that the asset contract hash equals the instrument definition ID. The notary will also load up the public credentials for the **nym**, to verify the signature on the asset contract.
 
 * Attribute `instrumentDefinitionID`: Identifier. Hash of the `<instrumentDefinition>`.
 * Element `assetContract`: Signed [`<instrumentDefinition>`
     document](instrumentDefinition.md)
 
-## issueAssetTypeResponse
+## issueInstrumentDefinitionResponse
 
 * Attribute `accountID`: Identifier.
 * Attribute `instrumentDefinitionID`: Identifier. Hash of the `<instrumentDefinition>`.
-* Element `issuerAccount`: Signed [`<assetAccount>` document](assetAccount.md).
+* Element `issuerAccount`: Signed [`<account>` document](account.md).
 
 ----
 
@@ -182,7 +182,7 @@ Downloads the inbox, the outbox, and the account balance file.
 * Attribute `inboxHash`: Identifier. Hash of the contained Inbox.
 * Attribute `outboxHash`: Identifier. Hash of the contained Outbox.
 * Element `account`
-  * contains armored signed [`assetAccount` document](assetAccount.md)
+  * contains armored signed [`account` document](account.md)
   * present only if `success` is `true`
 * Element `inbox`
   * contains armored signed [`accountLedger` document](accountLedger.md)
@@ -211,13 +211,13 @@ Downloads the inbox, the outbox, and the account balance file.
 
 ----
 
-## queryAssetTypes
+## queryInstrumentDefinitions
 
-*queryAssetTypes* sends the notary a list of asset type IDs in a string map (for example, gold or silver), to query the Notary if it supports these asset types. It is a simple message for determining if certain asset types are there are not. The Notary replies with true or false, in response to each queried asset type.
+*queryInstrumentDefinitions* sends the notary a list of instrument definition IDs in a string map (for example, gold or silver), to query the Notary if it supports these instrument definitions. It is a simple message for determining if certain instrument definitions are there are not. The Notary replies with true or false, in response to each queried instrument definition.
 
 * Attribute: TODO.
 
-## queryAssetTypesResponse
+## queryInstrumentDefinitionsResponse
 
 * Attribute: TODO.
 
@@ -326,7 +326,7 @@ For example, a smart contract may have a clause that can be triggered in case of
 
 ## getContract
 
-Downloads an asset contract from the Notary. The response message from the Notary, if the success is *true*, will include the associated asset contract for the  specified asset type ID. The client can hash the contract provided by the Notary and compare the hash with the asset type ID.
+Downloads an instrument definition contract from the Notary. The response message from the Notary, if the success is *true*, will include the associated instrument definition contract for the specified instrument definition ID. The client can hash the contract provided by the Notary and compare the hash with the instrument definition ID.
 
 * Attribute: TODO.
 
@@ -336,15 +336,15 @@ Downloads an asset contract from the Notary. The response message from the Notar
 
 ----
 
-## deleteAssetAccount
+## unregisterAccount
 
-Deletes the specified asset account from the Notary. A number of prerequisite actions must be performed before the *deleteAssetAccount* request can be  sent to the Notary.
+Deletes the specified asset account from the Notary. A number of prerequisite actions must be performed before the *unregisterAccount* request can be  sent to the Notary.
 Firstly, the account balance needs to be reduced to zero. The Notary won’t allow the deletion of an asset account that contains a balance. Secondly, the inbox needs to be empty. Any transaction receipts in the inbox must be closed out.
-Once the inbox is empty and the account balance is zero, the *deleteAssetAccount* message can be sent to the Notary and the specified asset account is deleted.
+Once the inbox is empty and the account balance is zero, the *unregisterAccount* message can be sent to the Notary and the specified asset account is deleted.
 
 * Attribute: TODO.
 
-## deleteAssetAccountResponse
+## unregisterAccountResponse
 
 * Attribute: TODO.
 
