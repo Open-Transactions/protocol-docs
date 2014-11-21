@@ -85,15 +85,15 @@ Requests creation of a new asset account on the Notary. It includes the **nym** 
 
 ----
 
-## issueAssetType
+## issueInstrumentDefinition
 
-Request creation of a new _issuer asset account_ on the Notary. issueAssetType is a message sent by an issuer that wants to issue currency onto the notary. An asset contract must be uploaded to the notary by the currency issuer that wants to issue a currency on that notary. The issuer is the one who made the asset contract and signed it.  This message includes the **nymID**, the notary ID, the queried instrument definitions, and the asset contract. The instrument definition is the hash of the asset contract. The notary verifies that the asset contract hash equals the instrument definition ID. The notary will also load up the public credentials for the **nym**, to verify the signature on the asset contract.
+Request creation of a new _issuer asset account_ on the Notary. issueInstrumentDefinition is a message sent by an issuer that wants to issue currency onto the notary. An instrument definition contract must be uploaded to the notary by the currency issuer that wants to issue a currency on that notary. The issuer is the one who made the asset contract and signed it.  This message includes the **nymID**, the notary ID, the queried instrument definitions, and the asset contract. The instrument definition is the hash of the asset contract. The notary verifies that the asset contract hash equals the instrument definition ID. The notary will also load up the public credentials for the **nym**, to verify the signature on the asset contract.
 
 * Attribute `instrumentDefinitionID`: Identifier. Hash of the `<instrumentDefinition>`.
 * Element `assetContract`: Signed [`<instrumentDefinition>`
     document](instrumentDefinition.md)
 
-## issueAssetTypeResponse
+## issueInstrumentDefinitionResponse
 
 * Attribute `accountID`: Identifier.
 * Attribute `instrumentDefinitionID`: Identifier. Hash of the `<instrumentDefinition>`.
@@ -326,7 +326,7 @@ For example, a smart contract may have a clause that can be triggered in case of
 
 ## getContract
 
-Downloads an asset contract from the Notary. The response message from the Notary, if the success is *true*, will include the associated asset contract for the  specified instrument definition ID. The client can hash the contract provided by the Notary and compare the hash with the instrument definition ID.
+Downloads an instrument definition contract from the Notary. The response message from the Notary, if the success is *true*, will include the associated instrument definition contract for the specified instrument definition ID. The client can hash the contract provided by the Notary and compare the hash with the instrument definition ID.
 
 * Attribute: TODO.
 
