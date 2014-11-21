@@ -25,33 +25,48 @@ single entity, not the item. A transaction contains a list of items.
 * Attribute `type`. String. See section _Item Types_
 * Attribute `status`. String. Possible values:
     * `request`: the item is requested from client
-    * `acknowledgement`: This item is an acknowledgment from the server. The server has signed it. Only in response.
-    * `rejection`: This item represents a rejection of the request by the server. Server will not sign it. Only in response.
-    * `error-unknown`: Error during processing transaction. TODO seems that never used.
+    * `acknowledgement`: This item is an acknowledgment from the server.
+      The server has signed it. Only in response.
+    * `rejection`: This item represents a rejection of the request by the
+      server. Server will not sign it. Only in response.
+    * `error-unknown`: Error during processing transaction. TODO seems never used.
 * Attribute `outboxNewTransNum`. Integer. Only when
     `newOutboxTransactioNum == 0`. TODO not sure if used.
-    Used only in `atBalanceStatement` with status `acknowledgement`. Server informs client that server issued new transaction number and put new transaction with this number into outbox.
+    Used only in `atBalanceStatement` with status `acknowledgement`. Server
+    informs client that server issued new transaction number and put new
+    transaction with this number into outbox.
 * Attribute `numberOfOrigin`. Integer. Reference to original transaction.
 * Attribute `transactionNum`. Integer. Number of current transaction.
 * Attribute `notaryID`. Identifier.
-* Attribute `nymID`. Identifier. NymID of the user who created this item. On items from client it is client user ID, on items from server it is server user id.
+* Attribute `nymID`. Identifier. NymID of the user who created this item. On
+  items from client it is client user ID, on items from server it is server
+  user id.
 * Attribute `fromAccountID`. Identifier. Source account ID
 * Attribute `toAccountID`. Identifier. Destination account ID.
-* Attribute `inReferenceTo`. Integer. Reference to transaction which does not need to be included in items.
-* Optional element `note`. Armored. A text field for the user. The note can be from server or from client. The note is padded to minimal size 100. TODO: why?
-* Optional element `inReferenceTo`. Armored. Copy of transaction item that current item refers.
-* Optional element `attachment`. Armored. Digital cash token is sent here. For example voucher is here when withdraw voucher.
+* Attribute `inReferenceTo`. Integer. Reference to transaction which does not
+  need to be included in items.
+* Optional element `note`. Armored. A text field for the user. The note can be
+  from server or from client. The note is padded to minimal size 100. TODO: why?
+* Optional element `inReferenceTo`. Armored. Copy of transaction item that
+  current item refers.
+* Optional element `attachment`. Armored. Digital cash token is sent here.
+  For example voucher is here when withdraw voucher.
 * If type is `balanceStatement`: Element `transactionReport`
-    * balance statement contains transactionReport for each transaction in inbox or outbox.
+    * balance statement contains transactionReport for each transaction in
+      inbox or outbox.
     * Attribute `type`. String. Specifies receipt type. TODO.
-    * Attribute `adjustment`. Integer. Amount, how much incoming into the account (negative for outgoing).
+    * Attribute `adjustment`. Integer. Amount, how much incoming into the
+      account (negative for outgoing).
     * Attribute `accountID`. Identifier. Destination account ID.
     * Attribute `nymID`. Identifier. User ID.
     * Attribute `numberOfOrigin`. Integer. Reference to original transaction.
     * Attribute `transactionNum`. Integer.
-        * the attribute could have special value 1 that is used when client does not know transaction number. The transaction number will be in response in attribute `outboxNewTransNum`.
+        * the attribute could have special value 1 that is used when client
+          does not know transaction number. The transaction number will be
+          in response in attribute `outboxNewTransNum`.
         * see https://github.com/Open-Transactions/opentxs/blob/develop/src/client/OpenTransactions.cpp#L12418 and https://github.com/Open-Transactions/opentxs/blob/develop/src/core/OTTransaction.cpp#L1987
-    * Attribute `closingTransactionNum`. Integer. Only for `finalReceipt` or `basketReceipt`.
+    * Attribute `closingTransactionNum`. Integer. Only for `finalReceipt` or `
+      basketReceipt`.
     * Attribute `inReferenceTo`. Integer.
 
 ### Item Types
@@ -63,12 +78,14 @@ Every type has a corresponding `at` type, which indicates the server response.
 #### Transfer
 
 * `transfer`
-    * used in `notarizeTransaction` by client to initiate transfer from one account to another account.
+    * used in `notarizeTransaction` by client to initiate transfer from one
+      account to another account.
     * `note` contains user defined description
     * only one `transfer` can be in transaction
     * amount must be positive integer
     * must be in transaction together with `balanceStatement`
-    * notarizing `transfer` generates new pending transactions in source account outbox, destination account inbox
+    * notarizing `transfer` generates new pending transactions in source
+      account outbox, destination account inbox
 
 ##### Example
 
@@ -118,7 +135,8 @@ amount="0" >
 
 * `acceptTransaction`
     * client-side acceptance of a transaction number (a blank) in the Nymbox
-    * attribute `totalListOfNumbers`: comma-separated list of numbers of blank transactions.
+    * attribute `totalListOfNumbers`: comma-separated list of numbers of blank
+      transactions.
 
 ##### Example
 
@@ -153,11 +171,15 @@ amount="0" >
 #### Info
 
 * `balanceStatement`
-    * is created by client to change its own account balance with respect to other items in the transaction. The balance statement is then validated and signed by server.
+    * is created by client to change its own account balance with respect to
+      other items in the transaction. The balance statement is then validated
+      and signed by server.
     * element `attachment`
-        * contains armored [`nymData` document](../doctypes/nymData.md) that updates issued nums and transaction nums.
+        * contains armored [`nymData` document](../doctypes/nymData.md) that
+          updates issued nums and transaction nums.
     * element `transactionReport`
-        * balance statement contains `transactionReport` for each transaction in inbox or outbox.
+        * balance statement contains `transactionReport` for each transaction
+          in inbox or outbox.
 
 ##### Example
 
@@ -198,8 +220,12 @@ inReferenceTo="710" />
 </item>
 ```
 * `transactionStatement`
-    * client has to sign new `transactionStatement` when transaction nums changed to update information on which nums has client responsibility. It could changed when client receive new nums from server or when some transaction is cleared.
-    * element `attachment` contains document [`nymData`](nymData.md) with current list of nums
+    * client has to sign new `transactionStatement` when transaction nums
+      changed to update information on which nums has client responsibility.
+      It could changed when client receive new nums from server or when some
+      transaction is cleared.
+    * element `attachment` contains document [`nymData`](nymData.md) with
+      current list of nums.
 
 #### Cash Withdrawal and Deposit
 
@@ -225,8 +251,12 @@ inReferenceTo="710" />
 #### Receipt Types
 
 * `replyNotice`
-    * for some special messages, server drop reply also into Nymbox to be guaranteed that the Nym will receive and process the message. Used in transaction `replyNotice`
-         * used as reply for messages: `issueAssetType`, `createAccount`, `deleteUser`, `deleteAssetAcct`, `processNymbox`, `processInbox`, `notarizeTransaction`
+    * for some special messages, server drop reply also into Nymbox to be
+      guaranteed that the Nym will receive and process the message. Used
+      in transaction `replyNotice`
+         * used as reply for messages: `issueAssetType`, `createAccount`,
+           `deleteUser`, `deleteAssetAcct`, `processNymbox`, `processInbox`,
+           `notarizeTransaction`
     * element `attachment` contains the reply message
     * TODO I do not see replyNotice in communication
 * `successNotice`
@@ -234,7 +264,8 @@ inReferenceTo="710" />
 
 ##### Payment receipts
 
-* used only in `balanceStatement`, not in `item` but as `transactionReport`, for usage in inbox see [transaction](transaction.md)
+* used only in `balanceStatement`, not in `item` but as `transactionReport`,
+  for usage in inbox see [transaction](transaction.md)
 * TODO this should be moved, is not part `item`, it is only part of OTItem.hpp
 
 * `voucherReceipt`

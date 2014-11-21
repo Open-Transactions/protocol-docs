@@ -9,9 +9,13 @@ menu:
 
 Typed container of [`<transaction>` documents](transaction.md).
 
-For all`type`s but `message`, all transactions are included in abbreviated form (`nymboxRecord`, `inboxRecord`, ..., see below). Those include the hash of the transaction in the record's `receiptHash` attribute. The transactions themselves are stored separately, see [`<transaction>`](transaction.md).
+For all`type`s but `message`, all transactions are included in abbreviated form
+(`nymboxRecord`, `inboxRecord`, ..., see below). Those include the hash of the
+transaction in the record's `receiptHash` attribute. The transactions
+themselves are stored separately, see [`<transaction>`](transaction.md).
 
-If the `type` is `message`, the transactions are included in full as a list of `transaction` elements.
+If the `type` is `message`, the transactions are included in full as a list of
+`transaction` elements.
 
 ### Elements and attributes
 
@@ -22,11 +26,13 @@ If the `type` is `message`, the transactions are included in full as a list of `
 * Attribute `nymID`: Identifier. The Nym the ledger belongs to.
 * Attribute `notaryID`: Identifier. The Notary the ledger is stored with.
 
-For ledgers in full form (only for ledgers of `type` `message`), for each transaction:
+For ledgers in full form (only for ledgers of `type` `message`), for each
+transaction:
 
 * Element `transaction`: [`<transaction>` document](transaction.md).
 
-<a name="tx-abbreviated-elements"></a>For ledgers in abbreviated form, the transactions are stored in abbreviated form:
+<a name="tx-abbreviated-elements"></a>For ledgers in abbreviated form, the
+transactions are stored in abbreviated form:
 
 * For ledger type `nymbox`: Element `nymboxRecord`: [`nymboxRecord` document](transaction.md#document-type-nymboxrecord)
 * For ledger type `inbox`: Element `inboxRecord`: [`inboxRecord` document](transaction.md#document-type-inboxrecord)
@@ -55,7 +61,10 @@ For ledgers in full form (only for ledgers of `type` `message`), for each transa
 Possible improvements:
 
 * Remove attribute `numPartialRecords`. It is redundant information, as it is either:
-    * The number of transactions, if the ledger is in abbreviated form
-    * 0 otherwise
-   I.e., `numPartialRecords` is the number of [abbreviated transaction elements](#tx-abbreviated-elements).
-   That element was probably added to make parsing simpler. The format should be easy to parse in the first place.
+  * The number of transactions, if the ledger is in abbreviated form
+  * 0 otherwise
+
+I.e., `numPartialRecords` is the number of
+[abbreviated transaction elements](#tx-abbreviated-elements). That element was
+probably added to make parsing simpler. The format should be easy to parse in
+the first place.
