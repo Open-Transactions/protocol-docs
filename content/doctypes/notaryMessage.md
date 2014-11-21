@@ -48,8 +48,11 @@ suffixed with "Response".
 
 ### registerNym
 
-Requests the registration of a new **nym** on the Notary. It uploads the **nym** file and sends the public credentials. It does not send the private credentials.
-The public credentials will include the master credentials and the sub credentials. For example, it could be a master credential and four sub credentials, or two master credentials and two separate credential.
+Requests the registration of a new **nym** on the Notary. It uploads the **nym**
+file and sends the public credentials. It does not send the private credentials.
+The public credentials will include the master credentials and the sub credentials.
+For example, it could be a master credential and four sub credentials, or two
+master credentials and two separate credential.
 
 * Element `credentialList`: Contains armored [`<nymData>` document](nymData.md).
 * Element `credentials`: Armored key-value pairs of credentials. TODO.
@@ -62,8 +65,15 @@ The public credentials will include the master credentials and the sub credentia
 
 ### getTransactionNumbers
 
-Requests a new list of transaction numbers. The list will be in the **nymbox** if
-the request was successful. Transaction numbers need to be requested from each Notary that a client transacts with. Additionally, each **nym** on a client needs it's own transaction numbers. When the requested Transaction Numbers arrive in the corresponding **nymbox**, the client performs a ProcessNYMBox to accept and sign the transaction numbers. Each transaction sent to the Notary needs to include a transaction number provided by that same Notary. Some complex financial instruments may require multiple transaction numbers.
+Requests a new list of transaction numbers. The list will be in the **nymbox**
+if the request was successful. Transaction numbers need to be requested from
+each Notary that a client transacts with. Additionally, each **nym** on a
+client needs it's own transaction numbers. When the requested Transaction
+Numbers arrive in the corresponding **nymbox**, the client performs a
+ProcessNYMBox to accept and sign the transaction numbers. Each transaction sent
+to the Notary needs to include a transaction number provided by that same
+Notary. Some complex financial instruments may require multiple transaction
+numbers.
 
 * Attribute `nymboxHash`: Identifier. TODO.
 
@@ -76,10 +86,16 @@ the request was successful. Transaction numbers need to be requested from each N
 
 ### registerAccount
 
-Requests creation of a new asset account on the Notary. It includes the **nym** ID, notary ID and instrument definition. The reply to this message from the Notary includes a True or False success variable, the account ID of the new account, and the account itself, which is a signed balance file. The account file contains the **nymID** of the account owner, the notaryID where the account is located, the AssetType ID of the account, the balance, and the account type. The new account starts with a zero balance.
+Requests creation of a new asset account on the Notary. It includes the **nym**
+ID, notary ID and instrument definition. The reply to this message from the
+Notary includes a True or False success variable, the account ID of the new
+account, and the account itself, which is a signed balance file. The account
+file contains the **nymID** of the account owner, the notaryID where the
+account is located, the AssetType ID of the account, the balance, and the
+account type. The new account starts with a zero balance.
 
-
-* Attribute `instrumentDefinitionID`: Identifier. ID of the instrument definition for the account.
+* Attribute `instrumentDefinitionID`: Identifier. ID of the instrument
+  definition for the account.
 
 ### registerAccountResponse
 
@@ -90,11 +106,20 @@ Requests creation of a new asset account on the Notary. It includes the **nym** 
 
 ### issueInstrumentDefinition
 
-Request creation of a new _issuer asset account_ on the Notary. issueInstrumentDefinition is a message sent by an issuer that wants to issue currency onto the notary. An instrument definition contract must be uploaded to the notary by the currency issuer that wants to issue a currency on that notary. The issuer is the one who made the asset contract and signed it.  This message includes the **nymID**, the notary ID, the queried instrument definitions, and the asset contract. The instrument definition is the hash of the asset contract. The notary verifies that the asset contract hash equals the instrument definition ID. The notary will also load up the public credentials for the **nym**, to verify the signature on the asset contract.
+Request creation of a new _issuer asset account_ on the Notary.
+issueInstrumentDefinition is a message sent by an issuer that wants to issue
+currency onto the notary. An instrument definition contract must be uploaded to
+the notary by the currency issuer that wants to issue a currency on that
+notary. The issuer is the one who made the asset contract and signed it.  This
+message includes the **nymID**, the notary ID, the queried instrument
+definitions, and the asset contract. The instrument definition is the hash of
+the asset contract. The notary verifies that the asset contract hash equals the
+instrument definition ID. The notary will also load up the public credentials
+for the **nym**, to verify the signature on the asset contract.
 
 * Attribute `instrumentDefinitionID`: Identifier. Hash of the `<instrumentDefinition>`.
 * Element `assetContract`: Signed [`<instrumentDefinition>`
-    document](instrumentDefinition.md)
+  document](instrumentDefinition.md)
 
 ### issueInstrumentDefinitionResponse
 
@@ -106,13 +131,19 @@ Request creation of a new _issuer asset account_ on the Notary. issueInstrumentD
 
 ### notarizeTransaction
 
-Requests the notarization of a transaction. This is the primary method of processing transactions. Only one transaction can be processed at one time by *notarizeTransaction*. Two transaction items are attached; the first item is a balance agreement, which contains the balance and the list of transaction numbers currently signed out to this **nym**, and the second item contains specific information about the of transaction to be performed (for example, transfer or withdrawal).
+Requests the notarization of a transaction. This is the primary method of
+processing transactions. Only one transaction can be processed at one time by
+*notarizeTransaction*. Two transaction items are attached; the first item is a
+balance agreement, which contains the balance and the list of transaction
+numbers currently signed out to this **nym**, and the second item contains
+specific information about the of transaction to be performed (for example,
+transfer or withdrawal).
 
 * Attribute `nymboxHash`: Identifier. Optional. Request will fail if it doesn't
-    match the server version.
+  match the server version.
 * Attribute `accountID`: Identifier.
-* Element `accountLedger`: Signed document of type `<accountLedger>` that only has
-  one `<transaction>`.
+* Element `accountLedger`: Signed document of type `<accountLedger>` that only
+  has one `<transaction>`.
 
 ### notarizeTransactionResponse
 
@@ -125,9 +156,17 @@ Requests the notarization of a transaction. This is the primary method of proces
 ### getRequestNumber
 
 Get the current request number from the Notary, when the client doesn't know
-what the current one is.  Request numbers ensure synchronization of messages, between a client and a Notary, and also reduce the risk of replay attacks.
-For example, when a client sends a message with request #100, the Notary will expect the next message from this client to use request#101. However, if the client sends a series of messages that do not arrive at the Notary, the next message received by the Notary from this client might be request#105. This is not the request number expected by the Notary and it will be rejected. To resync messages with the Notary, the client makes a getRequestNumber to the Notary to check which request# the Notary is expecting. The client can then retry with the request# expected by the Notary.
+what the current one is.  Request numbers ensure synchronization of messages,
+between a client and a Notary, and also reduce the risk of replay attacks.
 
+For example, when a client sends a message with request #100, the Notary will
+expect the next message from this client to use request#101. However, if the
+client sends a series of messages that do not arrive at the Notary, the next
+message received by the Notary from this client might be request#105. This is
+not the request number expected by the Notary and it will be rejected. To
+resync messages with the Notary, the client makes a getRequestNumber to the
+Notary to check which request## the Notary is expecting. The client can then
+retry with the request## expected by the Notary.
 
 
 ### getRequestNumberResponse
@@ -156,8 +195,16 @@ messages, instruments, notices, and new transaction numbers are sent to a
 
 ### getBoxReceipt
 
-Requests a transaction receipt from a **nymbox**, **inbox** or **outbox**. This message includes the **nymID**, Notary ID, transaction number, and request number. Additionally, the message must specify the box type: **nymbox**, **inbox** or **outbox**.
-*getBoxReceipt* downloads full receipts because the **nymbox**, **inbox**, or **outbox** will only contain the stub and not the full receipt. When the client has downloaded the full receipt, it will hash the receipt and compare it to the hash that is stored in the stub to verify that it corresponds to the same receipt.
+Requests a transaction receipt from a **nymbox**, **inbox** or **outbox**. This
+message includes the **nymID**, Notary ID, transaction number, and request
+number. Additionally, the message must specify the box type: **nymbox**,
+**inbox** or **outbox**.
+
+*getBoxReceipt downloads full receipts because the nymbox, inbox, or outbox
+*will only contain the stub and not the full receipt. When the client has
+*downloaded the full receipt, it will hash the receipt and compare it to the
+*hash that is stored in the stub to verify that it corresponds to the same
+*receipt.
 
 * Attribute `transactionNum`: Integer. Transaction number for which to get the
   receipt.
@@ -202,7 +249,14 @@ Downloads the inbox, the outbox, and the account balance file.
 
 ### processInbox
 
-*processInbox* is the only transaction that has its own message.  It includes a balance agreement and it has a process inbox item, which is the only type of item that it can have. The process inbox item contains information about the receipts in the inbox that the client is accepting. The client can selectively accept the receipts in the inbox. It does not have to accept all of the receipts in the inbox when performing this transaction. Only the receipts specified in this transaction will be accepted. Processing an inbox item means accepting it and signing it.
+*processInbox* is the only transaction that has its own message.  It includes
+a balance agreement and it has a process inbox item, which is the only type of
+item that it can have. The process inbox item contains information about the
+receipts in the inbox that the client is accepting. The client can selectively
+accept the receipts in the inbox. It does not have to accept all of the
+receipts in the inbox when performing this transaction. Only the receipts
+specified in this transaction will be accepted. Processing an inbox item means
+accepting it and signing it.
 
 * Attribute `nymboxHash`: Identifier. TODO.
 * Attribute `accountID`: Identifier.
@@ -219,7 +273,11 @@ Downloads the inbox, the outbox, and the account balance file.
 
 ### queryInstrumentDefinitions
 
-*queryInstrumentDefinitions* sends the notary a list of instrument definition IDs in a string map (for example, gold or silver), to query the Notary if it supports these instrument definitions. It is a simple message for determining if certain instrument definitions are there are not. The Notary replies with true or false, in response to each queried instrument definition.
+*queryInstrumentDefinitions* sends the notary a list of instrument definition
+IDs in a string map (for example, gold or silver), to query the Notary if it
+supports these instrument definitions. It is a simple message for determining
+if certain instrument definitions are there are not. The Notary replies with
+true or false, in response to each queried instrument definition.
 
 * Attribute: TODO.
 
@@ -231,8 +289,12 @@ Downloads the inbox, the outbox, and the account balance file.
 
 ### sendNymInstrument
 
-*sendNymInstrument* is used to send a payment instrument to another client.
-The message is encrypted with the recipient's public key. If the sender does not have the recipient's public key, it will call the *checkNym* message, download the user's public key, encrypt the message to that public key, and then call *sendNymInstrument* to send it to the user. The message goes into the recipient’s **nymbox**.
+*sendNymInstrument* is used to send a payment instrument to another client. The
+message is encrypted with the recipient's public key. If the sender does not
+have the recipient's public key, it will call the *checkNym* message, download
+the user's public key, encrypt the message to that public key, and then call
+*sendNymInstrument* to send it to the user. The message goes into the
+recipient’s **nymbox**.
 
 * Attribute: TODO.
 
@@ -244,7 +306,12 @@ The message is encrypted with the recipient's public key. If the sender does not
 
 ### sendNymMessage
 
-*sendNymMessage* is used to send a message to another client. The message is encrypted with the recipient's public key. If the sender does not have the recipient's public key, it will call the *checkNym* message, download the user's public key, encrypt the message to that public key, and then call *sendNymMessage* to send it to the user. The message goes into the recipient’s **nymbox**.
+*sendNymMessage* is used to send a message to another client. The message is
+encrypted with the recipient's public key. If the sender does not have the
+recipient's public key, it will call the *checkNym* message, download the
+user's public key, encrypt the message to that public key, and then call
+*sendNymMessage* to send it to the user. The message goes into the recipient’s
+**nymbox**.
 
 
 * Attribute: TODO.
@@ -257,7 +324,13 @@ The message is encrypted with the recipient's public key. If the sender does not
 
 ### usageCredits
 
-*usageCredits* can be used by a client to ask the Notary how many usage credits are available for the specified **nym**. Usage Credits is a number that can be attached to a **nym**. The Notary can turn Usage Credits on or off. If the Notary turns the feature on, then the usage credits of the **nym** will decrement with every protocol message and with every request reply.  All messages (except *usageCredits*) will fail when a **nym** has consumed all of its' usage credits.
+*usageCredits* can be used by a client to ask the Notary how many usage credits
+are available for the specified **nym**. Usage Credits is a number that can be
+attached to a **nym**. The Notary can turn Usage Credits on or off. If the
+Notary turns the feature on, then the usage credits of the **nym** will
+decrement with every protocol message and with every request reply.  All
+messages (except *usageCredits*) will fail when a **nym** has consumed all of
+its' usage credits.
 
 * Attribute: TODO.
 
@@ -269,7 +342,11 @@ The message is encrypted with the recipient's public key. If the sender does not
 
 ### checkNym
 
-*checkNym* downloads the public information for another client. For example, this message would be used to download another client’s public key so that we can send him a message and encrypt it to his key. If this message succeeds, it provides the public key for the specified user. If it fails, it returns your original request.
+*checkNym* downloads the public information for another client. For example,
+this message would be used to download another client’s public key so that we
+can send him a message and encrypt it to his key. If this message succeeds, it
+provides the public key for the specified user. If it fails, it returns your
+original request.
 
 * Attribute: TODO.
 
@@ -281,7 +358,13 @@ The message is encrypted with the recipient's public key. If the sender does not
 
 ### unregisterNym
 
-*unregisterNym* deletes the specified **nym** from the Notary. However, this action will fail if the **nym** has any accounts on the notary that do not have a zero balance. If the client wants to delete an asset account, it needs to first reduce the account balance to zero, delete the account, and then delete the **nym** off the Notary.  Alternatively, the user could stop using a **nym** without deleting it and just leave it on the Notary. However, as a courtesy, the unused **nym** should be deleted from the Notary.
+*unregisterNym* deletes the specified **nym** from the Notary. However, this
+action will fail if the **nym** has any accounts on the notary that do not have
+a zero balance. If the client wants to delete an asset account, it needs to
+first reduce the account balance to zero, delete the account, and then delete
+the **nym** off the Notary.  Alternatively, the user could stop using a **nym**
+without deleting it and just leave it on the Notary. However, as a courtesy,
+the unused **nym** should be deleted from the Notary.
 
 * Attribute: TODO.
 
@@ -293,9 +376,16 @@ The message is encrypted with the recipient's public key. If the sender does not
 
 ### pingNotary
 
-*pingNotary* is similar to a ping command. It sends a message to the Notary to see if it can get a reply. It verifies if the Notary is listening and responding. This is the first message used in a transaction.
+*pingNotary* is similar to a ping command. It sends a message to the Notary to
+see if it can get a reply. It verifies if the Notary is listening and
+responding. This is the first message used in a transaction.
 
-*pingNotary* sends the **nym** authentication key and the encryption key to the Notary. This is one of the few messages that must include these keys in the message. In most other messages the Notary already has these keys, because the **nym** is already registered with the Notary.  The Notary replies to *pingNotary* with true or false. The Notary replies false to this message if an incorrect *notaryID* is used in this message.
+*pingNotary* sends the **nym** authentication key and the encryption key to the
+Notary. This is one of the few messages that must include these keys in the
+message. In most other messages the Notary already has these keys, because the
+**nym** is already registered with the Notary.  The Notary replies to
+*pingNotary* with true or false. The Notary replies false to this message if an
+incorrect *notaryID* is used in this message.
 
 * Attribute: TODO.
 
@@ -307,8 +397,12 @@ The message is encrypted with the recipient's public key. If the sender does not
 
 ### triggerClause
 
-*triggerClause* is a transaction used for triggering scripts on smart contracts. Smart contracts have clauses, which are scripts on the contract that can be activated in response to a condition or scheduled to run at certain times.
-For example, a smart contract may have a clause that can be triggered in case of a dispute. Or there may be clauses that are triggered everyday to perform a daily action.
+*triggerClause* is a transaction used for triggering scripts on smart contracts.
+Smart contracts have clauses, which are scripts on the contract that can be
+activated in response to a condition or scheduled to run at certain times. For
+example, a smart contract may have a clause that can be triggered in case of a
+dispute. Or there may be clauses that are triggered everyday to perform a daily
+action.
 
 * Attribute: TODO.
 
@@ -320,7 +414,13 @@ For example, a smart contract may have a clause that can be triggered in case of
 
 ### getMint
 
-*getMint* requests the Notary to provide the public mint key for the cash instrument. The cash instrument has a series of minting keys and the minting keys are stored in the mint.There is a public mint and a private mint, the notary keeps the private mint key and it will give a copy of the public mint key to the requesting client. The notary should give all clients the same public mint key. If different public mint keys were provided to different clients, the cash would become traceable.
+*getMint* requests the Notary to provide the public mint key for the cash
+instrument. The cash instrument has a series of minting keys and the minting
+keys are stored in the mint.There is a public mint and a private mint, the
+notary keeps the private mint key and it will give a copy of the public mint
+key to the requesting client. The notary should give all clients the same
+public mint key. If different public mint keys were provided to different
+clients, the cash would become traceable.
 
 * Attribute: TODO.
 
@@ -332,7 +432,11 @@ For example, a smart contract may have a clause that can be triggered in case of
 
 ### getContract
 
-Downloads an instrument definition contract from the Notary. The response message from the Notary, if the success is *true*, will include the associated instrument definition contract for the specified instrument definition ID. The client can hash the contract provided by the Notary and compare the hash with the instrument definition ID.
+Downloads an instrument definition contract from the Notary. The response
+message from the Notary, if the success is *true*, will include the associated
+instrument definition contract for the specified instrument definition ID. The
+client can hash the contract provided by the Notary and compare the hash with
+the instrument definition ID.
 
 * Attribute: TODO.
 
@@ -348,7 +452,7 @@ Deletes the specified asset account from the Notary. A number of prerequisite
 actions must be performed before the *unregisterAccount* request can be  sent
 to the Notary.
 
-First, the account balance needs to be reduced to zero. The Notary won’t allow
+First, the account balance needs to be reduced to zero. The Notary won't allow
 the deletion of an asset account that contains a balance. Secondly, the inbox
 needs to be empty. Any transaction receipts in the inbox must be closed out.
 

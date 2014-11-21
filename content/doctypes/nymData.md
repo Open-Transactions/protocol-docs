@@ -16,14 +16,14 @@ menu:
 * Element `masterCredential`: This is the top level key of the set of
   credentials a Nym has. Is used to validate the signature on the subcredentials.
   * Attribute `ID`: Identifier. The ID of the (sub)credential.
-  * Attribute `valid`: Boolean. Whether or not this key is still valid. TODO: who/what
-    determines this?
+  * Attribute `valid`: Boolean. Whether or not this key is still valid.
+    TODO: who/what determines this?
 * Element `keyCredential`: presumably one of the encryption or signing keys.
   Can occur more than once.
   * Attribute `masterID`: Identifier. The ID of the master credential.
   * Attribute `ID`: Identifier. The ID of the (sub)credential.
-  * Attribute `valid`: Boolean. Whether or not this key is still valid. TODO: who/what
-    determines this?
+  * Attribute `valid`: Boolean. Whether or not this key is still valid.
+    TODO: who/what determines this?
 * Element `subCredential`: presumably one of the encryption or signing keys.
   Can occur more than once.
   * Attribute `masterID`: Identifier. The ID of the master credential.
