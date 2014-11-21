@@ -27,7 +27,7 @@ Those attributes are common to the [full form document type](#document-type-full
 * Attribute `type`: String. See section _Transaction Types_.
 * Attribute `dateSigned`: Time. The date when the instrument was last signed.
 * Attribute `accountID`: Identifier.
-* Attribute `userID`: Identifier.
+* Attribute `nymID`: Identifier.
 * Attribute `notaryID`: Identifier.
 * Attribute `numberOfOrigin`: Integer.
     * Constant _0_ if not applicable.

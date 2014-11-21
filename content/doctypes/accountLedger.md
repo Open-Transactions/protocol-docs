@@ -16,7 +16,7 @@ If the `type` is `message`, the transactions are included in full as a list of `
 * Attribute `type`: String. Specifies the ledger type. See _Ledger Types_ below.
 * Attribute `numPartialRecords`: Integer. In abbreviated form, it is the number of transaction elements (see below). In full form, it is constant _0_.
 * Attribute `accountID`: Identifier.
-* Attribute `userID`: Identifier. The Nym the ledger belongs to.
+* Attribute `nymID`: Identifier. The Nym the ledger belongs to.
 * Attribute `notaryID`: Identifier. The Notary the ledger is stored with.
 
 For ledgers in full form (only for ledgers of `type` `message`), for each transaction:
