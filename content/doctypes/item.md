@@ -1,8 +1,11 @@
 ---
 title: Document Type item
+menu:
+  main:
+    parent: doctypes
 ---
 
-# Document Type `<item>`
+## Document Type `<item>`
 
 Contained in unabbreviated [`<transaction>` documents](transaction.md).
 
@@ -17,7 +20,7 @@ processed.  Items are like tracks on a CD. It is assumed there will be several
 of them, they come in packs. You normally would deal with the transaction as a
 single entity, not the item. A transaction contains a list of items.
 
-## Elements and attributes
+### Elements and attributes
 
 * Attribute `type`. String. See section _Item Types_
 * Attribute `status`. String. Possible values:
@@ -51,7 +54,7 @@ single entity, not the item. A transaction contains a list of items.
     * Attribute `closingTransactionNum`. Integer. Only for `finalReceipt` or `basketReceipt`.
     * Attribute `inReferenceTo`. Integer.
 
-## Item Types
+### Item Types
 
 Transcribed from `OTItem.hpp`, non-exhaustive.
 
@@ -196,7 +199,7 @@ inReferenceTo="710" />
 ```
 * `transactionStatement`
     * client has to sign new `transactionStatement` when transaction nums changed to update information on which nums has client responsibility. It could changed when client receive new nums from server or when some transaction is cleared.
-    * element `attachment` contains document [`nymData`](nymData.md) with actual list of nums
+    * element `attachment` contains document [`nymData`](nymData.md) with current list of nums
 
 #### Cash Withdrawal and Deposit
 
@@ -245,14 +248,14 @@ inReferenceTo="710" />
 * `transferReceipt`
     * server receipt dropped into an inbox as result of transfer being accepted
 
-# References
+## References
 
 * [enum itemType](https://github.com/Open-Transactions/opentxs/blob/f403ce1496ddddea9a0887c87d4f76535697c9a3/include/opentxs/core/OTItem.hpp#L169)
 * [OTItem::UpdateContents()](https://github.com/Open-Transactions/opentxs/blob/f403ce1496ddddea9a0887c87d4f76535697c9a3/src/core/OTItem.cpp#L2254)
 
-# Notes
+## Notes
 
-## Code Smell: Switch Statement
+### Code Smell: Switch Statement
 
 [Source](http://sourcemaking.com/refactoring/switch-statements). In this case on
 the `type` attribute.

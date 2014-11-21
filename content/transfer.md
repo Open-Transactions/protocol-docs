@@ -1,11 +1,13 @@
-
 ---
 title: "Transfer lifecycle"
+menu:
+  main:
+    parent: other
 ---
 
 This document describes transfer from Alice's account to Bob's account.
 
-# Notarize transaction
+## Notarize transaction
 
 Alice initiate a transfer by sending a signed message `notarizeTransaction` to the Notary.
 The message contains `accountLedger` document and it contains one `transaction` type `transfer`.
@@ -19,7 +21,7 @@ The transaction contains two items
 
 Everything is signed by Alice.
 
-# Alice initialize transfer
+## Alice initialize transfer
 
 Notary responds with message `@notarizeTransaction`. It contains `accountLedger` with transaction type `atTransfer` (response to transaction `transfer`). The transaction contains response for each item. The items' status is `acknowledgement` or `rejection`.
 
@@ -34,7 +36,7 @@ When Notary accepts Alice's transaction the Notary creates new `pending` transac
 
 Alice expects new transaction in outbox so she download it by combination of `getAccountData`, `getBoxReceipt`. TODO: why has Alice new copy of transfer
 
-# Bob gets transfer to inbox
+## Bob gets transfer to inbox
 
 The same is done by Bob. By messages `getAccountData`, `getBoxReceipt` Bob downloads new receipt from his inbox. The receipt contains `pending` transaction signed by Notary. The transaction contains original Alice's `transfer` with her signature.
 
@@ -50,7 +52,7 @@ Bob accepts the `pending` transaction by new transaction `processInbox` in messa
 Notary accepts Bob's `processInbox` and send `atAcceptPending` to Bob in reply. As Bob accepted the transfer Notary generates new transaction `transferReceipt` and drop it into Alice's inbox.
 
 
-# Alice gets notification that transfer complete
+## Alice gets notification that transfer complete
 
 Alice has new `transferReceipt` in her inbox.
 

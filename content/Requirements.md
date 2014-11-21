@@ -1,8 +1,11 @@
 ---
 title: "Requirements for the Open-Transactions Document Format and Protocol"
+menu:
+  main:
+    parent: other
 ---
 
-# Requirements for the Open-Transactions Document Format and Protocol
+## Requirements for the Open-Transactions Document Format and Protocol
 
 Quote from OpenTransactions.org:
 
@@ -26,14 +29,14 @@ documents. This should make it easier for developers to review and improve the
 system.
 
 
-## Simplicity
+### Simplicity
 
 The format should be *as simple as possible*. Unnecessary features and aspects
 should be removed. This requirements helps with most other criteria on this
 list.
 
 
-## Transactionality
+### Transactionality
 
 Communication should be *state-less and message-based*, as opposed to something
 stream-based like FTP or SSH.
@@ -47,7 +50,7 @@ Exceptions are:
 * Application-level state, like Nyms, accounts and balances.
 * Request numbers (*Authenticity* requirement)
 
-## Authenticity
+### Authenticity
 
 A document recipient, as well as third parties, should be able to *verify
 authenticity*. The signed content should reflect the intentions of the author
@@ -59,7 +62,7 @@ and include:
 * The desired action to be performed.
 
 
-## Readability
+### Readability
 
 Documents should be *clear*, *unambiguous* and *easily understandable by
 humans*.  This is a requirement for third-party auditors who must make a
@@ -73,7 +76,7 @@ should be the protocol specification and a program for computing hashes and
 checking cryptographic signatures.
 
 
-## Safety
+### Safety
 
 Documents should be *well-formed* in order to be accepted. Ambiguous documents
 are difficult to audit and can lead to unpredictable behavior on the system,
@@ -86,7 +89,7 @@ One solution for that is the use of XML schemas, at the cost of simplicity and
 safety (Schema Attacks, XML Bombs).
 
 
-## Composability
+### Composability
 
 A document should be able to *contain other documents* and be able to *refer to
 other documents*.
@@ -96,14 +99,14 @@ Documents can refer to other documents using their hash or smart-property
 identifier.
 
 
-## Confidentiality
+### Confidentiality
 
 Documents should *only be readable by the intended recipients*. For example, the
 communication channel between client and server cannot be expected to be
 private.
 
 
-## Efficiency
+### Efficiency
 
 Since Open-Transactions should be able to run on systems with limited resources:
 
@@ -122,7 +125,7 @@ transactions.
 Compression can be used to reduce space requirements on disk or network.
 
 
-## Extensibility
+### Extensibility
 
 As Open-Transactions continues to grow and improve, it should be able to allow
 changes to the specification and implementation and to the format without
@@ -130,7 +133,7 @@ breaking existing systems. This can be achieved by attaching a version number
 to a document, for example.
 
 
-# Current State
+## Current State
 
 1. *Simplicity*: The generation and interpretation of messages in
 Open-Transactions is defined by the source code only, which is difficult to

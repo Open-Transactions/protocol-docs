@@ -1,12 +1,15 @@
 ---
 title: Document Type instrumentDefinition
+menu:
+  main:
+    parent: doctypes
 ---
 
-# Document Type `<instrumentDefinition>`
+## Document Type `<instrumentDefinition>`
 
 Inherits from base Document Type Contract.
 
-## Elements and attributes
+### Elements and attributes
 
 * Attribute `version`. Integer. Hard-coded to 2.0
 * Element `entity`.
@@ -32,7 +35,8 @@ Inherits from base Document Type Contract.
     * Attribute `type`. String.
     * Attribute `issuedate`. String.
 
-## Example
+### Example
+
 ```xml
 <instrumentDefinition version="2.0">
 
@@ -57,5 +61,5 @@ decimal_power="3" fraction="mBTC" />
 </instrumentDefinition>
 ```
 
-## References
+### References
 [AssetContract::CreateContents()](https://github.com/Open-Transactions/opentxs/blob/be111238c0feb569462b2e710e7570c00aa3d8db/src/core/AssetContract.cpp#L776)
