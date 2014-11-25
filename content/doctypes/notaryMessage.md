@@ -72,7 +72,7 @@ if the request was successful. Transaction numbers need to be requested from
 each Notary that a client transacts with. Additionally, each **nym** on a
 client needs it's own transaction numbers. When the requested Transaction
 Numbers arrive in the corresponding **nymbox**, the client performs a
-ProcessNYMBox to accept and sign the transaction numbers. Each transaction sent
+`processNymbox` to accept and sign the transaction numbers. Each transaction sent
 to the Notary needs to include a transaction number provided by that same
 Notary. Some complex financial instruments may require multiple transaction
 numbers.
