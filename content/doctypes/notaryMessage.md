@@ -106,7 +106,7 @@ account type. The new account starts with a zero balance.
 
 ----
 
-### issueInstrumentDefinition
+### registerInstrumentDefinition
 
 Request creation of a new _issuer asset account_ on the Notary.
 issueInstrumentDefinition is a message sent by an issuer that wants to issue
@@ -123,7 +123,7 @@ for the **nym**, to verify the signature on the asset contract.
 * Element `assetContract`: Signed [`<instrumentDefinition>`
   document](instrumentDefinition.md)
 
-### issueInstrumentDefinitionResponse
+### registerInstrumentDefinitionResponse
 
 * Attribute `accountID`: Identifier.
 * Attribute `instrumentDefinitionID`: Identifier. Hash of the `<instrumentDefinition>`.
