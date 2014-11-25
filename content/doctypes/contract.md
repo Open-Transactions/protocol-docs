@@ -29,7 +29,9 @@ Inheriting Document types:
   was created, or the generated public key when nothing was passed.
 * Element `credentialList`: a list of public credentials if present. See
   [nymData](nymData.md).
-* Element `credentials`: TODO figure out what this is.
+* Element `credentials`: List of credentials mentioned in `credentialList`
+  * Element `credential`: Armored signed credential (document `keyCredential` or `masterCredential`)
+    * Attribute `ID`: credential ID
 
 ### Example
 
@@ -53,7 +55,9 @@ Inheriting Document types:
     </credentialList>
 
     <credentials>
-        $credentialMap (OTDB encoded, armored)
+        <credential ID="otxBtT5iGYJWENegXYyHRbjUCXE5RY6qnXTq">
+            $credential (armored)
+        </credential>
     </credentials>
 </signer>
 
