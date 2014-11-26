@@ -111,8 +111,16 @@ account type. The new account starts with a zero balance.
 Request creation of a new _issuer asset account_ on the Notary.
 ***registerInstrumentDefinition*** is a message sent by an issuer that 
 wants to issue currency onto the notary. 
-A currency issuer, which wants to issue a currency on a notary, must upload an instrument definition contract. 
-The issuer is the one who originated the instrument definition contract and signed it.  This message includes the **nymID**, the notary ID, the queried instrument definitions, and the instrument definition contract. The instrument definition is the hash of the instrument definition contract. The notary verifies that the instrument definition contract hash equals the instrument definition ID. The notary will also load up the public credentials for the **nym**, to verify the signature on the instrument definition contract.
+A currency issuer, which wants to issue a currency on a notary, 
+must upload an instrument definition contract. 
+The issuer is the one who originated the instrument definition contract 
+and signed it.  This message includes the **nymID**, the notary ID, the 
+queried instrument definitions, and the instrument definition contract. 
+The instrument definition is the hash of the instrument definition contract. 
+The notary verifies that the instrument definition contract hash equals 
+the instrument definition ID. The notary will also load up the public 
+credentials for the **nym**, to verify the signature on the instrument 
+definition contract.
 
 * Attribute `instrumentDefinitionID`: Identifier. Hash of the `<instrumentDefinition>`.
 * Element `instrumentDefinition`: Signed [`<instrumentDefinition>`
