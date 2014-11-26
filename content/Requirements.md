@@ -134,45 +134,45 @@ a version number to a document.
 ## Current State
 
 1. *Simplicity*: The generation and interpretation of messages in
-Open-Transactions is defined by the source code only, which is difficult to
-follow. The new specification should be easy to understand and implement.
+   Open-Transactions is defined by the source code only, which is difficult to
+   follow. The new specification should be easy to understand and implement.
 
 1. *Transactionality*: Open-Transactions uses a message-based protocol with a
-minimal amount of state. The messages that are exchanged can be understood as
-signed documents. A single message contains everything that is necessary
-to verify, process and audit the transaction. The Client sends a _request
-message_ to the Notary, which replies with a _response message_.
+   minimal amount of state. The messages that are exchanged can be understood as
+   signed documents. A single message contains everything that is necessary
+   to verify, process and audit the transaction. The Client sends a _request
+   message_ to the Notary, which replies with a _response message_.
 
 1. *Authenticity*: Open-Transactions solves this problem with the concept of a
-Nym and public-key cryptography. The actual message, encoded in XML, is wrapped
-inside a container format ([Section Format](SectionFormat.md)) that
-separates content and signatures.  The sender declares his identity in the
-message attribute `nymID`, specifies the intended recipient in the message
-`notaryID`, and declares the chronological order in the `requestNum` attribute.
+   Nym and public-key cryptography. The actual message, encoded in XML, is wrapped
+   inside a container format ([Section Format](SectionFormat.md)) that
+   separates content and signatures.  The sender declares his identity in the
+   message attribute `nymID`, specifies the intended recipient in the message
+   `notaryID`, and declares the chronological order in the `requestNum` attribute.
 
 1. *Readability*: Open-Transactions uses XML as the document format and
-_Section-Format_ as the container format. Encoding schemes that degrade
-readability, like Protocol Buffers and Base64, should be avoided when possible.
-Open-Transactions has few precautions against processing ambiguous messages.
+   _Section-Format_ as the container format. Encoding schemes that degrade
+   readability, like Protocol Buffers and Base64, should be avoided when possible.
+   Open-Transactions has few precautions against processing ambiguous messages.
 
 1. *Safety*: Open-Transactions does not use an XML schema parser, avoiding a
-class of exploits that are possible with more fully-featured parsers. However, it
-relies on zlib, Protocol Buffers, and some hand-written parsers (SectionFormat)
-that are complex, difficult to review and contain bugs and unintentional
-behavior.
+   class of exploits that are possible with more fully-featured parsers. However, it
+   relies on zlib, Protocol Buffers, and some hand-written parsers (SectionFormat)
+   that are complex, difficult to review and contain bugs and unintentional
+   behavior.
 
 1. *Composability*: Open-Transactions uses an encoding scheme with Compression,
-Base64-encoding and Protocol Buffers (depending upon a compile-time configuration)
-to embed signed sub-documents. This severely impacts readability.
+   Base64-encoding and Protocol Buffers (depending upon a compile-time configuration)
+   to embed signed sub-documents. This severely impacts readability.
 
 1. *Confidentiality*: Open-Transactions uses public-key cryptography when
-communicating between Client and Notary. The key management is part of the Nym
-credential system.
+   communicating between Client and Notary. The key management is part of the Nym
+   credential system.
 
 1. *Efficiency*: The document format used in Open-Transactions has not been
-optimized for efficiency. For example, initial tests show that avoiding base64
-encoding can reduce message size by half.
+   optimized for efficiency. For example, initial tests show that avoiding base64
+   encoding can reduce message size by half.
 
 1. *Extensibility*: Messages and documents often contain version numbers that
-are currently unused. The current system for reading and writing documents is
-complex and difficult to extend.
+   are currently unused. The current system for reading and writing documents is
+   complex and difficult to extend.
