@@ -7,7 +7,7 @@ menu:
 
 ## Transport
 
-The transport layer in OT is using [ZeroMQ](http://zeromq.org) between
+The transport layer in OT uses [ZeroMQ](http://zeromq.org) between
 the clients and the notary servers. ZeroMQ is not a neutral transport,
 because it has its own framing. This means endpoints are enforced to
 use compatible ZeroMQ versions.
@@ -25,30 +25,30 @@ implications from this:
   - the server can never send updates directly to connected clients -
     they have to poll the server.
 
-At the moment, the transport layer is not secured and everything is sent
-in plain. Instead, the payload is secured using
-[electronic envelopes](http://en.wikipedia.org/wiki/Electronic_envelope).
-This basically means that the payload is encrypted and the encryption
-key is encrypted to a recipient's public key and sent in the envelope as
-well.
+The transport layer is not secured and everything is sent
+in plain text. Each payload is secured using [electronic envelopes]
+(http://en.wikipedia.org/wiki/Electronic_envelope).
+This means that each payload is encrypted, using an encryption
+key that is encrypted to the recipient's public key, and sent in 
+the envelope as well.
 
 In OT sending works as follows:
 
 - generate a shared secret,
 - encrypt the payload with the shared secret using AES128,
-- seal the generated shared secret to all the recipients' public
+- seal the generated shared secret to the recipients' public
   encryption key using RSA, and
 - hash the payload and sign using RSA the resulting hash with own
   authentication key.
 
-And receiving works as following:
+And receiving works as follows:
 
-- verify envelope's signature using the sender's public authentication
+- verify the envelope's signature using the sender's public authentication
   key,
-- decrypt the shared secret using own encryption key (private), and
+- decrypt the shared secret using the recipient's private encryption key, and
 - decrypt the payload using the shared secret.
 
-See [Credentials](Credentials.md) for a description on keys and how they
+See [Credentials](Credentials.md) for a description of keys and how they
 are used.
 
 ### Algos Used
@@ -66,4 +66,4 @@ are used.
 - A future version of OT will use the secure session transport that
   ZeroMQ provides.
 - ECC for sign / verify and seal / open instead of RSA.
-- replace SAMY with double SHA256 to prevent birthday attacks.
+- replace SAMY with double SHA256 to prevent *birthday attacks*.
