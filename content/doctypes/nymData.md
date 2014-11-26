@@ -1,10 +1,14 @@
 ---
-title: Document Type OTuser
+title: Document Type nymData
+menu:
+  main:
+    parent: doctypes
 ---
 
-# Document type `<OTuser>`
+## Document type `<nymData>`
 
-## Elements and attributes
+### Elements and attributes
+
 * Attribute `version`: String. The container version.
 * Attribute `nymID`: Identifier. The ID of the Nym being described.
 * Element `nymIDSource`: the source passed to the `newnym` command when the Nym
@@ -12,24 +16,23 @@ title: Document Type OTuser
 * Element `masterCredential`: This is the top level key of the set of
   credentials a Nym has. It is used to validate the signature on the subcredentials.
   * Attribute `ID`: Identifier. The ID of the (sub)credential.
-  * Attribute `valid`: Boolean. Whether or not this key is still valid. TODO: who/what
-    determines this?
+  * Attribute `valid`: Boolean. Whether or not this key is still valid.
+    TODO: who/what determines this?
 * Element `keyCredential`: presumably one of the encryption or signing keys.
   Can occur more than once.
   * Attribute `masterID`: Identifier. The ID of the master credential.
   * Attribute `ID`: Identifier. The ID of the (sub)credential.
-  * Attribute `valid`: Boolean. Whether or not this key is still valid. TODO: who/what
-    determines this?
+  * Attribute `valid`: Boolean. Whether or not this key is still valid.
+    TODO: who/what determines this?
 * Element `subCredential`: presumably one of the encryption or signing keys.
   Can occur more than once.
   * Attribute `masterID`: Identifier. The ID of the master credential.
   * Attribute `ID`: Identifier. The ID of the (sub)credential.
   * Attribute `valid`: Boolean. Whether or not this key is still valid.  revoked. TODO: who/what determines this?
 
-
-# Example
+## Example
 ```xml
-<OTuser version="1.0"
+<nymData version="1.0"
  nymID="voeqDVAJwDwROywFtg5mEyYpcu2dcPJRLFHYh7tyhqk">
 
   <nymIDSource>
@@ -45,18 +48,18 @@ title: Document Type OTuser
    masterID="UESzvzSw6zqC7BuvlcHmbPKTmf5BIbG0RNvCTpDx1kH"
    valid="true"/>
 
-</OTuser>
+</nymData>
 ```
 
-# References
+## References
 * [OTPseudonym::OTPseudonym::SavePseudonym](https://github.com/Open-Transactions/opentxs/blob/0de3b72/src/core/OTPseudonym.cpp#L4273)
 * [OTPseudonym::SaveCredentialListToString](https://github.com/Open-Transactions/opentxs/blob/0de3b72/src/core/OTPseudonym.cpp#L4098)
 * [OTPseudonym::GetPublicCredentials](https://github.com/Open-Transactions/opentxs/blob/0de3b72/src/core/OTPseudonym.cpp#L4023)
 * [OTPseudonym::GetPrivateCredentials](https://github.com/Open-Transactions/opentxs/blob/0de3b72/src/core/OTPseudonym.cpp#L4055)
 * [OTCredential::SerializeIDs](https://github.com/Open-Transactions/opentxs/blob/da07760/src/core/crypto/OTCredential.cpp#L1553)
 
-# Notes
+## Notes
+
 This document type is often embedded in other document types which already
 include `nymIDSource` leading to some duplication here. TODO it's unclear how
 prevalent this is or whether it is necessary to correct this.
-

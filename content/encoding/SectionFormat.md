@@ -1,8 +1,11 @@
 ---
 title: "Section Format"
+menu:
+  main:
+    parent: encoding
 ---
 
-# Section Format
+## Section Format
 
 Open-Transactions uses the _Section Format_ in some plain-text documents. This
 is the general appearance of a section:
@@ -19,7 +22,7 @@ which can have multiple lines
 
 Sections are used in different document types, which are defined later.
 
-## Specification
+### Specification
 
 The document is read line-by-line. Line endings can be `\r\n` or `\n`.
 
@@ -49,7 +52,7 @@ for each section type.
 Some, but not all sections are terminated with the _default section end marker_
 `-----END $type-----`.
 
-## Similarity to Other Formats
+### Similarity to Other Formats
 
 Section-Format has many similarities with other formats used in cryptographic
 messaging:
@@ -57,27 +60,25 @@ messaging:
 * [RFC1421](https://tools.ietf.org/html/rfc1421): PEM Format
 * [RFC4880](https://tools.ietf.org/html/rfc4880): OpenPGP Message Format
 
-## Section Validity
+### Section Validity
 
 The classes can define further constraints on the sections (XML validity,
 semantic validity, signature and Base64 encoding). These constraints can be
 defined for each section type.
 
+### Usage In Open-Transactions
 
-## Usage In Open-Transactions
-
-* [OTContract](../docs/OTContract.md): Contracts should be easy to read by humans
+*  Signed documents: Contracts should be easy to read by humans
     and easy to parse by computers, as per Ricardian Contract criteria. A
     contract contains a list of digital signatures, which are encoded in Base64.
     Content and signatures are encoded using the section format.
 
-* [OTASCIIArmor](../docs/OTASCIIArmor.md): Section Format is used here in order
-    to provide human readers a hint to the type of the encoded data.
-
+* Armored data: Section Format is used here in order to provide human readers a
+  hint to the type of the encoded data.
 
 Use of the Section Format in these document types is defined below.
 
-# Signed Message Document
+## Signed Message Document
 
 This document type is defined by the _OTContract_ class and is used to attach
 signatures to a plain-text message.
@@ -87,7 +88,7 @@ or more _signature sections_.
 
 Lines that are outside sections are ignored.
 
-#### Content Section
+### Content Section
 
 The first section in a document is the content section. The type specifier MUST
 start with the character sequence `SIGNED`.
@@ -95,7 +96,7 @@ start with the character sequence `SIGNED`.
 The content section is not terminated by the default section end marker, but by
 the start of a signature section or `EOF`.
 
-#### Signature Section
+### Signature Section
 
 A signature section is defined by a section whose type specifier ends with
 `SIGNATURE`.
@@ -103,12 +104,11 @@ A signature section is defined by a section whose type specifier ends with
 Signature sections are terminated by the _section end marker_:
 `-----END $type -----`
 
-#### Sample Signed Message
+### Sample Signed Message
 
 ```
 -----BEGIN SIGNED CONTRACT-----
 Hash: $hashType
-
 
 $xmlContent
 
@@ -131,11 +131,10 @@ $signatureData
 -----END CONTRACT SIGNATURE-----
 ```
 
+## ASCII-Armored Document
 
-# ASCII-Armored Document
-
-Defined by the _OTASCIIArmor_ class. Here, section format is used to add a type
-hint for a Base64-encoded data block.
+Here, section format is used to add a type hint for a compressed and
+Base64-encoded data block adjusted to a line length of 64 characters.
 
 An ASCII-Armored document consists of exactly one section. The type specifier
 MUST start with `OT ARMORED`. The section is terminated by the default section
@@ -143,17 +142,10 @@ end marker.
 
 Lines outside the section markers MUST be ignored.
 
-The payload is encoded in Base64 which MAY contain line breaks that are to be
-stripped.
+The parsing routine MUST strip whitespace and newlines, Base64-decode and
+decompress the payload.
 
-The parsing routine MUST Base64-decode the payload.
-
-Note: currently, the Base64-decoded content is still encoded using Protocol
-Buffers and may also be compressed using the zlib DEFLATE algorithm. These
-encodings may be removed in the future and are thus not part of this
-specification.
-
-#### Sample Document
+### Sample Document
 
 ```
 -----BEGIN OT ARMORED FILE-----
@@ -227,9 +219,9 @@ The data inside `<filePayload>` is also referred to as "ASCII-Armored" in
 opentxs. However it is outside of this specification since it is not
 section-formatted.
 
-## Parsing Pseudocode (Golang)
+### Parsing Pseudocode (Golang)
 
-### For Sections
+#### For Sections
 
 ```go
 type Section struct {
@@ -246,7 +238,7 @@ func ParseSection(doc string) (Section, string, error)
 func ParseUnterminatedSection(doc string) (Section, error)
 ```
 
-### For Signed Message Documents
+#### For Signed Message Documents
 
 Access to type and header information might be useful, so we should return all
 section data.
@@ -260,8 +252,7 @@ type SignedMessage struct {
 func ParseSignedMessage(doc string) (SignedMessage, error)
 ```
 
-
-### For ASCII-Armored Documents
+#### For ASCII-Armored Documents
 
 Loading ASCII-Armoring only decodes the Base64 payload. Type information
 and headers are ignored.
@@ -271,8 +262,7 @@ and headers are ignored.
 func ParseAsciiArmor(doc string) ([]byte, string, error)
 ```
 
-
-## Compliance in Opentxs
+### Compliance in Opentxs
 
 Long-term, all documents created and accepted by opentxs (`OTContract.cpp`,
 `OTASCIIArmor.cpp` and others) should conform to this specification.
@@ -295,19 +285,19 @@ Changes in the document reading methods to reject malformed documents:
 * Headers must only appear at the top of a section and are terminated by an
   empty line.
 
-## Future Improvements
+### Future Improvements
 
 This version of the specs aims for some compatibility with the current output of
 the writing routine. This section lists possible improvements that can be made
 in future versions.
 
-### Signed Message Format
+#### Signed Message Format
 
-In some settings, contracts `OTContract`-derived do not contain a list of
-signatures, but exactly one signature (`OTMessage`). This is not reflected or
+In some settings, contracts `Contract`-derived do not contain a list of
+signatures, but exactly one signature (`Message`). This is not reflected or
 enforced at the moment in opentxs.
 
-### Dash-Escape Sequence
+#### Dash-Escape Sequence
 
 The dash-space escape should be excluded from the payload. This would simplify
 other processing steps, because it would allow the payload to contain
@@ -321,7 +311,7 @@ escape sequence can be prepended when encoding the document. During decoding,
 the sequence must be removed from the beginning of a line before adding it to
 the payload.
 
-### Lines Outside Content Sections
+#### Lines Outside Content Sections
 
 Lines outside sections are ignored. This is a source of ambiguity in the
 document. It is unclear whether lines outside section markers are ever generated
@@ -329,8 +319,7 @@ in opentxs.
 
 Suggestion: Make non-whitespace lines outside sections illegal.
 
-
-### End Markers
+#### End Markers
 
 The content section in signed messages does not use the end marker.
 
