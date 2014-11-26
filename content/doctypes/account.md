@@ -8,7 +8,6 @@ menu:
 ## Document Type `<account>`
 
 ### Elements and attributes
-* Attribute `version`. Integer. Hard-coded to 1.0.
 * Attribute `type`. String. TODO
 * Attribute `version`. Integer?
 * Attribute `accountID`. Identifier.
@@ -18,7 +17,6 @@ menu:
 * Optional element `stashinfo` (optional)
     * Attribute `cronItemNum`. Integer. Never set anywhere in the old code.
       Probably dead code.
-
 * Optional element `inboxHash value`. Only included after at least one
   transaction was received in this account.
     * Attribute `value`. Identifier.
