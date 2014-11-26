@@ -9,13 +9,13 @@ menu:
 
 Cheque or voucher. Sent out-of-band to a recipient who can use it in a
 transaction in order to withdraw funds from the sender's account.
-
+https://github.com/paulhession/protocol-docs/settings
 ### Elements and attributes
 
 * Attribute `version`. String.
 * Attribute `instrumentDefinitionID`. Identifier.
 * Attribute `transactionNum`. Integer. Transaction number that will be 
-   closed for the sender.
+  closed for the sender.
 * Attribute `notaryID`. Identifier. Notary where the cheque is valid.
 * Attribute `senderNymID`. Identifier. Nym to draw from.
 * Attribute `senderAcctID`. Identifier. Account to draw from.
