@@ -9,7 +9,7 @@ menu:
 
 Cheque or voucher. Sent out-of-band to a recipient who can use it in a
 transaction in order to withdraw funds from the sender's account.
-https://github.com/paulhession/protocol-docs/settings
+
 ### Elements and attributes
 
 * Attribute `version`. String.
