@@ -120,7 +120,7 @@ instrument definition ID. The notary will also load up the public credentials
 for the **nym**, to verify the signature on the asset contract.
 
 * Attribute `instrumentDefinitionID`: Identifier. Hash of the `<instrumentDefinition>`.
-* Element `assetContract`: Signed [`<instrumentDefinition>`
+* Element `instrumentDefinition`: Signed [`<instrumentDefinition>`
   document](instrumentDefinition.md)
 
 ### registerInstrumentDefinitionResponse

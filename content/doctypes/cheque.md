@@ -17,12 +17,12 @@ transaction in order to withdraw funds from the sender's account.
 * Attribute `transactionNum`. Integer. Transaction number that will be closed
     for the sender.
 * Attribute `notaryID`. Identifier. Notary where the cheque is valid.
-* Attribute `senderUserID`. Identifier. Nym to draw from.
+* Attribute `senderNymID`. Identifier. Nym to draw from.
 * Attribute `senderAcctID`. Identifier. Account to draw from.
 * Attribute `hasRecipient`. Boolean. `true` for cheque.
-* Attribute `recipientUserID`. Identifier. Set for cheque.
+* Attribute `recipientNymID`. Identifier. Set for cheque.
 * Attribute `hasRemitter`. Boolean. `true` for voucher.
-* Attribute `remitterUserID`. Identifier. Set for voucher.
+* Attribute `remitterNymID`. Identifier. Set for voucher.
 * Attribute `remitterAcctID`. Identifier. Set for voucher.
 * Attribute `validFrom`. Timestamp.
 * Attribute `validTo`. Timestamp.
@@ -32,5 +32,4 @@ transaction in order to withdraw funds from the sender's account.
 
 * Split into `<cheque>` and `<voucher>`
 * Remove `has*` attributes (redundant)
-* Rename `senderUserID`to `senderNymID` or `senderID`
 * Rename `senderAcctID` to `senderAccountID`
