@@ -23,15 +23,15 @@ The hash of the `notaryProviderContract` yields the `notaryID`, which is set in
 A request to a Notary that has the `notaryID` attribute implies that the client
 agrees with the terms and conditions in the contract.
 
-Previously know as _server contract_.
+Previously known as _server contract_.
 
 ### Elements and attributes
 
 * Attribute `version`. String. Hard-coded to `2.0`.
-* Element `entity`. The legal entity this contract is about.
+* Element `entity`. The legal entity that this contract relates to.
   * Attribute `shortname`. String. An arbitrary name chosen upon creation of the
     entity.
-  * Attribute `longname`. String. A, presumably longer, arbitrary name chosen
+  * Attribute `longname`. String. A presumably longer, arbitrary, name chosen
     upon creation of the entity.
   * Attribute `email`. String. The email address of the entity.
   * Attribute `serverURL`. String. The URL of the server with which the entity
