@@ -281,7 +281,7 @@ accepting it and signing it.
 *queryInstrumentDefinitions* sends the notary a list of instrument definition
 IDs in a string map (for example, gold or silver), to query the Notary if it
 supports these instrument definitions. It is a simple message for determining
-if certain instrument definitions are there are not. The Notary replies with
+if certain instrument definitions are there or not. The Notary replies with
 true or false, in response to each queried instrument definition.
 
 * Attribute: TODO.
