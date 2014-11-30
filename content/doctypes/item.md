@@ -1,11 +1,4 @@
----
-title: Document Type item
-menu:
-  main:
-    parent: doctypes
----
-
-## Document Type `<item>`
+# Document Type `<item>`
 
 Contained in unabbreviated [`<transaction>` documents](transaction.md).
 
@@ -20,7 +13,7 @@ processed.  Items are like tracks on a CD. It is assumed there will be several
 of them, they come in packs. You normally would deal with the transaction as a
 single entity, not the item. A transaction contains a list of items.
 
-### Elements and attributes
+## Elements and attributes
 
 * Attribute `type`. String. See section _Item Types_
 * Attribute `status`. String. Possible values:
@@ -69,13 +62,13 @@ single entity, not the item. A transaction contains a list of items.
       basketReceipt`.
     * Attribute `inReferenceTo`. Integer.
 
-### Item Types
+## Item Types
 
 Transcribed from `OTItem.hpp`, non-exhaustive.
 
 Every type has a corresponding `at` type, which indicates the server response.
 
-#### Transfer
+### Transfer
 
 * `transfer`
     * used in `notarizeTransaction` by client to initiate transfer from one
@@ -87,7 +80,7 @@ Every type has a corresponding `at` type, which indicates the server response.
     * notarizing `transfer` generates new pending transactions in source
       account outbox, destination account inbox
 
-##### Example
+#### Example
 
 ```xml
 <item type="transfer"
@@ -110,7 +103,7 @@ eNrjyi3PLMlIKUosV/B09/MPclXQ1VXw8w9xVQhwdHHx9HMH8XHIcJGuAwB9Yxw2
 
 * `atTransfer`
 
-##### Example
+#### Example
 
 ```xml
 <item type="atTransfer"
@@ -131,14 +124,14 @@ amount="0" >
 </item>
 ```
 
-#### Nymbox Resolution
+### Nymbox Resolution
 
 * `acceptTransaction`
     * client-side acceptance of a transaction number (a blank) in the Nymbox
     * attribute `totalListOfNumbers`: comma-separated list of numbers of blank
       transactions.
 
-##### Example
+#### Example
 
 ```xml
 <item type="acceptTransaction"
@@ -160,7 +153,7 @@ amount="0" >
 * `acceptNotice`
    * client-side acceptance of a server notification in the Nymbox
 
-#### Inbox Resolution
+### Inbox Resolution
 
 * `acceptPending`
     * client-side acceptance of a pending transfer
@@ -168,7 +161,7 @@ amount="0" >
     * client-side rejection of a pending transfer
     * TODO never used in current implementation
 
-#### Info
+### Info
 
 * `balanceStatement`
     * is created by client to change its own account balance with respect to
@@ -181,7 +174,7 @@ amount="0" >
         * balance statement contains `transactionReport` for each transaction
           in inbox or outbox.
 
-##### Example
+#### Example
 
 ```xml
 <item type="balanceStatement"
@@ -227,7 +220,7 @@ inReferenceTo="710" />
     * element `attachment` contains document [`nymData`](nymData.md) with
       current list of nums.
 
-#### Cash Withdrawal and Deposit
+### Cash Withdrawal and Deposit
 
 * used in `notarizeTransaction`
 * attachment contains [purse](purse.md) document
@@ -237,7 +230,7 @@ inReferenceTo="710" />
 * `deposit`
     * client cash deposit (of a purse containing blinded tokens)
 
-#### Cheques and Vouchers
+### Cheques and Vouchers
 
 * `withdrawVoucher`
     * client request to purchase a voucher (a cashier's cheque)
@@ -248,7 +241,7 @@ inReferenceTo="710" />
     * used in transaction `deposit`
     * element `attachment` contains voucher (document cheque)
 
-#### Receipt Types
+## Receipt Types
 
 * `replyNotice`
     * for some special messages, server drop reply also into Nymbox to be
@@ -262,7 +255,7 @@ inReferenceTo="710" />
 * `successNotice`
     * seems that never used, see `successNotice` in [transaction](transaction.md)
 
-##### Payment receipts
+### Payment receipts
 
 * used only in `balanceStatement`, not in `item` but as `transactionReport`,
   for usage in inbox see [transaction](transaction.md)

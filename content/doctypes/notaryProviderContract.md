@@ -1,11 +1,4 @@
----
-title: Document Type notaryProviderContract
-menu:
-  main:
-    parent: doctypes
----
-
-## Document type `<notaryProviderContract>`
+# Document type `<notaryProviderContract>`
 
 Inherits from Base Document Type [Contract](contract.md).
 
@@ -25,7 +18,7 @@ agrees with the terms and conditions in the contract.
 
 Previously known as _server contract_.
 
-### Elements and attributes
+## Elements and attributes
 
 * Attribute `version`. String. Hard-coded to `2.0`.
 * Element `entity`. The legal entity that this contract relates to.
@@ -59,10 +52,11 @@ Previously known as _server contract_.
 </notaryProviderContract>
 ```
 
-### References
+## References
+
 [OTServerContract::CreateContents](https://github.com/Open-Transactions/opentxs/blob/7cf2be697c5dc4e06cd95d77787373c9285ecce3/src/core/OTServerContract.cpp#L204)
 
-### Notes
+## Notes
 
 Also the attributes `hostname` and `port` seems quite redundant since both can
 be encoded in the `URL` attribute. Perhaps this was done for the benefit of the

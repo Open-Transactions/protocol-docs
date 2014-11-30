@@ -1,11 +1,4 @@
----
-title: Document Type transaction
-menu:
-  main:
-    parent: doctypes
----
-
-## Document Type `<transaction>`
+# Document Type `<transaction>`
 
 Contained in [`<accountLedger>` documents](accountLedger.md).
 
@@ -60,11 +53,11 @@ abbreviated-form).
 * Attribute `inReferenceTo`: Integer. Transaction number of the item this
   transaction is in reference to.
 
-### Transaction Types
+## Transaction Types
 
 Possible values for the `type` attribute. Taken from `OTTransaction.hpp`.
 
-#### Nymbox Transaction Types
+### Nymbox Transaction Types
 
 * `blank`: Freshly issued transaction number
 * `message`: Message from another Nym
@@ -72,12 +65,12 @@ Possible values for the `type` attribute. Taken from `OTTransaction.hpp`.
 * `replyNotice`: A copy of a server reply to a previous request you sent
 * `successNotice`: A transaction number has successfully been signed out
 
-#### Inbox and Outbox Transaction Types
+### Inbox and Outbox Transaction Types
 
 * `pending`: Server puts this in your outbox (when sending) and in recipient's
     inbox.
 
-#### Inbox receipts
+### Inbox receipts
 
 * `transferReceipt`
 * `chequeReceipt`
@@ -87,12 +80,12 @@ Possible values for the `type` attribute. Taken from `OTTransaction.hpp`.
 * `finalReceipt`: When a cron item is expired or cancelled.
 * `basketReceipt`: When a basket exchange is processed.
 
-#### Payment Inbox, Payment Outbox, Record Box
+### Payment Inbox, Payment Outbox, Record Box
 
 * `instrumentNotice`
 * `instrumentRejection`
 
-#### Messages
+### Messages
 
 * `processNymbox`
 * `atProcessNymbox`
@@ -103,20 +96,20 @@ Possible values for the `type` attribute. Taken from `OTTransaction.hpp`.
 * `deposit`
 * `atDeposit`
 
-### Document Type: Full Form
+## Document Type: Full Form
 
 * Optional element `closingTransactionNumber`. Only if `type` is `finalReceipt` or `basketReceipt`. TODO
 * Optional element `inReferenceTo`. Armored contract (TODO: figure out if needed and what can be in there, looks like it can contain different document types depending on the situation).
 * Optional element `cancelRequest`. Armored document. TODO
 * List of armored [`<item>` documents](item.md).
 
-### Document Types: Abbreviated Form
+## Document Types: Abbreviated Form
 
-#### Base Document Type
+### Base Document Type
 
 These attributes are common for all abbreviated records (?)
 
-##### Elements and attributes
+#### Elements and attributes
 
 * Attribute `type`: String. See Transaction Types
 * Attribute `dateSigned`: Time in seconds, when the instrument was last signed.
@@ -129,21 +122,21 @@ If `type` is `finalReceipt` or `basketReceipt`:
 
 * Attribute `closingNum`: Integer. TODO
 
-#### Document Type `<paymentInboxRecord>`
+### Document Type `<paymentInboxRecord>`
 
-##### Elements and attributes
+#### Elements and attributes
 
 * Attribute `displayValue`: TODO
 
-#### Document Type `<nymboxRecord>`
+### Document Type `<nymboxRecord>`
 
-##### Elements and attributes
+#### Elements and attributes
 
 * Attribute `totalListOfNumbers`: Comma separated list of transaction numbers successfully signed out.
 * TODO funny stuff is happening
   [here](https://github.com/Open-Transactions/opentxs/blob/63fcfb34c406e83d89b903ffe3c217f01614f445/src/core/OTTransaction.cpp#L4971)
 
-##### Example
+#### Example
 
 ```xml
 <nymboxRecord type="successNotice"
@@ -157,21 +150,21 @@ If `type` is `finalReceipt` or `basketReceipt`:
  inReferenceTo="614" />
 ```
 
-#### Document Type `<outboxRecord>`
+### Document Type `<outboxRecord>`
 
-##### Elements and attributes
+#### Elements and attributes
 
 * Attribute `displayValue`: TODO
 * Attribute `adjustment`: Integer. TODO
 * Attribute `numberOfOrigin`: Integer. TODO
 
-#### Document Type `<expiredBoxRecord>`
+### Document Type `<expiredBoxRecord>`
 
 Inherits from Document Type `<outboxRecord>`.
 
-#### Document Type `<recordBoxRecord>`
+### Document Type `<recordBoxRecord>`
 
-##### Elements and attributes
+#### Elements and attributes
 
 * Attribute `displayValue`: TODO
 * Attribute `adjustment`: Integer. TODO

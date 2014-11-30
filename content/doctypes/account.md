@@ -1,13 +1,7 @@
----
-title: Document Type account
-menu:
-  main:
-    parent: doctypes
----
+# Document Type `<account>`
 
-## Document Type `<account>`
+## Elements and attributes
 
-### Elements and attributes
 * Attribute `type`. String. TODO
 * Attribute `version`. Integer?
 * Attribute `accountID`. Identifier.

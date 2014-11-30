@@ -1,11 +1,4 @@
----
-title: Base Document Type Contract
-menu:
-  main:
-    parent: doctypes
----
-
-## Base Document Type `<Contract>`
+# Base Document Type `<Contract>`
 
 This document type does not manifest itself alone. But several Document types
 inherit from this type.
@@ -16,7 +9,7 @@ Inheriting Document types:
 * [instrumentDefinition](instrumentDefinition.md)
 * basketContract
 
-### Elements and attributes
+## Elements and attributes
 * Element `condition`: a human readable piece of (legal) text. Can appear more
   than once.
   * Attribute `name`: a human readable marker.
@@ -33,7 +26,7 @@ Inheriting Document types:
   * Element `credential`: Armored signed credential (document `keyCredential` or `masterCredential`)
     * Attribute `ID`: credential ID
 
-### Example
+## Example
 
 ```xml
 <rootElement> <!-- written by subclass -->
@@ -66,7 +59,7 @@ Inheriting Document types:
 </rootElement>
 ```
 
-### References
+## References
 
 * [OTContract::CreateInnerContents](https://github.com/Open-Transactions/opentxs/blob/7cf2be697c5dc4e06cd95d77787373c9285ecce3/src/core/OTContract.cpp#L2158)
 * [BasketContract::CreateContents](https://github.com/Open-Transactions/opentxs/blob/7cf2be697c5dc4e06cd95d77787373c9285ecce3/src/basket/BasketContract.cpp#L175)

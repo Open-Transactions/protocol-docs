@@ -1,16 +1,9 @@
----
-title: Document Type cheque
-menu:
-  main:
-    parent: doctypes
----
-
-## Document Type `<cheque>`
+# Document Type `<cheque>`
 
 Cheque or voucher. Sent out-of-band to a recipient who can use it in a
 transaction in order to withdraw funds from the sender's account.
 
-### Elements and attributes
+## Elements and attributes
 
 * Attribute `version`. String.
 * Attribute `instrumentDefinitionID`. Identifier.
@@ -28,7 +21,7 @@ transaction in order to withdraw funds from the sender's account.
 * Attribute `validTo`. Timestamp.
 * Optional element `memo`. Armored text.
 
-### TODO
+## TODO
 
 * Split into `<cheque>` and `<voucher>`
 * Remove `has*` attributes (redundant)

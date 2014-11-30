@@ -1,13 +1,6 @@
----
-title: Document Type nymData
-menu:
-  main:
-    parent: doctypes
----
+# Document type `<nymData>`
 
-## Document type `<nymData>`
-
-### Elements and attributes
+## Elements and attributes
 
 * Attribute `version`: String. The container version.
 * Attribute `nymID`: Identifier. The ID of the Nym being described.
@@ -31,6 +24,7 @@ menu:
   * Attribute `valid`: Boolean. Whether or not this key is still valid.  revoked. TODO: who/what determines this?
 
 ## Example
+
 ```xml
 <nymData version="1.0"
  nymID="voeqDVAJwDwROywFtg5mEyYpcu2dcPJRLFHYh7tyhqk">
@@ -52,6 +46,7 @@ menu:
 ```
 
 ## References
+
 * [OTPseudonym::OTPseudonym::SavePseudonym](https://github.com/Open-Transactions/opentxs/blob/0de3b72/src/core/OTPseudonym.cpp#L4273)
 * [OTPseudonym::SaveCredentialListToString](https://github.com/Open-Transactions/opentxs/blob/0de3b72/src/core/OTPseudonym.cpp#L4098)
 * [OTPseudonym::GetPublicCredentials](https://github.com/Open-Transactions/opentxs/blob/0de3b72/src/core/OTPseudonym.cpp#L4023)

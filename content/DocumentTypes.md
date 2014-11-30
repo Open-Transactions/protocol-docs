@@ -1,11 +1,4 @@
----
-title: "Document Types"
-menu:
-  main:
-    parent: other
----
-
-## Document Types
+# Document Types
 
 The structure and meaning of the messages exchanged between Client and Notary is
 described by _Document Types_.
@@ -19,7 +12,7 @@ A document type consists of
 
 TODO I want to use `<notaryProviderContract>` and am waiting for a merge.
 
-### Data Types
+## Data Types
 
 An attribute can have one of these types:
 
@@ -44,14 +37,14 @@ Elements can have attributes and contain these *additional* types:
 
 Elements can be optional or occur repeatedly.
 
-### Inheritance
+## Inheritance
 
 Some document types have commonalities (UserCommands, `<notaryProviderContract>`
 and `<instrumentDefinition>`). The commonalities can be described in _Base
 Document Type_ which other element types can then inherit the elements and
 attributes from.
 
-### Tip: Command line dearmoring
+## Tip: Command line dearmoring
 
 Armored data can be decoded using this command, if `openssl` was compiled
 with `zlib` support:
@@ -61,7 +54,6 @@ alias dearmor="sed '/[-:]/d' | base64 -d | openssl zlib -d"
 cat ~/.ot/armoredstuff | dearmor
 ```
 
-
-### More Examples
+## More Examples
 
 * See directory [`doctypes/`](doctypes/)
