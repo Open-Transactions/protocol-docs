@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+        <title>2 - Use CurveZMQ for encryption and authentication - Protocol docs</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">Protocol docs</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Main <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../../DocumentTypes">Document Types</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../Requirements">Requirements</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../Transport">Transport</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../Transfer">Transfer</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Doctype <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../../doctypes/contract">Base Contract</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/notaryProviderContract">notaryProviderContract</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/instrumentDefinition">instrumentDefinition</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/nymData">nymData</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/notaryMessage">notaryMessage</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/accountLedger">accountLedger</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/transaction">transaction</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/item">item</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/account">account</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/cheque">cheque</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Encoding <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../../encoding/SectionFormat">Encoding: Section Format</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">MEP <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../mep-001">1 - MEP purpose and guidelines</a>
+                            </li>
+                        
+                            <li class="active">
+                                <a href=".">2 - Use CurveZMQ for encryption and authentication</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../mep-003">3 - Document type XML cleanup</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../mep-004">4 - Remove Google ProtoBuf Encoding From The Protocol</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../mep-005">5 - Use ISO8601 for date and time formatting</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                <li >
+                    <a rel="next" href="../mep-001">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../mep-003">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                
+                <li>
+                    <a href="https://github.com/monetas/protocol-docs/">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+            
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#use-curvezmq-for-encryption-and-authentication">Use CurveZMQ for encryption and authentication</a></li>
+        
+            <li><a href="#abstract">Abstract</a></li>
+        
+            <li><a href="#current-status">Current status</a></li>
+        
+            <li><a href="#drawbacks">Drawbacks</a></li>
+        
+            <li><a href="#enhancement">Enhancement</a></li>
+        
+            <li><a href="#impact">Impact</a></li>
+        
+    
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<table>
+<thead>
+<tr>
+<th>MEP</th>
+<th>2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Title</td>
+<td>Use CurveZMQ for encryption and authentication</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Accepted</td>
+</tr>
+<tr>
+<td>Created</td>
+<td>2014-11-18</td>
+</tr>
+<tr>
+<td>Author</td>
+<td>Otto Allmendinger</td>
+</tr>
+</tbody>
+</table>
+<h1 id="use-curvezmq-for-encryption-and-authentication">Use CurveZMQ for encryption and authentication</h1>
+<h2 id="abstract">Abstract</h2>
+<blockquote>
+<p>If you have to type the letters “A-E-S” into your source code, you’re doing it
+wrong.</p>
+</blockquote>
+<p>-- <a href="https://web.archive.org/web/20090721160748/http://www.matasano.com/log/1749/typing-the-letters-a-e-s-into-your-code-youre-doing-it-wrong">Thomas Ptacek, 2009</a></p>
+<blockquote>
+<p>All the crypto code you’ve ever written is probably broken</p>
+</blockquote>
+<p>-- <a href="http://tonyarcieri.com/all-the-crypto-code-youve-ever-written-is-probably-broken">Tony Ariceri, 2012</a></p>
+<p>This document describes replacing the custom, unaudited transport layer
+encryption used in Open-Transactions Client and Notary with a off-the-shelf
+implementation that is tailored to our use case.</p>
+<p>Doing so will reduce the amount of code which needs to be maintained, documented
+and audited. The new code can be expected to have better security
+characteristics than our custom implementation.</p>
+<h2 id="current-status">Current status</h2>
+<p>Encryption and decryption are currently implemented using the classes
+<code>OTEnvelope</code> and <code>OTCrypto</code>. Outside the implementation, there is no
+documentation of the crypto scheme being used.</p>
+<p>The class <code>OTEnvelope</code> is used for secure local persistence, secure
+Client-To-Client communication and secure Client-To-Notary communication. This
+MEP only concerns the use of <code>OTEnvelope</code> for the last application.</p>
+<p>There are some efforts to replace the old, unaudited code with new, unaudited
+code ([opentxs issue #50]
+(https://github.com/Open-Transactions/opentxs/pull/50/files)).</p>
+<h2 id="drawbacks">Drawbacks</h2>
+<p>The current custom implementation is not well-document nor audited. Cursory
+review reveals that the Notary <a href="https://github.com/Open-Transactions/opentxs/blob/c688d63f57cc7393bf60c7c80fa040b1eb110c6b/src/core/crypto/OTEnvelope.cpp#L577">does not use authenticated
+encryption</a> and is likely vulnerable to a chosen-ciphertext
+attack.</p>
+<p>Flaws in the encryption and authentication systems <strong>will</strong> be exploited to
+compromise personal data and steal funds from users of Open-Transactions,
+severely damaging the reputation of the product and the company.</p>
+<h2 id="enhancement">Enhancement</h2>
+<p>The right tools must be chosen for the task. The recommended solution for
+providing authentication and confidentiality on top of ZeroMQ is
+<a href="http://curvezmq.org/"><em>CurveZMQ</em></a>:</p>
+<blockquote>
+<p>This document describes CurveZMQ, a protocol for secure messaging across the
+Internet. CurveZMQ is closely based on Daniel J. Bernstein's CurveCP, adapted
+for use in ZeroMQ over TCP. A reference implementation of CurveZMQ is provided
+at curvezmq.org. This document describes version 1.0 of CurveZMQ.</p>
+</blockquote>
+<p>The system also provides important features that are currently not available,
+like <em>Perfect Forward Security</em> and built-in protection against replay attacks.</p>
+<h2 id="impact">Impact</h2>
+<h3 id="comparison-to-tls">Comparison to TLS</h3>
+<p>There are many other transport level security mechanism to choose from. CurveZMQ
+is the one that has built-in support by ZeroMQ.</p>
+<p>Another candidate worth looking at is TLS, which is widely used and
+well-audited. The lead developer of ZeroMQ, Peter Hintjens, has this to say
+about TLS/SSL:</p>
+<blockquote>
+<p>One of the biggest user requests for ØMQ is a good security layer. Mainstream
+options like TLS/SSL are complex, slow and designed for web browsing, not
+high-speed messaging.</p>
+</blockquote>
+<p>-- <a href="http://hintjens.com/blog:34">Securing ZeroMQ: CurveCP and NaCl</a></p>
+<p>In face of this statement, using CurveZMQ instead of TLS is a justified
+decision.</p>
+<p>(The "complexity" Hintjens refers to can be seen in the <em>Certificate Authority</em>
+system used by OpenSSL and vulnerabilities like <em>Heartbleed</em>. The
+dissatisfaction with the <em>OpenSSL</em> implementation has led to efforts like
+<em>LibreSSL</em>.)</p>
+<h3 id="new-dependencies">New Dependencies</h3>
+<p>The class <code>OTEnvelope</code> depends on cryptographic primitives that are currently
+provided by the <em>OpenSSL</em> library. CurveZMQ however <a href="https://github.com/zeromq/libcurve#dependencies">depends on
+<em>libsodium</em></a>.</p>
+<p>The <em>libsodium</em> library is well-supported on many different platforms:</p>
+<blockquote>
+<p>Sodium supports a variety of compilers and operating systems, including
+Windows (with MingW or Visual Studio, x86 and x64), iOS and Android.</p>
+</blockquote>
+<p>-- https://github.com/jedisct1/libsodium</p>
+<p>The API methods for using CurveZMQ are available for the Go language bindings:</p>
+<blockquote>
+<p>This requires ZeroMQ version 4.0.1 or above. To use CURVE security, ZeroMQ
+must be installed with libsodium enabled.</p>
+</blockquote>
+<p>-- https://github.com/pebbe/zmq4</p>
+<h3 id="necessary-code-changes">Necessary Code Changes</h3>
+<p>The introduction of CurveZMQ happens in three steps:</p>
+<ol>
+<li>Clean up the transport code on the client, including a separation of the
+   transport security layer from the rest of the code. Code for local secure
+   storage will be separated from the transport code.</li>
+<li>Add support for the key formats used in CurveZMQ (ed25519).</li>
+<li>Replace the existing transport crypto system (OTEnvelope) by CurveZMQ.</li>
+</ol>
+<h4 id="side-benefits">Side Benefits</h4>
+<ol>
+<li>
+<p>The cleanup of the transport code is a large benefit in itself.</p>
+</li>
+<li>
+<p>There are efforts to use <code>ed25519</code> as the digital signature scheme for
+   documents as a replacement for the current RSA signatures. The key format
+   used in that scheme is the same as the one used for CurveZMQ. The <em>libsodium</em>
+   library, which CurveZMQ depends on, provides support for <code>ed25519</code>
+   signatures. This allows Open-Transactions to only depend on <em>libsodium</em> for
+   all signature verification and transport encryption.</p>
+</li>
+</ol>
+<!--- links -->
+
+</div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Monetas 2014, Zug, Switzerland. All rights reserved.</p>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        
+
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/prettify-1.0.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script src="../../js/base.js"></script>
+    </body>
+</html>

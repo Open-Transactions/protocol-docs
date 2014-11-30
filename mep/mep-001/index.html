@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+        <title>1 - MEP purpose and guidelines - Protocol docs</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">Protocol docs</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Main <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../../DocumentTypes">Document Types</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../Requirements">Requirements</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../Transport">Transport</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../Transfer">Transfer</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Doctype <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../../doctypes/contract">Base Contract</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/notaryProviderContract">notaryProviderContract</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/instrumentDefinition">instrumentDefinition</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/nymData">nymData</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/notaryMessage">notaryMessage</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/accountLedger">accountLedger</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/transaction">transaction</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/item">item</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/account">account</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/cheque">cheque</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Encoding <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../../encoding/SectionFormat">Encoding: Section Format</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">MEP <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li class="active">
+                                <a href=".">1 - MEP purpose and guidelines</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../mep-002">2 - Use CurveZMQ for encryption and authentication</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../mep-003">3 - Document type XML cleanup</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../mep-004">4 - Remove Google ProtoBuf Encoding From The Protocol</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../mep-005">5 - Use ISO8601 for date and time formatting</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                <li >
+                    <a rel="next" href="../../encoding/SectionFormat">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../mep-002">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                
+                <li>
+                    <a href="https://github.com/monetas/protocol-docs/">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+            
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#mep-purpose-and-guidelines">MEP purpose and guidelines</a></li>
+        
+            <li><a href="#abstract">Abstract</a></li>
+        
+            <li><a href="#current-status">Current status</a></li>
+        
+            <li><a href="#drawbacks">Drawbacks</a></li>
+        
+            <li><a href="#enhancement">Enhancement</a></li>
+        
+            <li><a href="#impact">Impact</a></li>
+        
+    
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<table>
+<thead>
+<tr>
+<th>MEP</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Title</td>
+<td>MEP purpose and guidelines</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Accepted</td>
+</tr>
+<tr>
+<td>Created</td>
+<td>2014-11-13</td>
+</tr>
+<tr>
+<td>Author</td>
+<td>Harm Aarts, Nicola Larosa</td>
+</tr>
+</tbody>
+</table>
+<h1 id="mep-purpose-and-guidelines">MEP purpose and guidelines</h1>
+<h2 id="abstract">Abstract</h2>
+<p>This Monetas Enhancement Proposal (MEP) briefly describes the format future
+MEPs should be submitted in. The goal of having MEPs is to centralize past
+decisions and have a structured way of presenting them.</p>
+<h2 id="current-status">Current status</h2>
+<p>Currently there is no common place to record conclusions on significant changes
+to the software, nor is there a uniform, structured way of doing so.</p>
+<h2 id="drawbacks">Drawbacks</h2>
+<p>Having no structured way or place to view significant changes has several
+drawbacks:</p>
+<ol>
+<li>There is no efficient way of referring to past conclusions, leading to
+   frustration and confusion.</li>
+<li>There is no way to know what is currently discussed and what the status
+   might be.</li>
+<li>Not all the context is always present or evident: this could lead to
+   misinterpretation.</li>
+</ol>
+<h2 id="enhancement">Enhancement</h2>
+<p>This proposal proposes a way of recording made decisions in a central, self
+contained and uniform way. Some inspiration was had from
+<a href="https://github.com/bitcoin/bips/blob/master/bip-0001.mediawiki">BIP-0001</a> (in
+turn largely lifted from <a href="http://legacy.python.org/dev/peps/pep-0001/">PEP 1</a>).</p>
+<h3 id="sections">Sections</h3>
+<p>A MEP must contain several sections:</p>
+<ul>
+<li><strong>Header</strong> section</li>
+</ul>
+<p>A simple table containing metadata about the document. The keys in the table
+  are:</p>
+<ol>
+<li>MEP: contains a unique identifier for the MEP. It must be an integer.</li>
+<li>Title: a descriptive title concisely summarizing the MEP.</li>
+<li>
+<p>Status: tells in which state the document is currently in. Possible values
+     are:</p>
+<ol>
+<li>'Draft': the document is being discussed.</li>
+<li>'Accepted': the proposal set forth in the MEP is accepted and should be
+ acted upon.</li>
+<li>'Rejected': the proposal is rejected after due discussion.</li>
+</ol>
+</li>
+<li>
+<p>Created: the date on which the MEP was first presented.</p>
+</li>
+<li>
+<p>Author: the original proposers of the MEP.</p>
+</li>
+<li>
+<p><strong>Abstract</strong> section</p>
+</li>
+</ol>
+<p>This contains what every abstract contains: a short summary of the document,
+  in this case the MEP.</p>
+<ul>
+<li><strong>Current status</strong> section</li>
+</ul>
+<p>This describes the current situation. The description should be as clear and
+  self contained as possible.</p>
+<p>Being self contained implies linking to other sources as reference only. Code
+  snippets or protocol descriptions should be copied to a reasonable extent.
+  The goal is to make the MEP understandable when read in a submarine.</p>
+<ul>
+<li><strong>Drawbacks</strong> section</li>
+</ul>
+<p>The current status has drawbacks. While the 'Current status' section contains
+  nothing more than a description, this section points out what is wrong with
+  the status quo.</p>
+<ul>
+<li><strong>Enhancement</strong> section</li>
+</ul>
+<p>While the previous sections set the stage, this one contains the actual
+  proposed solution. This, too, should be clear, self contained and as brief as
+  possible.</p>
+<ul>
+<li><strong>Impact</strong> section</li>
+</ul>
+<p>However nice a proposed enhancement is, the cost of effecting the enhancement
+  should explicitly be considered. This cost can be internal: code needs
+  refactoring or documentation needs to be revised. The cost can also be
+  external: backward compatibility could be broken or specifics should be
+  communicated with the community.</p>
+<h3 id="workflow">Workflow</h3>
+<p>Once the subject matter has been adequately discussed and the need for a MEP is
+clear, the author will create a pull request adding a new MEP to the
+repository. The filename will contain the MEP number, left padded with zeros to
+three digits total, preferably using the next available one. The initial status
+will be "Draft".</p>
+<p>After review, discussion and agreement, the status will be set to "Accepted"
+and the pull request will be merged. The new MEP will be announced on the
+Technical mailing list and the MEP will be effective from then on.</p>
+<p>If no agreement can be reached the status will be set to "Rejected", and the
+pull request will still be merged for future reference. The MEP number will not
+be reused.</p>
+<p>Changes to accepted MEPs will undergo the same evaluation process.</p>
+<h2 id="impact">Impact</h2>
+<p>This MEP introduces a control process for significant changes to design and
+implementation.</p>
+</div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Monetas 2014, Zug, Switzerland. All rights reserved.</p>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        
+
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/prettify-1.0.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script src="../../js/base.js"></script>
+    </body>
+</html>

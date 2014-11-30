@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+        <title>notaryMessage - Protocol docs</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">Protocol docs</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Main <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../../DocumentTypes">Document Types</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../Requirements">Requirements</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../Transport">Transport</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../Transfer">Transfer</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Doctype <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../contract">Base Contract</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../notaryProviderContract">notaryProviderContract</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../instrumentDefinition">instrumentDefinition</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../nymData">nymData</a>
+                            </li>
+                        
+                            <li class="active">
+                                <a href=".">notaryMessage</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../accountLedger">accountLedger</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../transaction">transaction</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../item">item</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../account">account</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../cheque">cheque</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Encoding <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../../encoding/SectionFormat">Encoding: Section Format</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">MEP <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../../mep/mep-001">1 - MEP purpose and guidelines</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../mep/mep-002">2 - Use CurveZMQ for encryption and authentication</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../mep/mep-003">3 - Document type XML cleanup</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../mep/mep-004">4 - Remove Google ProtoBuf Encoding From The Protocol</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../mep/mep-005">5 - Use ISO8601 for date and time formatting</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                <li >
+                    <a rel="next" href="../nymData">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../accountLedger">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                
+                <li>
+                    <a href="https://github.com/monetas/protocol-docs/">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+            
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#document-type-notarymessage">Document Type &lt;notaryMessage&gt;</a></li>
+        
+            <li><a href="#elements-and-attributes">Elements and attributes</a></li>
+        
+            <li><a href="#base-document-type-usercommand">Base Document Type UserCommand</a></li>
+        
+            <li><a href="#user-commands">User Commands</a></li>
+        
+            <li><a href="#references">References</a></li>
+        
+    
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="document-type-notarymessage">Document Type <code>&lt;notaryMessage&gt;</code></h1>
+<h2 id="elements-and-attributes">Elements and attributes</h2>
+<ul>
+<li>Attribute <code>version</code>: String. Hard-coded to be <code>2.0</code>.</li>
+<li>Attribute <code>dateSigned</code>: Timestamp.</li>
+<li>Element that is instance of document type <em>UserCommand</em>. See below.</li>
+<li>Optional element <code>ackReplies</code>. Armored list of seen server replies.</li>
+</ul>
+<h2 id="base-document-type-usercommand">Base Document Type <em>UserCommand</em></h2>
+<h3 id="base-request">Base Request</h3>
+<p>This document type is the base type for all requests written by the Client and
+read by the Notary.</p>
+<h4 id="elements-and-attributes_1">Elements and attributes</h4>
+<ul>
+<li>Attribute <code>nymID</code>: Identifier. The ID of the Nym which makes the request.</li>
+<li>Attribute <code>notaryID</code>: Identifier. The ID of the Notary which should process
+  the request, as defined in the ServerContract.</li>
+<li>Attribute <code>requestNum</code>: Integer. The request number.</li>
+</ul>
+<h3 id="base-response">Base Response</h3>
+<p>This is the base type for messages sent by the Notary in response to a
+<em>Base Request</em> by the Client.</p>
+<p>The element name is the same as for the corresponding request name, but is
+suffixed with "Response".</p>
+<h4 id="elements-and-attributes_2">Elements and attributes</h4>
+<ul>
+<li>Attribute <code>nymID</code>: Identifier. The Nym which made the request.</li>
+<li>Attribute <code>notaryID</code>: Identifier. The ID of the responding Notary.</li>
+<li>Attribute <code>requestNum</code>: Integer. Same as in the request.</li>
+<li>Attribute <code>success</code>: Boolean. Indicates whether request was successful.</li>
+<li>Element <code>inReferenceTo</code>: Armored text. The original request.</li>
+</ul>
+<h2 id="user-commands">User Commands</h2>
+<h3 id="registernym">registerNym</h3>
+<p>Requests the registration of a new <strong>nym</strong> on the Notary. It uploads the <strong>nym</strong>
+file and sends the public credentials. It does not send the private credentials.
+The public credentials will include the master credentials and the sub credentials.
+For example, it could be a master credential and four sub credentials, or two
+master credentials and two separate credential.</p>
+<ul>
+<li>Element <code>credentialList</code>: Contains armored <a href="../nymData"><code>&lt;nymData&gt;</code> document</a>.</li>
+<li>Element <code>credentials</code>: List of credentials mentioned in <code>credentialList</code></li>
+<li>Element <code>credential</code>: Armored signed credential (document <code>keyCredential</code> or <code>masterCredential</code>)<ul>
+<li>Attribute <code>ID</code>: credential ID</li>
+</ul>
+</li>
+</ul>
+<h3 id="registernymresponse">registerNymResponse</h3>
+<ul>
+<li>Element <code>nymfile</code>: Contains <a href="../nymData"><code>&lt;nymData&gt;</code> document</a>.</li>
+</ul>
+<hr />
+<h3 id="gettransactionnumbers">getTransactionNumbers</h3>
+<p>Requests a new list of transaction numbers. The list will be in the <strong>nymbox</strong>
+if the request was successful. Transaction numbers need to be requested from
+each Notary that a client transacts with. Additionally, each <strong>nym</strong> on a
+client needs it's own transaction numbers. When the requested Transaction
+Numbers arrive in the corresponding <strong>nymbox</strong>, the client performs a
+<code>processNymbox</code> to accept and sign the transaction numbers. Each transaction sent
+to the Notary needs to include a transaction number provided by that same
+Notary. Some complex financial instruments may require multiple transaction
+numbers.</p>
+<ul>
+<li>Attribute <code>nymboxHash</code>: Identifier. TODO.</li>
+</ul>
+<h3 id="gettransactionnumbersresponse">getTransactionNumbersResponse</h3>
+<ul>
+<li>Attribute <code>nymboxHash</code>: Identifier. TODO.</li>
+<li>this response does not have element <code>inReferenceTo</code></li>
+</ul>
+<hr />
+<h3 id="registeraccount">registerAccount</h3>
+<p>Requests creation of a new asset account on the Notary. It includes the <strong>nym</strong>
+ID, notary ID and instrument definition. The reply to this message from the
+Notary includes a True or False success variable, the account ID of the new
+account, and the account itself, which is a signed balance file. The account
+file contains the <strong>nymID</strong> of the account owner, the notaryID where the
+account is located, the AssetType ID of the account, the balance, and the
+account type. The new account starts with a zero balance.</p>
+<ul>
+<li>Attribute <code>instrumentDefinitionID</code>: Identifier. ID of the instrument
+  definition for the account.</li>
+</ul>
+<h3 id="registeraccountresponse">registerAccountResponse</h3>
+<ul>
+<li>Attribute <code>accountID</code>: Identifier.</li>
+<li>Element <code>newAccount</code>: Signed <a href="../account"><code>&lt;account&gt;</code> document</a>.</li>
+</ul>
+<hr />
+<h3 id="registerinstrumentdefinition">registerInstrumentDefinition</h3>
+<p>Request creation of a new <em>issuer asset account</em> on the Notary.
+<strong><em>registerInstrumentDefinition</em></strong> is a message sent by an issuer that
+wants to issue currency onto the notary.
+A currency issuer, which wants to issue a currency on a notary,
+must upload an instrument definition contract.
+The issuer is the one who originated the instrument definition contract
+and signed it.  This message includes the <strong>nymID</strong>, the notary ID, the
+queried instrument definitions, and the instrument definition contract.
+The instrument definition is the hash of the instrument definition contract.
+The notary verifies that the instrument definition contract hash equals
+the instrument definition ID. The notary will also load up the public
+credentials for the <strong>nym</strong>, to verify the signature on the instrument
+definition contract.</p>
+<ul>
+<li>Attribute <code>instrumentDefinitionID</code>: Identifier. Hash of the <code>&lt;instrumentDefinition&gt;</code>.</li>
+<li>Element <code>instrumentDefinition</code>: Signed <a href="../instrumentDefinition"><code>&lt;instrumentDefinition&gt;</code>
+  document</a></li>
+</ul>
+<h3 id="registerinstrumentdefinitionresponse">registerInstrumentDefinitionResponse</h3>
+<ul>
+<li>Attribute <code>accountID</code>: Identifier.</li>
+<li>Attribute <code>instrumentDefinitionID</code>: Identifier. Hash of the <code>&lt;instrumentDefinition&gt;</code>.</li>
+<li>Element <code>issuerAccount</code>: Signed <a href="../account"><code>&lt;account&gt;</code> document</a>.</li>
+</ul>
+<hr />
+<h3 id="notarizetransaction">notarizeTransaction</h3>
+<p>Requests the notarization of a transaction. This is the primary method of
+processing transactions. Only one transaction can be processed at one time by
+<em>notarizeTransaction</em>. Two transaction items are attached; the first item is a
+balance agreement, which contains the balance and the list of transaction
+numbers currently signed out to this <strong>nym</strong>, and the second item contains
+specific information about the of transaction to be performed (for example,
+transfer or withdrawal).</p>
+<ul>
+<li>Attribute <code>nymboxHash</code>: Identifier. Optional. Request will fail if it doesn't
+  match the server version.</li>
+<li>Attribute <code>accountID</code>: Identifier.</li>
+<li>Element <code>accountLedger</code>: Signed document of type <code>&lt;accountLedger&gt;</code> that only
+  has one <code>&lt;transaction&gt;</code>.</li>
+</ul>
+<h3 id="notarizetransactionresponse">notarizeTransactionResponse</h3>
+<ul>
+<li>Attribute <code>accountID</code>: Identifier.</li>
+<li>Element <code>responseLedger</code>: Signed document of type <code>&lt;accountLedger&gt;</code> that
+  only has one <code>&lt;transaction&gt;</code>.</li>
+</ul>
+<hr />
+<h3 id="getrequestnumber">getRequestNumber</h3>
+<p>Get the current request number from the Notary, when the client doesn't know
+what the current one is.  Request numbers ensure synchronization of messages,
+between a client and a Notary, and also reduce the risk of replay attacks.</p>
+<p>For example, when a client sends a message with request #100, the Notary will
+expect the next message from this client to use request#101. However, if the
+client sends a series of messages that do not arrive at the Notary, the next
+message received by the Notary from this client might be request#105. This is
+not the request number expected by the Notary and it will be rejected. To
+resync messages with the Notary, the client makes a getRequestNumber to the
+Notary to check which request## the Notary is expecting. The client can then
+retry with the request## expected by the Notary.</p>
+<h3 id="getrequestnumberresponse">getRequestNumberResponse</h3>
+<ul>
+<li>Attribute <code>nymboxHash</code>: Identifier. TODO.</li>
+<li>Attribute <code>newRequestNum</code>: Integer. Next request number to be used (?).</li>
+<li>this response does not have element <code>inReferenceTo</code></li>
+</ul>
+<hr />
+<h3 id="getnymbox">getNymbox</h3>
+<p>Downloads current <strong>nymbox</strong> from the Notary. A <strong>nymbox</strong> is where any
+messages, instruments, notices, and new transaction numbers are sent to a
+<strong>nym</strong> from the Notary. The <strong>nymbox</strong> is signed and it has a hash.</p>
+<h3 id="getnymboxresponse">getNymboxResponse</h3>
+<ul>
+<li>Attribute <code>nymboxHash</code>: Identifier. TODO.</li>
+<li>Element <code>nymboxLedger</code>: <a href="../accountLedger"><code>&lt;accountLedger&gt;</code> document</a> of type <code>nymbox</code>.</li>
+<li>present only if <code>success</code> is <code>true</code></li>
+<li>Element <code>inReferenceTo</code>: only if <code>success</code> is <code>false</code>.</li>
+</ul>
+<hr />
+<h3 id="getboxreceipt">getBoxReceipt</h3>
+<p>Requests a transaction receipt from a <strong>nymbox</strong>, <strong>inbox</strong> or <strong>outbox</strong>. This
+message includes the <strong>nymID</strong>, Notary ID, transaction number, and request
+number. Additionally, the message must specify the box type: <strong>nymbox</strong>,
+<strong>inbox</strong> or <strong>outbox</strong>.</p>
+<p><em>getBoxReceipt downloads full receipts because the nymbox, inbox, or outbox
+</em>will only contain the stub and not the full receipt. When the client has
+<em>downloaded the full receipt, it will hash the receipt and compare it to the
+</em>hash that is stored in the stub to verify that it corresponds to the same
+*receipt.</p>
+<ul>
+<li>Attribute <code>transactionNum</code>: Integer. Transaction number for which to get the
+  receipt.</li>
+<li>Attribute <code>boxType</code>: String. Specifies which box the transaction is in. Either
+  <code>nymbox</code>, <code>inbox</code> or <code>outbox</code>.</li>
+<li>Attribute <code>accountID</code>: Identifier. When <code>boxType</code> is <code>inbox</code> or <code>outbox</code>, this
+  specifies the account. When <code>boxType</code> is <code>nymbox</code>, must be equal to <code>nymID</code>.</li>
+</ul>
+<h3 id="getboxreceiptresponse">getBoxReceiptResponse</h3>
+<ul>
+<li>Attribute <code>transactionNum</code>: Integer. Same as in request?</li>
+<li>Attribute <code>boxType</code>: String. Same as in request?</li>
+<li>Attribute <code>accountID</code>: Identifier. Same as in request?</li>
+<li>Element <code>boxReceipt</code>: TODO figure out what happens
+    <a href="https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/server/UserCommandProcessor.cpp#L4122-L4290">here</a></li>
+</ul>
+<hr />
+<h3 id="getaccountdata">getAccountData</h3>
+<p>Downloads the inbox, the outbox, and the account balance file.</p>
+<ul>
+<li>Attribute <code>accountID</code>: Identifier.</li>
+</ul>
+<h3 id="getaccountdataresponse">getAccountDataResponse</h3>
+<ul>
+<li>Attribute <code>accountID</code>: Identifier.</li>
+<li>Attribute <code>inboxHash</code>: Identifier. Hash of the contained Inbox.</li>
+<li>Attribute <code>outboxHash</code>: Identifier. Hash of the contained Outbox.</li>
+<li>Element <code>account</code></li>
+<li>contains armored signed <a href="../account"><code>account</code> document</a></li>
+<li>present only if <code>success</code> is <code>true</code></li>
+<li>Element <code>inbox</code></li>
+<li>contains armored signed <a href="../accountLedger"><code>accountLedger</code> document</a></li>
+<li>present only if <code>success</code> is <code>true</code></li>
+<li>Element <code>outbox</code></li>
+<li>contains armored signed <a href="../accountLedger"><code>accountLedger</code> document</a></li>
+<li>present only if <code>success</code> is <code>true</code></li>
+<li>Element <code>inReferenceTo</code>: only if <code>success</code> is <code>false</code>.</li>
+</ul>
+<hr />
+<h3 id="processinbox">processInbox</h3>
+<p><em>processInbox</em> is the only transaction that has its own message.  It includes
+a balance agreement and it has a process inbox item, which is the only type of
+item that it can have. The process inbox item contains information about the
+receipts in the inbox that the client is accepting. The client can selectively
+accept the receipts in the inbox. It does not have to accept all of the
+receipts in the inbox when performing this transaction. Only the receipts
+specified in this transaction will be accepted. Processing an inbox item means
+accepting it and signing it.</p>
+<ul>
+<li>Attribute <code>nymboxHash</code>: Identifier. TODO.</li>
+<li>Attribute <code>accountID</code>: Identifier.</li>
+<li>Element <code>processLedger</code>. Armored <a href="../accountLedger"><code>&lt;accountLedger&gt;</code>
+    document</a>.</li>
+</ul>
+<h3 id="processinboxresponse">processInboxResponse</h3>
+<ul>
+<li>Attribute <code>accountID</code>: Identifier.</li>
+<li>Element <code>responseLedger</code>. Armored <a href="../accountLedger"><code>&lt;accountLedger&gt;</code>
+    document</a>.</li>
+</ul>
+<hr />
+<h3 id="queryinstrumentdefinitions">queryInstrumentDefinitions</h3>
+<p><em>queryInstrumentDefinitions</em> sends the notary a list of instrument definition
+IDs in a string map (for example, gold or silver), to query the Notary if it
+supports these instrument definitions. It is a simple message for determining
+if certain instrument definitions are there are not. The Notary replies with
+true or false, in response to each queried instrument definition.</p>
+<ul>
+<li>Attribute: TODO.</li>
+</ul>
+<h3 id="queryinstrumentdefinitionsresponse">queryInstrumentDefinitionsResponse</h3>
+<ul>
+<li>Attribute: TODO.</li>
+</ul>
+<hr />
+<h3 id="sendnyminstrument">sendNymInstrument</h3>
+<p><em>sendNymInstrument</em> is used to send a payment instrument to another client. The
+message is encrypted with the recipient's public key. If the sender does not
+have the recipient's public key, it will call the <em>checkNym</em> message, download
+the user's public key, encrypt the message to that public key, and then call
+<em>sendNymInstrument</em> to send it to the user. The message goes into the
+recipient’s <strong>nymbox</strong>.</p>
+<ul>
+<li>Attribute: TODO.</li>
+</ul>
+<h3 id="sendnyminstrumentresponse">sendNymInstrumentResponse</h3>
+<ul>
+<li>Attribute: TODO.</li>
+</ul>
+<hr />
+<h3 id="sendnymmessage">sendNymMessage</h3>
+<p><em>sendNymMessage</em> is used to send a message to another client. The message is
+encrypted with the recipient's public key. If the sender does not have the
+recipient's public key, it will call the <em>checkNym</em> message, download the
+user's public key, encrypt the message to that public key, and then call
+<em>sendNymMessage</em> to send it to the user. The message goes into the recipient’s
+<strong>nymbox</strong>.</p>
+<ul>
+<li>Attribute: TODO.</li>
+</ul>
+<h3 id="sendnymmessageresponse">sendNymMessageResponse</h3>
+<ul>
+<li>Attribute: TODO.</li>
+</ul>
+<hr />
+<h3 id="usagecredits">usageCredits</h3>
+<p><em>usageCredits</em> can be used by a client to ask the Notary how many usage credits
+are available for the specified <strong>nym</strong>. Usage Credits is a number that can be
+attached to a <strong>nym</strong>. The Notary can turn Usage Credits on or off. If the
+Notary turns the feature on, then the usage credits of the <strong>nym</strong> will
+decrement with every protocol message and with every request reply.  All
+messages (except <em>usageCredits</em>) will fail when a <strong>nym</strong> has consumed all of
+its' usage credits.</p>
+<ul>
+<li>Attribute: TODO.</li>
+</ul>
+<h3 id="usagecreditsresponse">usageCreditsResponse</h3>
+<ul>
+<li>Attribute: TODO.</li>
+</ul>
+<hr />
+<h3 id="checknym">checkNym</h3>
+<p><em>checkNym</em> downloads the public information for another client. For example,
+this message would be used to download another client’s public key so that we
+can send him a message and encrypt it to his key. If this message succeeds, it
+provides the public key for the specified user. If it fails, it returns your
+original request.</p>
+<ul>
+<li>Attribute: TODO.</li>
+</ul>
+<h3 id="checknymresponse">checkNymResponse</h3>
+<ul>
+<li>Attribute: TODO.</li>
+</ul>
+<hr />
+<h3 id="unregisternym">unregisterNym</h3>
+<p><em>unregisterNym</em> deletes the specified <strong>nym</strong> from the Notary. However, this
+action will fail if the <strong>nym</strong> has any accounts on the notary that do not have
+a zero balance. If the client wants to delete an asset account, it needs to
+first reduce the account balance to zero, delete the account, and then delete
+the <strong>nym</strong> off the Notary.  Alternatively, the user could stop using a <strong>nym</strong>
+without deleting it and just leave it on the Notary. However, as a courtesy,
+the unused <strong>nym</strong> should be deleted from the Notary.</p>
+<ul>
+<li>Attribute: TODO.</li>
+</ul>
+<h3 id="unregisternymresponse">unregisterNymResponse</h3>
+<ul>
+<li>Attribute: TODO.</li>
+</ul>
+<hr />
+<h3 id="pingnotary">pingNotary</h3>
+<p><em>pingNotary</em> is similar to a ping command. It sends a message to the Notary to
+see if it can get a reply. It verifies if the Notary is listening and
+responding. This is the first message used in a transaction.</p>
+<p><em>pingNotary</em> sends the <strong>nym</strong> authentication key and the encryption key to the
+Notary. This is one of the few messages that must include these keys in the
+message. In most other messages the Notary already has these keys, because the
+<strong>nym</strong> is already registered with the Notary.  The Notary replies to
+<em>pingNotary</em> with true or false. The Notary replies false to this message if an
+incorrect <em>notaryID</em> is used in this message.</p>
+<ul>
+<li>Attribute: TODO.</li>
+</ul>
+<h3 id="pingnotaryresponse">pingNotaryResponse</h3>
+<ul>
+<li>Attribute: TODO.</li>
+</ul>
+<hr />
+<h3 id="triggerclause">triggerClause</h3>
+<p><em>triggerClause</em> is a transaction used for triggering scripts on smart contracts.
+Smart contracts have clauses, which are scripts on the contract that can be
+activated in response to a condition or scheduled to run at certain times. For
+example, a smart contract may have a clause that can be triggered in case of a
+dispute. Or there may be clauses that are triggered everyday to perform a daily
+action.</p>
+<ul>
+<li>Attribute: TODO.</li>
+</ul>
+<h3 id="triggerclauseresponse">triggerClauseResponse</h3>
+<ul>
+<li>Attribute: TODO.</li>
+</ul>
+<hr />
+<h3 id="getmint">getMint</h3>
+<p><em>getMint</em> requests the Notary to provide the public mint key for the cash
+instrument. The cash instrument has a series of minting keys and the minting
+keys are stored in the mint.There is a public mint and a private mint, the
+notary keeps the private mint key and it will give a copy of the public mint
+key to the requesting client. The notary should give all clients the same
+public mint key. If different public mint keys were provided to different
+clients, the cash would become traceable.</p>
+<ul>
+<li>Attribute: TODO.</li>
+</ul>
+<h3 id="getmintresponse">getMintResponse</h3>
+<ul>
+<li>Attribute: TODO.</li>
+</ul>
+<hr />
+<h3 id="getcontract">getContract</h3>
+<p>Downloads an instrument definition contract from the Notary. The response
+message from the Notary, if the success is <em>true</em>, will include the associated
+instrument definition contract for the specified instrument definition ID. The
+client can hash the contract provided by the Notary and compare the hash with
+the instrument definition ID.</p>
+<ul>
+<li>Attribute: TODO.</li>
+</ul>
+<h3 id="getcontractresponse">getContractResponse</h3>
+<ul>
+<li>Attribute: TODO.</li>
+</ul>
+<hr />
+<h3 id="unregisteraccount">unregisterAccount</h3>
+<p>Deletes the specified asset account from the Notary. A number of prerequisite
+actions must be performed before the <em>unregisterAccount</em> request can be  sent
+to the Notary.</p>
+<p>First, the account balance needs to be reduced to zero. The Notary won't allow
+the deletion of an asset account that contains a balance. Secondly, the inbox
+needs to be empty. Any transaction receipts in the inbox must be closed out.</p>
+<p>Once the inbox is empty and the account balance is zero, the
+<em>unregisterAccount</em> message can be sent to the Notary and the specified asset
+account is deleted.</p>
+<ul>
+<li>Attribute: TODO.</li>
+</ul>
+<h3 id="unregisteraccountresponse">unregisterAccountResponse</h3>
+<ul>
+<li>Attribute: TODO.</li>
+</ul>
+<hr />
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/core/OTMessage.cpp#L298">OTMessage::UpdateContents()</a>.
+  Ctrl-F for <code>$UserCommand</code> or <code>At$UserCommand</code> in order to see the see the
+  serialization for the different subtypes.</li>
+<li><a href="https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/client/OpenTransactions.cpp">OT_API</a>.
+  This is where the <code>OTMessage</code> is initialized and the sub-documents are built.</li>
+<li><a href="https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/client/OTClient.cpp">OTClient</a>.
+  This is where server replies are processed.</li>
+</ul>
+</div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Monetas 2014, Zug, Switzerland. All rights reserved.</p>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        
+
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/prettify-1.0.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script src="../../js/base.js"></script>
+    </body>
+</html>

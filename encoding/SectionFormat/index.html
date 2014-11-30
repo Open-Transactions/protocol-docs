@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+        <title>Encoding: Section Format - Protocol docs</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">Protocol docs</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Main <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../../DocumentTypes">Document Types</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../Requirements">Requirements</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../Transport">Transport</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../Transfer">Transfer</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Doctype <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../../doctypes/contract">Base Contract</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/notaryProviderContract">notaryProviderContract</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/instrumentDefinition">instrumentDefinition</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/nymData">nymData</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/notaryMessage">notaryMessage</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/accountLedger">accountLedger</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/transaction">transaction</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/item">item</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/account">account</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../doctypes/cheque">cheque</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Encoding <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li class="active">
+                                <a href=".">Encoding: Section Format</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">MEP <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../../mep/mep-001">1 - MEP purpose and guidelines</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../mep/mep-002">2 - Use CurveZMQ for encryption and authentication</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../mep/mep-003">3 - Document type XML cleanup</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../mep/mep-004">4 - Remove Google ProtoBuf Encoding From The Protocol</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../mep/mep-005">5 - Use ISO8601 for date and time formatting</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                <li >
+                    <a rel="next" href="../../doctypes/cheque">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../../mep/mep-001">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                
+                <li>
+                    <a href="https://github.com/monetas/protocol-docs/">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+            
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#section-format">Section Format</a></li>
+        
+            <li><a href="#specification">Specification</a></li>
+        
+            <li><a href="#similarity-to-other-formats">Similarity to Other Formats</a></li>
+        
+            <li><a href="#section-validity">Section Validity</a></li>
+        
+            <li><a href="#usage-in-open-transactions">Usage In Open-Transactions</a></li>
+        
+    
+        <li class="main "><a href="#signed-message-document">Signed Message Document</a></li>
+        
+            <li><a href="#content-section">Content Section</a></li>
+        
+            <li><a href="#signature-section">Signature Section</a></li>
+        
+            <li><a href="#sample-signed-message">Sample Signed Message</a></li>
+        
+    
+        <li class="main "><a href="#ascii-armored-document">ASCII-Armored Document</a></li>
+        
+            <li><a href="#sample-document">Sample Document</a></li>
+        
+            <li><a href="#parsing-pseudocode-golang">Parsing Pseudocode (Golang)</a></li>
+        
+            <li><a href="#compliance-in-opentxs">Compliance in Opentxs</a></li>
+        
+            <li><a href="#future-improvements">Future Improvements</a></li>
+        
+    
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="section-format">Section Format</h1>
+<p>Open-Transactions uses the <em>Section Format</em> in some plain-text documents. This
+is the general appearance of a section:</p>
+<pre><code>-----BEGIN $TYPE-----
+Key: Value
+Other-Key: Value
+
+payload plain-text
+which can have multiple lines
+-----END $TYPE-----
+</code></pre>
+
+<p>Sections are used in different document types, which are defined later.</p>
+<h2 id="specification">Specification</h2>
+<p>The document is read line-by-line. Line endings can be <code>\r\n</code> or <code>\n</code>.</p>
+<p>A section consists of:
+<em> a type specifier string;
+</em> headers as key-value pairs of strings;
+* a payload string</p>
+<p>The start of a section is defined by a section marker line. The line has five
+leading dashes, followed by the BEGIN keyword and a type specifier, ending with
+five dashes: <code>-----BEGIN $type-----</code></p>
+<p>The section marker line is followed by headers, in the form of header lines.
+Header lines have the format <code>Key: Value</code>, where key and value are separated by
+a colon-space sequence (ASCII <code>0x3a 0x20</code>).</p>
+<p>Headers are terminated by an empty line.</p>
+<p>All subsequent lines define the payload. Line endings are normalized to <code>\n</code>.</p>
+<p>A document MUST NOT contain lines starting with two dashes that are not section
+markers.</p>
+<p>An unterminated section is illegal. Section termination is defined separately
+for each section type.</p>
+<p>Some, but not all sections are terminated with the <em>default section end marker</em>
+<code>-----END $type-----</code>.</p>
+<h2 id="similarity-to-other-formats">Similarity to Other Formats</h2>
+<p>Section-Format has many similarities with other formats used in cryptographic
+messaging:</p>
+<ul>
+<li><a href="https://tools.ietf.org/html/rfc1421">RFC1421</a>: PEM Format</li>
+<li><a href="https://tools.ietf.org/html/rfc4880">RFC4880</a>: OpenPGP Message Format</li>
+</ul>
+<h2 id="section-validity">Section Validity</h2>
+<p>The classes can define further constraints on the sections (XML validity,
+semantic validity, signature and Base64 encoding). These constraints can be
+defined for each section type.</p>
+<h2 id="usage-in-open-transactions">Usage In Open-Transactions</h2>
+<ul>
+<li>
+<p>Signed documents: Contracts should be easy to read by humans
+    and easy to parse by computers, as per Ricardian Contract criteria. A
+    contract contains a list of digital signatures, which are encoded in Base64.
+    Content and signatures are encoded using the section format.</p>
+</li>
+<li>
+<p>Armored data: Section Format is used here in order to provide human readers a
+  hint to the type of the encoded data.</p>
+</li>
+</ul>
+<p>Use of the Section Format in these document types is defined below.</p>
+<h1 id="signed-message-document">Signed Message Document</h1>
+<p>This document type is defined by the <em>OTContract</em> class and is used to attach
+signatures to a plain-text message.</p>
+<p>A signed message MUST contain a <em>content section</em> that CAN be followed by zero
+or more <em>signature sections</em>.</p>
+<p>Lines that are outside sections are ignored.</p>
+<h2 id="content-section">Content Section</h2>
+<p>The first section in a document is the content section. The type specifier MUST
+start with the character sequence <code>SIGNED</code>.</p>
+<p>The content section is not terminated by the default section end marker, but by
+the start of a signature section or <code>EOF</code>.</p>
+<h2 id="signature-section">Signature Section</h2>
+<p>A signature section is defined by a section whose type specifier ends with
+<code>SIGNATURE</code>.</p>
+<p>Signature sections are terminated by the <em>section end marker</em>:
+<code>-----END $type -----</code></p>
+<h2 id="sample-signed-message">Sample Signed Message</h2>
+<pre><code>-----BEGIN SIGNED CONTRACT-----
+Hash: $hashType
+
+$xmlContent
+
+// note missing end marker
+
+-----BEGIN CONTRACT SIGNATURE-----
+Version: OpenTransactions 0.99
+Comment: http://github.com/FellowTraveler/Open-Transactions/wiki
+Meta: $signatureTag
+
+$signatureData
+-----END CONTRACT SIGNATURE-----
+
+-----BEGIN CONTRACT SIGNATURE-----
+Version: OpenTransactions 0.99
+Comment: http://github.com/FellowTraveler/Open-Transactions/wiki
+Meta: $signatureTag
+
+$signatureData
+-----END CONTRACT SIGNATURE-----
+</code></pre>
+
+<h1 id="ascii-armored-document">ASCII-Armored Document</h1>
+<p>Here, section format is used to add a type hint for a compressed and
+Base64-encoded data block adjusted to a line length of 64 characters.</p>
+<p>An ASCII-Armored document consists of exactly one section. The type specifier
+MUST start with <code>OT ARMORED</code>. The section is terminated by the default section
+end marker.</p>
+<p>Lines outside the section markers MUST be ignored.</p>
+<p>The parsing routine MUST strip whitespace and newlines, Base64-decode and
+decompress the payload.</p>
+<h2 id="sample-document">Sample Document</h2>
+<pre><code>-----BEGIN OT ARMORED FILE-----
+Version: Open Transactions 0.93.0-gd6f687f
+Comment: http://github.com/FellowTraveler/Open-Transactions/wiki
+
+eNptk8mOo0gQhs/DU1h1LXWxGQOlrmphzGoDBmO2G4Y0e7Iv5knnccbVPVL3SBO3
++CPjj1QoPuTvv759xV6QFH1zUSRdOGxE5ST8VBE57NP3zYXTfAT5/mOpys0Euj6r
+4ccL/oa9/Ph8yn2WQBCLWQmQ31XiWUU2ZR2F5SHrPl7go+qfwv35CoYV+HjhpnCo
+F+4ER8etKcWXfRfKD1YIlihccyyPJ23ts0C6eevL5mvMV+s5fJR1GH8iQG+coh+N
+uuA4ywZr26L1eMQLTnW8GvpmYUfHVnCXeicydagk+9g+ry2rBYS/VOBKIQ8HxjxJ
+s5VMEizby6rnrK1Fr9g9gWe0iRK9rPA1LNARiLeZeZX7c+z1uCz1JHBClkJyNOSO
+gyyJhX8OcV4fNGaNR3fa350gwqDebS+6mBw0tLIWPPYp1+QuZ4ktp5QebU2HyCFs
+jqIm2uQwSq+BK8r2sh0GeWjpQCvF5JHjDXULArteLGzbbBN6wGQgnJdj2GAqzl6Q
+vG14hrw6OJaR7Kio6ZixfEsP1bkdq4v1MGT/cDO2tB94ox8U97KmJWDavsScqDha
+GGSPGT0gylxBGcILilImHMOjCcyqu91Q77zVNulOhnqT5HSfsueVM8F6FTgCv1wh
+2VqIQBQzmT7Sju2D/G6MBdyv3gAfsL2DS3kbFBpW5utM4E1adHvoiqKURmEacQEc
+PNiySECusuXKfJ1y6YPNsMBpawOnVOdSszE++DXtdwfNlyDvHOVL9fy7Hjf57e5y
+B3BQJQmBzURQj9PsyssFRLSaL8BnPJNqbYFiIyZvAim7yZMKBK9N3G5Eb3u9h3e5
+1DFpq110hGsJYuEgv0PDcmGmRFRYewWZK22rq5B0GSbGmoobkSHws8hTmV236rRc
+D3QfYJzHCUiauDd1jGqoaAHLogKJruR5nmbpsYeLh30g39H/XO4z/w3MJ/IHfF/U
+/SSQs6/Wv/w5v3h63xgNgBu7C2EfRsNT6TfYG0u+Yd+SeHffMfQd4euqAnB436TD
+0LyjaJIN6Xh7i+oKFUFZ1vOzewIl6NAvr29/eqFzVmTI04HbT4L3euU55SQZjLkV
+dvlhNc+ukHhrIo6wlPxsHHf747FgiTJxsv68143T62ERVvWOxFBR9XBWCgNlk3JL
+WSJfuul2Z6Z9QczAsiyP6MXnnc1b1tS51zrX8J7VuJkGp2W+yUhkUjE5rvdARGHb
+RUZhREIix1TvmZO4lWg39ZhCqecZrBKPMx+/1ifoh/9b3j9H4ZNi
+-----END OT ARMORED FILE-----
+</code></pre>
+
+<p>Payload (after unpacking and decompression, using <code>opentxs decode</code>)</p>
+<pre><code>-----BEGIN SIGNED FILE-----
+Hash: SAMY
+
+&lt;?xml version=&quot;1.0&quot;?&gt;
+
+&lt;signedFile
+ version=&quot;2.0&quot;
+ localDir=&quot;nyms&quot;
+ filename=&quot;AvatoxALnuVWo5IYHYWnHy9EZxcazj0jdvMzsiZGbXz&quot; &gt;
+
+&lt;filePayload&gt;
+eNpVksuOokAARTezqq/ouK1kAJVXonYQkTcKqEWxo6F8oaIgBdTPzq9MZ2YxmeU5
+yVndC379mH3299sHJXVzqR7z0fgnP/pcgNlm1zak/ueFbw8+HsPdXs1HGs3eVa95
+j/aAKtHGFkYPa1CNtM8zduWvBfVZc0nNr4SNFgDM/mRx1dY5WQASPG9lvh7uTMNn
+DapKFMFT3tuG+ZWFHTx4ttHtq7ZMlFgyj1p5bZZToxR04p4g7t0HeEPxKap0J19S
+jqpC83UV10i39uIJhui9Cq7tmPqumSRyOHYDbO47YZXuYZkflo7GeQTYG8L5dcx8
+B0Ose2ljI/82XZklH2VOX720Ror6to6XzTQ7rHnNpgj7sh9PzAQezUEA21SUn3qR
+E2kw3hyhr9sZjfOuknBzXtnynqfeSlbtI7nmQ+w21phkrBnWFFGhcahcAZntXnq9
+Z3zHRWHCohAhy9i0ZVqoO15JVSo9d1tYo7YrDMYGnCVKHSmTYGNdpjbfWADeDJGG
+npv25yLwWHxSec7JjxeY8XQ5qTE59c8jpZGibHvJeEXqgWru/bBNsnfHlN0G4MSN
+Aq22xAnC6/alx8vgFI9TzeiWG4mUEgri0FdMJ1OcOECwFC5iToqJvxUD7sZ0AXAE
+hgWbJuconIMZ99/E3/z3PwvwGyBnxX0=
+&lt;/filePayload&gt;
+
+&lt;/signedFile&gt;
+-----BEGIN FILE SIGNATURE-----
+Version: Open Transactions 0.93.0-gd6f687f
+Comment: http://github.com/FellowTraveler/Open-Transactions/wiki
+
+CoABvEX+UCAILGO8Q4E6jDzQPWEgXzgFunlGYiuu6BKKk92lgVisPBNOL+DxEzJf
+dnIJNawIkO/9gl45RFClWh46Qhsk2weRRRX2sFlH2w49QNA+ojM1s9MAw7eLxwbH
+cQ5d3uzfZF/nqrcOkOcEgHd5sXQvF4G7WhX8kIowwezGC18=
+-----END FILE SIGNATURE-----
+</code></pre>
+
+<p>The resulting document is of type <em>Signed Message</em>.</p>
+<p>The data inside <code>&lt;filePayload&gt;</code> is also referred to as "ASCII-Armored" in
+opentxs. However it is outside of this specification since it is not
+section-formatted.</p>
+<h2 id="parsing-pseudocode-golang">Parsing Pseudocode (Golang)</h2>
+<h3 id="for-sections">For Sections</h3>
+<pre><code class="go">type Section struct {
+    Type    string
+    Headers map[string]string
+    Payload string
+}
+
+// Returns the first section and rest of the document, or error
+func ParseSection(doc string) (Section, string, error)
+
+// For sections without end marker (Content in Signed Message)
+// Terminates when new section is found
+func ParseUnterminatedSection(doc string) (Section, error)
+</code></pre>
+
+<h3 id="for-signed-message-documents">For Signed Message Documents</h3>
+<p>Access to type and header information might be useful, so we should return all
+section data.</p>
+<pre><code class="go">type SignedMessage struct {
+     Content    Section
+     Signatures []Section
+}
+
+func ParseSignedMessage(doc string) (SignedMessage, error)
+</code></pre>
+
+<h3 id="for-ascii-armored-documents">For ASCII-Armored Documents</h3>
+<p>Loading ASCII-Armoring only decodes the Base64 payload. Type information
+and headers are ignored.</p>
+<pre><code>// Returns payload base64-decoded, rest of document and error
+func ParseAsciiArmor(doc string) ([]byte, string, error)
+</code></pre>
+
+<h2 id="compliance-in-opentxs">Compliance in Opentxs</h2>
+<p>Long-term, all documents created and accepted by opentxs (<code>OTContract.cpp</code>,
+<code>OTASCIIArmor.cpp</code> and others) should conform to this specification.</p>
+<p>Making the parsers reject all malformed input can only be achieved via a larger
+rewrite.</p>
+<p>The current opentxs parsers do not comply with this specification and have
+several bugs.</p>
+<p>Changes in the document reading methods to accept valid documents:</p>
+<ul>
+<li>Do not check number of spaces in header fields.</li>
+<li>Accept arbitrary string values in header fields.</li>
+</ul>
+<p>Changes in the document reading methods to reject malformed documents:</p>
+<ul>
+<li>Section start markers must be checked entirely.</li>
+<li>Signature sections must require the section end marker instead only a dash.</li>
+<li>Headers must only appear at the top of a section and are terminated by an
+  empty line.</li>
+</ul>
+<h2 id="future-improvements">Future Improvements</h2>
+<p>This version of the specs aims for some compatibility with the current output of
+the writing routine. This section lists possible improvements that can be made
+in future versions.</p>
+<h3 id="signed-message-format">Signed Message Format</h3>
+<p>In some settings, contracts <code>Contract</code>-derived do not contain a list of
+signatures, but exactly one signature (<code>Message</code>). This is not reflected or
+enforced at the moment in opentxs.</p>
+<h3 id="dash-escape-sequence">Dash-Escape Sequence</h3>
+<p>The dash-space escape should be excluded from the payload. This would simplify
+other processing steps, because it would allow the payload to contain
+arbitrary plain text (other Section-Formatted text in particular).</p>
+<p>"Section" would then contain this paragraph:</p>
+<blockquote>
+<p>A document MUST NOT contain lines starting with two dashes that are not section
+markers. In order to encode a line like this, the dash-space (ASCII <code>0x2d 0x20</code>)
+escape sequence can be prepended when encoding the document. During decoding,
+the sequence must be removed from the beginning of a line before adding it to
+the payload.</p>
+</blockquote>
+<h3 id="lines-outside-content-sections">Lines Outside Content Sections</h3>
+<p>Lines outside sections are ignored. This is a source of ambiguity in the
+document. It is unclear whether lines outside section markers are ever generated
+in opentxs.</p>
+<p>Suggestion: Make non-whitespace lines outside sections illegal.</p>
+<h3 id="end-markers">End Markers</h3>
+<p>The content section in signed messages does not use the end marker.</p>
+<p>The signature section writing routine writes an end marker, but the parser only
+looks for a single terminating dash. This behavior is used in the CLI tool
+however.</p>
+<p>The ASCII-Armored section writes an end marker and requires (part) of an end
+marker.</p>
+<p>Suggestion: In order to simplify the format, always require section end markers.</p>
+</div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Monetas 2014, Zug, Switzerland. All rights reserved.</p>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        
+
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/prettify-1.0.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script src="../../js/base.js"></script>
+    </body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+
+        <title>Requirements - Protocol docs</title>
+
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="..">Protocol docs</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Main <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../DocumentTypes">Document Types</a>
+                            </li>
+                        
+                            <li class="active">
+                                <a href=".">Requirements</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../Transport">Transport</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../Transfer">Transfer</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Doctype <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../doctypes/contract">Base Contract</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../doctypes/notaryProviderContract">notaryProviderContract</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../doctypes/instrumentDefinition">instrumentDefinition</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../doctypes/nymData">nymData</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../doctypes/notaryMessage">notaryMessage</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../doctypes/accountLedger">accountLedger</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../doctypes/transaction">transaction</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../doctypes/item">item</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../doctypes/account">account</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../doctypes/cheque">cheque</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Encoding <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../encoding/SectionFormat">Encoding: Section Format</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">MEP <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../mep/mep-001">1 - MEP purpose and guidelines</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../mep/mep-002">2 - Use CurveZMQ for encryption and authentication</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../mep/mep-003">3 - Document type XML cleanup</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../mep/mep-004">4 - Remove Google ProtoBuf Encoding From The Protocol</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../mep/mep-005">5 - Use ISO8601 for date and time formatting</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                <li >
+                    <a rel="next" href="../DocumentTypes">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../Transport">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                
+                <li>
+                    <a href="https://github.com/monetas/protocol-docs/">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+            
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#requirements-for-the-open-transactions-document-format-and-protocol">Requirements for the Open-Transactions Document Format and Protocol</a></li>
+        
+            <li><a href="#simplicity">Simplicity</a></li>
+        
+            <li><a href="#transactionality">Transactionality</a></li>
+        
+            <li><a href="#authenticity">Authenticity</a></li>
+        
+            <li><a href="#readability">Readability</a></li>
+        
+            <li><a href="#safety">Safety</a></li>
+        
+            <li><a href="#composability">Composability</a></li>
+        
+            <li><a href="#confidentiality">Confidentiality</a></li>
+        
+            <li><a href="#efficiency">Efficiency</a></li>
+        
+            <li><a href="#extensibility">Extensibility</a></li>
+        
+            <li><a href="#current-state">Current State</a></li>
+        
+    
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="requirements-for-the-open-transactions-document-format-and-protocol">Requirements for the Open-Transactions Document Format and Protocol</h1>
+<p>Quote from OpenTransactions.org:</p>
+<blockquote>
+<p><em>The Open-Transactions project is a collaborative effort to develop a robust,
+commercial-grade, fully-featured, free-software toolkit implementing the OTX
+protocol as well as a full-strength financial cryptography library, API, CLI,
+and prototype server.</em></p>
+</blockquote>
+<p>Communication happens between the Open-Transactions happens between these
+parties:</p>
+<ul>
+<li>Persistent Storage</li>
+<li>Client</li>
+<li>Notary</li>
+<li>Auditor services</li>
+<li>Human Auditors and Mediators</li>
+</ul>
+<p>This list captures the requirements for the <em>document format</em> used in
+Open-Transactions, and the <em>protocol</em> used for exchanging and interpreting those
+documents. This should make it easier for developers to review and improve the
+system.</p>
+<h2 id="simplicity">Simplicity</h2>
+<p>The format should be <em>as simple as possible</em>. Unnecessary features and aspects
+should be removed. This requirements helps with most other criteria on this
+list.</p>
+<h2 id="transactionality">Transactionality</h2>
+<p>Communication should be <em>state-less and message-based</em>, as opposed to something
+stream-based like FTP or SSH.</p>
+<p>As the name implies, most communication in Open-Transaction is transactional
+and can be expressed a message. From a protocol perspective, a message should
+contain a document with everything that the recipients needs to know in
+order to perform an action.</p>
+<p>Exceptions are:
+<em> Application-level state, like Nyms, accounts and balances.
+</em> Request numbers (<em>Authenticity</em> requirement)</p>
+<h2 id="authenticity">Authenticity</h2>
+<p>A document recipient, as well as third parties, should be able to <em>verify
+authenticity</em>. The signed content should reflect the intentions of the author
+and include:</p>
+<ul>
+<li>The identity of the author.</li>
+<li>The intended recipient.</li>
+<li>The chronological order relative to other messages.</li>
+<li>The desired action to be performed.</li>
+</ul>
+<h2 id="readability">Readability</h2>
+<p>Documents should be <em>clear</em>, <em>unambiguous</em> and <em>easily understandable by
+humans</em>.  This is a requirement for third-party auditors who must make a
+decision based on the meaning of a signed document.</p>
+<p>A computer must process a document as a human reader would expect it to be
+processed.</p>
+<p>The only things necessary for determining the meaning and validity of a message
+should be the protocol specification and a program for computing hashes and
+checking cryptographic signatures.</p>
+<h2 id="safety">Safety</h2>
+<p>Documents should be <em>well-formed</em> in order to be accepted. Ambiguous documents
+are difficult to audit and can lead to unpredictable behavior on the system,
+which can be exploited.</p>
+<p>The message format should be simple, well-specified and not have room for
+ambiguity.</p>
+<p>One solution for that is the use of XML schemas, at the cost of simplicity and
+safety (Schema Attacks, XML Bombs).</p>
+<h2 id="composability">Composability</h2>
+<p>A document should be able to <em>contain other documents</em> and be able to <em>refer to
+other documents</em>.</p>
+<p>Document serialization must escape all characters that can break the format.
+Documents can refer to other documents using their hash or smart-property
+identifier.</p>
+<h2 id="confidentiality">Confidentiality</h2>
+<p>Documents should <em>only be readable by the intended recipients</em>. For example, the
+communication channel between client and server cannot be expected to be
+private.</p>
+<h2 id="efficiency">Efficiency</h2>
+<p>Since Open-Transactions should be able to run on systems with limited resources:</p>
+<ul>
+<li>Document processing should not require an large amount of memory or CPU.</li>
+<li>Document transport should not require a large amount of bandwidth.</li>
+<li>Document storage on disk should not require a large amount of space.</li>
+</ul>
+<p>A simple format and protocol has small documents that are easy to decode. Modern
+XML parsers are very optimized and have minimal space an computation
+requirements.</p>
+<p>A Notary should be able to quickly identify the resources that need to
+be manipulated from a request. This simplifies concurrent processing of
+transactions.</p>
+<p>Compression can be used to reduce space requirements on disk or network.</p>
+<h2 id="extensibility">Extensibility</h2>
+<p>As Open-Transactions continues to grow and improve, it should be able to allow
+changes to the specification and implementation and to the format without
+breaking existing systems. This can be achieved by attaching a version number
+to a document, for example.</p>
+<h2 id="current-state">Current State</h2>
+<ol>
+<li>
+<p><em>Simplicity</em>: The generation and interpretation of messages in
+Open-Transactions is defined by the source code only, which is difficult to
+follow. The new specification should be easy to understand and implement.</p>
+</li>
+<li>
+<p><em>Transactionality</em>: Open-Transactions uses a message-based protocol with a
+minimal amount of state. The messages that are exchanged can be understood as
+signed documents. A single message contains everything that is necessary
+to verify, process and audit the transaction. The Client sends a <em>request
+message</em> to the Notary, which replies with a <em>response message</em>.</p>
+</li>
+<li>
+<p><em>Authenticity</em>: Open-Transactions solves this problem with the concept of a
+Nym and public-key cryptography. The actual message, encoded in XML, is wrapped
+inside a container format (<a href="../encoding/SectionFormat">Section Format</a>) that
+separates content and signatures.  The sender declares his identity in the
+message attribute <code>nymID</code>, specifies the intended recipient in the message
+<code>notaryID</code> and declares the chronological order in the <code>requestNum</code> attribute.</p>
+</li>
+<li>
+<p><em>Readability</em>: Open-Transactions uses XML as the document format as and
+<em>Section-Format</em> as the container format. Encoding schemes that degrade
+readability, like Protocol Buffers and Base64, should be avoided when possible.
+Opentxs has few precautions against processing ambiguous messages.</p>
+</li>
+<li>
+<p><em>Safety</em>: Open-Transaction does not use an XML schema parser, avoiding a
+class of exploits that are possible with more full-featured parsers. However, it
+relies on zlib, ProtocolBuffers and some hand-written parsers (SectionFormat)
+that are complex, difficult to review and contain bugs and unintentional
+behavior.</p>
+</li>
+<li>
+<p><em>Composability</em>: Open-Transaction uses an encoding scheme with Compression,
+Base64-encoding and Protocol Buffers (depending on a compile-time configuration)
+to embed signed sub-documents. This severely impacts readability.</p>
+</li>
+<li>
+<p><em>Confidentiality</em>: Open-Transactions uses public-key cryptography when
+communicating between Client and Notary. The key management is part of the Nym
+credential system.</p>
+</li>
+<li>
+<p><em>Efficiency</em>: The document format used in Open-Transactions has not been
+optimized for efficiency. For example, initial tests show that avoiding base64
+encoding can reduce message size by half.</p>
+</li>
+<li>
+<p><em>Extensibility</em>: Messages and documents often contain version numbers that
+are currently unused. The current system for reading and writing documents is
+complex and difficult to extend.</p>
+</li>
+</ol>
+</div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Monetas 2014, Zug, Switzerland. All rights reserved.</p>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        
+
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/prettify-1.0.min.js"></script>
+        <script src="../js/highlight.pack.js"></script>
+        <script src="../js/base.js"></script>
+    </body>
+</html>

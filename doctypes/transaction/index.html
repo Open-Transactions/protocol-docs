@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+        <title>transaction - Protocol docs</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">Protocol docs</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Main <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../../DocumentTypes">Document Types</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../Requirements">Requirements</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../Transport">Transport</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../Transfer">Transfer</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Doctype <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../contract">Base Contract</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../notaryProviderContract">notaryProviderContract</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../instrumentDefinition">instrumentDefinition</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../nymData">nymData</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../notaryMessage">notaryMessage</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../accountLedger">accountLedger</a>
+                            </li>
+                        
+                            <li class="active">
+                                <a href=".">transaction</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../item">item</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../account">account</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../cheque">cheque</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Encoding <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../../encoding/SectionFormat">Encoding: Section Format</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">MEP <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../../mep/mep-001">1 - MEP purpose and guidelines</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../mep/mep-002">2 - Use CurveZMQ for encryption and authentication</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../mep/mep-003">3 - Document type XML cleanup</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../mep/mep-004">4 - Remove Google ProtoBuf Encoding From The Protocol</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../mep/mep-005">5 - Use ISO8601 for date and time formatting</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                <li >
+                    <a rel="next" href="../accountLedger">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../item">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                
+                <li>
+                    <a href="https://github.com/monetas/protocol-docs/">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+            
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#document-type-transaction">Document Type &lt;transaction&gt;</a></li>
+        
+            <li><a href="#base-document-type">Base Document Type</a></li>
+        
+            <li><a href="#transaction-types">Transaction Types</a></li>
+        
+            <li><a href="#document-type-full-form">Document Type: Full Form</a></li>
+        
+            <li><a href="#document-types-abbreviated-form">Document Types: Abbreviated Form</a></li>
+        
+            <li><a href="#references">References</a></li>
+        
+            <li><a href="#notes">Notes</a></li>
+        
+    
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="document-type-transaction">Document Type <code>&lt;transaction&gt;</code></h1>
+<p>Contained in <a href="../accountLedger"><code>&lt;accountLedger&gt;</code> documents</a>.</p>
+<p>Transactions can either be in <em>full</em> or <em>abbreviated</em> form. They are
+abbreviated when inside <code>&lt;accountLedger&gt;</code>, except for ledger type "message"
+(<code>&lt;notaryMessage&gt;</code>).</p>
+<p>Full transactions contain a list of <a href="../item"><code>&lt;item&gt;</code> documents</a>.</p>
+<p>Abbreviated transactions do not contain the list of
+<a href="../item"><code>&lt;item&gt;</code> documents</a>. The items will be loaded one by one during
+verification, using the <a href="../notaryMessage#getboxreceipt"><code>getBoxReceipt</code></a>
+message.</p>
+<ul>
+<li>[TODO, verify if this is true].</li>
+<li>Reason: if the inbox contains hundreds of receipts (items), downloading the
+  inbox would take too long or fail altogether, creating resyncing issues.</li>
+<li>The full transactions referenced by abbreviated transactions are stored in
+  the <code>*box/*.r/*.rct</code> files.
+  See <a href="#ref-saveboxreceipt">OTTransaction::SaveBoxReceipt()</a>.</li>
+</ul>
+<p>A transaction can be "in reference to" an <a href="../item"><code>&lt;item&gt;</code></a>.</p>
+<h2 id="base-document-type">Base Document Type</h2>
+<h3 id="elements-and-attributes">Elements and attributes</h3>
+<p>Those attributes are common to the <a href="#document-type-
+full-form">full form document type</a> and the <a href="#document-types-
+abbreviated-form">abbreviated form document types</a>.</p>
+<ul>
+<li>Attribute <code>type</code>: String. See section <em>Transaction Types</em>.</li>
+<li>Attribute <code>dateSigned</code>: Time. The date when the instrument was last signed.</li>
+<li>Attribute <code>accountID</code>: Identifier.</li>
+<li>Attribute <code>nymID</code>: Identifier.</li>
+<li>Attribute <code>notaryID</code>: Identifier.</li>
+<li>Attribute <code>numberOfOrigin</code>: Integer.<ul>
+<li>Constant <em>0</em> if not applicable.</li>
+<li>If <code>type</code> is one of (<code>chequeReceipt</code>, <code>voucherReceipt</code>) and the referenced
+  <a href="../item"><code>&lt;item&gt;</code></a> is of type <a href="../item#cheques-and-vouchers"><code>depositCheque</code></a>:
+  Same as the referenced item's <a href="../item#structure"><code>numberOfOrigin</code></a>.</li>
+<li>If <code>type</code> is one of (<code>pending</code>, <code>marketReceipt</code>, <code>paymentReceipt</code>,
+  <code>finalReceipt</code>, <code>basketReceipt</code>): same as <code>inReferenceTo</code>.</li>
+<li>If <code>type</code> is one of (<code>blank</code>, <code>message</code>, <code>notice</code>, <code>replyNotice</code>,
+  <code>successNotice</code>, <code>processNymbox</code>, <code>atProcessNymbox</code>, <code>transferReceipt</code>,
+  <code>deposit</code>, <code>atDeposit</code>, <code>instrumentNotice</code>, <code>instrumentRejection</code>):
+  Not applicable.</li>
+<li>For all other <code>type</code>s: same as <code>transactionNum</code>.</li>
+</ul>
+</li>
+<li>Attribute <code>transactionNum</code>: Integer. The notary issues this in response to a
+  <a href="../notaryMessage#gettransactionnumbers"><code>getTransactionNumbers</code> message</a>.
+  TODO: link to <a href="https://github.com/monetas/opentxs-protocol/issues/89">tx num spec</a>.</li>
+<li>Attribute <code>inReferenceTo</code>: Integer. Transaction number of the item this
+  transaction is in reference to.</li>
+</ul>
+<h2 id="transaction-types">Transaction Types</h2>
+<p>Possible values for the <code>type</code> attribute. Taken from <code>OTTransaction.hpp</code>.</p>
+<h3 id="nymbox-transaction-types">Nymbox Transaction Types</h3>
+<ul>
+<li><code>blank</code>: Freshly issued transaction number</li>
+<li><code>message</code>: Message from another Nym</li>
+<li><code>notice</code>: Server notice</li>
+<li><code>replyNotice</code>: A copy of a server reply to a previous request you sent</li>
+<li><code>successNotice</code>: A transaction number has successfully been signed out</li>
+</ul>
+<h3 id="inbox-and-outbox-transaction-types">Inbox and Outbox Transaction Types</h3>
+<ul>
+<li><code>pending</code>: Server puts this in your outbox (when sending) and in recipient's
+    inbox.</li>
+</ul>
+<h3 id="inbox-receipts">Inbox receipts</h3>
+<ul>
+<li><code>transferReceipt</code></li>
+<li><code>chequeReceipt</code></li>
+<li><code>voucherReceipt</code></li>
+<li><code>marketReceipt</code></li>
+<li><code>paymentReceipt</code></li>
+<li><code>finalReceipt</code>: When a cron item is expired or cancelled.</li>
+<li><code>basketReceipt</code>: When a basket exchange is processed.</li>
+</ul>
+<h3 id="payment-inbox-payment-outbox-record-box">Payment Inbox, Payment Outbox, Record Box</h3>
+<ul>
+<li><code>instrumentNotice</code></li>
+<li><code>instrumentRejection</code></li>
+</ul>
+<h3 id="messages">Messages</h3>
+<ul>
+<li><code>processNymbox</code></li>
+<li><code>atProcessNymbox</code></li>
+<li><code>processInbox</code></li>
+<li><code>atProcessInbox</code></li>
+<li><code>transfer</code></li>
+<li><code>atTransfer</code></li>
+<li><code>deposit</code></li>
+<li><code>atDeposit</code></li>
+</ul>
+<h2 id="document-type-full-form">Document Type: Full Form</h2>
+<ul>
+<li>Optional element <code>closingTransactionNumber</code>. Only if <code>type</code> is <code>finalReceipt</code> or <code>basketReceipt</code>. TODO</li>
+<li>Optional element <code>inReferenceTo</code>. Armored contract (TODO: figure out if needed and what can be in there, looks like it can contain different document types depending on the situation).</li>
+<li>Optional element <code>cancelRequest</code>. Armored document. TODO</li>
+<li>List of armored <a href="../item"><code>&lt;item&gt;</code> documents</a>.</li>
+</ul>
+<h2 id="document-types-abbreviated-form">Document Types: Abbreviated Form</h2>
+<h3 id="base-document-type_1">Base Document Type</h3>
+<p>These attributes are common for all abbreviated records (?)</p>
+<h4 id="elements-and-attributes_1">Elements and attributes</h4>
+<ul>
+<li>Attribute <code>type</code>: String. See Transaction Types</li>
+<li>Attribute <code>dateSigned</code>: Time in seconds, when the instrument was last signed.</li>
+<li>Attribute <code>receiptHash</code>: Identifier. TODO</li>
+<li>Attribute <code>transactionNum</code>: Integer. Transaction number.</li>
+<li>Attribute <code>inRefDisplay</code>: Integer. Transaction number, reference to transaction for display purposes.</li>
+<li>Attribute <code>inReferenceTo</code>: Integer. Transaction number that is related to this transaction.</li>
+</ul>
+<p>If <code>type</code> is <code>finalReceipt</code> or <code>basketReceipt</code>:</p>
+<ul>
+<li>Attribute <code>closingNum</code>: Integer. TODO</li>
+</ul>
+<h3 id="document-type-paymentinboxrecord">Document Type <code>&lt;paymentInboxRecord&gt;</code></h3>
+<h4 id="elements-and-attributes_2">Elements and attributes</h4>
+<ul>
+<li>Attribute <code>displayValue</code>: TODO</li>
+</ul>
+<h3 id="document-type-nymboxrecord">Document Type <code>&lt;nymboxRecord&gt;</code></h3>
+<h4 id="elements-and-attributes_3">Elements and attributes</h4>
+<ul>
+<li>Attribute <code>totalListOfNumbers</code>: Comma separated list of transaction numbers successfully signed out.</li>
+<li>TODO funny stuff is happening
+  <a href="https://github.com/Open-Transactions/opentxs/blob/63fcfb34c406e83d89b903ffe3c217f01614f445/src/core/OTTransaction.cpp#L4971">here</a></li>
+</ul>
+<h4 id="example">Example</h4>
+<pre><code class="xml">&lt;nymboxRecord type=&quot;successNotice&quot;
+ dateSigned=&quot;1414495363&quot;
+ requestNumber=&quot;0&quot;
+ transSuccess=&quot;false&quot;
+ receiptHash=&quot;2nG5wGlWKbzF5Mo8M6P9YH44S6FazSNQleaaTWRR0av&quot;
+ transactionNum=&quot;714&quot;
+ totalListOfNumbers=&quot;614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633,634,635,636,637,638,639,640,641,642,643,644,645,646,647,648,649,650,651,652,653,654,655,656,657,658,659,660,661,662,663,664,665,666,667,668,669,670,671,672,673,674,675,676,677,678,679,680,681,682,683,684,685,686,687,688,689,690,691,692,693,694,695,696,697,698,699,700,701,702,703,704,705,706,707,708,709,710,711,712,713&quot;
+ inRefDisplay=&quot;614&quot;
+ inReferenceTo=&quot;614&quot; /&gt;
+</code></pre>
+
+<h3 id="document-type-outboxrecord">Document Type <code>&lt;outboxRecord&gt;</code></h3>
+<h4 id="elements-and-attributes_4">Elements and attributes</h4>
+<ul>
+<li>Attribute <code>displayValue</code>: TODO</li>
+<li>Attribute <code>adjustment</code>: Integer. TODO</li>
+<li>Attribute <code>numberOfOrigin</code>: Integer. TODO</li>
+</ul>
+<h3 id="document-type-expiredboxrecord">Document Type <code>&lt;expiredBoxRecord&gt;</code></h3>
+<p>Inherits from Document Type <code>&lt;outboxRecord&gt;</code>.</p>
+<h3 id="document-type-recordboxrecord">Document Type <code>&lt;recordBoxRecord&gt;</code></h3>
+<h4 id="elements-and-attributes_5">Elements and attributes</h4>
+<ul>
+<li>Attribute <code>displayValue</code>: TODO</li>
+<li>Attribute <code>adjustment</code>: Integer. TODO</li>
+<li>Attribute <code>numberOfOrigin</code>: Integer. TODO</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://github.com/Open-Transactions/opentxs/blob/682fd05f/include/opentxs/core/OTTransaction.hpp#L450">enum transactionType</a></li>
+<li><a href="https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/core/OTTransaction.cpp#L4352">OTTransaction::UpdateContents()</a></li>
+<li><a href="https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/core/OTTransaction.cpp#L5790">numberOfOrigin</a></li>
+<li><a name="ref-saveboxreceipt"></a><a href="https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/core/OTTransaction.cpp#L3007">OTTransaction::SaveBoxReceipt()</a></li>
+</ul>
+<h2 id="notes">Notes</h2>
+<p>Possible improvements</p>
+<ul>
+<li>Use composition over inheritance.</li>
+<li>Use document types over <code>type</code> attribute.</li>
+<li>The <code>message</code> type in particular is out of place.</li>
+<li>Clean up this hack:
+  https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/server/OTServer.cpp#L786-802</li>
+</ul>
+</div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Monetas 2014, Zug, Switzerland. All rights reserved.</p>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        
+
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/prettify-1.0.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script src="../../js/base.js"></script>
+    </body>
+</html>
