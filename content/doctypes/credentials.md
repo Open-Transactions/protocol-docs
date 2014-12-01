@@ -1,9 +1,4 @@
----
-title: Document Types related to credentials.
-menu:
-  main:
-    parent: doctypes
----
+# Document Types Related to Credential System
 
 ## Document Type `<masterCredential>`
 
@@ -40,6 +35,7 @@ Signed by the keys contained in `<masterPublic>`.
 ## Document Type `<publicContents>`
 
 ### Structure
+
 * Attribute `count`. Integer. Number of `publicInfo` sub-elements.
 * List of `publicInfo` elements.
   * Attribute `key`. Either `A` (authentication), `E` (encryption) or `S`
