@@ -1,0 +1,27 @@
+site_name: Protocol docs
+repo_url: https://github.com/monetas/protocol-docs/
+copyright: Monetas 2014, Zug, Switzerland. All rights reserved.
+pages:
+- ['index.md', 'Introduction']
+- ['DocumentTypes.md', 'Main', 'Document Types']
+- ['Requirements.md', 'Main', 'Requirements']
+- ['Transport.md', 'Main', 'Transport']
+- ['Transfer.md', 'Main', 'Transfer']
+- ['doctypes/contract.md', 'Doctype', 'Base Contract']
+- ['doctypes/notaryProviderContract.md', 'Doctype', 'notaryProviderContract']
+- ['doctypes/instrumentDefinition.md', 'Doctype', 'instrumentDefinition']
+- ['doctypes/nymData.md', 'Doctype', 'nymData']
+- ['doctypes/notaryMessage.md', 'Doctype', 'notaryMessage']
+- ['doctypes/accountLedger.md', 'Doctype', 'accountLedger']
+- ['doctypes/transaction.md', 'Doctype', 'transaction']
+- ['doctypes/item.md', 'Doctype', 'item']
+- ['doctypes/account.md', 'Doctype', 'account']
+- ['doctypes/cheque.md', 'Doctype', 'cheque']
+- ['encoding/SectionFormat.md', 'Encoding', 'Section Format']
+- ['mep/mep-001.md', 'MEP', '1 - MEP purpose and guidelines']
+- ['mep/mep-002.md', 'MEP', '2 - Use CurveZMQ for encryption and authentication']
+- ['mep/mep-003.md', 'MEP', '3 - Document type XML cleanup']
+- ['mep/mep-004.md', 'MEP', '4 - Remove Google ProtoBuf Encoding From The Protocol']
+- ['mep/mep-005.md', 'MEP', '5 - Use ISO8601 for date and time formatting']
+docs_dir: content
+site_dir: site
