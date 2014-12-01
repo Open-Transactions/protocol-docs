@@ -8,6 +8,7 @@ pages:
 - ['Transport.md', 'Main', 'Transport']
 - ['Transfer.md', 'Main', 'Transfer']
 - ['doctypes/contract.md', 'Doctype', 'Base Contract']
+- ['doctypes/credentials.md', 'Doctype', 'Credentials']
 - ['doctypes/notaryProviderContract.md', 'Doctype', 'notaryProviderContract']
 - ['doctypes/instrumentDefinition.md', 'Doctype', 'instrumentDefinition']
 - ['doctypes/nymData.md', 'Doctype', 'nymData']
