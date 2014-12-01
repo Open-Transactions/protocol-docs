@@ -22,7 +22,7 @@ The transport layer is not secured and everything is sent
 in plain text. Each payload is secured using [electronic envelopes]
 (http://en.wikipedia.org/wiki/Electronic_envelope).
 This means that each payload is encrypted, using an encryption
-key that is encrypted to the recipient's public key, and sent in 
+key that is encrypted to the recipient's public key, and sent in
 the envelope as well.
 
 In OT sending works as follows:
@@ -41,8 +41,9 @@ And receiving works as follows:
 - decrypt the shared secret using the recipient's private encryption key, and
 - decrypt the payload using the shared secret.
 
-See [Credentials](Credentials.md) for a description of keys and how they
-are used.
+See `Credentials` for a description on keys and how they are used.
+
+TODO: add link
 
 ## Used Algorithms
 

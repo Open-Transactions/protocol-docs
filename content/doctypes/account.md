@@ -22,6 +22,7 @@
     * Attribute `amount`. Integer.
 
 ## Example
+
 ```xml
 <account
  version="2.0"

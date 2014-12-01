@@ -21,8 +21,7 @@ An attribute can have one of these types:
 * **Timestamp**: ASCII-encoded UNIX timestamp.
 * **String**: UTF-8-Encoded, Plain-Text character sequence. TODO is it really
     UTF-8-encoded?
-* **Identifier**: Human-readable representation of a hash value. See
-    [Identifier.md](encoding/Identifier.md) TODO fix link.
+* **Identifier**: Human-readable representation of a hash value.
 * **Armored**: _Deflate_-Compressed and Base64-encoded string. May have
     decorative section markers. See [Section Format](encoding/SectionFormat.md).
 

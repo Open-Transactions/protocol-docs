@@ -223,7 +223,7 @@ inReferenceTo="710" />
 ### Cash Withdrawal and Deposit
 
 * used in `notarizeTransaction`
-* attachment contains [purse](purse.md) document
+* attachment contains a purse document
 
 * `withdrawal`
     * client digital cash withdrawal
