@@ -10,7 +10,7 @@
 
 ### Structure
 
-#### When in `<credentials>.<credential>`
+#### When in `<credentials>/<credential>`
 
 * Attribute `nymID`. Identifier.
 * Attribute `masterCredentialID`. Identifier.
@@ -21,7 +21,7 @@
 Signed by the signature key specified in `masterSigned` copy of these key
 credentials.
 
-#### When in `<credentials>.<credential>.<masterSigned>`
+#### When in `<credentials>/<credential>/<masterSigned>`
 
 * Attribute `nymID`. Identifier.
 * Attribute `masterCredentialID`. Identifier.
