@@ -1,9 +1,4 @@
----
-title: "Transfer lifecycle"
-menu:
-  main:
-    parent: other
----
+# Transfer lifecycle
 
 This document describes a transfer from Alice's account to Bob's account.
 
@@ -16,7 +11,7 @@ the Notary. The message contains an `accountLedger` document and it contains a
 The transaction contains two items:
 
 * `transfer`
-  * contains information about the accounts that the transfer will be 
+  * contains information about the accounts that the transfer will be
     performed between
 * `balanceStatement`
   * contains a proposal about the balance and transaction/issued numbers if the
@@ -44,18 +39,18 @@ Alice's transaction number.
 When the Notary accepts Alice's transaction, the Notary creates a new `pending`
 transaction and puts it into Bob's inbox and Alice's outbox.
 
-Alice expects a new transaction in her outbox, so she downloads it by 
-combination of `getAccountData`, `getBoxReceipt`. 
+Alice expects a new transaction in her outbox, so she downloads it by
+combination of `getAccountData`, `getBoxReceipt`.
 TODO: why has Alice new copy of transfer.
 
 ## Bob gets transfer to inbox
 
-The same is done by Bob. Using `getAccountData` and `getBoxReceipt` messages, 
+The same is done by Bob. Using `getAccountData` and `getBoxReceipt` messages,
 Bob downloads a new receipt from his inbox. The receipt contains a `pending`
 transaction signed by the Notary. The transaction contains Alice's original
 `transfer` with her signature.
 
-Bob accepts the `pending` transaction by performing a new `processInbox` 
+Bob accepts the `pending` transaction by performing a new `processInbox`
 transaction. This transaction contains two items:
 
 * `acceptPending`
@@ -77,8 +72,8 @@ Alice receives a new `transferReceipt` in her inbox.
 * `transactionNum` is the new transaction number
 * `inReferenceTo` points to Bob's `processInbox`
 * `inRefDisplay` points to Alice's original `transfer`
-* element `inReferenceTo` contains a copy of Bob's `acceptPending`, 
-  with his signature, so Alice has proof that Bob accepted the transfer 
+* element `inReferenceTo` contains a copy of Bob's `acceptPending`,
+  with his signature, so Alice has proof that Bob accepted the transfer
   and it is also signed by the Notary.
   TODO: we do not see that the client checks it, in the current code
 

@@ -1,11 +1,4 @@
----
-title: "Transport"
-menu:
-  main:
-    parent: other
----
-
-## Transport
+# Transport
 
 The transport layer in OT uses [ZeroMQ](http://zeromq.org) between
 the clients and the notary servers. ZeroMQ is not a neutral transport,
@@ -51,7 +44,7 @@ And receiving works as follows:
 See [Credentials](Credentials.md) for a description of keys and how they
 are used.
 
-### Algos Used
+## Used Algorithms
 
 - RSA
   - seal / open
@@ -61,7 +54,7 @@ are used.
   - hashing payload for signing
   - SHA256 XOR WHRLPOOL
 
-### Future Improvements
+## Future Improvements
 
 - A future version of OT will use the secure session transport that
   ZeroMQ provides.

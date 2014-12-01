@@ -2,7 +2,7 @@
 
 Documentation for the opentxs protocol.
 
-# Document Types
+## Document Types
 
 The directory [content/doctypes/](content/doctypes/) contains descriptions of
 the XML structures that are created by `opentxs`. The format is described in
@@ -18,40 +18,28 @@ the XML structures that are created by `opentxs`. The format is described in
 * [Document Type `<item>`](content/doctypes/item.md)
 * [Document Type `<assetAccount>`](content/doctypes/assetAccount.md)
 
-# Encoding
+## Encoding
 
 The encoding is detailed in the `/encoding/` directory.
 
 * [Section Format](content/encoding/SectionFormat.md)
 
-# Monetas Enhancement Proposals
+## Monetas Enhancement Proposals
 
 Significant changes to the code follow a process using MEP documents
 (Monetas Enhancement Proposals), stored in the [`mep`](content/mep/)
 directory.
 
-# Other documentation
+## Other documentation
 
 The requirements for the document format and protocol are described in
 [Requirements](content/Requirements.md).
 
 The transport is described in [Transport](content/Transport.md).
 
-Transfers are described in [transfer](content/transfer.md).
+Transfers are described in [Transfer](content/Transfer.md).
 
-# Offline rendering
-
-The documentation can be rendered offline by means of the
-[Hugo](http://gohugo.io/) static generator, v. 0.12 or greater. Install it, run
-the `hugo` command in the top level directory of the repo, and a static website
-will be generated in the `public` directory.
-
-You can also run the `hugo server` command and point a browser at
-<http://localhost:1313/>.
-
-FIXME: links among documents are currently broken in the rendered website.
-
-# Documentation Format
+## Documentation Format
 
 All documentation is written in Markdown. To help readability of text and diffs
 please hard-wrap text at 72 chars, and code blocks at 79.

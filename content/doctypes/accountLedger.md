@@ -1,23 +1,16 @@
----
-title: Document Type accountLedger
-menu:
-  main:
-    parent: doctypes
----
-
-## Document Type `<accountLedger>`
+# Document Type `<accountLedger>`
 
 Typed container of [`<transaction>` documents](transaction.md).
 
-For all `type`s except `message`, all transactions are included in abbreviated form 
-(`nymboxRecord`, `inboxRecord`, ..., see below). 
-Those include the hash of the transaction in the record's `receiptHash` attribute. 
+For all `type`s except `message`, all transactions are included in abbreviated form
+(`nymboxRecord`, `inboxRecord`, ..., see below).
+Those include the hash of the transaction in the record's `receiptHash` attribute.
 The transactions themselves are stored separately, see [`<transaction>`](transaction.md).
 
 If the `type` is `message`, the transactions are included in full as a list of
 `transaction` elements.
 
-### Elements and attributes
+## Elements and attributes
 
 * Attribute `version`: Integer.
 * Attribute `type`: String. Specifies the ledger type. See _Ledger Types_ below.
@@ -41,7 +34,7 @@ transactions are stored in abbreviated form:
 * For ledger type `recordBox`: Element `recordBoxRecord`: [`recordBoxRecord` document](transaction.md#document-type-recordboxrecord)
 * For ledger type `expiredBox`: Element `expiredBoxRecord`: [`expiredBoxRecord` document](transaction.md#document-type-expiredboxrecord)
 
-### Ledger Types
+## Ledger Types
 
 * `nymbox`. Nym-scoped.
 * `inbox`. Account-scoped. Contains pending incoming transfers.
