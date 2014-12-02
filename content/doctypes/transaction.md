@@ -61,13 +61,13 @@ Possible values for the `type` attribute. Taken from `OTTransaction.hpp`.
 
 * `blank`: Freshly issued transaction number
 * `message`: Message from another Nym
-* `notice`: Server notice
-* `replyNotice`: A copy of a server reply to a previous request you sent
+* `notice`: Notice from the Notary
+* `replyNotice`: A copy of a Notary reply to a previous request you sent
 * `successNotice`: A transaction number has successfully been signed out
 
 ### Inbox and Outbox Transaction Types
 
-* `pending`: Server puts this in your outbox (when sending) and in recipient's
+* `pending`: Notary puts this in your outbox (when sending) and in recipient's
     inbox.
 
 ### Inbox receipts
@@ -98,8 +98,11 @@ Possible values for the `type` attribute. Taken from `OTTransaction.hpp`.
 
 ## Document Type: Full Form
 
-* Optional element `closingTransactionNumber`. Only if `type` is `finalReceipt` or `basketReceipt`. TODO
-* Optional element `inReferenceTo`. Armored contract (TODO: figure out if needed and what can be in there, looks like it can contain different document types depending on the situation).
+* Optional element `closingTransactionNumber`. Only if `type` 
+   is `finalReceipt` or `basketReceipt`. TODO
+* Optional element `inReferenceTo`. Armored contract 
+   (TODO: figure out if needed and what can be in there, looks like 
+   it can contain different document types depending on the situation).
 * Optional element `cancelRequest`. Armored document. TODO
 * List of armored [`<item>` documents](item.md).
 
