@@ -4,18 +4,19 @@ Welcome to the OpenTXS protocol documentation.
 
 ## Document Types
 
-The `doctypes/` folder contains descriptions of the XML structures
+The `doctypes` folder contains descriptions of the XML structures
 that are created by OpenTXS. The format is described in
 [Document Types](DocumentTypes.md).
 
 ## Encodings
 
-Encodings are detailed in the `encoding/` directory.
+Encodings are detailed in the `encoding` folder.
 
 ## Monetas Enhancement Proposals
 
-Significant changes to the code follow a process using MEP documents
-(Monetas Enhancement Proposals), stored in the `mep/` directory.
+Significant changes to the code follow a process using MEP 
+(Monetas Enhancement Proposal) documents, 
+which are stored in the `mep` folder.
 
 ## Other documentation
 
