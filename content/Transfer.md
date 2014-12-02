@@ -24,7 +24,7 @@ Everything is signed by Alice.
 Notary responds with `@notarizeTransaction` message. It contains
 `accountLedger` with transaction type `atTransfer` (response to transaction
 `transfer`). The transaction contains a response for each item. The items' status
-is `acknowledgement` or `rejection`.
+is `acknowledgement` or `rejection`. 
 
 * `atBalanceStatement`
   * with attribute `outboxNewTransNum` that contains the transaction numbers
