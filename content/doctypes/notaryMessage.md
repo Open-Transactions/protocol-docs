@@ -5,7 +5,7 @@
 * Attribute `version`: String. Hard-coded to be `2.0`.
 * Attribute `dateSigned`: Timestamp.
 * Element that is instance of document type _UserCommand_. See below.
-* Optional element `ackReplies`. Armored list of seen server replies.
+* Optional element `ackReplies`. Armored list of seen Notary replies.
 
 ## Base Document Type _UserCommand_
 
@@ -103,10 +103,10 @@ account type. The new account starts with a zero balance.
 
 Request creation of a new _issuer asset account_ on the Notary.
 ***registerInstrumentDefinition*** is a message sent by an issuer that
-wants to issue currency onto the notary.
+wants to issue currency onto the Notary.
 A currency issuer, which wants to issue a currency on a notary,
 must upload an instrument definition contract.
-The issuer is the one who originated the instrument definition contract
+The issuer is the party who originated the instrument definition contract
 and signed it.  This message includes the **nymID**, the notary ID, the
 queried instrument definitions, and the instrument definition contract.
 The instrument definition is the hash of the instrument definition contract.
@@ -138,7 +138,7 @@ specific information about the of transaction to be performed (for example,
 transfer or withdrawal).
 
 * Attribute `nymboxHash`: Identifier. Optional. Request will fail if it doesn't
-  match the server version.
+  match the notary version.
 * Attribute `accountID`: Identifier.
 * Element `accountLedger`: Signed document of type `<accountLedger>` that only
   has one `<transaction>`.
@@ -160,7 +160,7 @@ between a client and a Notary, and also reduce the risk of replay attacks.
 For example, when a client sends a message with request #100, the Notary will
 expect the next message from this client to use request#101. However, if the
 client sends a series of messages that do not arrive at the Notary, the next
-message received by the Notary from this client might be request#105. This is
+message received by the Notary from this client might be request #105. This is
 not the request number expected by the Notary and it will be rejected. To
 resync messages with the Notary, the client makes a getRequestNumber to the
 Notary to check which request## the Notary is expecting. The client can then
@@ -193,10 +193,10 @@ messages, instruments, notices, and new transaction numbers are sent to a
 
 ### getBoxReceipt
 
-Requests a transaction receipt from a **nymbox**, **inbox** or **outbox**. This
+Requests a transaction receipt from a **nymbox**, **inbox**, or **outbox**. This
 message includes the **nymID**, Notary ID, transaction number, and request
 number. Additionally, the message must specify the box type: **nymbox**,
-**inbox** or **outbox**.
+**inbox**, or **outbox**.
 
 *getBoxReceipt downloads full receipts because the nymbox, inbox, or outbox
 *will only contain the stub and not the full receipt. When the client has
@@ -204,10 +204,10 @@ number. Additionally, the message must specify the box type: **nymbox**,
 *hash that is stored in the stub to verify that it corresponds to the same
 *receipt.
 
-* Attribute `transactionNum`: Integer. Transaction number for which to get the
+* Attribute `transactionNum`: Integer. Transaction number for the requested
   receipt.
 * Attribute `boxType`: String. Specifies which box the transaction is in. Either
-  `nymbox`, `inbox` or `outbox`.
+  `nymbox`, `inbox`, or `outbox`.
 * Attribute `accountID`: Identifier. When `boxType` is `inbox` or `outbox`, this
   specifies the account. When `boxType` is `nymbox`, must be equal to `nymID`.
 
@@ -360,7 +360,7 @@ original request.
 action will fail if the **nym** has any accounts on the notary that do not have
 a zero balance. If the client wants to delete an asset account, it needs to
 first reduce the account balance to zero, delete the account, and then delete
-the **nym** off the Notary.  Alternatively, the user could stop using a **nym**
+the **nym** from the Notary.  Alternatively, the user could stop using a **nym**
 without deleting it and just leave it on the Notary. However, as a courtesy,
 the unused **nym** should be deleted from the Notary.
 
@@ -414,7 +414,7 @@ action.
 
 *getMint* requests the Notary to provide the public mint key for the cash
 instrument. The cash instrument has a series of minting keys and the minting
-keys are stored in the mint.There is a public mint and a private mint, the
+keys are stored in the mint. There is a public mint and a private mint, the
 notary keeps the private mint key and it will give a copy of the public mint
 key to the requesting client. The notary should give all clients the same
 public mint key. If different public mint keys were provided to different
@@ -469,9 +469,9 @@ account is deleted.
 ## References
 
 * [OTMessage::UpdateContents()](https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/core/OTMessage.cpp#L298).
-  Ctrl-F for `$UserCommand` or `At$UserCommand` in order to see the see the
+  Ctrl-F for `$UserCommand` or `At$UserCommand` in order to see the 
   serialization for the different subtypes.
 * [OT_API](https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/client/OpenTransactions.cpp).
   This is where the `OTMessage` is initialized and the sub-documents are built.
 * [OTClient](https://github.com/Open-Transactions/opentxs/blob/682fd05f/src/client/OTClient.cpp).
-  This is where server replies are processed.
+  This is where notary replies are processed.
