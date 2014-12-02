@@ -1,4 +1,4 @@
-# Transfer lifecycle
+# Transfer transaction workflow
 
 This document describes a transfer from Alice's account to Bob's account.
 
