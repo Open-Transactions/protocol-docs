@@ -1,10 +1,10 @@
 # protocol-docs
 
-Documentation for the OpenTXS protocol.
+Welcome to the OpenTXS protocol documentation.
 
 ## Document Types
 
-The directory `doctypes/` contains descriptions of the XML structures
+The `doctypes/` folder contains descriptions of the XML structures
 that are created by OpenTXS. The format is described in
 [Document Types](DocumentTypes.md).
 
