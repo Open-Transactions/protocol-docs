@@ -18,28 +18,28 @@ single entity, not the item. A transaction contains a list of items.
 * Attribute `type`. String. See section _Item Types_
 * Attribute `status`. String. Possible values:
     * `request`: the item is requested from client
-    * `acknowledgement`: This item is an acknowledgment from the server.
-      The server has signed it. Only in response.
+    * `acknowledgement`: This item is an acknowledgment from the notary.
+      The notary has signed it. Only in response.
     * `rejection`: This item represents a rejection of the request by the
-      server. Server will not sign it. Only in response.
+      notary. Notary will not sign it. Only in response.
     * `error-unknown`: Error during transaction processing. TODO seems to be never used.
 * Attribute `outboxNewTransNum`. Integer. Only when
     `newOutboxTransactioNum == 0`. TODO not sure if used.
-    Used only in `atBalanceStatement` with status `acknowledgement`. Server
-    informs client that server issued new transaction number and put new
+    Used only in `atBalanceStatement` with status `acknowledgement`. Notary
+    informs client that notary has issued a new transaction number and put new
     transaction with this number into outbox.
 * Attribute `numberOfOrigin`. Integer. Reference to original transaction.
 * Attribute `transactionNum`. Integer. Number of current transaction.
 * Attribute `notaryID`. Identifier.
 * Attribute `nymID`. Identifier. NymID of the user who created this item. On
-  items from client it is the client user ID, on items from server it is 
-  the server user id.
+  items from client it is the client user ID, on items from notary it is 
+  the notary user id.
 * Attribute `fromAccountID`. Identifier. Source account ID
 * Attribute `toAccountID`. Identifier. Destination account ID.
 * Attribute `inReferenceTo`. Integer. Reference to transaction which does not
   need to be included in items.
 * Optional element `note`. Armored. A text field for the user. The note can be
-  from server or from client. The note is padded to minimal size 100. TODO: why?
+  from notary or from client. The note is padded to minimal size 100. TODO: why?
 * Optional element `inReferenceTo`. Armored. Copy of transaction item that
   current item refers to.
 * Optional element `attachment`. Armored. Digital cash token is sent here.
@@ -166,7 +166,7 @@ amount="0" >
 * `balanceStatement`
     * is created by client to change its own account balance with respect to
       other items in the transaction. The balance statement is then validated
-      and signed by server.
+      and signed by notary.
     * element `attachment`
         * contains armored [`nymData` document](../doctypes/nymData.md) that
           updates issued nums and transaction nums.
@@ -217,7 +217,7 @@ inReferenceTo="710" />
       are changed to update information on which transaction numbers are
       owned by the client.
       This is also changed when a client receives new transaction numbers from 
-      server or when a transaction is cleared.
+      notary or when a transaction is cleared.
     * element `attachment` contains document [`nymData`](nymData.md) with
       the current list of transaction numbers.
 
@@ -245,7 +245,7 @@ inReferenceTo="710" />
 ## Receipt Types
 
 * `replyNotice`
-    * for some special messages, the server also drops the reply into Nymbox to
+    * for some special messages, the notary also drops the reply into Nymbox to
       guarantee that the Nym will receive and process the message. This is used
       in a `replyNotice` transaction
          * used as reply for messages: `issueAssetType`, `createAccount`,
@@ -264,14 +264,14 @@ inReferenceTo="710" />
 
 * `voucherReceipt`
 * `marketReceipt`
-    * server result of market trading
+    * notary result of market trading
     * element `attachment` contains document `marketOffer`
 * `paymentReceipt`
-    * server result of smart contract
+    * notary result of smart contract
     * element `attachment` contains document `smartContract`
     * used also in transaction `paymentReceipt`
 * `transferReceipt`
-    * server receipt dropped into an inbox as result of transfer being accepted
+    * notary receipt dropped into an inbox as result of transfer being accepted
 
 ## References
 

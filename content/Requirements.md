@@ -7,7 +7,7 @@ commercial-grade, fully-featured, free-software toolkit implementing the OTX
 protocol as well as a full-strength financial cryptography library, API, CLI,
 and prototype server.*
 
-Communication within Open-Transactions happens between these parties:
+Communication within Open-Transactions is among these parties:
 
 * Persistent Storage
 * Client
@@ -129,7 +129,7 @@ a version number to a document.
 
 1. *Authenticity*: Open-Transactions solves this problem with the concept of a
    Nym and public-key cryptography. The actual message, encoded in XML, is wrapped
-   inside a container format ([Section Format](SectionFormat.md)) that
+   inside a container format ([Section Format](encoding/SectionFormat.md)) that
    separates content and signatures.  The sender declares his identity in the
    message attribute `nymID`, specifies the intended recipient in the message
    `notaryID`, and declares the chronological order in the `requestNum` attribute.
