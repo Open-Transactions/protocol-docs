@@ -87,6 +87,10 @@
                             </li>
                         
                             <li >
+                                <a href="../credentials">Credentials</a>
+                            </li>
+                        
+                            <li >
                                 <a href="../notaryProviderContract">notaryProviderContract</a>
                             </li>
                         
@@ -132,7 +136,7 @@
                         <ul class="dropdown-menu">
                         
                             <li >
-                                <a href="../../encoding/SectionFormat">Encoding: Section Format</a>
+                                <a href="../../encoding/SectionFormat">Section Format</a>
                             </li>
                         
                         </ul>
@@ -224,24 +228,19 @@
 <h1 id="document-type-account">Document Type <code>&lt;account&gt;</code></h1>
 <h2 id="elements-and-attributes">Elements and attributes</h2>
 <ul>
-<li>Attribute <code>version</code>. Integer. Hard-coded to 1.0.</li>
 <li>Attribute <code>type</code>. String. TODO</li>
 <li>Attribute <code>version</code>. Integer?</li>
 <li>Attribute <code>accountID</code>. Identifier.</li>
 <li>Attribute <code>nymID</code>. Identifier.</li>
 <li>Attribute <code>notaryID</code>. Identifier.</li>
 <li>Attribute <code>instrumentDefinitionID</code>. Identifier.</li>
-<li>
-<p>Optional element <code>stashinfo</code> (optional)</p>
-<ul>
+<li>Optional element <code>stashinfo</code> (optional)<ul>
 <li>Attribute <code>cronItemNum</code>. Integer. Never set anywhere in the old code.
   Probably dead code.</li>
 </ul>
 </li>
-<li>
-<p>Optional element <code>inboxHash value</code>. Only included after at least one
-  transaction was received in this account.</p>
-<ul>
+<li>Optional element <code>inboxHash value</code>. Only included after at least one
+  transaction was received in this account.<ul>
 <li>Attribute <code>value</code>. Identifier.</li>
 </ul>
 </li>

@@ -87,6 +87,10 @@
                             </li>
                         
                             <li >
+                                <a href="../doctypes/credentials">Credentials</a>
+                            </li>
+                        
+                            <li >
                                 <a href="../doctypes/notaryProviderContract">notaryProviderContract</a>
                             </li>
                         
@@ -132,7 +136,7 @@
                         <ul class="dropdown-menu">
                         
                             <li >
-                                <a href="../encoding/SectionFormat">Encoding: Section Format</a>
+                                <a href="../encoding/SectionFormat">Section Format</a>
                             </li>
                         
                         </ul>
@@ -220,7 +224,7 @@
                 <div class="col-md-9" role="main">
 
 <h1 id="transport">Transport</h1>
-<p>The transport layer in OT is using <a href="http://zeromq.org">ZeroMQ</a> between
+<p>The transport layer in OT uses <a href="http://zeromq.org">ZeroMQ</a> between
 the clients and the notary servers. ZeroMQ is not a neutral transport,
 because it has its own framing. This means endpoints are enforced to
 use compatible ZeroMQ versions.</p>
@@ -237,26 +241,26 @@ implications from this:</p>
 <li>the server can never send updates directly to connected clients -
     they have to poll the server.</li>
 </ul>
-<p>At the moment, the transport layer is not secured and everything is sent
-in plain. Instead, the payload is secured using
-<a href="http://en.wikipedia.org/wiki/Electronic_envelope">electronic envelopes</a>.
-This basically means that the payload is encrypted and the encryption
-key is encrypted to a recipient's public key and sent in the envelope as
-well.</p>
+<p>The transport layer is not secured and everything is sent
+in plain text. Each payload is secured using [electronic envelopes]
+(http://en.wikipedia.org/wiki/Electronic_envelope).
+This means that each payload is encrypted, using an encryption
+key that is encrypted to the recipient's public key, and sent in
+the envelope as well.</p>
 <p>In OT sending works as follows:</p>
 <ul>
 <li>generate a shared secret,</li>
 <li>encrypt the payload with the shared secret using AES128,</li>
-<li>seal the generated shared secret to all the recipients' public
+<li>seal the generated shared secret to the recipients' public
   encryption key using RSA, and</li>
 <li>hash the payload and sign using RSA the resulting hash with own
   authentication key.</li>
 </ul>
-<p>And receiving works as following:</p>
+<p>And receiving works as follows:</p>
 <ul>
-<li>verify envelope's signature using the sender's public authentication
+<li>verify the envelope's signature using the sender's public authentication
   key,</li>
-<li>decrypt the shared secret using own encryption key (private), and</li>
+<li>decrypt the shared secret using the recipient's private encryption key, and</li>
 <li>decrypt the payload using the shared secret.</li>
 </ul>
 <p>See <code>Credentials</code> for a description on keys and how they are used.</p>
@@ -276,7 +280,7 @@ well.</p>
 <li>A future version of OT will use the secure session transport that
   ZeroMQ provides.</li>
 <li>ECC for sign / verify and seal / open instead of RSA.</li>
-<li>replace SAMY with double SHA256 to prevent birthday attacks.</li>
+<li>replace SAMY with double SHA256 to prevent <em>birthday attacks</em>.</li>
 </ul>
 </div>
             

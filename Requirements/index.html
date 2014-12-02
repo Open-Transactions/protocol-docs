@@ -87,6 +87,10 @@
                             </li>
                         
                             <li >
+                                <a href="../doctypes/credentials">Credentials</a>
+                            </li>
+                        
+                            <li >
                                 <a href="../doctypes/notaryProviderContract">notaryProviderContract</a>
                             </li>
                         
@@ -132,7 +136,7 @@
                         <ul class="dropdown-menu">
                         
                             <li >
-                                <a href="../encoding/SectionFormat">Encoding: Section Format</a>
+                                <a href="../encoding/SectionFormat">Section Format</a>
                             </li>
                         
                         </ul>
@@ -243,8 +247,7 @@ commercial-grade, fully-featured, free-software toolkit implementing the OTX
 protocol as well as a full-strength financial cryptography library, API, CLI,
 and prototype server.</em></p>
 </blockquote>
-<p>Communication happens between the Open-Transactions happens between these
-parties:</p>
+<p>Communication within Open-Transactions happens between these parties:</p>
 <ul>
 <li>Persistent Storage</li>
 <li>Client</li>
@@ -258,13 +261,13 @@ documents. This should make it easier for developers to review and improve the
 system.</p>
 <h2 id="simplicity">Simplicity</h2>
 <p>The format should be <em>as simple as possible</em>. Unnecessary features and aspects
-should be removed. This requirements helps with most other criteria on this
+should be removed. These requirements will help with most other criteria on this
 list.</p>
 <h2 id="transactionality">Transactionality</h2>
 <p>Communication should be <em>state-less and message-based</em>, as opposed to something
 stream-based like FTP or SSH.</p>
-<p>As the name implies, most communication in Open-Transaction is transactional
-and can be expressed a message. From a protocol perspective, a message should
+<p>As the name implies, most communication in Open-Transactions is transactional
+and can be expressed as a message. From a protocol perspective, a message should
 contain a document with everything that the recipients needs to know in
 order to perform an action.</p>
 <p>Exceptions are:
@@ -293,8 +296,7 @@ checking cryptographic signatures.</p>
 <p>Documents should be <em>well-formed</em> in order to be accepted. Ambiguous documents
 are difficult to audit and can lead to unpredictable behavior on the system,
 which can be exploited.</p>
-<p>The message format should be simple, well-specified and not have room for
-ambiguity.</p>
+<p>The message format should be simple, well-specified, and avoid ambiguity.</p>
 <p>One solution for that is the use of XML schemas, at the cost of simplicity and
 safety (Schema Attacks, XML Bombs).</p>
 <h2 id="composability">Composability</h2>
@@ -304,8 +306,8 @@ other documents</em>.</p>
 Documents can refer to other documents using their hash or smart-property
 identifier.</p>
 <h2 id="confidentiality">Confidentiality</h2>
-<p>Documents should <em>only be readable by the intended recipients</em>. For example, the
-communication channel between client and server cannot be expected to be
+<p>Documents should <em>only be readable by the intended recipients</em>. For example, there
+is no expectation that the communication channel between client and server will be
 private.</p>
 <h2 id="efficiency">Efficiency</h2>
 <p>Since Open-Transactions should be able to run on systems with limited resources:</p>
@@ -314,72 +316,72 @@ private.</p>
 <li>Document transport should not require a large amount of bandwidth.</li>
 <li>Document storage on disk should not require a large amount of space.</li>
 </ul>
-<p>A simple format and protocol has small documents that are easy to decode. Modern
-XML parsers are very optimized and have minimal space an computation
+<p>A simple format and protocol has small documents that are easy to decode.
+Modern XML parsers are very optimized and have minimal space and computation
 requirements.</p>
 <p>A Notary should be able to quickly identify the resources that need to
 be manipulated from a request. This simplifies concurrent processing of
 transactions.</p>
 <p>Compression can be used to reduce space requirements on disk or network.</p>
 <h2 id="extensibility">Extensibility</h2>
-<p>As Open-Transactions continues to grow and improve, it should be able to allow
-changes to the specification and implementation and to the format without
-breaking existing systems. This can be achieved by attaching a version number
-to a document, for example.</p>
+<p>As Open-Transactions continues to grow and improve, it should allow
+changes to the specification, implementation, and to the format without
+breaking existing systems. This can be achieved, for example, by attaching
+a version number to a document.</p>
 <h2 id="current-state">Current State</h2>
 <ol>
 <li>
 <p><em>Simplicity</em>: The generation and interpretation of messages in
-Open-Transactions is defined by the source code only, which is difficult to
-follow. The new specification should be easy to understand and implement.</p>
+   Open-Transactions is defined by the source code only, which is difficult to
+   follow. The new specification should be easy to understand and implement.</p>
 </li>
 <li>
 <p><em>Transactionality</em>: Open-Transactions uses a message-based protocol with a
-minimal amount of state. The messages that are exchanged can be understood as
-signed documents. A single message contains everything that is necessary
-to verify, process and audit the transaction. The Client sends a <em>request
-message</em> to the Notary, which replies with a <em>response message</em>.</p>
+   minimal amount of state. The messages that are exchanged can be understood as
+   signed documents. A single message contains everything that is necessary
+   to verify, process and audit the transaction. The Client sends a <em>request
+   message</em> to the Notary, which replies with a <em>response message</em>.</p>
 </li>
 <li>
 <p><em>Authenticity</em>: Open-Transactions solves this problem with the concept of a
-Nym and public-key cryptography. The actual message, encoded in XML, is wrapped
-inside a container format (<a href="../encoding/SectionFormat">Section Format</a>) that
-separates content and signatures.  The sender declares his identity in the
-message attribute <code>nymID</code>, specifies the intended recipient in the message
-<code>notaryID</code> and declares the chronological order in the <code>requestNum</code> attribute.</p>
+   Nym and public-key cryptography. The actual message, encoded in XML, is wrapped
+   inside a container format (<a href="../encoding/SectionFormat">Section Format</a>) that
+   separates content and signatures.  The sender declares his identity in the
+   message attribute <code>nymID</code>, specifies the intended recipient in the message
+   <code>notaryID</code>, and declares the chronological order in the <code>requestNum</code> attribute.</p>
 </li>
 <li>
-<p><em>Readability</em>: Open-Transactions uses XML as the document format as and
-<em>Section-Format</em> as the container format. Encoding schemes that degrade
-readability, like Protocol Buffers and Base64, should be avoided when possible.
-Opentxs has few precautions against processing ambiguous messages.</p>
+<p><em>Readability</em>: Open-Transactions uses XML as the document format and
+   <em>Section-Format</em> as the container format. Encoding schemes that degrade
+   readability, like Protocol Buffers and Base64, should be avoided when possible.
+   Open-Transactions has few precautions against processing ambiguous messages.</p>
 </li>
 <li>
-<p><em>Safety</em>: Open-Transaction does not use an XML schema parser, avoiding a
-class of exploits that are possible with more full-featured parsers. However, it
-relies on zlib, ProtocolBuffers and some hand-written parsers (SectionFormat)
-that are complex, difficult to review and contain bugs and unintentional
-behavior.</p>
+<p><em>Safety</em>: Open-Transactions does not use an XML schema parser, avoiding a
+   class of exploits that are possible with more fully-featured parsers. However, it
+   relies on zlib, Protocol Buffers, and some hand-written parsers (SectionFormat)
+   that are complex, difficult to review and contain bugs and unintentional
+   behavior.</p>
 </li>
 <li>
-<p><em>Composability</em>: Open-Transaction uses an encoding scheme with Compression,
-Base64-encoding and Protocol Buffers (depending on a compile-time configuration)
-to embed signed sub-documents. This severely impacts readability.</p>
+<p><em>Composability</em>: Open-Transactions uses an encoding scheme with Compression,
+   Base64-encoding and Protocol Buffers (depending upon a compile-time configuration)
+   to embed signed sub-documents. This severely impacts readability.</p>
 </li>
 <li>
 <p><em>Confidentiality</em>: Open-Transactions uses public-key cryptography when
-communicating between Client and Notary. The key management is part of the Nym
-credential system.</p>
+   communicating between Client and Notary. The key management is part of the Nym
+   credential system.</p>
 </li>
 <li>
 <p><em>Efficiency</em>: The document format used in Open-Transactions has not been
-optimized for efficiency. For example, initial tests show that avoiding base64
-encoding can reduce message size by half.</p>
+   optimized for efficiency. For example, initial tests show that avoiding base64
+   encoding can reduce message size by half.</p>
 </li>
 <li>
 <p><em>Extensibility</em>: Messages and documents often contain version numbers that
-are currently unused. The current system for reading and writing documents is
-complex and difficult to extend.</p>
+   are currently unused. The current system for reading and writing documents is
+   complex and difficult to extend.</p>
 </li>
 </ol>
 </div>

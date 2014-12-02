@@ -87,6 +87,10 @@
                             </li>
                         
                             <li >
+                                <a href="../doctypes/credentials">Credentials</a>
+                            </li>
+                        
+                            <li >
                                 <a href="../doctypes/notaryProviderContract">notaryProviderContract</a>
                             </li>
                         
@@ -132,7 +136,7 @@
                         <ul class="dropdown-menu">
                         
                             <li >
-                                <a href="../encoding/SectionFormat">Encoding: Section Format</a>
+                                <a href="../encoding/SectionFormat">Section Format</a>
                             </li>
                         
                         </ul>
@@ -212,11 +216,11 @@
         
             <li><a href="#notarize-transaction">Notarize transaction</a></li>
         
-            <li><a href="#alice-initializes-transfer">Alice initializes transfer</a></li>
+            <li><a href="#alice-initializes-a-transfer">Alice initializes a transfer</a></li>
         
             <li><a href="#bob-gets-transfer-to-inbox">Bob gets transfer to inbox</a></li>
         
-            <li><a href="#alice-gets-notification-that-transfer-is-complete">Alice gets notification that transfer is complete</a></li>
+            <li><a href="#alice-gets-a-notification-that-the-transfer-is-complete">Alice gets a notification that the transfer is complete</a></li>
         
     
     </ul>
@@ -224,24 +228,25 @@
                 <div class="col-md-9" role="main">
 
 <h1 id="transfer-lifecycle">Transfer lifecycle</h1>
-<p>This document describes transfer from Alice's account to Bob's account.</p>
+<p>This document describes a transfer from Alice's account to Bob's account.</p>
 <h2 id="notarize-transaction">Notarize transaction</h2>
-<p>Alice initiate a transfer by sending a signed message <code>notarizeTransaction</code> to
-the Notary. The message contains <code>accountLedger</code> document and it contains one
-<code>transaction</code> type <code>transfer</code>.</p>
-<p>The transaction contains two items</p>
+<p>Alice initiates a transfer by sending a signed <code>notarizeTransaction</code> message to
+the Notary. The message contains an <code>accountLedger</code> document and it contains a
+<code>transfer</code> <code>transaction</code> type.</p>
+<p>The transaction contains two items:</p>
 <ul>
 <li><code>transfer</code></li>
-<li>contains information from which account to which account is transfer</li>
+<li>contains information about the accounts that the transfer will be
+    performed between</li>
 <li><code>balanceStatement</code></li>
-<li>contains proposal about the balance and transaction/issued numbers if the
+<li>contains a proposal about the balance and transaction/issued numbers if the
     transfer is successful</li>
 </ul>
 <p>Everything is signed by Alice.</p>
-<h2 id="alice-initializes-transfer">Alice initializes transfer</h2>
-<p>Notary responds with message <code>@notarizeTransaction</code>. It contains
+<h2 id="alice-initializes-a-transfer">Alice initializes a transfer</h2>
+<p>Notary responds with <code>@notarizeTransaction</code> message. It contains
 <code>accountLedger</code> with transaction type <code>atTransfer</code> (response to transaction
-<code>transfer</code>). The transaction contains response for each item. The items' status
+<code>transfer</code>). The transaction contains a response for each item. The items' status
 is <code>acknowledgement</code> or <code>rejection</code>.</p>
 <ul>
 <li><code>atBalanceStatement</code></li>
@@ -249,45 +254,46 @@ is <code>acknowledgement</code> or <code>rejection</code>.</p>
     transaction that the Notary dropped to Alice's outbox and Bob's inbox.</li>
 <li><code>atTransfer</code></li>
 </ul>
-<p>Both items contain in <code>inReferenceTo</code> whole copy of original item. The response
-item is signed by the Notary to prove that Notary agreed with that. Both items
+<p>Both items contain an <code>inReferenceTo</code> the whole copy of original item. The response
+item is signed by the Notary to prove that the Notary agreed with it. Both items
 have set <code>inReferenceTo</code>, <code>numberOfOrigin</code> and <code>transactionNum</code> to origin
 Alice's transaction number.</p>
-<p>When Notary accepts Alice's transaction the Notary creates new <code>pending</code>
-transaction and put it to Bob's inbox and Alice's outbox.</p>
-<p>Alice expects new transaction in outbox so she download it by combination of
-<code>getAccountData</code>, <code>getBoxReceipt</code>. TODO: why has Alice new copy of transfer</p>
+<p>When the Notary accepts Alice's transaction, the Notary creates a new <code>pending</code>
+transaction and puts it into Bob's inbox and Alice's outbox.</p>
+<p>Alice expects a new transaction in her outbox, so she downloads it by
+combination of <code>getAccountData</code>, <code>getBoxReceipt</code>.
+TODO: why has Alice new copy of transfer.</p>
 <h2 id="bob-gets-transfer-to-inbox">Bob gets transfer to inbox</h2>
-<p>The same is done by Bob. By messages <code>getAccountData</code>, <code>getBoxReceipt</code> Bob
-downloads new receipt from his inbox. The receipt contains <code>pending</code>
-transaction signed by Notary. The transaction contains original Alice's
+<p>The same is done by Bob. Using <code>getAccountData</code> and <code>getBoxReceipt</code> messages,
+Bob downloads a new receipt from his inbox. The receipt contains a <code>pending</code>
+transaction signed by the Notary. The transaction contains Alice's original
 <code>transfer</code> with her signature.</p>
-<p>Bob accepts the <code>pending</code> transaction by new transaction <code>processInbox</code> in
-message <code>processInbox</code>. The transaction contains two items</p>
+<p>Bob accepts the <code>pending</code> transaction by performing a new <code>processInbox</code>
+transaction. This transaction contains two items:</p>
 <ul>
 <li><code>acceptPending</code></li>
-<li><code>numberOfOrigin</code> points to original Alice's <code>transfer</code></li>
-<li><code>transactionNum</code> is new transaction number, same as <code>processInbox</code></li>
-<li><code>inReferenceTo</code> points to transaction that Bob is responding (generated by
-    Notary after Alice sends <code>transfer</code>)</li>
-<li><code>balanceStatement</code> with new propose balance and transaction nums</li>
+<li><code>numberOfOrigin</code> points to Alice's original <code>transfer</code></li>
+<li><code>transactionNum</code> is a new transaction number, same as <code>processInbox</code></li>
+<li><code>inReferenceTo</code> points to the transaction that Bob is responding to
+    (generated by Notary after Alice sent <code>transfer</code>)</li>
+<li><code>balanceStatement</code> with new proposed balance and transaction numbers</li>
 </ul>
-<p>Notary accepts Bob's <code>processInbox</code> and send <code>atAcceptPending</code> to Bob in reply.
-As Bob accepted the transfer Notary generates new transaction <code>transferReceipt</code>
-and drop it into Alice's inbox.</p>
-<h2 id="alice-gets-notification-that-transfer-is-complete">Alice gets notification that transfer is complete</h2>
-<p>Alice has new <code>transferReceipt</code> in her inbox.</p>
+<p>Notary accepts Bob's <code>processInbox</code> and sends <code>atAcceptPending</code> to Bob in reply.
+As Bob accepted the transfer, Notary generates a new <code>transferReceipt</code>
+transaction and drops it into Alice's inbox.</p>
+<h2 id="alice-gets-a-notification-that-the-transfer-is-complete">Alice gets a notification that the transfer is complete</h2>
+<p>Alice receives a new <code>transferReceipt</code> in her inbox.</p>
 <ul>
-<li><code>numberOfOrigin</code> points to original Alice's <code>transfer</code></li>
-<li><code>transactionNum</code> new transaction num</li>
+<li><code>numberOfOrigin</code> points to Alice's original <code>transfer</code></li>
+<li><code>transactionNum</code> is the new transaction number</li>
 <li><code>inReferenceTo</code> points to Bob's <code>processInbox</code></li>
-<li><code>inRefDisplay</code> points to original Alice's <code>transfer</code></li>
-<li>element <code>inReferenceTo</code> contains copy of Bob's <code>acceptPending</code> with his
-  signature, so Alice has a prove that Bob accepted the transfer and it is also
-  signed by Notary.
-  TODO: I do not see in current code, that client checks it.</li>
+<li><code>inRefDisplay</code> points to Alice's original <code>transfer</code></li>
+<li>element <code>inReferenceTo</code> contains a copy of Bob's <code>acceptPending</code>,
+  with his signature, so Alice has proof that Bob accepted the transfer
+  and it is also signed by the Notary.
+  TODO: we do not see that the client checks it, in the current code</li>
 </ul>
-<p>Alice response to <code>transferReceipt</code> by <code>acceptItemReceipt</code> in <code>processInbox</code>.</p>
+<p>Alice responds to <code>transferReceipt</code> by <code>acceptItemReceipt</code> in <code>processInbox</code>.</p>
 <p>Notary sends <code>atAcceptItemReceipt</code>.</p>
 </div>
             
