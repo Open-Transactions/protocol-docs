@@ -27,8 +27,8 @@ Notary responds with `@notarizeTransaction` message. It contains
 is `acknowledgement` or `rejection`. 
 
 * `atBalanceStatement`
-  * with attribute `outboxNewTransNum` that contains the transaction numbers
-    the Notary dropped to Alice's outbox and Bob's inbox.
+  * with attribute `outboxNewTransNum`, which contains number of new transaction 
+    that the Notary dropped to Alice's outbox and Bob's inbox
 * `atTransfer`
 
 Both items contain an `inReferenceTo` the whole copy of original item. The response
