@@ -55,4 +55,4 @@ cat ~/.ot/armoredstuff | dearmor
 
 ## More Examples
 
-* See directory [`doctypes/`](doctypes/)
+* See [`doctypes`](doctypes/)
