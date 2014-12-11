@@ -13,7 +13,7 @@
 #### When in `<credentials>/<credential>`
 
 * Attribute `nymID`. Identifier.
-* Attribute `masterCredentialID`. Identifier.
+* Attribute `masterID`. Identifier.
 * Element `nymIDSource`. String.
 * Element `masterSigned`. Armored version of this document that is signed by
   master credentials.
@@ -24,7 +24,7 @@ credentials.
 #### When in `<credentials>/<credential>/<masterSigned>`
 
 * Attribute `nymID`. Identifier.
-* Attribute `masterCredentialID`. Identifier.
+* Attribute `masterID`. Identifier.
 * Element `nymIDSource`. String.
 * Element `masterPublic`. Armored copy of the **master** credentials that sign
   the key credentials.
