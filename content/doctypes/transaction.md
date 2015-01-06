@@ -31,7 +31,7 @@ full-form) and the [abbreviated form document types](#document-types-
 abbreviated-form).
 
 * Attribute `type`: String. See section _Transaction Types_.
-* Attribute `dateSigned`: Time. The date when the instrument was last signed.
+* Attribute `dateSigned`: Timestamp. The date when the instrument was last signed.
 * Attribute `accountID`: Identifier.
 * Attribute `nymID`: Identifier.
 * Attribute `notaryID`: Identifier.
@@ -115,7 +115,7 @@ These attributes are common for all abbreviated records (?)
 #### Elements and attributes
 
 * Attribute `type`: String. See Transaction Types
-* Attribute `dateSigned`: Time in seconds, when the instrument was last signed.
+* Attribute `dateSigned`: Timestamp when the instrument was last signed.
 * Attribute `receiptHash`: Identifier. TODO
 * Attribute `transactionNum`: Integer. Transaction number.
 * Attribute `inRefDisplay`: Integer. Transaction number, reference to transaction for display purposes.
@@ -143,7 +143,7 @@ If `type` is `finalReceipt` or `basketReceipt`:
 
 ```xml
 <nymboxRecord type="successNotice"
- dateSigned="1414495363"
+ dateSigned="2015-01-06T14:09:49"
  requestNumber="0"
  transSuccess="false"
  receiptHash="2nG5wGlWKbzF5Mo8M6P9YH44S6FazSNQleaaTWRR0av"

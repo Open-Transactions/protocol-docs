@@ -32,7 +32,7 @@
  notaryID="otxCCaj94hNjhTc9Gz8CJ6c8yKNLvBY4iDAs"
  instrumentDefinitionID="otxSRp81acSP921Z748v7CpD2xwpxSTT1e88" >
 
-<balance date="1415624440" amount="0"/>
+<balance date="2015-01-06T14:27:37" amount="0"/>
 
 </account>
 ```

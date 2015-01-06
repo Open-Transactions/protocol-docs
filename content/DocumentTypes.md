@@ -18,7 +18,7 @@ An attribute can have one of these types:
 
 * **Boolean**: Either the string `true` or `false`.
 * **Integer**: ASCII-encoded signed number.
-* **Timestamp**: ASCII-encoded UNIX timestamp.
+* **Timestamp**: Human-readable UTC timestamp in ISO8601 format. For example "2015-01-06T14:41:19".
 * **String**: UTF-8-Encoded, Plain-Text character sequence. TODO is it really
     UTF-8-encoded?
 * **Identifier**: Human-readable representation of a hash value.
