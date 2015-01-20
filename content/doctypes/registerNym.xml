@@ -1,0 +1,234 @@
+<registerNym requestNum="1" nymID="otxGx6Tk45kgtttrV3MLYHSkDA2mhzgSnLJ5" notaryID="otxB4evbDRgp12gvxayA7yT1d4tUUU8rcLdX">
+  <credentialList>
+    <!-- dearmored 765 bytes -->
+    <nymData version="1.0" nymID="otxGx6Tk45kgtttrV3MLYHSkDA2mhzgSnLJ5">
+      <nymIDSource>
+        <!-- dearmored 426 bytes -->
+        - -----BEGIN PUBLIC KEY-----
+        LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlHZk1BMEdDU3FHU0liM0RRRUJB
+        UVVBQTRHTkFEQ0JpUUtCZ1FEWlJjZzhLeC9TTnBldExEOTlvK1pWb1VnNwpoKytq
+        V1RHNTBQZEJLRXlFendDWENSMzBLbGJiUU9HSExSNG1VNFhlOGJFMFJBN2lJd1Rw
+        TDhyRXdWbFlYMVMzCmFHYVRnWGpUMExlWndSZEdmeEl0V012ZmUrZ1ppRUFOZ3Vv
+        NmxBQzFJMHJCTnZOaHcyVnFEcEZDb0hFNDBWNk4KdDFPYWZXdXZpMTUrZWVralh3
+        SURBUUFCCi0tLS0tRU5EIFBVQkxJQyBLRVktLS0tLQo=
+        - -----END PUBLIC KEY-----
+      </nymIDSource>
+      <masterCredential ID="otxQ9JqiT6vV4AkL9N41DDjoF9grz22gUJ1F" valid="true">
+      </masterCredential>
+      <keyCredential ID="otxQMnWauJs5hGRxuc8dWvomfoNAMV48PP7S" masterID="otxQ9JqiT6vV4AkL9N41DDjoF9grz22gUJ1F" valid="true">
+      </keyCredential>
+    </nymData>
+  </credentialList>
+  <credentials>
+    <credential ID="otxQ9JqiT6vV4AkL9N41DDjoF9grz22gUJ1F">
+      <!-- dearmored 2508 bytes -->
+      -----BEGIN SIGNED MASTER KEY CREDENTIAL-----
+      Hash: HASH256
+      <masterCredential nymID="otxGx6Tk45kgtttrV3MLYHSkDA2mhzgSnLJ5">
+        <nymIDSource>
+          <!-- dearmored 426 bytes -->
+          - -----BEGIN PUBLIC KEY-----
+          LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlHZk1BMEdDU3FHU0liM0RRRUJB
+          UVVBQTRHTkFEQ0JpUUtCZ1FEWlJjZzhLeC9TTnBldExEOTlvK1pWb1VnNwpoKytq
+          V1RHNTBQZEJLRXlFendDWENSMzBLbGJiUU9HSExSNG1VNFhlOGJFMFJBN2lJd1Rw
+          TDhyRXdWbFlYMVMzCmFHYVRnWGpUMExlWndSZEdmeEl0V012ZmUrZ1ppRUFOZ3Vv
+          NmxBQzFJMHJCTnZOaHcyVnFEcEZDb0hFNDBWNk4KdDFPYWZXdXZpMTUrZWVralh3
+          SURBUUFCCi0tLS0tRU5EIFBVQkxJQyBLRVktLS0tLQo=
+          - -----END PUBLIC KEY-----
+        </nymIDSource>
+        <publicContents count="3">
+          <publicInfo key="A">
+            <!-- dearmored 422 bytes -->
+            -----BEGIN PUBLIC KEY-----
+            LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlHZk1BMEdDU3FHU0liM0RRRUJB
+            UVVBQTRHTkFEQ0JpUUtCZ1FDbGhuaWJaQ2NjdUpMUWhrcUdoQW9WK0hZNwpiMU9L
+            bmVGcG9wdmQwNmdsOE4zZTVxREhmZ1dmMWViMGxPRnpIZHJVUngwV1l2S1NxbDdq
+            Q24zQkFGWkI5NWFtCkd0N3V6MkZFYUVGZWpZemtqWUw5WEdSZG4vbzBpcnNqYnBa
+            TW1SL3VxNGI3YUFXYlZRdEE4djRBWC9UOXVlYTgKdURUWURjVGJyUGdObmFFOThR
+            SURBUUFCCi0tLS0tRU5EIFBVQkxJQyBLRVktLS0tLQo=
+            -----END PUBLIC KEY-----
+          </publicInfo>
+          <publicInfo key="E">
+            <!-- dearmored 422 bytes -->
+            -----BEGIN PUBLIC KEY-----
+            LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlHZk1BMEdDU3FHU0liM0RRRUJB
+            UVVBQTRHTkFEQ0JpUUtCZ1FERkJWME1JMUoxay9jZk5IZ1Nibm9OcWpCUwp1b3Ez
+            ZGhPaUtYVzlheWl3NWxHOVBMTVBMbUMzbFJVZWVlZ2NCUEUxdDc4cE1vU2l4ZlJ2
+            WTB2OWpsQjFNYzRUCmVha1pTSklKUkQ0MzBBeFZJRXBFSDVyMDNCd09ZdWs3MW4v
+            SDV1Z01RN21ReVUvS01oOVUxaHFHa01WZERjYVcKeHhiNG1SMk94YTJ4dXpmT0FR
+            SURBUUFCCi0tLS0tRU5EIFBVQkxJQyBLRVktLS0tLQo=
+            -----END PUBLIC KEY-----
+          </publicInfo>
+          <publicInfo key="S">
+            <!-- dearmored 422 bytes -->
+            -----BEGIN PUBLIC KEY-----
+            LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlHZk1BMEdDU3FHU0liM0RRRUJB
+            UVVBQTRHTkFEQ0JpUUtCZ1FEWlJjZzhLeC9TTnBldExEOTlvK1pWb1VnNwpoKytq
+            V1RHNTBQZEJLRXlFendDWENSMzBLbGJiUU9HSExSNG1VNFhlOGJFMFJBN2lJd1Rw
+            TDhyRXdWbFlYMVMzCmFHYVRnWGpUMExlWndSZEdmeEl0V012ZmUrZ1ppRUFOZ3Vv
+            NmxBQzFJMHJCTnZOaHcyVnFEcEZDb0hFNDBWNk4KdDFPYWZXdXZpMTUrZWVralh3
+            SURBUUFCCi0tLS0tRU5EIFBVQkxJQyBLRVktLS0tLQo=
+            -----END PUBLIC KEY-----
+          </publicInfo>
+        </publicContents>
+      </masterCredential>
+      -----BEGIN MASTER KEY CREDENTIAL SIGNATURE-----
+      Version: Open Transactions 0.94.0-458-g8e4f98a
+      Comment: http://github.com/FellowTraveler/Open-Transactions/wiki
+      
+      MTrFAmlSogz0bSD1Yqt1GFKMwWaJOVntitDIlw6tO4b/DI3vnc7V/GLhKj8Zd1wL
+      E23AyQyfeTfhr7Tl/6GYwWhoZ3/2W0uc96MbX4lYy6+g9aIYD22/9RogZYl07hnE
+      Xm0LUvT4NXtR8EFaA+gPmJTnjPfhSE/BOQ4U/rVC6pM=
+      -----END MASTER KEY CREDENTIAL SIGNATURE-----
+    </credential>
+    <credential ID="otxQMnWauJs5hGRxuc8dWvomfoNAMV48PP7S">
+      <!-- dearmored 6080 bytes -->
+      -----BEGIN SIGNED KEY CREDENTIAL-----
+      Hash: HASH256
+      <keyCredential nymID="otxGx6Tk45kgtttrV3MLYHSkDA2mhzgSnLJ5" masterID="otxQ9JqiT6vV4AkL9N41DDjoF9grz22gUJ1F">
+        <nymIDSource>
+          <!-- dearmored 426 bytes -->
+          - -----BEGIN PUBLIC KEY-----
+          LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlHZk1BMEdDU3FHU0liM0RRRUJB
+          UVVBQTRHTkFEQ0JpUUtCZ1FEWlJjZzhLeC9TTnBldExEOTlvK1pWb1VnNwpoKytq
+          V1RHNTBQZEJLRXlFendDWENSMzBLbGJiUU9HSExSNG1VNFhlOGJFMFJBN2lJd1Rw
+          TDhyRXdWbFlYMVMzCmFHYVRnWGpUMExlWndSZEdmeEl0V012ZmUrZ1ppRUFOZ3Vv
+          NmxBQzFJMHJCTnZOaHcyVnFEcEZDb0hFNDBWNk4KdDFPYWZXdXZpMTUrZWVralh3
+          SURBUUFCCi0tLS0tRU5EIFBVQkxJQyBLRVktLS0tLQo=
+          - -----END PUBLIC KEY-----
+        </nymIDSource>
+        <masterSigned>
+          <!-- dearmored 4977 bytes -->
+          -----BEGIN SIGNED KEY CREDENTIAL-----
+          Hash: HASH256
+          <keyCredential nymID="otxGx6Tk45kgtttrV3MLYHSkDA2mhzgSnLJ5" masterID="otxQ9JqiT6vV4AkL9N41DDjoF9grz22gUJ1F">
+            <nymIDSource>
+              <!-- dearmored 426 bytes -->
+              - -----BEGIN PUBLIC KEY-----
+              LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlHZk1BMEdDU3FHU0liM0RRRUJB
+              UVVBQTRHTkFEQ0JpUUtCZ1FEWlJjZzhLeC9TTnBldExEOTlvK1pWb1VnNwpoKytq
+              V1RHNTBQZEJLRXlFendDWENSMzBLbGJiUU9HSExSNG1VNFhlOGJFMFJBN2lJd1Rw
+              TDhyRXdWbFlYMVMzCmFHYVRnWGpUMExlWndSZEdmeEl0V012ZmUrZ1ppRUFOZ3Vv
+              NmxBQzFJMHJCTnZOaHcyVnFEcEZDb0hFNDBWNk4KdDFPYWZXdXZpMTUrZWVralh3
+              SURBUUFCCi0tLS0tRU5EIFBVQkxJQyBLRVktLS0tLQo=
+              - -----END PUBLIC KEY-----
+            </nymIDSource>
+            <masterPublic>
+              <!-- dearmored 2508 bytes -->
+              -----BEGIN SIGNED MASTER KEY CREDENTIAL-----
+              Hash: HASH256
+              <masterCredential nymID="otxGx6Tk45kgtttrV3MLYHSkDA2mhzgSnLJ5">
+                <nymIDSource>
+                  <!-- dearmored 426 bytes -->
+                  - -----BEGIN PUBLIC KEY-----
+                  LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlHZk1BMEdDU3FHU0liM0RRRUJB
+                  UVVBQTRHTkFEQ0JpUUtCZ1FEWlJjZzhLeC9TTnBldExEOTlvK1pWb1VnNwpoKytq
+                  V1RHNTBQZEJLRXlFendDWENSMzBLbGJiUU9HSExSNG1VNFhlOGJFMFJBN2lJd1Rw
+                  TDhyRXdWbFlYMVMzCmFHYVRnWGpUMExlWndSZEdmeEl0V012ZmUrZ1ppRUFOZ3Vv
+                  NmxBQzFJMHJCTnZOaHcyVnFEcEZDb0hFNDBWNk4KdDFPYWZXdXZpMTUrZWVralh3
+                  SURBUUFCCi0tLS0tRU5EIFBVQkxJQyBLRVktLS0tLQo=
+                  - -----END PUBLIC KEY-----
+                </nymIDSource>
+                <publicContents count="3">
+                  <publicInfo key="A">
+                    <!-- dearmored 422 bytes -->
+                    -----BEGIN PUBLIC KEY-----
+                    LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlHZk1BMEdDU3FHU0liM0RRRUJB
+                    UVVBQTRHTkFEQ0JpUUtCZ1FDbGhuaWJaQ2NjdUpMUWhrcUdoQW9WK0hZNwpiMU9L
+                    bmVGcG9wdmQwNmdsOE4zZTVxREhmZ1dmMWViMGxPRnpIZHJVUngwV1l2S1NxbDdq
+                    Q24zQkFGWkI5NWFtCkd0N3V6MkZFYUVGZWpZemtqWUw5WEdSZG4vbzBpcnNqYnBa
+                    TW1SL3VxNGI3YUFXYlZRdEE4djRBWC9UOXVlYTgKdURUWURjVGJyUGdObmFFOThR
+                    SURBUUFCCi0tLS0tRU5EIFBVQkxJQyBLRVktLS0tLQo=
+                    -----END PUBLIC KEY-----
+                  </publicInfo>
+                  <publicInfo key="E">
+                    <!-- dearmored 422 bytes -->
+                    -----BEGIN PUBLIC KEY-----
+                    LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlHZk1BMEdDU3FHU0liM0RRRUJB
+                    UVVBQTRHTkFEQ0JpUUtCZ1FERkJWME1JMUoxay9jZk5IZ1Nibm9OcWpCUwp1b3Ez
+                    ZGhPaUtYVzlheWl3NWxHOVBMTVBMbUMzbFJVZWVlZ2NCUEUxdDc4cE1vU2l4ZlJ2
+                    WTB2OWpsQjFNYzRUCmVha1pTSklKUkQ0MzBBeFZJRXBFSDVyMDNCd09ZdWs3MW4v
+                    SDV1Z01RN21ReVUvS01oOVUxaHFHa01WZERjYVcKeHhiNG1SMk94YTJ4dXpmT0FR
+                    SURBUUFCCi0tLS0tRU5EIFBVQkxJQyBLRVktLS0tLQo=
+                    -----END PUBLIC KEY-----
+                  </publicInfo>
+                  <publicInfo key="S">
+                    <!-- dearmored 422 bytes -->
+                    -----BEGIN PUBLIC KEY-----
+                    LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlHZk1BMEdDU3FHU0liM0RRRUJB
+                    UVVBQTRHTkFEQ0JpUUtCZ1FEWlJjZzhLeC9TTnBldExEOTlvK1pWb1VnNwpoKytq
+                    V1RHNTBQZEJLRXlFendDWENSMzBLbGJiUU9HSExSNG1VNFhlOGJFMFJBN2lJd1Rw
+                    TDhyRXdWbFlYMVMzCmFHYVRnWGpUMExlWndSZEdmeEl0V012ZmUrZ1ppRUFOZ3Vv
+                    NmxBQzFJMHJCTnZOaHcyVnFEcEZDb0hFNDBWNk4KdDFPYWZXdXZpMTUrZWVralh3
+                    SURBUUFCCi0tLS0tRU5EIFBVQkxJQyBLRVktLS0tLQo=
+                    -----END PUBLIC KEY-----
+                  </publicInfo>
+                </publicContents>
+              </masterCredential>
+              -----BEGIN MASTER KEY CREDENTIAL SIGNATURE-----
+              Version: Open Transactions 0.94.0-458-g8e4f98a
+              Comment: http://github.com/FellowTraveler/Open-Transactions/wiki
+              
+              MTrFAmlSogz0bSD1Yqt1GFKMwWaJOVntitDIlw6tO4b/DI3vnc7V/GLhKj8Zd1wL
+              E23AyQyfeTfhr7Tl/6GYwWhoZ3/2W0uc96MbX4lYy6+g9aIYD22/9RogZYl07hnE
+              Xm0LUvT4NXtR8EFaA+gPmJTnjPfhSE/BOQ4U/rVC6pM=
+              -----END MASTER KEY CREDENTIAL SIGNATURE-----
+            </masterPublic>
+            <publicContents count="3">
+              <publicInfo key="A">
+                <!-- dearmored 422 bytes -->
+                -----BEGIN PUBLIC KEY-----
+                LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlHZk1BMEdDU3FHU0liM0RRRUJB
+                UVVBQTRHTkFEQ0JpUUtCZ1FESm9XdXNqRGtZTXlieVVxN3ZSRUpTenVQMgpyY0Jj
+                ZW9BVDcybWlBM3FZQUxrT0k0Q05DSkFGeTM2NlFXdTFoRDRGYUZMKzE0YXJyNWJS
+                TnhDeXJxUGxwZmlhCndlY3dNNWN6MVdxOWgzZ0QxNktEVnFJakhLWDNmUitpRHZ6
+                RU1DVUR5T0w0a0M1Q2w0WWNxTFRJMVJIdzVLYmUKQ2JWZW83YWlSK2Q3Z0hwd1p3
+                SURBUUFCCi0tLS0tRU5EIFBVQkxJQyBLRVktLS0tLQo=
+                -----END PUBLIC KEY-----
+              </publicInfo>
+              <publicInfo key="E">
+                <!-- dearmored 422 bytes -->
+                -----BEGIN PUBLIC KEY-----
+                LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlHZk1BMEdDU3FHU0liM0RRRUJB
+                UVVBQTRHTkFEQ0JpUUtCZ1FETmQvaXBKSXNVK2ovaE03L0R3UUhOTGlyagpvVHBi
+                UzhsbkMxblBLV2krR04wejRtT25OREZqdzNQQTFybm96UTFvQk02NVNUUWF5d3BX
+                bjRkZXEzSjRhNGN3Ckx4S3BDUElxS0M2YlVma2Q2RDdhUktvOWhOL1dlbG14d1Bp
+                all4d244ZHBZKzFDZk9EcG5pQXUvWFVqZW9uWFIKOVpiVVpxMklZM3czRnVUR3d3
+                SURBUUFCCi0tLS0tRU5EIFBVQkxJQyBLRVktLS0tLQo=
+                -----END PUBLIC KEY-----
+              </publicInfo>
+              <publicInfo key="S">
+                <!-- dearmored 422 bytes -->
+                -----BEGIN PUBLIC KEY-----
+                LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlHZk1BMEdDU3FHU0liM0RRRUJB
+                UVVBQTRHTkFEQ0JpUUtCZ1FDdVdDeFpFUWtNQzBPUXlBNGlnWmw3dkU1UQoxK2k3
+                ZDZDZHd4WitlMUlObGRvdm5va2Voc3RoNDFTdlptS1dBbzNkcnJuNGdmWjN0ejFh
+                Q24xOUdxeHpOUWRlCkNtM0EzUmVvQmtxMkUwcTJJZkdNM3VZb0hTSFVTa0t4N28w
+                bUlLNWhVT1BIbkdBemxUVEdRc2JqaDJHRzlsei8Kck9qbGpLTTUyeXZWd25Od0p3
+                SURBUUFCCi0tLS0tRU5EIFBVQkxJQyBLRVktLS0tLQo=
+                -----END PUBLIC KEY-----
+              </publicInfo>
+            </publicContents>
+          </keyCredential>
+          -----BEGIN KEY CREDENTIAL SIGNATURE-----
+          Version: Open Transactions 0.94.0-458-g8e4f98a
+          Comment: http://github.com/FellowTraveler/Open-Transactions/wiki
+          Meta:    SGQQ
+          
+          NeV0UxQRlpfEPxbNJsmxW1GwdpN1RGAVaqSePAyrG3/I3ooFmquG9SKhoBpIQjFL
+          hQsZQvGaUXgB6SG2DYYc62mblmY/faUoZomXKACjRn1psnShCDXMHFLryFqrVB0F
+          zHZwVtn7mQVHjedvRQW2QiuXPo92nCcBOCSFH0lxdTo=
+          -----END KEY CREDENTIAL SIGNATURE-----
+        </masterSigned>
+      </keyCredential>
+      -----BEGIN KEY CREDENTIAL SIGNATURE-----
+      Version: Open Transactions 0.94.0-458-g8e4f98a
+      Comment: http://github.com/FellowTraveler/Open-Transactions/wiki
+      
+      Z6l02+Ys5DH9BWU2HXIGa3VGkqH5dYMgiV7DD6/h+6+M28HinMY3lAU3AEdQWPmN
+      KXWZzYD2eRQifPYc/XFKnxLBiEyY5/nRQBcmDVpiGRbVarXpspiUZLvlxakiPXS3
+      T2KQ2UA7yvK5ISNdF6huzbDWHXqi3KlmL0/AWevZ0RE=
+      -----END KEY CREDENTIAL SIGNATURE-----
+    </credential>
+  </credentials>
+</registerNym>
