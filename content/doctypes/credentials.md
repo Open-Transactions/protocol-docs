@@ -83,3 +83,6 @@ Signed by the keys contained in `<masterPublic>`.
   => Remove one layer. Remove the outer `keyCredential`
 * Remove `masterPublic`, replace it by providing the `masterID` only. This is sufficient to prove that the master signed the keyCredential (as it is still inside `masterSigned`, with the master's signature).
 * TODO (for Otto to fill out): Why could we remove the `masterCredential` document, as discussed in the hangout?
+* Remove self-signing: it does not matter if there is proof of the private key, when looked at the credentials in isolation.
+  However, you can't register credentials without signing off on the document, and cannot use the credential anywhere else either without a signature. Self-signing of credentials adds nothing. It complicates the whole structure, parsing, writing.
+* Flatten the chain of trust: at the moment, the nymIDSource authenticates the master's A/E/S keys, and the S-key authenticates the subkeys, which also have A/E/S keys. There should be one master source only (either a pubkey or any other nym source), that authenticates subkeys, one for each type (A/E/S). (Not multiple subkeys, which each have A/E/S). That way, you can revoke keys individually, instead of A/E/S-bundles. This way, we would drop the master A/E/S keys, and use the nym source to directly authenticate subkeys of different types.
