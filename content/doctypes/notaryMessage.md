@@ -47,7 +47,7 @@ The public credentials will include the master credentials and the sub credentia
 For example, it could be a master credential and four sub credentials, or two
 master credentials and two separate credential.
 
-* Element `credentialList`: Contains armored [`<nymData>` document](nymData.md).
+* Element `credentialIDs`: Contains armored [`<nymData>` document](nymData.md).
 * Element `credentials`: List of credentials mentioned in `credentialList`
   * Element `credential`: Armored signed credential (document `keyCredential` or `masterCredential`)
     * Attribute `ID`: credential ID
