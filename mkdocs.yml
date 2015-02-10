@@ -24,5 +24,8 @@ pages:
 - ['mep/mep-003.md', 'MEP', '3 - Document type XML cleanup']
 - ['mep/mep-004.md', 'MEP', '4 - Remove Google ProtoBuf Encoding From The Protocol']
 - ['mep/mep-005.md', 'MEP', '5 - Use ISO8601 for date and time formatting']
+- ['mep/mep-007.md', 'MEP', '7 - Rename credentialList to credentialIDs']
+- ['mep/mep-008.md', 'MEP', '8 - Support the Ed25519 signature scheme']
+- ['mep/mep-011.md', 'MEP', '11 - Remove unnecessary base64 encoding']
 docs_dir: content
 site_dir: site
