@@ -48,9 +48,11 @@ For example, it could be a master credential and four sub credentials, or two
 master credentials and two separate credential.
 
 * Element `credentialIDs`: Contains armored [`<nymData>` document](nymData.md).
-* Element `credentials`: List of credentials mentioned in `credentialIDs`
+* Element `credentials`: List of credentials mentioned in `credentialIDs`. [More infos](credentials.md)
   * Element `credential`: Armored signed credential (document `keyCredential` or `masterCredential`)
-    * Attribute `ID`: credential ID
+  * Attribute `ID`: credential ID
+
+Example document (dearmored, for readability) can be found [here](registerNym.xml).
 
 ### registerNymResponse
 
