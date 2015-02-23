@@ -27,9 +27,6 @@ Background information (the why) concerning `credentials`:
   * General concept: Master source (`nymIDSource`) authenticates the `masterCredential`'s A/E/S keys. That `S`-key in turn signs the `keyCredential`. 
   * `nymIDSource`: Copy of the `masterCredential`'s `nymIDSource`.
   * The **inner** `keyCredential` is just like any other credential, coming with `nymIDSource` and A/E/S keys.
-    In addition, it contains the full self-signed `masterCredential` document (a 1:1 copy of the signed `masterCredential` document, enclosed in `masterPublic`).
-    Why? The reason is that the `keyCredential` should contain the information of the master that signed it, and the master's signature to prove it has been signed.
-    **Possible improvement**: Enclose only the `masterCredential`'s credential-`ID` instead of the full thing. 
 
 FAQ:
 * Q. Why is each credential self-signed? A. To prove that the credential's private key exists.
@@ -63,11 +60,7 @@ credentials.
 * Attribute `nymID`. Identifier.
 * Attribute `masterID`. Identifier.
 * Element `nymIDSource`. String.
-* Element `masterPublic`. Armored copy of the **master** credentials that sign
-  the key credentials.
 * Element `publicInfo` of document type `publicInfo`. See below.
-
-Signed by the keys contained in `<masterPublic>`.
 
 ## Document Type `<publicContents>`
 
@@ -83,7 +76,6 @@ Signed by the keys contained in `<masterPublic>`.
 * Disambiguate the two different `keyCredential` documents by renaming the "outer" one.
 * The outer `keyCredential`'s `nymIDSource` can be removed, as it also appears nested in `masterSigned`.
   => Remove one layer. Remove the outer `keyCredential`
-* Remove `masterPublic`, replace it by providing the `masterID` only. This is sufficient to prove that the master signed the keyCredential (as it is still inside `masterSigned`, with the master's signature).
 * TODO (for Otto to fill out): Why could we remove the `masterCredential` document, as discussed in the hangout?
 * Remove self-signing: it does not matter if there is proof of the private key, when looked at the credentials in isolation.
   However, you can't register credentials without signing off on the document, and cannot use the credential anywhere else either without a signature. Self-signing of credentials adds nothing. It complicates the whole structure, parsing, writing.
