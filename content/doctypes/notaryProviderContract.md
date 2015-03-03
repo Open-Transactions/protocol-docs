@@ -35,6 +35,7 @@ Previously known as _server contract_.
   * Attribute `port`. Integer. The port the server is listening on.
   * Attribute `URL`. String. The URL of the server, which includes the hostname
     and is the same as the `serverURL`. TODO is that a requirement?
+  * Element `transportKey`. String. Base64-encoded 32-byte binary curve zmq public key.
 
 ### Example
 ```xml
@@ -48,7 +49,8 @@ Previously known as _server contract_.
                   port="$port"
                   URL="$URL" />
 
-    <!-- Other elements written by super class -->
+    <transportKey>H6R70gM2C7skCdkWlrbPEF2EIsH8vxwXkd8PqsIPek0=</transportKey>
+    <!-- Other elements written by super class: conditions, signer credentials -->
 </notaryProviderContract>
 ```
 
