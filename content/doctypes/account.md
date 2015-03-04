@@ -39,4 +39,4 @@
 
 ## References
 
-[Account::UpdateContents()](https://github.com/Open-Transactions/opentxs/blob/d032df5e2012ca15be9d09231e46e4a28c6cd51c/src/core/Account.cpp#l749)
+[Account::UpdateContents()](https://github.com/Open-Transactions/opentxs/blob/3204ab5fe31afbb2b6b4456ef8dc860b5658884e/src/core/Account.cpp#L741)
