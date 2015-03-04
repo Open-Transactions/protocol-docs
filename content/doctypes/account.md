@@ -2,13 +2,13 @@
 
 ## Elements and attributes
 
-* Attribute `type`. String. TODO
-* Attribute `version`. Integer?
+* Attribute `type`. String. Many possible [values](https://github.com/Open-Transactions/opentxs/blob/3204ab5fe31afbb2b6b4456ef8dc860b5658884e/src/core/Account.cpp#L163). Relevant now are `issuer` and `simple`.
+* Attribute `version`. String. [Hardcoded](https://github.com/Open-Transactions/opentxs/blob/3204ab5fe31afbb2b6b4456ef8dc860b5658884e/src/core/Contract.cpp#L241) to `2.0`.
 * Attribute `accountID`. Identifier.
 * Attribute `nymID`. Identifier.
 * Attribute `notaryID`. Identifier.
 * Attribute `instrumentDefinitionID`. Identifier.
-* Optional element `stashinfo` (optional)
+* Optional element `stashinfo`.
     * Attribute `cronItemNum`. Integer. Never set anywhere in the old code.
       Probably dead code.
 * Optional element `inboxHash value`. Only included after at least one
