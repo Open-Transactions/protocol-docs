@@ -15,13 +15,18 @@ Inherits from base Document Type Contract.
     * Attribute `contractUrl`. String.
     * Attribute `type`. String. "currency" or "shares"
 * Optional element `currency`. Included if type is "currency".
-    * Attribute `name`. String.
-    * Attribute `tla`. String.
-    * Attribute `symbol`. String.
-    * Attribute `type`. String.
-    * Attribute `factor`. String.
-    * Attribute `decimal_power`. String.
-    * Attribute `fraction`. String.
+    * Attribute `name`. String. The "unit of account", this is the
+      name used in normal conversation (e.g., dollars, not cents)
+    * Attribute `tla`. String. Three-letter acronym for the currency
+    * Attribute `symbol`. String. A small symbol used to indicate this
+      currency, e.g. $
+    * Attribute `type`. String. Currently unused
+    * Attribute `factor`. String. How many of the "fraction" units in
+      the "unit of account (e.g. 100 cents to the dollar)
+    * Attribute `decimal_power`. String. Number of zeros after the
+      decimal point (e.g. dollars and cents have 2)
+    * Attribute `fraction`. String. The name of the smallest unit that
+      can be transacted (e.g., cents, not dollars)
 * Optional element `shares`. Included if type is "shares".
     * Attribute `name`. String.
     * Attribute `symbol`. String.
@@ -57,3 +62,5 @@ decimal_power="3" fraction="mBTC" />
 ## References
 
 [AssetContract::CreateContents()](https://github.com/Open-Transactions/opentxs/blob/be111238c0feb569462b2e710e7570c00aa3d8db/src/core/AssetContract.cpp#L776)
+
+[currency element](http://www.systemics.com/docs/ricardo/issuer/contract.html)
