@@ -4,7 +4,7 @@ Inherits from base Document Type Contract.
 
 ## Elements and attributes
 
-* Attribute `version`. Integer. Hard-coded to 2.0
+* Attribute `version`. String. Hard-coded to 2.0
 * Element `entity`.
     * Attribute `shortname`. String.
     * Attribute `longname`. String.
